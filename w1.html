@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <link rel="stylesheet" href="stylesheets/mine.css">
+    <title>Fab-Academy Log W1</title>
+  </head>
+
+  <body>
+    <section>
+      <p>
+        <h1>Week 1 : PRINCIPLES AND PRACTICES, PROJECT MANAGEMENT </h1>
+        Officially the first week started on Wednesday, 27th, February. But we had a few conversations with our remote instructor Mr. Francisco Sanchez, via slack and SIP calls. As he instructed we had signed up at <a href="https://www.fablabs.io/">fablabs.io</a>        and <a href="http://git.fabacademy.org/fabacademy2016/fablabtrivandrum">Git-repo</a>.
+        <br> Anyway, on the first day, at local time 17.30 IST, we had a long lecture by Neil via video conference. The audio wasn't the best quality and I lost the flow, but I found the <a href="https://vimeo.com/153263942">video at vimeo</a>. In essence,
+        I had to do the following for the first week.
+        <ul>
+          <li>Create a personal web-page where I will be writing all these.</li>
+          <li>Setup Git account and push the website to the correct destination so that our page is linked to the entries <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/">here </a>and <a href="http://archive.fabacademy.org/archives/2016/master/students.html">here</a>.</li>
+          <li>Generate the personal ssh-key pair and upload the public key to the Git.</li>
+          <li>Draft a possible final project and upload a rough sketch.</li>
+        </ul>
+      </p>
+
+      <h2>Website</h2>
+      <p>
+        I had some experience with building website during the Pre-Academy programme. I used <a href="https://atom.io/">atom</a> editor for writing in html5. I used some .css scripts from one of the themes provided by the github to theme (mainly the text
+        color and background) my page. I refer <a href="http://www.w3schools.com/html/default.asp">w3schools</a> for most of the doubts. I might move to something new, like HEXO theming engine, which I found being used by one student in China or Japan
+        (don't remember exactly, I was randomly opening student pages and I came across a beautiful site).
+      </p>
+
+      <h2>Git and setting up the key</h2>
+      <p>
+        For the Pre-Academy we hosted our site at github.com. Now we are supposed to host our site at <a href="git.fabacademy.org">git.fabacademy.org</a>. This is a dedicated GitLab server run for FabAcademy. The general usage is same as that of github.
+        We had to signup at <a href="https://www.fablabs.io/">fablabs.io</a> and use that to create an account at our <a href="http://git.fabacademy.org/fabacademy2016/fablabtrivandrum">local-repo</a>.
+      </p>
+      <p>
+        We can access the git via ssh or https protocol, though I prefer ssh access, because the ease of use. For this we have to generate a ssh-key pair and upload the public key to server (in progile settings>ssh keys section). Following this <a href="https://help.github.com/articles/generating-an-ssh-key/">tutorial </a>        makes the process very easy.
+        <br> At first we were given another key, common to all of us. I used this to pull the repo, make my page and push it for the first time. Later I generated my own key pair and uploaded it, once the 'admin' gave me developer access I could 'push' with
+        my own keys. Our remote instructor, Franc wrote a tutorial on setting up the repo <a href="http://beachlab.org/fab2016/repo.html">here</a>. Though I faced some issues while changing the key, I resolved it by deleting the corresponding entries
+        in ~/.ssh/known_hosts file and following the troubleshooting section in Franc's tutorial.
+      </p>
+      <p>
+
+      </p>
+      <br>
+      <br>
+      <br>
+      <h2>Project Draft</h2><br>
+      <h3>EDM based CNC mill</h3>
+      <p>
+        <a href="https://en.wikipedia.org/wiki/Electrical_discharge_machining">EDM</a> or Electrical Discharge Machining is also known as spark machining, spark eroding, die sinking. Perhaps the name gives some clues regarding the process. The technique
+        uses the sparks to erode material away to get the desired final structure. The technique is that the spark between two electrodes removes material from both the electrodes. One of the electrode known as the tool can be just a thin wire which is
+        kept at a small separation from the other electrode known as the workpiece. The electrodes are submerged in dielectric liquid (commonly water), which acts as coolant and cleaning liquid which flushes the milling siite. The tool need not be a wire
+        all the time, in Die-sink EDMs its a die made of solid metal.
+        <br> The system requires some way of generating a controlled electrical pulses, the rate of which determines the material removal rate. I believe that this technique, if implemented the way I want to, can mill PCB's with very narrow tracks and separation,
+        which cannot be produced by conventional milling.
+      </p>
+      <p>
+        Now the idea is that we will have an X-Y CNC machine with a 3D-printer like head extruding the tool wire (the tool wire gets eroded). The PCB will be submerged in a bath of water and the tool-head moves in a raster pattern to remove the material where
+        it is not required. The raster pattern, because the technique works only on conductors, and if we have to use vector files, the tool path predictor will have to be complicated. The X-Y movement can be achieved with two actuators from CD/DVD drives.
+        The working area will be very small but for a proof-of-concpet machine that will do just fine.
+      </p>
+    </section>
+  </body>
+
+</html>
