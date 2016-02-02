@@ -13,11 +13,12 @@
   </head>
 
   <body>
+    <link rel="icon" type="image/png" href="../logo.png">
     <section>
       <p>
         <h1>Week 1 : PRINCIPLES AND PRACTICES, PROJECT MANAGEMENT </h1>
         Officially the first week started on Wednesday, 27th, February. But we had a few conversations with our remote instructor Mr. Francisco Sanchez, via slack and SIP calls. As he instructed we had signed up at <a href="https://www.fablabs.io/">fablabs.io</a>        and <a href="http://git.fabacademy.org/fabacademy2016/fablabtrivandrum">Git-repo</a>.
-        <br> Anyway, on the first day, at local time 17.30 IST, we had a long lecture by Neil via video conference. The audio wasn't the best quality and I lost the flow, but I found the <a href="https://vimeo.com/153263942">video at vimeo</a>. In essence,
+        <br> Anyway, on the first day, at local time 19.30 IST, we had a long lecture by Neil via video conference. The audio wasn't the best quality and I lost the flow, but I found the <a href="https://vimeo.com/153263942">video at vimeo</a>. In essence,
         I had to do the following for the first week.
         <ul>
           <li>Create a personal web-page where I will be writing all these.</li>
@@ -36,8 +37,8 @@
 
       <h2>Git and setting up the key</h2>
       <p>
-        For the Pre-Academy we hosted our site at github.com. Now we are supposed to host our site at <a href="http://git.fabacademy.org">git.fabacademy.org</a>. This is a dedicated GitLab server run for FabAcademy. The general usage is same as that of github.
-        We had to signup at <a href="https://www.fablabs.io/">fablabs.io</a> and use that to create an account at our <a href="http://git.fabacademy.org/fabacademy2016/fablabtrivandrum">local-repo</a>.
+        For the Pre-Academy we hosted our site at github.com. Now we are supposed to host our site at <a href="http://git.fabacademy.org">git.fabacademy.org</a>. This is a dedicated GitLab server run for FabAcademy. The general usage is same as that of
+        github. We had to signup at <a href="https://www.fablabs.io/">fablabs.io</a> and use that to create an account at our <a href="http://git.fabacademy.org/fabacademy2016/fablabtrivandrum">local-repo</a>.
       </p>
       <p>
         We can access the git via ssh or https protocol, though I prefer ssh access, because the ease of use. For this we have to generate a ssh-key pair and upload the public key to server (in progile settings>ssh keys section). Following this <a href="https://help.github.com/articles/generating-an-ssh-key/">tutorial </a>        makes the process very easy.
@@ -51,7 +52,8 @@
       <br>
       <br>
       <br>
-      <h2>Project Draft</h2><br>
+      <h2>Project Draft</h2>
+      <br>
       <h3>EDM based CNC PCB mill</h3>
       <p>
         <a href="https://en.wikipedia.org/wiki/Electrical_discharge_machining">EDM</a> or Electrical Discharge Machining is also known as spark machining, spark eroding, die sinking. Perhaps the name gives some clues regarding the process. The technique
@@ -83,20 +85,32 @@
         <img src="cd-slide.jpg" alt="slider" onmouseover="this.width='1000'" onmouseout="this.width='500'">
         <figcaption style="display:inline; color:grey">The CD/DVD actuator assembly.</figcaption>
       </figure>
-      <br>
-      So I plan to make an X-Y axis similar to what is seen <a href="http://makezine.com/2015/07/20/build-drawbot-two-cd-drives-raspberry-pi/">here</a>.
+      <br> So I plan to make an X-Y axis similar to what is seen <a href="http://makezine.com/2015/07/20/build-drawbot-two-cd-drives-raspberry-pi/">here</a>.
       <br>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/-XhMT4wXSG4" frameborder="0" allowfullscreen></iframe>
     </section>
+    <br> The tool wire extruder will be similar to what that of a 3D-printer.
     <br>
-    The tool wire extruder will be similar to what that of a 3D-printer.
-    <br>
-    Even if this project is implemented correctly there will be drawbacks like
+    The merits of this system would be
+    <ul>
+      <li>Can have extremely close tracks which is impossible with the conventional milling machines.</li>
+      <li>This is a technique for PCB machining, at-least I couldn't find one.</li>
+      <li>Eco friendly, because no chemicals, no dust.</li>
+      <li>This machine could be used for drilling tiny holes on metal.</li>
+      <li>This may be useful for cutting metal sheet, for example to make a stencil from a soda can for applying solder paste.</li>
+      <li>can be used for making tiny metal gears.</li>
+      <li>And finally, no broken bits anymore.</li>
+    </ul>
+    <br> Even if this project is implemented correctly there will be drawbacks, like
     <ul>
       <li>Slow speed machining.</li>
-      <li>Chances of electrical short and shock (esoecially since water and electricity comes together).</li>
+      <li>Chances of electrical short and shock (especially since water and electricity comes together).</li>
       <li>Messy, there is a water bath and water circulation system included. </li>
+      <li>Consumes more power than other PCB milling.</li>
+      <li>The machine cannot cut the PCB (substrate), so you will have to manually cut the required area from a larger piece of copper clad board.</li>
     </ul>
+    <br><br>
+    PS:- I might move onto other projects if I find that this is not practical or not safe.
   </body>
 
 </html>
