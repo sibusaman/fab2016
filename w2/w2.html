@@ -46,7 +46,7 @@
       <p>
         So I wanted to know how fast this technique will remove material from the PCB (it can remove for sure, I had experienced this on several occasions when accidentally made short-circuits and sparks). So I decided to test it, took a used PCB, put a drop
         of water connected the lab power supply. I went ahead and kept the maximum voltage (30v) at a limit of 1A. I kept the voltage that high because if I had kept low voltage the distance between the electrodes would have to be too short and that will
-        be very-very difficult (our hands are not stable like machine).
+        be very-very difficult (our hands are not stable like machine). The ground was connected to the copper, the positive terminal (actually the polarity is not important) is connected to a broken blade of the Vinyl cutter.
       </p>
       <figure>
         <img src="tr1.jpg" alt="trial-1" onmouseover="this.width='1000'" onmouseout="this.width='500'">
@@ -63,6 +63,15 @@
         <img src="tr1-result.png" alt="trial-1 result" onmouseover="this.width='1000'" onmouseout="this.width='500'">
         <figcaption style="display:inline; color:grey">The result of the process shown in the video, notice that the copper has been removed by the sparks. If you watch carefully there is a discoloration too as a result of electrolysis.</figcaption>
       </figure>
+      <p>
+        So, now I'm confident that the technique will work. As a result of the process the copper from the board has been removed. The tool is also getting eroded. All that is left to do is to
+        <ul>
+          <li>Find a material with low wear, something that can withstand the sparks, tungsten looks promising as it is being used for <a href="https://en.wikipedia.org/wiki/Gas_tungsten_arc_welding">TIG</a> welding.</li>
+          <li>Design a way to precisely feed the tool wire.</li>
+          <li>Design an X-Y axis control using the salvaged components from CD/DVD drive.</li>
+          
+        </ul>
+      </p>
     </section>
     <p>
       <h2>PS:-</h2> I recorded the video in my phone and used the tool <a href="https://handbrake.fr/">handbrake</a>. This tool is like a frontend to the ffmpeg and other libraries like Libav, x264, x265 etc. Everything is GUI based, this is really useful if you want to crop videos. You can set cropping, transcoding options, audio/video formats and quality, codecs etc.
