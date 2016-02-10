@@ -63,6 +63,38 @@
         my own keys. Our remote instructor, Franc wrote a tutorial on setting up the repo <a href="http://beachlab.org/fab2016/repo.html">here</a>. Though I faced some issues while changing the key, I resolved it by deleting the corresponding entries
         in ~/.ssh/known_hosts file and following the troubleshooting section in Franc's tutorial.
       </p>
+      <h3>Dealing with passphrase for ssh.</h3>
+      <p>
+        It seems many people (including me at first) hesitated to use a passphrase while creating ssh key-pair. This might be because, if you do this, you will be asked to enter the passphrase each time you try to push/pull. We don't want to do that, and the
+        trick is to use 'ssh-agent'.
+        <br>Make sure that ssh-agent is running by
+        <br><code>eval `ssh-agent -s</code>.
+        <br> If the agent is not running start it by.
+        <br><code>exec ssh-agent bash</code>
+        <br>sometime you may get the following error even if ssh-agent is running, I got it fixed by typing the above command.
+        <br>
+        <pre>
+          [sibu@archSSD ~]$ ssh-add
+          Could not open a connection to your authentication agent.
+        </pre> Now add your ssh identity. <code>ssh-add</code>
+        <br>
+        <pre>
+          [sibu@archSSD ~]$ ssh-add
+          Enter passphrase for /home/sibu/.ssh/id_rsa:
+          Identity added: /home/sibu/.ssh/id_rsa (/home/sibu/.ssh/id_rsa)
+          [sibu@archSSD ~]$
+        </pre>
+        <br>
+        check if your identity has been added. <code>ssh-add -l</code>
+        <br>
+        <pre>
+          [sibu@archSSD fab2016]$ ssh-add -l
+          4096 SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx /home/sibu/.ssh/id_rsa (RSA)
+        </pre>
+        <br>
+        Now you dont't have to enter your passphrase all the time.
+        In case if you created a key-pair without passphrase, you can set one without recreating the key by <code>ssh-keygen -p</code> , but you have to add identity again, <code>ssh-add</code>
+      </p>
       <p>
         <h2>Edit:-</h2> You must have noticed it already; this site is not in the class repo, it has been redirected to my github pages. I have explained the reasons in my <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/281/">landing page</a>        and I will go back once I'm done. As I said many of the important ports such as port 22 is blocked in the faster Internet connection. I use the following workarounds for faster sync with online repo.
       </p>
