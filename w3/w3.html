@@ -31,9 +31,29 @@
     <section>
 
       <h1>Computer-Controlled Cutting</h1>
-
+      <br>
+<h3>Checking the laser cutter properties to fine tune the press-fit.</h3>
       <p>
-
+        I made the following pattern to see how much material the laser beam removes on each pass, this data can be used to while designing the final press-fit construction. We will have a chance for an intelligent guess rather than brute trial and error, to get a perfect fit.
+        The design is made in antimony and is parametric, I can just change few numbers to change the number of slits, slit width, depth etc.
+        <br>
+        <video width="720" controls>
+          <source src="press-test.mp4" type="video/mp4"> Your browser does not support the video tag.
+        </video>
+        <br><br>
+        <a href="pressfit-test.sb" download="sibu-pressfit-test-antimony.sb">Antimony files for the above design</a>.
+        <br>
+        While creating the above video, I used a trick to batch crop the individual .png files. I opened the files in Gimp used the selection tool to get some parameters for the command-line tool mogrify.
+        <br><code>mogrify -crop [WIDTH]x[HEIGHT]+[X-offset]+[Y-offset] </code> <br>
+        <figure>
+          <img src="batch-crop.png" alt="batch-crop" onmouseover="this.width='1000'" onmouseout="this.width='500'">
+          <figcaption style="display:inline; color:grey">Getting the parameters for mogrify using GIMP</figcaption>
+        </figure>
+        Note the highlighted area, also note the position of the cursor at top left corner(Red). You start selecting the area you want using the 'Rectangle Selection' tool from bottom right. Then you will have the <font color='blue'>X and Y offset</font> values (BLUE) and the <font color='red'> width and height</font> (RED).
+        <br>so the final command would be.<br>
+        <code>
+          mogrify -crop 1858x944+32+78 *.png
+        </code>
       </p>
 
 
