@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print">
     <link rel="stylesheet" href="../stylesheets/mine.css">
     <title>Fab-Academy Log Week3</title>
+
   </head>
 
   <body>
@@ -17,13 +18,13 @@
     <header>
       <div class="container">
         <h1>Fab2016</h1>
-        <h3>/ Week 3</h3>
+        <h3>/ Module 3</h3>
 
-        <section id="Week">
+        <section id="Module">
           <a href="../index.html">Home</a>
-          <a href="../w1/w1.html" class="btn">1</a>
-          <a href="../w2/w2.html" class="btn">2</a>
-          <a href="../w3/w3.html" class="btn">3</a>
+          <a href="../w1/w1.html" class="btn" title="Principles and Practices, Project Management ">1</a>
+          <a href="../w2/w2.html" class="btn" title="Computer-Aided Design">2</a>
+          <a href="../w3/w3.html" class="btn btn-4" title=" Computer-Controlled Cutting">3</a>
 
         </section>
       </div>
@@ -32,6 +33,11 @@
 
       <h1>Computer-Controlled Cutting</h1>
       <br>
+      <p>
+        This week we are going to make use the two computer-aided cutting machines available at the lab, the <a href="http://www.troteclaser.com/en-US/Laser-Machines/Pages/laser-engraving-machines-speedy.aspx">Trotec-Speedy 100​</a> laser cutter and the
+        vinyl cutter. We are asked to make a pressfit construction kit using the laser cutter and something like a sticker, flexible PCB, stencil etc using the vinyl cutter. Before proceeding with the laser cutter I decided to get some numbers that will
+        help me in designing the pressfit construct. I had some experience with both of the machines during the <a href="http://sibusaman.github.io/prefab/#hide2">pre-academy</a>.
+      </p>
       <h3>Checking the laser cutter properties to fine tune the press-fit.</h3>
       <p>
         I made the following pattern to see how much material the laser beam removes on each pass, this data can be used to while designing the final press-fit construction. We will have a chance for an intelligent guess rather than brute trial and error, to
@@ -47,7 +53,7 @@
         <br><code>mogrify -crop [WIDTH]x[HEIGHT]+[X-offset]+[Y-offset] </code>
         <br>
         <figure>
-          <img src="batch-crop.png" alt="batch-crop" onmouseover="this.width='1000'" onmouseout="this.width='500'">
+          <img src="batch-crop.png" alt="batch-crop" width='500' onmouseover="this.width='1000'" onmouseout="this.width='499'">
           <figcaption style="display:inline; color:grey">Getting the parameters for mogrify using GIMP</figcaption>
         </figure>
         Note the highlighted area, also note the position of the cursor at top left corner(Red). You start selecting the area you want using the 'Rectangle Selection' tool from bottom right. Then you will have the
@@ -60,10 +66,76 @@
         </code> This will crop all the .png files in the directory to a size we choose in the GIMP. One can modify this command accordingly. After that you can use ffmpeg to merge these into a movie (I talked about this in <a href="../w2/w2.html">Week 2</a>).
       </p>
 
+      <h2>Vinyl Cutter</h2>
+      <p>
+        As I said, I have had some experience with the vinyl cutter. I cut some vinyl stickers using the machine. This time I have more time and I want to go advanced. I decided to try something new something I couldn't do before. So, I choose to go with flexible
+        PCBs.
+      </p>
+      <h3>GPS Antenna for my phone</h3>
+      <p>
+        In past, as a part of an unsuccessful experiment to fix the poor GPS reception of my LG-G2 phone, I had lost it's original GPS antenna. This is perfect chance to cut a GPS antenna from the 'copper sticker'. I knew the basic theory of the antenna as I
+        did a 'mini-project' in college, the project was about constructing and measuring the radiation pattern of a Bi-Quad antenna for Wi-Fi. Anyway I didn't want to go that deep and decided to stick with something very simple, a folded Dipole antenna.
+        The Folded Dipole antenna will have a total length (length of the loop) approximately equal to the wavelength of the signal the antenna is going to receive(or transmit). The GPS system uses many wavelengths, but for civilian navigation the signals
+        are transmitted at
+        <a href="https://en.wikipedia.org/wiki/Global_Positioning_System#Satellite_frequencies">1575.42 MHz</a>. This corresponds a wavelength of about 190mm in vacuum. But the electrical signals in copper don't travel as fast the light and we have to
+        compensate for that, and the antenna will be shorter than the calculated wavelength. The factor depends on the material of the wire as the thickness and wavelength, typically it will be around .96-.98.
+        <br> Anyway I approximated the length as 185mm and designed it (made in <a href="http://www.cadsoftusa.com/download-eagle/">Eagle-CAD</a>). The antenna will have a rough shape as follows the long strip (part other than the main loop) will go into
+        the phone through a slit in the back cover of the phone (I have to make the slit, may be using the laser cutter!!).
+        <br>
+        <figure>
+          <img src="antenna-beta.png" alt="antenna beta" width='500' onmouseover="this.width='1000'" onmouseout="this.width='499'">
+          <figcaption style="display:inline; color:grey"></figcaption>
+        </figure>
+        As you can see the antenna has two semi-circles and effectively two long sections, the total length would have to be 185mm. I decided to keep the radius of the semi-circles as 6mm. So we have 2*pi*r(r=6) + 2*l = 185mm. Gives l = 73.6mm or l/2= 36.8mm
+        .
+        <br> Here is the final design of the antenna.This is not an Eagle file, rather a gray-scale image I will be using in the Vinyl cutter.
+        <figure>
+          <img src="antenna-final.png" alt="antenna final" width='500' onmouseover="this.width='1000'" onmouseout="this.width='499'">
+          <figcaption style="display:inline; color:grey"> The final design of the GPS antenna for the mobile phone.</figcaption>
+        </figure>
+        I will be pasting this on the back of my phone and the antenna will be attached to the spring contacts of the phone using a coaxial cable.
+      </p>
 
 
 
 
+      <h3>Multi-Layer PCB Test</h3>
+      <p>
+        I know that the vinyl cutter can be used to make flexible circuits. And I have seen people doing it. I wanted to check if I can use the individual copper layers to make a multi-layer PCB. I don't have a need of an actual multi-layer circuit, so I decided
+        to make something simple a, multilayer coil. This something similar to what we can find on an <a href="https://commons.wikimedia.org/wiki/File:Blue_and_Purple_RFID_tag.jpg">RFID/NFC tag</a> or a <a href="http://www.etradesupply.com/oem-nokia-lumia-920-wireless-charging-coil.html">>wireless charger</a>.
+        The difference is that we use multi-layer circuit instead of the traditional copper wire for the coil, and may result in a thinner profile. I intended to use this coil for a wireless charging experiment, for my phone, in future.
+      </p>
+      <figure>
+        <img src="coil.png" alt="coil" width='500' onmouseover="this.width='1000'" onmouseout="this.width='499'">
+        <figcaption style="display:inline; color:grey"> The 4 layer coil.</figcaption>
+      </figure>
+      <p>
+        The design has four layers, but the eagle-version I use only supports 2 actual copper layers. But there are a total of 52 or so layers for different purposes. Since I'm manually drawing all these traces, and I only intended to use the gray-scale exported
+        image of individual layers, I can use any four layers, it doesn't matter which four. I used Top, Bottom copper layers as well as Milling and Unrouted layers for the tracks. The dimension layer is used for dimensions and the outline.
+      </p>
+      <a href="coil.brd" download="sibu-multilayer-coil.brd">Eagle Board File of the 4-Layer flexible PCB coil.</a>.
+      <p>
+        The individuals layers are shown below.
+      </p>
+      <figure>
+        <img src="layer-1.png" title="First layer" width='500'">
+        <figcaption style="display:inline; color:grey"> First(Top) Layer</figcaption>
+
+        <img src="layer-2.png" title="Second layer" width='500'">
+        <figcaption style="display:inline; color:grey"> Second Layer</figcaption>
+      </figure>
+      <figure>
+        <img src="layer-3.png" title="Third layer" width='500'">
+        <figcaption style="display:inline; color:grey"> Third Layer</figcaption>
+
+        <img src="layer-4.png" title="Bottom layer" width='500'">
+        <figcaption style="display:inline; color:grey"> Fourth(Bottom) Layer</figcaption>
+      </figure>
+      <p>
+        <h2 style="color:red"> PLEASE DON"T FORGET TO MIRROR THE LAYERS, DEPENDING ON HOW YOU PLAN TO ASSEMBLE.</h2>
+        <br><br>
+        These files went through a 'beautification' by GIMP. For original png files of the four layer click <a href="original-layers.tar.gz" download="original-layers.tar.gz">here</a>.
+      </p>
     </section>
   </body>
 

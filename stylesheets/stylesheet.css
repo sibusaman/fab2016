@@ -163,7 +163,7 @@ hr {
 
 .btn {
   display: inline-block;
-  background: rgba(10, 10, 100, 0.9);
+  background: rgba(90, 90, 90, 0.9);
   padding: 0px 10px;
   border-radius: 12px;
   border: 2px solid rgba(0, 255, 0, 0.8);
@@ -178,7 +178,8 @@ hr {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 .btn:hover {
-  background: -webkit-linear-gradient(top, rgba(40, 40, 40, 0.6), rgba(35, 35, 35, 0.6) 50%, rgba(10, 10, 10, 0.8) 50%, rgba(0, 0, 0, 0.8));
+  background: rgba(90, 230, 90, 0.9);
+  color: rgba(0, 0, 0, 1);
 }
 .btn .icon {
   display: inline-block;
