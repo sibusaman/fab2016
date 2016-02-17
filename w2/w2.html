@@ -96,11 +96,13 @@
         <code>-c:v libx264</code> tells to use the x264 video codec
         <br>
         <code>-r 10</code> will give a final video stream with 10 frames per second, 10 fps is fine as we don't have any fast moving action, its all static images.
-        <br><br>
+        <br>
+        <br>
         <video width="720" controls>
           <source src="antimony-stepper.mp4" type="video/mp4"> Your browser does not support the video tag.
         </video>
-        <br><br>
+        <br>
+        <br>
         <a href="motor.sb" download="sibu-stepper-antimony.sb">Antimony files for the above design</a>.
         <br>
         <br> As you can see, I can change few numbers like the diameter of the motor, shaft-length and I get a new motor. I had to do this because I'm not sure that all the motors I will be getting will be of the same dimensions, but in general, shape of
@@ -115,6 +117,112 @@
       <p>
         Now I need to design the rest of the machine. I cannot do this unless I procure all the raw material I can gather. Once I have them, I'll design a machine that will make the best use of the parts I collected.
       </p>
+
+      <h2>2D-CAD</h2>
+      <p>
+        I wanted to make a 2D sketch/design of a possible press-fit construction set for the next module, but I also want this to be a part of my final project or atleast something that will be useful in future.
+      </p>
+      <p>
+        I made this design in <a href="http://www.openscad.org/">OpenSCAD</a>.
+        <pre>
+          module copy_mirror(vec=[1,1,0])
+          {
+            children();
+            mirror([1,0,0])mirror(vec) children();
+          }
+
+          l = 65;
+          h = 20;
+
+          beam_width= .25;
+          thick = 3.2;
+          number_of_slots_base = 3;
+          number_of_slots_wall = 2;
+
+
+          num_slots_base = number_of_slots_base * 2;
+          num_slots_wall_side = number_of_slots_wall * 2;
+          base_slot_width = l / ( num_slots_base + 1);
+          fit_base_slot_width = base_slot_width + beam_width;
+          wall_slot_width = h / ( num_slots_wall_side + 1);
+          fit_wall_slot_width = wall_slot_width + beam_width;
+          slot_depth = thick;
+          wall_length = l;
+          wall_height = h;
+
+          //base
+
+          translate([-l/2,-l/2,0])
+          union(){
+            for ( i = [ 0: 2: num_slots_base ] )
+            {
+              translate ( [ 0, l, 0 ] ) translate ( [ (i+.5) * base_slot_width , slot_depth/2, 0 ] ) square ( size = [ base_slot_width, slot_depth ], center = true );
+              translate ( [ 0, -slot_depth, 0 ] ) translate ( [ (i+.5) * base_slot_width , slot_depth/2, 0 ] ) square ( size = [ base_slot_width, slot_depth ], center = true );
+            }
+
+            for ( i = [ 0: 2: num_slots_base ] )
+            {
+              translate ( [ l, 0, 0 ] ) translate ( [ slot_depth/2, (i+.5) * base_slot_width, 0 ] ) square( size = [ slot_depth, base_slot_width ], center = true );
+              translate ( [ -slot_depth, 0, 0 ] ) translate ( [ slot_depth/2, (i+.5) * base_slot_width, 0 ] ) square (size = [ slot_depth, base_slot_width ], center = true );
+            }
+
+            square ( size = [l, l], center = false );
+          }
+
+          //wallls
+
+          copy_mirror()
+          copy_mirror()
+          copy_mirror() //these three copy_mirror rotates and duplicates one wall into four.
+          translate([-l/2,-l/2,0])
+          union(){
+            for ( i = [ 1: 2: num_slots_base ] )
+            {
+              translate ( [ 0, l + 1 + thick, 0 ] ) translate ( [ (i+.5) * base_slot_width, slot_depth/2, 0 ] ) square ( size = [ fit_base_slot_width, slot_depth ], center = true );
+            }
+
+            translate ( [ 0, l+1+2*thick, 0 ] ) square ( size = [wall_length, wall_height], center =false );
+            for ( i = [ 1: 2: num_slots_wall_side ] )
+            translate ( [ l, l+1+2*thick, 0 ] ) translate ( [ slot_depth/2, (i+.5)*wall_slot_width, 0 ] ) square( size = [ slot_depth, fit_wall_slot_width], center = true );
+            for ( i = [ 0: 2: num_slots_wall_side ] )
+            translate ( [ -slot_depth, l+1+2*thick, 0 ] ) translate ( [ slot_depth/2, (i+.5)*wall_slot_width, 0 ] ) square (size = [ slot_depth, wall_slot_width ], center = true );
+          }
+        </pre>
+      </p>
+      <p>
+        What kind of a design is this, you may ask. Well this is what you make in OpenSCAD, and you get this.
+        <figure>
+          <img src="../w3/press.svg" alt="openscad result" width='500' onmouseover="this.width='1000'" onmouseout="this.width='499'">
+          <figcaption style="display:inline; color:grey">OpenSCAD rendering of the above script.</figcaption>
+        </figure>
+        Let me explain what this is,
+        <br> This is a script to make a square-box (top open), press-fit construction kit. This is parametric, means you can change the appropriate values at the beginning of the script to change the properties of the box. You can alter the following.
+        <ul>
+          <li>Length=Width (square base) and Height of the box (obviously).</li>
+          <li>The number of slots on the base as well as the walls.</li>
+          <li>Fitting parameter, actually I kept it as beam_width, tuning this will get you a good fit for various materials. I found .25 works perfectly for acrylic, .4 for wood(plywood) and .5 or .6 for cardboard.</li>
+        </ul>
+      </p>
+
+      <p>
+        Okay, OpenSCAD is a script based parammetric 3D-CAD tool. It's a script based tool, which means you will program the your model, using various primitives like, points, line, circle, rectangle, polygon, curves, cylinder , cubes etc. Then can do various
+        mathematical and logical operations on these primitives and get your final design.
+        <br> I played with a few other tools for getting this design done. I tried the following, and I abandoned them for some reason.
+        <br>
+        <h4>Antimony</h4>
+        <br> Well this was the first tool I tried. I could get somewhere with it. But Antimony tries to render the script live, so when I make some mistake, sometimes the software crashes and I will loose all the progress. This was frustrating, also the scripting
+        language is Python something I'm not that familiar with. Another problem I came across is the limitation on the number of primitives and operations. And finally I didn't have the command over the entire script, when I try to make some mathematical
+        relations between some object/parameters etc. I get some weired errors, and was frustrated with it.
+        <br>
+        <h4>Rhino-Blocks</h4>
+        <br>
+
+        <br>
+        <h4>Grasshopper</h4>
+        <br>
+        
+      </p>
+
     </section>
 
   </body>
