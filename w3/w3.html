@@ -50,7 +50,7 @@
         <br>
         <a href="pressfit-test.sb" download="sibu-pressfit-test-antimony.sb">Antimony files for the above design</a>.
         <br> While creating the above video, I used a trick to batch crop the individual .png files. I opened the files in Gimp used the selection tool to get some parameters for the command-line tool mogrify.
-        <br><code>mogrify -crop [WIDTH]x[HEIGHT]+[X-offset]+[Y-offset] </code>
+        <br><code>mogrify -crop [WIDTH]x[HEIGHT]+[X-offset]+[Y-offset] [FILES]</code>
         <br>
         <figure>
           <img src="batch-crop.png" alt="batch-crop" width='500' onmouseover="this.width='1000'" onmouseout="this.width='499'">
@@ -63,7 +63,8 @@
         <br>
         <code>
           mogrify -crop 1858x944+32+78 *.png
-        </code> This will crop all the .png files in the directory to a size we choose in the GIMP. One can modify this command accordingly. After that you can use ffmpeg to merge these into a movie (I talked about this in <a href="../w2/w2.html">Week 2</a>).
+        </code>
+        <br> This will crop all the .png files in the directory to a size we choose in the GIMP. One can modify this command accordingly. After that you can use ffmpeg to merge these into a movie (I talked about this in <a href="../w2/w2.html">Week 2</a>).
       </p>
 
       <h2>Laser Cutter: Water Bath For EDM PCB Mill</h2>
@@ -72,13 +73,55 @@
         <br>One of the assignment for this module is to make a press-fit construction set. And I made a container with a press-fit construction set, laser-cut acrylic (3mm).
       </p>
       <p>
-        For the last module, I have made a parametric design of an open-box, a 'square-container'. I used that design to make the container. On the second trial with the cardboard I had a very tight-fitting cardboard joint.   
+        For the last module, I have made a parametric design of an open-box, a 'square-container'. I used that design to cut acrylic using the Laser Cutter. On the second trial with the cardboard I had a very tight-fitting cardboard joint. In total I made four
+        attempts, two on cardboard and two on acrylic. I used all scrap materials (so thats why some pieces are missing or irregularly shaped), as I didn't want to waste material for trial-and-error. But it turned out hat my second attempt itself was a success!!.
       </p>
+      <figure>
+        <img src="1.jpg" alt="1.1" width='200' onmouseover="this.width='800'" onmouseout="this.width='200'">
+        <figcaption style="display:inline; color:grey"></figcaption>
+
+        <img src="2.jpg" alt="1.2" width='200' onmouseover="this.width='800'" onmouseout="this.width='200'">
+        <figcaption style="display:inline; color:grey">Attempt number 0, I just put a small piece of cardboard and cut this out, just out of curiosity. These are tiny, box is only 2.5cmx2.5cmx1cm. </figcaption>
+      </figure>
+
+      <figure>
+        <img src="3.jpg" alt="3" width='200' onmouseover="this.width='800'" onmouseout="this.width='200'">
+        <figcaption style="display:inline; color:grey">First real attempt, size is 6cmx6cm. Failed; doesn't fit, too tight. I kept the beam width as 1mm(too much obviously).</figcaption>
+      </figure>
+
+      <figure>
+        <img src="4.jpg" alt="4.1" width='200' onmouseover="this.width='800'" onmouseout="this.width='200'">
+        <figcaption style="display:inline; color:grey"></figcaption>
+
+        <img src="5.jpg" alt="4.2" width='200' onmouseover="this.width='800'" onmouseout="this.width='200'">
+        <figcaption style="display:inline; color:grey">Second attempt; and  first success!. It fits perfectly, beam_width parameter used is .5mm.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="6.jpg" alt="6" width='200' onmouseover="this.width='800'" onmouseout="this.width='200'">
+        <figcaption style="display:inline; color:grey">Third attempt; first try with 3mm acrylic and failed. The laser didn't go all the way through, either power was low or the speed was too much. But fitting was nice.</figcaption>
+      </figure>
+      <figure>
+        <img src="7.jpg" alt="7" width='200' onmouseover="this.width='800'" onmouseout="this.width='200'">
+        <figcaption style="display:inline; color:grey"></figcaption>
+
+        <img src="8.jpg" alt="7" width='200' onmouseover="this.width='800'" onmouseout="this.width='200'">
+        <figcaption style="display:inline; color:grey"></figcaption>
+
+        <img src="9.jpg" alt="7" width='200' onmouseover="this.width='800'" onmouseout="this.width='200'">
+        <figcaption style="display:inline; color:grey">Fourth Attempt; and a smashing success!!. Kept the default setting for 3mm acrylic cutting, set the beam_width parameter in the script as .25mm.</figcaption>
+      </figure>
+
+
+
+
+
       <h2>Vinyl Cutter</h2>
       <p>
         As I said, I have had some experience with the vinyl cutter. I cut some vinyl stickers using the machine. This time I have more time and I want to go advanced. I decided to try something new something I couldn't do before. So, I choose to go with flexible
         PCBs.
       </p>
+
       <h3>GPS Antenna for my phone</h3>
       <p>
         In past, as a part of an unsuccessful experiment to fix the poor GPS reception of my LG-G2 phone, I had lost it's original GPS antenna. This is perfect chance to cut a GPS antenna from the 'copper sticker'. I knew the basic theory of the antenna as I
@@ -104,9 +147,6 @@
         I will be pasting this on the back of my phone and the antenna will be attached to the spring contacts of the phone using a coaxial cable.
       </p>
 
-
-
-
       <h3>Multi-Layer PCB Test</h3>
       <p>
         I know that the vinyl cutter can be used to make flexible circuits. And I have seen people doing it. I wanted to check if I can use the individual copper layers to make a multi-layer PCB. I don't have a need of an actual multi-layer circuit, so I decided
@@ -123,7 +163,7 @@
       </p>
       <a href="coil.brd" download="sibu-multilayer-coil.brd">Eagle Board File of the 4-Layer flexible PCB coil.</a>.
       <p>
-        The individuals layers are shown below.
+        The individuals layers are shown below.<a href="high-res.tar.gz" download="high-res-layers.tar.gz">high resolution images are here</a>
       </p>
       <figure>
         <img src="layer-1.png" title="First layer" width='500' ">
@@ -140,7 +180,7 @@
         <figcaption style="display:inline; color:grey"> Fourth(Bottom) Layer</figcaption>
       </figure>
       <p>
-        <h2 style="color:red"> PLEASE DON'T FORGET TO MIRROR THE LAYERS, DEPENDING ON HOW YOU PLAN TO ASSEMBLE.</h2>
+        <h2 style="color:red"> PLEASE DON'T FORGET TO MIRROR THE LAYERS AS REQUIRED, DEPENDING ON HOW YOU PLAN TO ASSEMBLE.</h2>
         <h3 style="color:red"> Just use commonsense to find out which layers are to be inverted.</h3>
         <br>
         <br> These files went through a 'beautification' by GIMP. For original png files of the four layer click <a href="original-layers.tar.gz" download="original-layers.tar.gz">here</a>.

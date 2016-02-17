@@ -135,7 +135,7 @@
           h = 20;
 
           beam_width= .25;
-          thick = 3.2;
+          thick = 3.2;              //thickness of the sheet used
           number_of_slots_base = 3;
           number_of_slots_wall = 2;
 
@@ -200,27 +200,46 @@
         <ul>
           <li>Length=Width (square base) and Height of the box (obviously).</li>
           <li>The number of slots on the base as well as the walls.</li>
-          <li>Fitting parameter, actually I kept it as beam_width, tuning this will get you a good fit for various materials. I found .25 works perfectly for acrylic, .4 for wood(plywood) and .5 or .6 for cardboard.</li>
+          <li>Fitting parameter, actually I kept it as beam_width, tuning this will get you a good fit for various materials. I found .25 works perfectly for acrylic, .3 for wood(plywood) and .4 or .5 for cardboard.</li>
         </ul>
+        <br>
+        <h3>Again, pictures are worth thousand words!. So, lets see a video.</h3>
+        <br>
+        <br>
+        <video width="720" controls>
+          <source src="OpenSCAD.mp4" type="video/mp4"> Your browser does not support the video tag.
+        </video>
       </p>
 
       <p>
-        Okay, OpenSCAD is a script based parammetric 3D-CAD tool. It's a script based tool, which means you will program the your model, using various primitives like, points, line, circle, rectangle, polygon, curves, cylinder , cubes etc. Then can do various
-        mathematical and logical operations on these primitives and get your final design.
+        Okay, OpenSCAD is a script based parammetric 3D-CAD tool. It's a script based tool, which means you will program your model, using various primitives like, points, line, circle, rectangle, polygon, curves, cylinder , cubes etc. Then can do various mathematical
+        and logical operations on these primitives and get your final design.
         <br> I played with a few other tools for getting this design done. I tried the following, and I abandoned them for some reason.
         <br>
         <h4>Antimony</h4>
         <br> Well this was the first tool I tried. I could get somewhere with it. But Antimony tries to render the script live, so when I make some mistake, sometimes the software crashes and I will loose all the progress. This was frustrating, also the scripting
         language is Python something I'm not that familiar with. Another problem I came across is the limitation on the number of primitives and operations. And finally I didn't have the command over the entire script, when I try to make some mathematical
-        relations between some object/parameters etc. I get some weired errors, and was frustrated with it.
+        relations between some object/parameters etc., I get some weired errors, and was frustrating.
         <br>
         <h4>Rhino-Blocks</h4>
-        <br>
-
+        <br> I followed this very informative <a href="https://vimeo.com/155032336"> tutorial on using blocks</a> by Mr. Saverio Silli. It was helpful. And I could do something with the blocks. But I didn't like to have my design scattered across multiple
+        'block files', but having individual files for individual parts (like nuts, bolts, motors etc) in a big design is convenient. But fro something simple as what I'm trying to do, multiple files are not very attractive. Also for any change I have
+        to manually edit the blocks, I cannot just enter a few numbers like I did with OpenSCAD. And finally Rhino is not free, (90-day Evaluation) and not available for Linux (Wine can be used to run Rhino in Linux, but may not give the best performance
+        or stability).
         <br>
         <h4>Grasshopper</h4>
         <br>
-        
+        <a href="www.grasshopper3d.com/">Grasshopper</a> is a plugin or a frontend to Rhino. It uses the Rhino as a back-end for rendering etc. Basically it's like Antimony, a lot more powerful it seems, with a lot of new primitives, and operations. But
+        time was running out and I found it too difficult/confusing to do something very simple like a rectangle. Again, it uses Rhino3D and I have to switch OS for using it. I didn't like leaving my customized Linux Desktop Environment, so goodbye to
+        Rhino3D and Grasshopper3D.
+      </p>
+      <h3>OpenSCAD resources</h3>
+      <p>
+        <ul>
+          <li><a href="http://www.openscad.org/documentation.html">http://www.openscad.org/documentation.html</a></li>
+          <li><a href="http://www.openscad.org/cheatsheet/index.html">Cheat Sheet</a></li>
+          <li><a href="https://en.wikibooks.org/wiki/OpenSCAD_User_Manual">https://en.wikibooks.org/wiki/OpenSCAD_User_Manual</a></li>
+        </ul>
       </p>
 
     </section>
