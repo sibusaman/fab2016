@@ -9,12 +9,12 @@
     <link rel="stylesheet" type="text/css" href="../stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print">
     <link rel="stylesheet" href="../stylesheets/mine.css">
-    <title>Fab-Academy Log Week3</title>
+    <title>Fab-Academy Log Module 3</title>
 
   </head>
 
   <body>
-    <link rel="icon" type="image/png" href="../logo.png">
+    <link rel="icon" type="image/png" href="../favicon.png">
     <header>
       <div class="container">
         <h1>Fab2016</h1>
@@ -24,7 +24,8 @@
           <a href="../index.html">Home</a>
           <a href="../w1/w1.html" class="btn" title="Principles and Practices, Project Management ">1</a>
           <a href="../w2/w2.html" class="btn" title="Computer-Aided Design">2</a>
-          <a href="../w3/w3.html" class="btn btn-4" title="Computer-Controlled Cutting">3</a>
+          <a href="../w3/w3.html" class="btn" title="Computer-Controlled Cutting">3</a>
+          <a href="../w4/w4.html" class="btn" title="Electronics Production">4</a>
 
         </section>
       </div>
@@ -119,6 +120,15 @@
         Now I need to seal the gaps to make this container water tight. I can do this with some Cyno-acrylic based glue or just acetone(dissolves acrylic) or I can make my on acrylic glue by dissolving a few pieces of acrylic scrap in acetone.
       </p>
 
+      <h2>Improvised; Box With Lid.</h2>
+      <p>
+        I modified the OpenSCAD design file a little bit to add lid to the box.
+        <figure>
+          <img src="box-3-2.svg" alt="lid-box" width='500' onmouseover="this.width='1000'" onmouseout="this.width='499'">
+          <figcaption style="display:inline; color:grey"></figcaption>
+        </figure>
+        <a href="box.scad" download="sibu-box-lid.scad">Click to Download OpenSCAD File</a>
+      </p>
 
 
 
@@ -160,10 +170,36 @@
         </figure>
         The first attempt was a failure, but it was expected, mainly because of the thin traces and the very poor adhesion between the copper layer and the substrate. Another reason is that I used some scrap piece of copper to do this trial. so in attempt one
         (bottom one) the traces came right off the substrate.
-        <br> FOr trial two, I decided to improve the adhesion of the copper layer to the substrate. For this I took the copper layer completely from the substrate and pasted it on the non-sticky side of a wide masking tape. Then I pasted the masking tape
-        with the copper layer onto the original substrate of the copper sheet, but the back,non-glossy side. This will give give better adhesion and i got the second result (top), way better than the first one. But the traces are still thin.
+        <br> For trial two, I decided to improve the adhesion of the copper layer to the substrate.
+        <h4 color: "red">For this I took the copper layer completely from the substrate and pasted it on the non-sticky side of a wide masking tape. Then I pasted the masking tape with the copper layer onto the original substrate of the copper sheet, but on the back,
+          non-glossy side.</h4> This will give give better adhesion and i got the second result (top), way better than the first one. But the traces are still thin.
+        <br> Now I have to make one more attempt with slightly thicker traces and importantly a new/clean sheet of copper.
+      </p>
+      <p>
+        Few more pics with a new test cut, the traces were made slightly thick(1mm instead of .6).
+        <br> Design file
         <br>
-        Now I have to make one more attempt with slightly thicker traces and importantly a new/clean sheet of copper.
+        <a href="ant.brd" download="sibu-gps-antenna.brd"> Eagle Board file.</a>
+        <br>
+        <a href="ant.png" download="sibu-gps-antenna.png"> PNG file.</a> (Scale the image to 90mm (length))
+        <br>
+        <figure>
+          <img src="gps1.jpg" alt="gps-one" width='500' onmouseover="this.width='1000'" onmouseout="this.width='499'">
+          <figcaption style="display:block; color:grey "> The highlighted(green) area shows the spring contacts for the original GPS antenna. You can also see the antenna design under the masking tape applied to remove the antenna from the substrate.</figcaption>
+
+          <img src="gps2.jpg" alt="gps-two" width='200' onmouseover="this.width='400'" onmouseout="this.width='200'">
+          <figcaption style="display:block; color:grey"> Antenna, ready to be transfered.</figcaption>
+
+          <img src="gps3.jpg" alt="gps-three" width='500' onmouseover="this.width='1000'" onmouseout="this.width='499'">
+          <figcaption style="display:block; color:grey ">Antenna on the phone.</figcaption>
+
+          <img src="gps4.jpg " alt="gps-four" width='500' onmouseover="this.width='1000'" onmouseout="this.width='499'">
+          <figcaption style="display:inline; color:grey"> </figcaption>
+        </figure>
+      </p>
+      <p>
+        All I need to do is to find a thin co-axial cable (I must have some, in my pile of e-junk) and make a connection from the spring contacts on the phone to the antenna. I'll update with more pictures and a few screen shots once I have the coaxial cable.
+        If there is no tuning required on thus design, I'll finalize it and cut an antenna from a fresh copper sheet.
       </p>
 
       <h3>Multi-Layer PCB Test</h3>
@@ -180,7 +216,7 @@
         The design has four layers, but the eagle-version I use only supports 2 actual copper layers. But there are a total of 52 or so layers for different purposes. Since I'm manually drawing all these traces, and I only intended to use the gray-scale exported
         image of individual layers, I can use any four layers, it doesn't matter which four. I used Top, Bottom copper layers as well as Milling and Unrouted layers for the tracks. The dimension layer is used for dimensions and the outline.
       </p>
-      <a href="coil.brd" download="sibu-multilayer-coil.brd">Eagle Board File of the 4-Layer flexible PCB coil.</a>.
+      <a href="coil.brd" download="sibu-multilayer-coil.brd">Eagle Board File of the 4-Layer flexible PCB coil</a>.
       <p>
         The individuals layers are shown below.<a href="high-res.tar.gz" download="high-res-layers.tar.gz">high resolution images are here</a>
       </p>
