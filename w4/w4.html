@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <link rel="icon" type="image/png" href="../favicon.png" >
+    <link rel="icon" type="image/png" href="../favicon.png">
     <header>
       <div class="container">
         <h1>Fab2016</h1>
@@ -25,6 +25,8 @@
           <a href="../w2/w2.html" class="btn" title="Computer-Aided Design">2</a>
           <a href="../w3/w3.html" class="btn" title="Computer-Controlled Cutting">3</a>
           <a href="../w4/w4.html" class="btn" title="Electronics Production">4</a>
+          <a href="../w5/w5.html" class="btn" title="3D Scanning and Printing">5</a>
+
 
         </section>
       </div>
@@ -33,8 +35,144 @@
 
       <h1>Electronics Production</h1>
       <p>
-
+        Objectives for this module is focused on make an In-System-Programmer, a Fab-ISP. I have already made this during the one month long Pre-Academy. I first made Neil's version and then i made the USB key version(when I found that USB-mini cables are hard
+        to come-by), using the components from the original board. So I'm not making a new Fab ISP, because its just a waste of resources, instead I'm thinking about exploring something new and help fellow students to make their ISP.
       </p>
+      <p>
+        Since I made the board before, I'm writing about that same experience.
+        <br> First lets talk about the machine we are using.
+      </p>
+      <h3> Roland MDX-20 Mill</h3>
+      <p>
+        <p>
+          Perhaps the most used machine in the Fablab!. This machine can be used for making the PCB (milling and drilling), carving simple 3D structures in machine wax. The machine can be considered as a mini CNC mill. The workpiece is attached on a detachable
+          plate which moves along the Y-axis. The drilling/milling tool (end mill) or the engraving tool is attached to the head which moves along the X-axis. The end mill is attached to a DC-motor (10 W) which is mounted on a carriage that allows the
+          the movement along the third axis, the Z-axis.
+        </p>
+        <p>
+          The motor (spindle) and the end mill spins at high RPM to remove the material from the workpiece as small chips. The milling bit primarily moves along the X-Y plane except for the beginning and the end of each section being milled. The end mill is designed
+          such that it cuts into material from side, ie. the material removal happens during the lateral movement of the tool. The drilling bit has the main cutting edge at the end of the tool, which allows it to make holes in the workpiece. The tools
+          will have flutes (spiral cut in the body of the end mill) along the length of the tool to facilitate in chip removal and sometimes to allow the flow of the coolant liquids(not for this machine) to the cutting area.
+        </P>
+        <figure>
+          <img src="mill.jpg" alt="PCB mill" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
+          <figcaption style="display:inline; color:grey">The Mini CNC mill, <a href="http://www.rolanddg.com/product/3d/3d/mdx-20_15/mdx-20_15.html">Roland MDX-20.</a>. The user manual is available <a href="files/MDX-20-15.pdf">here</a> and
+            <a href="http://support.rolanddga.com/docs/Documents/departments/Technical%20Services/Manuals%20and%20Guides/MDX-20-15_USE_ENGLISH_R5.pdf">here</a>.</figcaption>
+        </figure>
+        <p>
+          This machine has a few more tricks under it's sleeve. It can be used as a 3D scanner using an Active Piezo Sensor. The machine is capable of scanning objects at 4 to 15 mm per second with a resolution of up to 0.05 mm. And the machine can also be used
+          to mill soft metals like aluminum. So this machine is going to be explored further during the future modules on 3D-printing/scanning, and CNC milling.
+          <figure>
+            <img src="scan.jpg" alt="RAPS" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
+            <figcaption style="display:inline; color:grey">R.A.P.S, Roland Active Piezo Sensor, sensor for converting MDX-20 to a 3D scanner.</figcaption>
+          </figure>
+        </p>
+        <p>
+          There are a few thing to be careful when you are using the machine
+          <ul>
+            <li>
+              Make sure that the Z-axis has enough room to move along z axis, else you will be left with a PCB not cut/drilled all the way or a wax model which is not complete or a PCB with copper where it is not supposed to be.
+            </li>
+            <li> Check the dimensions of the your original design and in the fab modules, after loading the .png. Resize if necessary. </li>
+            <li> Also check the dimensions of the copper board being used, make sure that your design fits.</li>
+            <li>
+              Try to optimize your design and the placement of the PCB and origin; to reduce the wastage. If possible use the leftover from the previous milling operations.
+            </li>
+            <li>Use sacrificial material for PCB milling operations.</li>
+            <li>
+              Use proper settings and the bits, (especially, don't use the milling bit to cut, because you will break the delicate and costly milling bit. But if you use drilling bit to mill, you will only spoil the PCB, which is cheap).
+            </li>
+            <li> Take safety precautions, 'respect' the machine and the electricity. </li>
+          </ul>
+          So with this machine we were supposed to make <a href="http://fab.cba.mit.edu/content/projects/fabisp/">FabISP</a>. Mr. Luciano
+          <!-- TODO: link to his page -->showed us how to use the machine once, during the Pre-Academy.
+        </p>
+        <h3>Fab-ISP</h3>
+        <p>
+          I made the FabISP not once but twice, first time <a href="http://fab.cba.mit.edu/content/projects/fabisp/">this one</a>
+          <!-- TODO: verify link -->(Neil's version)
+          <figure>
+            <img src="orig-bare.jpg" alt="FabISP original board" width='250' onmouseover="this.width='450'" onmouseout="this.width='250'">
+            <figcaption style="display:inline; color:grey">Unpopulated FabISP board, fresh from the mill (With my name, added using gimp)</figcaption>
+          </figure>
+          and then <a href="http://fab.cba.mit.edu/content/projects/fabispkey/">the FabISP key</a>, because the mini USB cables are not as popular as micro. I was trying to replace the 'mini USB' port with the 'micro' and found that the pitch of the pins
+          is not right. So I searched for other designs with micro USB port, and I came across this one. This second version can be plugged into the USB port directly, no need of any mini/micro USB cables. So decided to make it, less cables the better.
+
+          <figure>
+            <img src="isp.jpg" alt="FabISP key" width='250' onmouseover="this.width='450'" onmouseout="this.width='250'">
+            <figcaption style="display:inline; color:grey">The FabISP key I made and the original ISP board from which I took the components.</figcaption>
+          </figure>
+          I didn't want to make a new board with new set of components because that will be a waste of components. Instead I just de-soldered components from the original ISP one by one and soldered them on the new board. All components except the IC and the ISP
+          connector were removed using the soldering iron. IC and the ISP connector was removed using the heat-gun.
+        </p>
+        <p>
+          <b>Now I want to talk a bit about my methods of soldering and de-soldering</b>, it may or may not be the right way, but works best for me (may be till I see a better method from someone).
+        </p>
+        <p>
+          <b>The soldering first.</b>
+          <br> Most important thing is that you need a clean surface to solder on, if the PCB is not clean enough, we have to do that first. The flux will help, but only to an extend. The flux used in the lead-free solder is a nasty stuff and recommend NOT
+          TO BREATH it. I use a flux pen to dispense the flux in small quantities, the flux pen has rosin (comparatively safer, and is a natural substance) dissolved in a solvent (isopropyl alcohol). By the way, I made this mixture myself. Apply the flux
+          only if necessary, too much is not good. Also keep in mind that the solder wire itself has flux built into the core.
+        </p>
+        <p>
+          Begin the soldering from the center and move out, smaller components first. But the order is matter of personal choice, Important thing is that the soldered components shouldn't hinder access to the new components being soldered. For components like SMT
+          resistors/capacitors start by putting a bit of solder onto one of the pad, place the component, melt the solder and align. Don't solder the other lead, not yet, you better wait till you place most of the similar components and verify once before
+          soldering the second pads.
+        </p>
+        <p>
+          For ICs, I start similarly, start with soldering one pin to the pad and align the IC properly while keeping the solder melted. Once aligned, remove the iron, you are now free to solder the remaining pins. I do drag soldering. Beginners can use the help
+          of the solder-wick. Brush flux on all the pins of the IC, take a small piece of solder wick and wick enough solder on it. Now drag the iron along the pins with the solder-wick between, the wick will release just the right amount of solder to
+          the pins. The flux is used to reduce the viscosity of the solder, to ease the flow of molten solder. Break the unwanted the solder bridges by touching up with the soldering iron or by wicking off the excess. I prefer the biggest tip (chisel
+          type) bit for drag soldering. And with experience you will not require the solder wick, except for touch-up.
+          <br> Some may suggest against this method, saying it uses more flux and all. But I don't think so. First of all the process is quick, with experience you can solder a 64 pin IC in less than a minute, and the excess solder applied is only very little.
+          Also keep in mind that the flux within the lead-free solder is more hazardous than pure rosin based flux (but cleaning maybe necessary). Also in most cases the solder used will be less, as soldering each pin one by one tends to use more solder
+          which causes a lot of bridging and require wicking off the excess.
+          <br> By the way, I forgot to take videos of my process but this is a video that demonstrates the process of drag soldering, instead I'll show where I learned the trick from.
+          <br>
+          <iframe width="420" height="315" src="https://www.youtube.com/embed/wUyetZ5RtPs" frameborder="0" allowfullscreen></iframe>
+          <br> This one is another video demonstrating the method I use for soldering the SMT capacitor/resistor.
+          <iframe width="420" height="315" src="https://www.youtube.com/embed/EWeAOemTY_E" frameborder="0" allowfullscreen></iframe>
+          <br>
+        </p>
+        <p>
+          How to de-solder?
+          <br> One can either use the heat-gun or the soldering iron to remove the components. But for the IC or any component that has more than two pins you may want to use the heat gun.
+          <br> Using the heat gun very easy, just start it, aim it toward the component to remove (don't forget to move it around to distribute the heat, else you will burn the component or PCB) and once the solder is melted just use the tweezers to remove
+          the component. Applying light upward force during the process will cause the gravity to do the work.
+          <br> Using the iron to remove the component is bit tricky, you need to heat both pads alternatively and as fast as possible, this will keep the solder on both the pads molten and you can use the iron itself to push the component away.
+          <br> Once again I don't have the videos of my process, so I'm embedding a video of the same process.
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/6XyrNjNXSo8" frameborder="0" allowfullscreen></iframe>
+        </p>
+        <h3>Programming the Fab-ISP</h3>
+        <p>
+          If all the connections are proper, and the components are all okay, the programming will be extremely easy. Like someone said "if you know what to do, its very easy". If everything works perfectly, the programing involves
+          <ul>
+            <li>Extract the source code.</li>
+            <li>Edit the Makefile to choose the correct IC and the clock speed ( for the one being programmed) and the programmer.</li>
+            <li>Run <code>make program</code> (may be as root depending on the user privileges)</li>
+          </ul>
+        </p>
+        <p>
+          The Linux command <code>dmesg</code> and <code>lsusb</code> comes very handy during this stage. <code>dmesg</code> will give some idea if the board is working or not. You will get some kernel messages when the computer detects the new hardware.
+        </p>
+        <p>
+          I tried Atmel ICE first, but no success. It was my first time using that hardware and was a bit complicated. Then I tried another ISP, with my friend Yadu
+          <!-- TODO: link to his page -->. Which worked just fine, I ran <code>make program</code>, it compiled the source to generate the hex code, flashed the hex code to the chip, burned the fuse-bits and verified. All I had to do then was to break the solder jumper to disable the
+          programming mode.
+          <!-- TODO: improve the sentence -->
+          <br> At this stage I had a working ISP, and I could see the entry
+          <!-- TODO: dmesg and lsusb out -->. The ISP was tested by using the new board as a programmer to program an Arduino board I have.
+          <br>Later, I moved all the components to a new board, to make the USB Key version. This board didn't work at the first time because of the loose connection, the board is very thin for a snug fit in USB port. So I made the connector area slightly
+          thicker by applying generous amount of solder on the 4 contacts (I applied solder on the entire board too as the copper started to tarnish). Little bit of extra flux was also used to make the solder flow nicely and form a smooth profile (else
+          the board may get stuck in the USB port). A piece of vinyl was also pasted on the backside of the board.
+          <!-- TODO: pics and pics -->
+          <!-- TODO: table troubleshoot -->
+        </p>
+        <p>
+          <b>Mission Accomplished</b>
+          <br> Now I have a paerfect little ISP of my own, and no need of any USB cables. I can now start programming new micro-controller boards, help others to give 'soul' to their own ISPs....
+        </p>
+
     </section>
 
   </body>
