@@ -35,8 +35,8 @@
 
       <h1>Electronics Production</h1>
       <p>
-        Objectives for this module is focused on make an In-System-Programmer, a Fab-ISP. I have already made this during the one month long Pre-Academy. I first made Neil's version and then i made the USB key version(when I found that USB-mini cables are hard
-        to come-by), using the components from the original board. So I'm not making a new Fab ISP, because its just a waste of resources, instead I'm thinking about exploring something new and help fellow students to make their ISP.
+        Objectives for this module is focused on make an In-System-Programmer, a Fab-ISP. I have already made this during the one month long Pre-Academy. I first made Neil's version and then the USB key version (when I found that USB-mini cables are hard to come-by),
+        using the components from the original board. So I'm not making a new Fab ISP, because its just a waste of resources, instead I'm thinking about exploring something new and help fellow students to make their ISP.
       </p>
       <p>
         Since I made the board before, I'm writing about that same experience.
@@ -84,19 +84,18 @@
             </li>
             <li> Take safety precautions, 'respect' the machine and the electricity. </li>
           </ul>
-          So with this machine we were supposed to make <a href="http://fab.cba.mit.edu/content/projects/fabisp/">FabISP</a>. Mr. Luciano
-          <!-- TODO: link to his page -->showed us how to use the machine once, during the Pre-Academy.
+          So with this machine we were supposed to make <a href="http://fab.cba.mit.edu/content/projects/fabisp/">FabISP</a>. Our FabGuru for the Pre-Academy Luciano showed us how to use the machine once, during the Pre-Academy.
         </p>
         <h3>Fab-ISP</h3>
         <p>
-          I made the FabISP not once but twice, first time <a href="http://fab.cba.mit.edu/content/projects/fabisp/">this one</a>
-          <!-- TODO: verify link -->(Neil's version)
+          I made the FabISP not once but twice, first time <a href="http://fab.cba.mit.edu/content/projects/fabisp/">this one</a>,
           <figure>
             <img src="orig-bare.jpg" alt="FabISP original board" width='250' onmouseover="this.width='450'" onmouseout="this.width='250'">
             <figcaption style="display:inline; color:grey">Unpopulated FabISP board, fresh from the mill (With my name, added using gimp)</figcaption>
           </figure>
-          and then <a href="http://fab.cba.mit.edu/content/projects/fabispkey/">the FabISP key</a>, because the mini USB cables are not as popular as micro. I was trying to replace the 'mini USB' port with the 'micro' and found that the pitch of the pins
-          is not right. So I searched for other designs with micro USB port, and I came across this one. This second version can be plugged into the USB port directly, no need of any mini/micro USB cables. So decided to make it, less cables the better.
+          and then <a href="http://fab.cba.mit.edu/content/projects/fabispkey/">the FabISP key</a> by Andy, because the mini USB cables are not as popular as micro. I was trying to replace the 'mini USB' port with the 'micro' and found that the pitch
+          of the pins is not right. So I searched for other designs with micro USB port, and I came across this one. This second version can be plugged into the USB port directly, no need of any mini/micro USB cables. So decided to make it, less cables
+          the better.
 
           <figure>
             <img src="isp.jpg" alt="FabISP key" width='250' onmouseover="this.width='450'" onmouseout="this.width='250'">
@@ -145,10 +144,15 @@
         </p>
         <h3>Programming the Fab-ISP</h3>
         <p>
+          Basically I followed <a href="http://archive.fabacademy.org/archives/2016/doc/programming_FabISP.html">this</a> guide, with a minor edit, the <code>make fuse</code> command is redundant, <code>make program</code> does it anyways.
+        </p>
+        <p>
           If all the connections are proper, and the components are all okay, the programming will be extremely easy. Like someone said "if you know what to do, its very easy". If everything works perfectly, the programing involves
           <ul>
             <li>Extract the source code.</li>
             <li>Edit the Makefile to choose the correct IC and the clock speed ( for the one being programmed) and the programmer.</li>
+            <li>Start clean by <code>make clean</code></li>
+            <li>Compile and generate hex code by <code>make hex</code></li>
             <li>Run <code>make program</code> (may be as root depending on the user privileges)</li>
           </ul>
         </p>
@@ -156,9 +160,9 @@
           The Linux command <code>dmesg</code> and <code>lsusb</code> comes very handy during this stage. <code>dmesg</code> will give some idea if the board is working or not. You will get some kernel messages when the computer detects the new hardware.
         </p>
         <p>
-          I tried Atmel ICE first, but no success. It was my first time using that hardware and was a bit complicated. Then I tried another ISP, with my friend Yadu
-          <!-- TODO: link to his page -->. Which worked just fine, I ran <code>make program</code>, it compiled the source to generate the hex code, flashed the hex code to the chip, burned the fuse-bits and verified. All I had to do then was to break the solder jumper to disable the
-          programming mode.
+          I tried Atmel ICE first, but no success. It was my first time using that hardware and was a bit complicated. Then I tried another ISP, with my friend <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/384/index.html"> Yadu</a>.
+          Which worked just fine, I ran <code>make clean && make hex</code>, which compiled the source to generate the hex code, <code>make program</code>, which flashed the hex code to the chip, burned the fuse-bits and verified. Next step was to remove
+          the jumper to disable the programming mode.
           <!-- TODO: improve the sentence -->
           <br> At this stage I had a working ISP, and I could see the entry
           <!-- TODO: dmesg and lsusb out -->. The ISP was tested by using the new board as a programmer to program an Arduino board I have.
@@ -170,7 +174,12 @@
         </p>
         <p>
           <b>Mission Accomplished</b>
-          <br> Now I have a paerfect little ISP of my own, and no need of any USB cables. I can now start programming new micro-controller boards, help others to give 'soul' to their own ISPs....
+          <br> Now I have a perfect little ISP of my own, and no need of any USB cables. I can now start programming new micro-controller boards, help others to give 'soul' to their own ISPs....
+        </p>
+        <p>
+          Although this works perfectively as an ISP, there is no LED to indicate communication. I like to have LEDs on Rx and Tx channels like the ones in an Arduino board. I found another Fabable ISP, <a href="http://fabacademy.org/archives/2015/doc/FabTinyIsp/index.html">FabTinyIsp</a>.
+          This has a few more features like LEDs on Rx/Tx lines to indicate communication, a reset switch, a smaller chip etc. I'm thinking about making this board, with one modification, the ISP connector to the side, the connection would be made from
+          the side rather than top of the board. Or I will solder the ISP on the board itself and I plan for a makeshift conformal coating, using 'glue-sticks'. I'll update once I start working on this. <!-- TODO: make this new board -->
         </p>
 
     </section>
