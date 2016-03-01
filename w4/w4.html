@@ -99,7 +99,10 @@
 
           <figure>
             <img src="isp.jpg" alt="FabISP key" width='250' onmouseover="this.width='450'" onmouseout="this.width='250'">
-            <figcaption style="display:inline; color:grey">The FabISP key I made and the original ISP board from which I took the components.</figcaption>
+            <figcaption style="display:inline; color:grey">The FabISP key I made and the original ISP board from which I took the components, The thick Solder on the USB connector is for making it thicker for a better fit.</figcaption>
+            <br>
+            <img src="isp2.jpg" alt="FabISP key2" width='250' onmouseover="this.width='450'" onmouseout="this.width='250'">
+            <figcaption style="display:inline; color:grey">Backside; Notice the Blue Vinyl I added this to make the USB connector slightly thicker for a snug fit.</figcaption>
           </figure>
           I didn't want to make a new board with new set of components because that will be a waste of components. Instead I just de-soldered components from the original ISP one by one and soldered them on the new board. All components except the IC and the ISP
           connector were removed using the soldering iron. IC and the ISP connector was removed using the heat-gun.
@@ -130,6 +133,7 @@
           <br>
           <iframe width="420" height="315" src="https://www.youtube.com/embed/wUyetZ5RtPs" frameborder="0" allowfullscreen></iframe>
           <br> This one is another video demonstrating the method I use for soldering the SMT capacitor/resistor.
+          <br>
           <iframe width="420" height="315" src="https://www.youtube.com/embed/EWeAOemTY_E" frameborder="0" allowfullscreen></iframe>
           <br>
         </p>
@@ -140,7 +144,9 @@
           the component. Applying light upward force during the process will cause the gravity to do the work.
           <br> Using the iron to remove the component is bit tricky, you need to heat both pads alternatively and as fast as possible, this will keep the solder on both the pads molten and you can use the iron itself to push the component away.
           <br> Once again I don't have the videos of my process, so I'm embedding a video of the same process.
+          <br>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/6XyrNjNXSo8" frameborder="0" allowfullscreen></iframe>
+          <br>
         </p>
         <h3>Programming the Fab-ISP</h3>
         <p>
@@ -164,8 +170,26 @@
           Which worked just fine, I ran <code>make clean && make hex</code>, which compiled the source to generate the hex code, <code>make program</code>, which flashed the hex code to the chip, burned the fuse-bits and verified. Next step was to remove
           the jumper to disable the programming mode.
           <!-- TODO: improve the sentence -->
-          <br> At this stage I had a working ISP, and I could see the entry
-          <!-- TODO: dmesg and lsusb out -->. The ISP was tested by using the new board as a programmer to program an Arduino board I have.
+          <br> At this stage I had a working ISP, and I could see the entry (<code>Bus 001 Device 025: ID 1781:0c9f Multiple Vendors USBtiny</code>)
+          <pre>
+                sibu@archSSD ~ % lsusb
+                Bus 004 Device 002: ID 8087:8000 Intel Corp.
+                Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+                Bus 003 Device 002: ID 8087:8008 Intel Corp.
+                Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+                Bus 002 Device 002: ID 174c:1351 ASMedia Technology Inc.
+                Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+                Bus 001 Device 002: ID 413c:2107 Dell Computer Corp.
+                Bus 001 Device 025: ID 1781:0c9f Multiple Vendors USBtiny
+                Bus 001 Device 024: ID 0bb4:0f91 HTC (High Tech Computer Corp.)
+                Bus 001 Device 003: ID 046d:c077 Logitech, Inc. M105 Optical Mouse
+                Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+          </pre>
+          and <code>dmesg</code>
+          <pre>
+            [11184.067876] usb 1-6: new low-speed USB device number 26 using xhci_hcd
+          </pre>
+          The ISP was tested by using the new board as a programmer to program an Arduino board I have.
           <br>Later, I moved all the components to a new board, to make the USB Key version. This board didn't work at the first time because of the loose connection, the board is very thin for a snug fit in USB port. So I made the connector area slightly
           thicker by applying generous amount of solder on the 4 contacts (I applied solder on the entire board too as the copper started to tarnish). Little bit of extra flux was also used to make the solder flow nicely and form a smooth profile (else
           the board may get stuck in the USB port). A piece of vinyl was also pasted on the backside of the board.
@@ -179,7 +203,27 @@
         <p>
           Although this works perfectively as an ISP, there is no LED to indicate communication. I like to have LEDs on Rx and Tx channels like the ones in an Arduino board. I found another Fabable ISP, <a href="http://fabacademy.org/archives/2015/doc/FabTinyIsp/index.html">FabTinyIsp</a>.
           This has a few more features like LEDs on Rx/Tx lines to indicate communication, a reset switch, a smaller chip etc. I'm thinking about making this board, with one modification, the ISP connector to the side, the connection would be made from
-          the side rather than top of the board. Or I will solder the ISP on the board itself and I plan for a makeshift conformal coating, using 'glue-sticks'. I'll update once I start working on this. <!-- TODO: make this new board -->
+          the side rather than top of the board. Or I will solder the ISP on the board itself and I plan for a makeshift conformal coating, using 'glue-sticks'. I'll update once I start working on this.
+          <!-- TODO: make this new board -->
+        </p>
+        <p>
+          I changed my mind;<br>
+          Instead of making the FabTinyISP, I decided to modify the design of the FabISP key I have made; just added two LEDs and current limiting resistors. The LEDs were added on Rx and Tx lines, ie MISO and MOSI lines.
+          <figure>
+            <img src="ispled-1.jpg" alt="FabISP with LED" width='550' onmouseover="this.width='950'" onmouseout="this.width='550'">
+            <figcaption style="display:block; color:grey">FabISP key modded for Rx/Tx LEDs. The green pads are for a jumper.</figcaption>
+          </figure>
+          <h4>Eagle Files</h4>
+          <a href="s-isp.brd" download="sibu-FabISPwLED.brd">Board</a>
+          <a href="s-isp.sch" download="sibu-FabISPwLED.sch">Schematic</a>
+        </p>
+        <p>
+          <h4>TODO</h4>
+          <ul>
+            <li>Make the new ISP with indicator LEDs</li>
+            <li>More pictures showing the procedures, milling, soldering, de-soldering etc.</li>
+            
+          </ul>
         </p>
 
     </section>
