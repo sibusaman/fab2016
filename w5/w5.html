@@ -1,5 +1,4 @@
-`
-<!DOCTYPE html>
+'<!DOCTYPE html>
 <html>
 
   <head>
@@ -170,11 +169,17 @@ troubles and will also help us because we can refer them later; our memories fad
         </div>
       </p>
       <p>
-        The steppers had long cables and they were making a lot of problems, but I didn't want to cut them. So I decided to braid them (second picture).
+        The steppers had long cables and they were making a lot of problems, but I didn't want to cut them. So I decided to braid them (sixth picture). I used
+        a lot of zip-ties too for cable management.
+      </p>
+      <p>
+        The printer kit comes with an LCD and rotary switch to control, one based on
+        <a href="http://reprap.org/wiki/RepRapDiscount_Smart_Controller">this</a>.
       </p>
       <p>
         Once we powered the machine and selected 'auto-home' function, printer was going crazy, and we had to kill the power immoderately. The X-axis motor
-        moves left when it was supposed to move right, one of the Z-zxis motor was also spinning the other way. There are two fixes for it.
+        moves left when it was supposed to move right, one of the Z-zxis motor was also spinning the other way. This is more dangerous as the z motors
+        spinning the opposite way means the z carriage will bend and eventually break. There are two fixes for it.
         <br>
         <ol>
           <li>Edit the firmware to reverse the motor's forward/default rotation direction.</li>
@@ -202,17 +207,52 @@ troubles and will also help us because we can refer them later; our memories fad
       </p>
 
       <h3>Firmware, driver, slicer....</h3>
-      <p></p>
-
+      <p>The kit comes with
+        <a href="http://reprap.org/wiki/MKS_GEN_V1.1">MKS Gen-2Z v1.1</a>
+        board loaded with
+        <a href="http://www.repetier.com/documentation/repetier-firmware/">repetier-firmware</a>. The board is actually a single board solution of Arduino-Mega-2560 and
+        <a href="http://reprap.org/wiki/RAMPS_1.4">RAMPS 1.4</a>. For the controlling system, we have to install
+        <a href="http://www.repetier.com/">Repetier-Host</a>. The software has all the drivers and slicer engines, also software is available for Windows, Linux and Mac platforms.
+        <br>Once installed and connected, the host software is able to control the machine via its GUI, it's much better, easier and has more feature than
+          what the built in control panel provides.
+      </p>
+      <p>
+        Once everything is working, there are two ways to actually transfer the data to the printer. Through the USB connection between the printer and the
+        computer using the Repetier-Host. Other method is to generate the G-Code file using any software (but with the correct parameters for this printer)
+        and put it an SD-card and print from it. The printer has an SD-Card reader built into the LCD control module.
+      </p>
+      <p>
+        Before start printing, the printer bed has to be leveled and tuned.
+      </p>
       <h3>Tuning</h3>
-      <p></p>
-      <!-- TODO: troubleshoot list -->
+      <p>
+        The printer bed has to be leveled first. Even before this, we have to level the printer itself and more importantly the Z-carriage. A spirit-level and
+        a leveled and flat surface is recommended for this step(and recommended for normal operation too).
+        <br>
+        Once the printer is on the flat, horizontal surface, first thing to do is level the Z-carriage. This is very important step and printer should be
+        switched off during this step. We have to keep the spirit level on the Z-carriage. Its tricky, but doable, if you move the head to a side and keep the
+        spirit-level on the smooth rods. The leveling is done by manually rotating one of the Z-steppers until you get a horizontal Z-carriage.
+      </p>
+      <p>
+        After leveling the Z-carriage, now its time for leveling the bed and setting the Z-axis home position. The Z-endstop micro-switch was mounted on an
+        adjustable mount, and can be adjusted for coarse changes. For fine tuning the Z-stage the screw which is going to hit the Z-end-stop has to be used.
+        <br>
+        For the bed-leveling , there are four thumb screws on the bed to adjust the height. Use these screws to keep the bed level. I leveled by adjusting the
+        screws such that head will leave a small gap, just enough for a sheet of paper. This was done on all four corners, and the control panel on the
+        printer was used to move the head to the required position.
+      </p>
+      <p>
+        Though made for Ultimaker,
+        <a href="http://support.3dverkstan.se/article/23-a-visual-ultimaker-troubleshooting-guide">this</a>
+        guide can helpful for most of the FDM printers, very useful for troubleshooting.
+      </p>
 
       <h3>Testing</h3>
       <p></p>
 
-      <h3>Printing Final Object</h3>
+      <h3>Printing</h3>
       <p></p>
+
 
       <h2>3D Scanning</h2>
       <p>
@@ -221,9 +261,9 @@ troubles and will also help us because we can refer them later; our memories fad
           <li>explore
             <a href="https://github.com/jakobwilm/slstudio">slstudio</a>
           </li>
-          <li>try modella's scanning functionality
-          </li>
+          <li>try modella's scanning functionality</li>
           <li>substractive scan, like milk scanner</li>
+          <li>Acetone vapor bath</li>
         </ul>
       </p>
 
