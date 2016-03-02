@@ -36,25 +36,43 @@
 
       <h1>3D Scanning and Printing</h1>
       <p>
-        Tasks for this module involves deep understanding about 3D printer, testing the 3D printer to it's limits to find-out its capabilities and limits. Assignments also involves exploring various 3D scanning methods like Modella MDX-20 (R.A.P.S), Kinect
-        other hardwares like LEAP. We have to design and print an object and explain why it can't be made subtractevely, and optionally make a 3D scanner ourself, print the scanned object.
+        Tasks for this module involves deep understanding about 3D printer, testing the 3D printer to it's limits to find-out its capabilities and limits.
+        Assignments also involves exploring various 3D scanning methods like Modella MDX-20 (R.A.P.S), Kinect other hardwares like LEAP. We have to design and
+        print an object and explain why it can't be made subtractevely, and optionally make a 3D scanner ourself, print the scanned object.
       </p>
       <h2>3D Printing</h2>
       <p>
         This is an opportunity for learning and experimenting on the 3D printer. Me and
         <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/384/index.html">
           Yadu</a>
-        have assembled a 3d Printer (RepRap Prusa i3
-        <!-- TODO: link -->). This is a perfect time to document our experience with this machine, we learned a lot while assembling and tuning the 3D printer. Documenting our experience will benefit other people who might face same troubles and will also
-          help us because we can refer them later; our memories fade.
+        have assembled a 3d Printer (<a href="http://reprap.org/wiki/Prusa_i3">RepRap Prusa i3</a>) . This is a perfect time to document our experience with
+this machine, we learned a lot while assembling and tuning the 3D printer. Documenting our experience will benefit other people who might face same
+troubles and will also help us because we can refer them later; our memories fade.
       </p>
       <h3>About 3D Printing</h3>
       <p></p>
 
       <h3>Assembly</h3>
       <p>
-        <div class="CSSgal">
+        I have purchased the 3D printer kit by a Chinese manufacturer,
+        <a href="http://www.sunhokey.com/">Sunhokry</a>. I selected this model after a lot of searches and reading, it seems they have a good international
+        customer base and there an active community. So even if I face any trouble I can be sure about help.
+        <br>
+        This was the
+        <a href="http://www.aliexpress.com/item/Hot-Full-Acrylic-Quality-High-Precision-Reprap-Prusa-i3-LCD-Acquired-DIY-3d-Printer-Kit-with/2026704108.html">Aliexpress</a>
+        page from which I made the purchase.
+        <br>
+        I also found
+        <a href="https://www.youtube.com/watch?v=QH3Ozrwtfmw&list=PLKwWpCWIZu32oQLIDZva9rdffMNUz0JRl">this</a>
+        set of detailed video about assembly, tuning and testing by a 'crazy' Youtube user,
+        <a href="https://www.youtube.com/channel/UCK5n0rSB1bTkpddUbSv2NUw">Hiboson</a>.
+      </p>
+      <p>
+        Me and three of my friends spent about 24 hours watching video, reading instructions, assembling and debugging, before we got the first print. Here
+        are some pictures. These are some old pictures, the printer was assembled during the last week of July, 2015. And we never meant to publish any of
+        these images, so, sorry for the bad quality.
 
+        <div class="CSSgal">
           <!-- Don't wrap targets in parent -->
           <s id="s1"></s>
           <s id="s2"></s>
@@ -79,9 +97,9 @@
             <div style="background-image:url('3dp/7.jpg');">Slide 7</div>
             <div style="background-image:url('3dp/8.jpg');">Slide 8</div>
             <div style="background-image:url('3dp/9.jpg');">Slide 9</div>
-            <div style="background-image:url('3dp/10.jpg');">Slide 10</div>
-            <div style="background-image:url('3dp/11.jpg');">Slide 11</div>
-            <div style="background-image:url('3dp/12.jpg');">Slide 12</div>
+            <div style="background-image:url('3dp/10.jpg');">First Print in progress.</div>
+            <div style="background-image:url('3dp/11.jpg');">First Print, 1cm Cube.</div>
+            <div style="background-image:url('3dp/12.jpg');">First Print, Closeup.</div>
           </div>
 
           <div class="prevNext">
@@ -149,8 +167,38 @@
             <a href="#s11">11</a>
             <a href="#s12">12</a>
           </div>
-
         </div>
+      </p>
+      <p>
+        The steppers had long cables and they were making a lot of problems, but I didn't want to cut them. So I decided to braid them (second picture).
+      </p>
+      <p>
+        Once we powered the machine and selected 'auto-home' function, printer was going crazy, and we had to kill the power immoderately. The X-axis motor
+        moves left when it was supposed to move right, one of the Z-zxis motor was also spinning the other way. There are two fixes for it.
+        <br>
+        <ol>
+          <li>Edit the firmware to reverse the motor's forward/default rotation direction.</li>
+          <li>Swap wires from one of the two armature windings in the stepper.</li>
+        </ol>
+        <br>
+        I went with the second method as it was easier at the moment, also when I don't have to redo this again when upgrading the firmware later.
+      </p>
+      <p>
+        The stepper motor used in this printer (or most of the steppers used these days) is a bi-polar one. It has the armature windings as follows.
+        <figure>
+          <img src="step-wire.png" alt="stepper wiring" width='350'>
+          <figcaption style="display:block; color:white">Stepper motor armature winding.
+            <h4 style="color:grey">
+              <br>image from
+              <a href="http://ebldc.com/">ebldc</a>
+            </h4>
+          </figcaption>
+        </figure>
+        <br>
+        The stepper driver reverses the direction of rotation by reversing the current flow through one of the coil (done using the H-bridges). If we were to
+        manually do this, we can fix the direction of rotation. First step is to identify which pin is which put of the 4-pins in th connector, this can be
+        done with the help of a multimeter. Once identified the pins of anyone of the coil can be swapped. The pins can be removed from the connector by
+        pressing on the retention clip and pulling on the wire simultaneously.
       </p>
 
       <h3>Firmware, driver, slicer....</h3>
