@@ -1,4 +1,5 @@
-'<!DOCTYPE html>
+'
+<!DOCTYPE html>
 <html>
 
   <head>
@@ -35,40 +36,36 @@
 
       <h1>3D Scanning and Printing</h1>
       <p>
-        Tasks for this module involves deep understanding about 3D printer, testing the 3D printer to it's limits to find-out its capabilities and limits.
-        Assignments also involves exploring various 3D scanning methods like Modella MDX-20 (R.A.P.S), Kinect other hardwares like LEAP. We have to design and
-        print an object and explain why it can't be made subtractevely, and optionally make a 3D scanner ourself, print the scanned object.
+        Tasks for this module involves deep understanding about 3D printer, testing the 3D printer to it's limits to find-out its capabilities and limits. Assignments
+        also involves exploring various 3D scanning methods like Modella MDX-20 (R.A.P.S), Kinect other hardwares like LEAP. We have to design and print
+        an object and explain why it can't be made subtractevely, and optionally make a 3D scanner ourself, print the scanned object.
       </p>
       <h2>3D Printing</h2>
       <p>
         This is an opportunity for learning and experimenting on the 3D printer. Me and
         <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/384/index.html">
-          Yadu</a>
-        have assembled a 3d Printer (<a href="http://reprap.org/wiki/Prusa_i3">RepRap Prusa i3</a>) . This is a perfect time to document our experience with
-this machine, we learned a lot while assembling and tuning the 3D printer. Documenting our experience will benefit other people who might face same
-troubles and will also help us because we can refer them later; our memories fade.
+          Yadu</a> have assembled a 3d Printer (<a href="http://reprap.org/wiki/Prusa_i3">RepRap Prusa i3</a>) . This is a perfect time to document
+        our experience with this machine, we learned a lot while assembling and tuning the 3D printer. Documenting our experience will benefit other people
+        who might face same troubles and will also help us because we can refer them later; our memories fade.
       </p>
       <h3>About 3D Printing</h3>
       <p></p>
 
-      <h3>Assembly</h3>
+      <h3>Assembly, Challenges and Fixes</h3>
       <p>
         I have purchased the 3D printer kit by a Chinese manufacturer,
         <a href="http://www.sunhokey.com/">Sunhokey</a>. I selected this model after a lot of searches and reading, it seems they have a good international
         customer base and there an active community. So even if I face any trouble I can be sure about help.
-        <br>
-        This was the
-        <a href="http://www.aliexpress.com/item/Hot-Full-Acrylic-Quality-High-Precision-Reprap-Prusa-i3-LCD-Acquired-DIY-3d-Printer-Kit-with/2026704108.html">Aliexpress</a>
-        page from which I made the purchase.
-        <br>
-        I also found
-        <a href="https://www.youtube.com/watch?v=QH3Ozrwtfmw&list=PLKwWpCWIZu32oQLIDZva9rdffMNUz0JRl">this</a>
-        set of detailed video about assembly, tuning and testing by a 'crazy' Youtube user,
+        <br> This was the
+        <a href="http://www.aliexpress.com/item/Hot-Full-Acrylic-Quality-High-Precision-Reprap-Prusa-i3-LCD-Acquired-DIY-3d-Printer-Kit-with/2026704108.html">Aliexpress</a>        page from which I made the purchase.
+        <br> I also found
+        <a href="https://www.youtube.com/watch?v=QH3Ozrwtfmw&list=PLKwWpCWIZu32oQLIDZva9rdffMNUz0JRl">this</a> set of detailed video about assembly, tuning
+        and testing by a 'crazy' Youtube user,
         <a href="https://www.youtube.com/channel/UCK5n0rSB1bTkpddUbSv2NUw">Hiboson</a>.
       </p>
       <p>
-        Me and three of my friends spent about 24 hours watching video, reading instructions, assembling and debugging, before we got the first print. Here
-        are some pictures. These are some old pictures, the printer was assembled during the last week of July, 2015. And we never meant to publish any of
+        Me and three of my friends spent about 24 hours watching video, reading instructions, assembling and debugging, before we got the first print. Here are
+        some pictures. These are some old pictures, the printer was assembled during the last week of July, 2015. And we never meant to publish any of
         these images, so, sorry for the bad quality.
 
         <div class="CSSgal">
@@ -168,25 +165,31 @@ troubles and will also help us because we can refer them later; our memories fad
           </div>
         </div>
       </p>
+      <h4>Cable Management</h4>
       <p>
         The steppers had long cables and they were making a lot of problems, but I didn't want to cut them. So I decided to braid them (sixth picture). I used
         a lot of zip-ties too for cable management.
       </p>
+      <h4>Print Bed</h4>
+      <p>
+        The print bed is a heated aluminum plate, with a <b style="color:yellow"> yellow</b> masking tape on it, so that the printed part can be removed
+        easily and without damaging the aluminum bed.
+      </p>
+      <h4>Steppers Spinning The Wrong Way</h4>
       <p>
         The printer kit comes with an LCD and rotary switch to control, one based on
         <a href="http://reprap.org/wiki/RepRapDiscount_Smart_Controller">this</a>.
       </p>
       <p>
-        Once we powered the machine and selected 'auto-home' function, printer was going crazy, and we had to kill the power immoderately. The X-axis motor
-        moves left when it was supposed to move right, one of the Z-zxis motor was also spinning the other way. This is more dangerous as the z motors
-        spinning the opposite way means the z carriage will bend and eventually break. There are two fixes for it.
+        Once we powered the machine and selected 'auto-home' function, printer was going crazy, and we had to kill the power immoderately. The X-axis motor moves
+        left when it was supposed to move right, one of the Z-zxis motor was also spinning the other way. This is more dangerous as the z motors spinning
+        the opposite way means the z carriage will bend and eventually break. There are two fixes for it.
         <br>
         <ol>
           <li>Edit the firmware to reverse the motor's forward/default rotation direction.</li>
           <li>Swap wires from one of the two armature windings in the stepper.</li>
         </ol>
-        <br>
-        I went with the second method as it was easier at the moment, also when I don't have to redo this again when upgrading the firmware later.
+        <br> I went with the second method as it was easier at the moment, also when I don't have to redo this again when upgrading the firmware later.
       </p>
       <p>
         The stepper motor used in this printer (or most of the steppers used these days) is a bi-polar one. It has the armature windings as follows.
@@ -199,27 +202,59 @@ troubles and will also help us because we can refer them later; our memories fad
             </h4>
           </figcaption>
         </figure>
-        <br>
-        The stepper driver reverses the direction of rotation by reversing the current flow through one of the coil (done using the H-bridges). If we were to
-        manually do this, we can fix the direction of rotation. First step is to identify which pin is which put of the 4-pins in th connector, this can be
-        done with the help of a multimeter. Once identified the pins of anyone of the coil can be swapped. The pins can be removed from the connector by
-        pressing on the retention clip and pulling on the wire simultaneously.
+        <br> The stepper driver reverses the direction of rotation by reversing the current flow through one of the coil (done using the H-bridges). If we
+        were to manually do this, we can fix the direction of rotation. First step is to identify which pin is which put of the 4-pins in th connector,
+        this can be done with the help of a multimeter. Once identified the pins of anyone of the coil can be swapped. The pins can be removed from the
+        connector by pressing on the retention clip and pulling on the wire simultaneously.
+      </p>
+      <h4>Clogging and leaking</h4>
+      <p>
+        I had faced clogging problems multiple times and the material was leaking out. The clogging mainly happens when using the printer after a few days of not
+        using it, very likely because of the accumulated dirt. In such case I had to detach the extruder assembly and unscrew the nozzle-heater section
+        and remove all the leftover plastic from there. I find that unscrewing is easier when the nozzle is at about 180 &#8451. Once I remove the nozzle,
+        I keep heating it to about 200 &#8451 and I will put a piece of scrap the same plastic filament and once it is molten and flows well inside the
+        cavity, let it cool down to about 120&#8451-100&#8451. Once 'cooled' pull on the filament slowly to get all the material inside the nozzle.
+        <figure>
+          <img src="3dp/clog1.jpg" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey">The clogged nozzle.</figcaption>
+          <img src="3dp/clog2.jpg" width='250' onmouseover="this.width='700'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey">Heating up the nozzle.</figcaption>
+          <img src="3dp/clog3.jpg" width='250' onmouseover="this.width='700'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey">The filament inside the nozzle.</figcaption>
+          <img src="3dp/clog4.jpg" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey">Coolinf down.</figcaption>
+          <img src="3dp/clog5.jpg" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey">pulled the filament at about 140&#8451.</figcaption>
+          <img src="3dp/clog6.jpg" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey">The nozzle is not clean enough, because I pulled the filament at 1401&#8451, I repeated this again an 120&#8451 and I got a clean nozzle.</figcaption>
+        </figure>
+        <br> I had to fix the leaking too. I just did what a plumber do, clean the threads and apply enough PTFE tape to get a proper seal. The thread seal
+        was wound around the thread and the nozzle was screwed to the heat-sink part when it was about 200&#8451 hot, this is because when I assemble the
+        pieces cold and heat, it becomes loose again as a result of thermal expansion.
+        <figure>
+          <img src="3dp/leak.jpg" alt="leak" width='250' onmouseover="this.width='700'" onmouseout="this.width='250'" />
+          <figcaption style="display:block; color:grey">The PTFE tape applied on the heat-sink.</figcaption>
+        </figure>
+        I doubt is PTFE can handle temperatures around 200&#8451, <a href="https://en.wikipedia.org/wiki/Polytetrafluoroethylene#Safety">Wikipedia</a>        page on PTFE says it starts to decompose above 200&#8451. It also says the the decomposition is major issue when the temperature is above 260&#8451.
+        Anyway I haven't faced any issue so far nor did I smell anything different, lets wait and see!
       </p>
 
       <h3>Firmware, driver, slicer....</h3>
-      <p>The kit comes with
-        <a href="http://reprap.org/wiki/MKS_GEN_V1.1">MKS Gen-2Z v1.1</a>
-        board loaded with
-        <a href="http://www.repetier.com/documentation/repetier-firmware/">repetier-firmware</a>. The board is actually a single board solution of Arduino-Mega-2560 and
+      <p>
+        The kit comes with
+        <a href="http://reprap.org/wiki/MKS_GEN_V1.1">MKS Gen-2Z v1.1</a> board loaded with
+        <a href="http://www.repetier.com/documentation/repetier-firmware/">repetier-firmware</a>. The board is actually a single board solution of Arduino-Mega-2560
+        and
         <a href="http://reprap.org/wiki/RAMPS_1.4">RAMPS 1.4</a>. For the controlling system, we have to install
-        <a href="http://www.repetier.com/">Repetier-Host</a>. The software has all the drivers and slicer engines, also software is available for Windows, Linux and Mac platforms.
+        <a href="http://www.repetier.com/">Repetier-Host</a>. The software has all the drivers and slicer engines, also software is available for Windows,
+        Linux and Mac platforms.
         <br>Once installed and connected, the host software is able to control the machine via its GUI, it's much better, easier and has more feature than
-          what the built in control panel provides.
+        what the built in control panel provides.
       </p>
       <p>
-        Once everything is working, there are two ways to actually transfer the data to the printer. Through the USB connection between the printer and the
-        computer using the Repetier-Host. Other method is to generate the G-Code file using any software (but with the correct parameters for this printer)
-        and put it an SD-card and print from it. The printer has an SD-Card reader built into the LCD control module.
+        Once everything is working, there are two ways to actually transfer the data to the printer. Through the USB connection between the printer and the computer
+        using the Repetier-Host. Other method is to generate the G-Code file using any software (but with the correct parameters for this printer) and
+        put it an SD-card and print from it. The printer has an SD-Card reader built into the LCD control module.
       </p>
       <p>
         Before start printing, the printer bed has to be leveled and tuned.
@@ -228,27 +263,36 @@ troubles and will also help us because we can refer them later; our memories fad
       <p>
         The printer bed has to be leveled first. Even before this, we have to level the printer itself and more importantly the Z-carriage. A spirit-level and
         a leveled and flat surface is recommended for this step(and recommended for normal operation too).
-        <br>
-        Once the printer is on the flat, horizontal surface, first thing to do is level the Z-carriage. This is very important step and printer should be
-        switched off during this step. We have to keep the spirit level on the Z-carriage. Its tricky, but doable, if you move the head to a side and keep the
-        spirit-level on the smooth rods. The leveling is done by manually rotating one of the Z-steppers until you get a horizontal Z-carriage.
+        <br> Once the printer is on the flat, horizontal surface, first thing to do is level the Z-carriage. This is very important step and printer should
+        be switched off during this step. We have to keep the spirit level on the Z-carriage. Its tricky, but doable, if you move the head to a side and
+        keep the spirit-level on the smooth rods. The leveling is done by manually rotating one of the Z-steppers until you get a horizontal Z-carriage.
       </p>
       <p>
-        After leveling the Z-carriage, now its time for leveling the bed and setting the Z-axis home position. The Z-endstop micro-switch was mounted on an
-        adjustable mount, and can be adjusted for coarse changes. For fine tuning the Z-stage the screw which is going to hit the Z-end-stop has to be used.
-        <br>
-        For the bed-leveling , there are four thumb screws on the bed to adjust the height. Use these screws to keep the bed level. I leveled by adjusting the
-        screws such that head will leave a small gap, just enough for a sheet of paper. This was done on all four corners, and the control panel on the
-        printer was used to move the head to the required position.
+        After leveling the Z-carriage, now its time for leveling the bed and setting the Z-axis home position. The Z-endstop micro-switch was mounted on an adjustable
+        mount, and can be adjusted for coarse changes. For fine tuning the Z-stage the screw which is going to hit the Z-end-stop has to be used.
+        <br> For the bed-leveling , there are four thumb screws on the bed to adjust the height. Use these screws to keep the bed level. I leveled by adjusting
+        the screws such that head will leave a small gap, just enough for a sheet of paper. This was done on all four corners, and the control panel on
+        the printer was used to move the head to the required position.
       </p>
       <p>
         Though made for Ultimaker,
-        <a href="http://support.3dverkstan.se/article/23-a-visual-ultimaker-troubleshooting-guide">this</a>
-        guide can helpful for most of the FDM printers, very useful for troubleshooting.
+        <a href="http://support.3dverkstan.se/article/23-a-visual-ultimaker-troubleshooting-guide">this</a> guide can helpful for most of the FDM printers,
+        very useful for troubleshooting.
       </p>
 
       <h3>Testing</h3>
-      <p></p>
+      <p>
+        We made a couple of small test prints over the time. Large prints were impossible as the power is not stable here, nobody knows when it goes and when it
+        will be back. Many prints failed due to power-failure, I wish there was an option to resume prints even after rebooting/power failure(I can try
+        this in future). As the printer consumes a lot of power when it is working, even a normal consumer level Desktop UPS is incapable of keeping the
+        printer online for more than a few minutes. One major issue is the inefficient AC-DC-AC conversion in the UPS, the printer require only 12v DC,
+        the UPS's internal battery is a 12v Lead-Acid battery, but when ewe use UPS, the UPS first converts the 12v to 2630v AC and the n the SMPS od the
+        printer converts it back to 12v DC. The overall efficiency of this process will be about 50% only. I'm thinking about making an online UPS designed
+        specifically for this printer, consisting of a decent 12v Lead-Acid battery, a 12v stabilizer/battery protection circuit and a power-supply capable
+        of charging the battery and simultaneously supply enough power to the printer. This might be the next assignment.
+        <br>
+        <br> Some more pictures can be seen below.
+      </p>
 
       <h3>Printing</h3>
       <p></p>
