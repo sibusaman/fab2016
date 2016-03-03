@@ -28,6 +28,7 @@
           <a href="../w3/w3.html" class="btn" title="Computer-Controlled Cutting">3</a>
           <a href="../w4/w4.html" class="btn" title="Electronics Production">4</a>
           <a href="../w5/w5.html" class="btn" title="3D Scanning and Printing">5</a>
+          <a href="../w6/w6.html" class="btn" title="Electronics Design">6</a>
 
         </section>
       </div>
@@ -222,7 +223,7 @@
           <img src="3dp/clog3.jpg" width='250' onmouseover="this.width='700'" onmouseout="this.width='250'">
           <figcaption style="display:block; color:grey">The filament inside the nozzle.</figcaption>
           <img src="3dp/clog4.jpg" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
-          <figcaption style="display:block; color:grey">Coolinf down.</figcaption>
+          <figcaption style="display:block; color:grey">Cooling down.</figcaption>
           <img src="3dp/clog5.jpg" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
           <figcaption style="display:block; color:grey">pulled the filament at about 140&#8451.</figcaption>
           <img src="3dp/clog6.jpg" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
@@ -280,7 +281,7 @@
         very useful for troubleshooting.
       </p>
 
-      <h3>Testing</h3>
+      <h3>Testing and Printing</h3>
       <p>
         We made a couple of small test prints over the time. Large prints were impossible as the power is not stable here, nobody knows when it goes and when it
         will be back. Many prints failed due to power-failure, I wish there was an option to resume prints even after rebooting/power failure(I can try
@@ -290,12 +291,59 @@
         printer converts it back to 12v DC. The overall efficiency of this process will be about 50% only. I'm thinking about making an online UPS designed
         specifically for this printer, consisting of a decent 12v Lead-Acid battery, a 12v stabilizer/battery protection circuit and a power-supply capable
         of charging the battery and simultaneously supply enough power to the printer. This might be the next assignment.
+        <br> Once I get to connect the printer to an UPS from YAdu's home, we test printed a <a href="http://www.thingiverse.com/thing:830666">clip</a> for
+        supporting the LCD panel as it slexes while using the push button (reset) or the rotary switch. The design is from <a href="http://www.thingiverse.com/">Thingiverse</a>.
         <br>
         <br> Some more pictures can be seen below.
+        <br>
+        <figure>
+          <img src="3dp/3d2.jpg" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey"></figcaption>
+          <img src="3dp/3d3.jpg" width='250' onmouseover="this.width='700'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey">Commencing printing.</figcaption>
+          <img src="3dp/3d4.jpg" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey">Work in progress.</figcaption>
+          <img src="3dp/3d5.jpg" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey">Near completion.</figcaption>
+          <img src="3dp/3d6.jpg" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey">Finished part, if you watch carefully, you can see some imperfections at the bottom as the top wall(or cap) didn't come as expected.</figcaption>
+          <img src="3dp/3d7.jpg" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey">Another view.</figcaption>
+          <img src="3dp/3d8.jpg" width='250' onmouseover="this.width='600'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey">The printed part in use.</figcaption>
+        </figure>
+        This print took little more than an hour as we printed it slow, during this time there were 4 power failures and the UPS saved us. But on the last power
+        failure the UPS didn't have enough 'juice' left and we had to abort, but we lost only a few layers(about 2mm only), but the part is still useful.
       </p>
 
-      <h3>Printing</h3>
-      <p></p>
+      <p>
+        Now it's time for the assignment. We are supposed to print something that can't be made substantively. After a few thought I decoded to print a mobile
+        stand/dock with audio canals for redirecting the sound. Such a Dock will have internal channels for directing audio, and this is something that
+        cannot be made using even the most advanced CNC mill, absolutely no way to create subtractevely as a single piece.
+      </p>
+      <h4>Dock for OnePlus One</h4>
+      <p>
+        After a few searches I found a design at <a href="http://www.thingiverse.com/thing:507576">Thingiverse</a> (the design may be different from what
+        I made as the designer refines it often). Once I had the design I edited the .stl file using <a href="https://www.rhino3d.com/">Rhino3D</a>. I
+        replaced one of the Oneplus logo with my logo. For this I loaded the .stl file and duplicated the edges of the logo using 'DupEdge' command. Then
+        the new lines are joined together to a continues curve and this curve is used to extrude a solid which will fill the logo.
+      </p>
+      <p>
+        Now the oneplus logo is gone, and next step is to embed my logo over there. I had made the logo long time back, and I had the .svg file with me. This file
+        was imported to the design file and moved and rotated as required to bring it to the surface from which I removed the logo before.
+        <br> Then I select the curve of my logo and extruded about 2mm outwards so that my logo will protrude a bit from the final print.
+        <br> here is the final design hosted at <a href="https://sketchfab.com">Sketchfab</a>
+        <br>
+
+        <iframe width="640" height="480" src="https://sketchfab.com/models/aff87ad879724963b6b50fd8401240db/embed" frameborder="0" allowfullscreen mozallowfullscreen="true"
+          webkitallowfullscreen="true" onmousewheel=""></iframe>
+        <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+          <a href="https://sketchfab.com/models/aff87ad879724963b6b50fd8401240db?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">oneplus dock</a>          by <a href="https://sketchfab.com/sibu?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">sibu</a>          on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+        </p>
+        <b>This design is not perfect as the mesh has a lot of unwanted vertices and faces, perhaps 10 times more than what is really required.</b>
+        This happened while I edited the original .stl file.   
+
+      </p>
 
 
 
@@ -307,7 +355,7 @@
             <a href="https://github.com/jakobwilm/slstudio">slstudio</a>
           </li>
           <li>try modella's scanning functionality</li>
-          <li>substractive scan, like milk scanner</li>
+          <li>subtractive scan, like milk scanner</li>
           <li>Acetone vapor bath</li>
         </ul>
       </p>
