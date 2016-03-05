@@ -35,6 +35,72 @@
     <section>
 
       <h1>Electronics Design</h1>
+      <p>
+        The target of this module is to introduce PCB designing.
+        <br> I have already done a few circuit designs, rather redesigned a the Fab-ISP key version to include two LEDs and replaces the crystal and two capacitors
+        with a resonator. The documentation is available at <a href="../w4/w4.html">here</a>.
+      </p>
+      <p>
+        <a href="http://www.cadsoftusa.com/">EAGLE</a> is the preferred PCB design tool for me. I have been using this tool for quite some time. I have
+        used a few other tools before, like <a href="http://www.sunstone.com/pcb-products/pcb123">PCB123</a>, <a href="http://kicad-pcb.org/">KiCAD</a>        and I have a little bit of experience with <a href="https://github.com/mkeeter/kokopelli">Kokopelli</a>.
+      </p>
+      <p>
+        <h4>These are the Eagle Files for the FabISP-Key redesigned with LEDs.</h4>
+        <br>
+        <a href="../w4/s-ispv2.brd" download="sibu-FabISPwLED-v2.brd">Board-v2</a>
+        <a href="../w4/s-ispv2.sch" download="sibu-FabISPwLED-v2.sch">Schematic-v2</a>
+      </p>
+      <p>
+        There are few more designs I made for different various purposes. One such project is about making a <a href="http://sibusaman.github.io/DIY-Soldering-Station/">DIY Soldering Station</a>,
+        basically a controller for the Weller PES51 pencil. I designed an PCB which
+        <ol>
+          <li>Will amplify the signals from temperature sensor in the Pencil, </li>
+          <li>Has a MOSFET to control the power delivered to the pencil, </li>
+          <li>Has an NTC temperature sensor for getting the room temperature for accurate control of the iron.</li>
+        </ol>
+        <br>
+        <br>
+        <h4>Pictures</h4>
+        <br>
+        <figure>
+          <img src="sch.png" alt="schematic" width='500' onmouseover="this.width='1300'" onmouseout="this.width='500'">
+          <figcaption style="display:inline; color:grey">The schematic of the amplifier board.</figcaption>
+        </figure>
+        <figure>
+          <img src="brd.png" alt="sch brd" width='500' onmouseover="this.width='1300'" onmouseout="this.width='500'">
+          <figcaption style="display:inline; color:grey">The top layer of the board (bottom is just a ground plane, no traces. The outer rectangle is drawn in milling layer and this will be used to
+            cutout the board after milling.</figcaption>
+        </figure>
+        <br> An interesting video of the component placement and routing.
+        <br>
+        <video width="520" controls>
+          <source src="redesign.mp4" type="video/mp4"> Your browser does not support the video tag.
+        </video>
+        <br>
+        <figure>
+          <img src="pop%20top.JPG" alt="populated board top" width='500' onmouseover="this.width='900'" onmouseout="this.width='500'">
+          <figcaption style="display:inline; color:grey">The amplifier/control board populated with all components (except few wires and the NTC sensor section at bottom left).</figcaption>
+        </figure>
+        <figure>
+          <img src="pop%20bot.JPG" alt="populated board bottom" width='500' onmouseover="this.width='900'" onmouseout="this.width='500'">
+          <figcaption style="display:inline; color:grey">Bottom side of the same board, you can see the 'DIY' interconnects. Well, whats with the texture you may ask; I used sand-blaster it, why not?.
+            It had lot of fingerprints and other dirt on it, so 'I did what I have to do'. (or!!! what I wanted to do). And YES, this is a double sided
+            PCB.
+          </figcaption>
+        </figure>
+        <h4>EAGLE Files for the Amplifier Board</h4>
+        <br>
+        <a href="sold.sch" download="sold-stn-amp-brd.sch">Schematic.</a>
+        <a href="sold.brd" download="sold-stn-amp-brd.brd">Board.</a>
+        <br>
+        <br> The work is still in progress, but progress is slow. The hardware is mostly over and what is left is the firmware. I have also designed a compact
+        Arduino-UNO compatible (only software, no hardware/pin compatibility) micro-controller board for use in the soldering station.
+        <br>
+        <h4>EAGLE Files are here</h4>
+        <br>
+        <a href="sduino.brd" download="sibu-sduino.brd">Board</a>
+        <a href="sduino.sch" download="sibu-sduino.sch">Schematic</a>
+      </p>
 
     </section>
 
