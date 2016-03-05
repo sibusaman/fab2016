@@ -39,7 +39,7 @@
       <p>
         Tasks for this module involves deep understanding about 3D printer, testing the 3D printer to it's limits to find-out its capabilities and limits. Assignments
         also involves exploring various 3D scanning methods like Modella MDX-20 (R.A.P.S), Kinect other hardwares like LEAP. We have to design and print
-        an object and explain why it can't be made subtractevely, and optionally make a 3D scanner ourself, print the scanned object.
+        an object and explain why it can't be made subtractively, and optionally make a 3D scanner ourself, print the scanned object.
       </p>
       <h2>3D Printing</h2>
       <p>
@@ -319,7 +319,7 @@
       <p>
         Now it's time for the assignment. We are supposed to print something that can't be made substantively. After a few thought I decoded to print a mobile
         stand/dock with audio canals for redirecting the sound. Such a Dock will have internal channels for directing audio, and this is something that
-        cannot be made using even the most advanced CNC mill, absolutely no way to create subtractevely as a single piece, because no tool can get inside
+        cannot be made using even the most advanced CNC mill, absolutely no way to create subtractively as a single piece, because no tool can get inside
         the solid block to carve out complex cavities.
       </p>
       <h4>Dock for OnePlus One</h4>
@@ -335,7 +335,7 @@
       <p>
         <figure>
           <img src="dock-in.png" alt="dock internal" width='250' onmouseover="this.width='700'" onmouseout="this.width='250'" />
-          <figcaption style="display:block; color:grey">Internal structure of the dock, you can see the sound canal, clearly there is no way this could be made subtractevely.</figcaption>
+          <figcaption style="display:block; color:grey">Internal structure of the dock, you can see the sound canal, clearly there is no way this could be made subtractively.</figcaption>
         </figure>
       </p>
       <p>
@@ -352,7 +352,28 @@
         </p>
         <b>This design is not perfect as the mesh has a lot of unwanted vertices and faces, perhaps 10 times more than what is really required.</b> This
         happened while I edited the original .stl file.
-
+      </p>
+      <h4>Clein Bottle</h4>
+      <p>
+        This is another design I made, <a href="https://en.wikipedia.org/wiki/Klein_bottle">Klein Bottle</a>, this structure is something similar to
+        <a href="https://en.wikipedia.org/wiki/M%C3%B6bius_strip">Mobius Strip</a>, a one sided one edged surface. A true Klein Bottle is a 4-Dimensional
+        object and what I designed/going to make is a 3D-projection/Immersion of the true Klein Bottle. In another words it's similar to seeing a photograph,
+        which is 2D, but the object seen in the photograph may be 3D, so we see a 2D photograph of a 3D object. Just like that what I'm going to make is
+        a 3D-photograph or a 3D-print of the 4D-Klein bottle.
+        <br>
+        <iframe width="640" height="480" src="https://sketchfab.com/models/5087115376a24f6198be6b5f0b88cbf8/embed" frameborder="0" allowfullscreen mozallowfullscreen="true"
+          webkitallowfullscreen="true" onmousewheel=""></iframe>
+        <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+          <a href="https://sketchfab.com/models/5087115376a24f6198be6b5f0b88cbf8?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Klein-Bottle</a>          by <a href="https://sketchfab.com/sibu?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">sibu</a>          on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+        </p>
+        <br> This was a quick design in Rhino3D. I saw Yadu trying to design another version of this after getting inspired by a talk by <a href="https://www.youtube.com/watch?v=1wAaI_6b9JE">Matt Parker</a>.
+        I extruded two circles along two rails, which is actually the cross section of the Klein-Bottle. The actual cross section would be a single line,
+        so I broke the line at the bottom, in to two segments and used them as the rails for the circles to sweep (sweep2). The Two circles are necessary
+        Two create a solid wall, else the object will be just a shell without0 any thickness and it cannot be 3D-printed. Then the bottoms where capped
+        to close and a solid base was created to give the bottom some thickness. Also 'trim' command was used create the hole which should have been there
+        at the intersection of the surface(at the bottom of the 'handle').
+        <br>
+        This again is an object impossible to made subtractively, there is no way the tool can reach the inside of the bottle.
       </p>
 
 
