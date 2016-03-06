@@ -16,7 +16,7 @@
           
           $fn = 64; //smoother render, this number gives how many frangments are used for a circle
 
-          l = 40;
+          l = 30;
           h = 20;
 
           beam_width= .5;
@@ -70,7 +70,7 @@
         }
 //wallls
 
-//top and bottom
+//top and bottom, walls with holes for lid
           copy_mirror_opp_y()
           translate([-l/2,-l/2,0])
           union(){
@@ -97,12 +97,12 @@
             translate([-1.5*thick, l+1+2.5*thick+wall_height, 0]) 
             difference ()
             {
-                circle(d=(6+1.4*thick));
-                circle(d=1.4*thick);
+                circle(d=(6+1.4*thick));    //outer diameter
+                circle(d=1.4*thick);        //inner diameter root(2)times the thickness
             }
           }
           
-//left and right
+//left and right, walls without holes
           copy_mirror_opp_x()
           mirror([1, 1, 0])
           translate([-l/2,-l/2,0])
@@ -134,9 +134,9 @@
         translate ( [ l/2 + wall_height + 2 + 2*thick, -lid_size/2, 0] )
         difference()
         {   
-            square ( size = [lid_size+thick, lid_size], center = false);
+            square ( size = [lid_size+thick, lid_size], center = false);    // overall shape of teh lid
             translate ( [ thick, 0, 0] )
-            square ( size = [7/2, thick], center = false);
+            square ( size = [3.4, thick], center = false);                  // bottom cutout
             translate ( [ thick, lid_size -thick, 0] )
-            square ( size = [7/2, thick], center = false);
+            square ( size = [3.4, thick], center = false);                  //top cutout
         }
