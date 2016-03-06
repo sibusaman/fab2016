@@ -50,7 +50,34 @@
         who might face same troubles and will also help us because we can refer them later; our memories fade.
       </p>
       <h3>About 3D Printing</h3>
-      <p></p>
+      <p>3D printing, as the name implies is a method for manufacturing 3 Dimensional objects. Its an additive manufacturing technology in which the object
+        is created by many thin layers of 'solid' material. The 'ink' used has a non-negligible mass and volume, so each layer will have a finite thickness
+        and successive layers make up the final object. The process is computer controlled and uses various 'inks' and technologies. Wikipedia page on
+        <a href="https://en.wikipedia.org/wiki/3D_printing">3D Printing</a> is a good place to start.</p>
+      <p>
+        Below is list a of many popular 3D-printing technologies
+        <ol>
+          <li><a href="https://en.wikipedia.org/wiki/Fused_deposition_modeling">Fused Deposition Modeling (FDM) or Fused Filament Manufacturer (FFF)</a>; one
+            of the most common technology and used in <a href="http://reprap.org/">RepRap</a>, <a href="https://ultimaker.com/">Ultimaker</a>, <a href="http://www.makerbot.com/">MakerBot</a>            etc.</li>
+          <li><a href="https://en.wikipedia.org/wiki/Robocasting">Direct Ink Writing (DIW):</a> like the <a href="http://hackaday.com/2015/09/26/printing-chocolate-with-a-lego-3d-printer/">chocolate printer</a>,
+            or the <a href="http://www.pancakebot.com/">pancake printer</a> or the the <a href="https://www.youtube.com/watch?v=DQ5Elbvvr1M">concrete printer</a>            .</li>
+          <li><a href="https://en.wikipedia.org/wiki/Stereolithography">Stereolithography (SLA):</a> Using photo-curable Resin and Laser like <a href="http://formlabs.com/">Form 2</a>            .
+          </li>
+          <li><a href="https://en.wikipedia.org/wiki/Digital_Light_Processing">Digital Light Processing (DLP):</a> Same as SLA but the light source and scanning
+            is done by DLP projector like <a href="http://carbon3d.com/">Carbon 3D Printer</a>.</li>
+          <li><a href="https://en.wikipedia.org/wiki/Powder_bed_and_inkjet_head_3D_printing">Powder bed and inkjet head 3D printing (3DP):</a> A binder liquid
+            is 'inkjetted' on a powder bed, examples include <a href="http://www.stratasys.com/3d-printers/technologies/polyjet-technology"> Stratasys Polyjet.</a>            </li>
+          <li><a href="https://en.wikipedia.org/wiki/Electron_beam_additive_manufacturing">Electron-beam Melting (EBM)</a>: Electron beam is used to selectively
+            melt and bind metal powder.</li>
+          <li><a href="https://en.wikipedia.org/wiki/Selective_laser_melting">Selective Laser Melting (SLM):</a> same as above but uses Laser, so metal and
+            non-metal can be used.</li>
+          <li><a href="https://en.wikipedia.org/wiki/Selective_laser_sintering">Selective Laser Sintering (SLS):</a> same as above but material is not melted
+            and binded but sintered.</li>
+          <li><a href="https://en.wikipedia.org/wiki/Laminated_object_manufacturing">Laminated Object Manufacturing (LOM)</a>: Each layer is cut from a sheet
+            of material in pasted successively to build the final object.</li>
+
+        </ol>
+      </p>
 
       <h3>Assembly, Challenges and Fixes</h3>
       <p>
@@ -353,7 +380,17 @@
         <b>This design is not perfect as the mesh has a lot of unwanted vertices and faces, perhaps 10 times more than what is really required.</b> This
         happened while I edited the original .stl file.
       </p>
-      <h4>Clein Bottle</h4>
+      <p>
+        <h4>Pictures</h4>
+        <br>
+        <figure>
+          <img src="dock1.jpg" alt="dock pic 1" width='250' onmouseover="this.width='800'" onmouseout="this.width='250'">
+          <br>
+          <img src="dock2.jpg" alt="dock pic 2" width='250' onmouseover="this.width='800'" onmouseout="this.width='250'">
+          <figcaption style="display:block; color:grey">The dock with the OnePlus original USB cable.</figcaption>
+        </figure>
+      </p>
+      <h4>Klein Bottle</h4>
       <p>
         This is another design I made, <a href="https://en.wikipedia.org/wiki/Klein_bottle">Klein Bottle</a>, this structure is something similar to
         <a href="https://en.wikipedia.org/wiki/M%C3%B6bius_strip">Mobius Strip</a>, a one sided one edged surface. A true Klein Bottle is a 4-Dimensional
@@ -372,8 +409,7 @@
         Two create a solid wall, else the object will be just a shell without0 any thickness and it cannot be 3D-printed. Then the bottoms where capped
         to close and a solid base was created to give the bottom some thickness. Also 'trim' command was used create the hole which should have been there
         at the intersection of the surface(at the bottom of the 'handle').
-        <br>
-        This again is an object impossible to made subtractively, there is no way the tool can reach the inside of the bottle.
+        <br> This again is an object impossible to made subtractively, there is no way the tool can reach the inside of the bottle.
       </p>
 
 

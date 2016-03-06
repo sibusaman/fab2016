@@ -36,10 +36,9 @@
       <h1>Computer-Aided Design</h1>
       <p>
 
-        <a href="../w1/w1.html">Last week</a>
-        I thought about the project and just scribbled something on the paper, some rough sketch, trying to explain the process. I also made some guesses
-        about how to make the machine and what could be the merits and demerits. This week we are supposed to take our project one step further. I have to
-        explore the Computer-Aided Design (CAD) softwares and make a design of the machine I'm trying to make.
+        <a href="../w1/w1.html">Last week</a> I thought about the project and just scribbled something on the paper, some rough sketch, trying to explain
+        the process. I also made some guesses about how to make the machine and what could be the merits and demerits. This week we are supposed to take
+        our project one step further. I have to explore the Computer-Aided Design (CAD) softwares and make a design of the machine I'm trying to make.
       </p>
       <p>
         Before I start designing the machine, I wanted to make sure about the following.
@@ -50,11 +49,11 @@
       </p>
       <h3>'First Light'.</h3>
       <p>
-        So I wanted to know how fast this technique will remove material from the PCB (it can remove for sure, I had experienced this on several occasions
-        when accidentally made short-circuits and sparks). So I decided to test it, took a used PCB, put a drop of water connected the lab power supply. I
-        went ahead and kept the maximum voltage (30v) at a limit of 1A. I kept the voltage that high because if I had kept low voltage the distance between
-        the electrodes would have to be too short and that will be very-very difficult (our hands are not stable like machine). The ground was connected to
-        the copper, the positive terminal (actually the polarity is not important) is connected to a broken blade of the Vinyl cutter.
+        So I wanted to know how fast this technique will remove material from the PCB (it can remove for sure, I had experienced this on several occasions when
+        accidentally made short-circuits and sparks). So I decided to test it, took a used PCB, put a drop of water connected the lab power supply. I went
+        ahead and kept the maximum voltage (30v) at a limit of 1A. I kept the voltage that high because if I had kept low voltage the distance between
+        the electrodes would have to be too short and that will be very-very difficult (our hands are not stable like machine). The ground was connected
+        to the copper, the positive terminal (actually the polarity is not important) is connected to a broken blade of the Vinyl cutter.
       </p>
       <figure>
         <img src="tr1.jpg" alt="trial-1" width='500' onmouseover="this.width='1000'" onmouseout="this.width='499'">
@@ -76,16 +75,16 @@
       <br>
       <figure>
         <img src="tr1-result.jpg" alt="trial-1 result" width='500' onmouseover="this.width='1000'" onmouseout="this.width='499'">
-        <figcaption style="display:inline; color:grey">The result of the process shown in the video, notice that the copper has been removed by the sparks. If
-          you watch carefully there is a discoloration too as a result of electrolysis.</figcaption>
+        <figcaption style="display:inline; color:grey">The result of the process shown in the video, notice that the copper has been removed by the sparks. If you watch carefully there is a discoloration
+          too as a result of electrolysis.</figcaption>
       </figure>
       <p>
-        So, now I'm confident that the technique will work. As a result of the process the copper from the board has been removed. The tool is also getting
-        eroded. All that is left to do is to
+        So, now I'm confident that the technique will work. As a result of the process the copper from the board has been removed. The tool is also getting eroded.
+        All that is left to do is to
         <ul>
           <li>Find a material with low wear, something that can withstand the sparks, tungsten looks promising as it is being used for
-            <a href="https://en.wikipedia.org/wiki/Gas_tungsten_arc_welding">TIG</a>
-            welding.</li>
+            <a href="https://en.wikipedia.org/wiki/Gas_tungsten_arc_welding">TIG</a> welding.
+          </li>
           <li>Design a way to precisely feed the tool wire.</li>
           <li>Design an X-Y axis control using the salvaged components from CD/DVD drive.</li>
         </ul>
@@ -93,75 +92,63 @@
       <h2>3D-CAD</h2>
       <p>
         <h3>Antimony</h3>
-        <br>
-        I tried antimony to design a rough shape of the stepper motor from the CD/DVD drive. You can see the video of my design process, because a picture is
-        worth a thousand words and this video is made up of about 85 of them(pictures)!
+        <br> I tried antimony to design a rough shape of the stepper motor from the CD/DVD drive. You can see the video of my design process, because a picture
+        is worth a thousand words and this video is made up of about 85 of them(pictures)!
         <br>I made this video by taking many screenshots and combining them using ffmpeg. I used
-        <a href="https://github.com/Roger/escrotum">escrotum</a>
-        to capture the screen, I made a keyboard shortcut such that when I press
-        <code>PrtScn</code>
-        button a command
-        <code>escrotum ~/Pictures/%Y-%m-%d-%T.png</code>
-        will be executed, and that will save a screen shot to the ~/Pictures directory. You can also do this with default screenshot programs like for example
-        'Spectacle' for KDE-Plasma Desktop Environment I use. After that I used ffmpeg to combine these images to a short movie.
+        <a href="https://github.com/Roger/escrotum">escrotum</a> to capture the screen, I made a keyboard shortcut such that when I press
+        <code>PrtScn</code> button a command
+        <code>escrotum ~/Pictures/%Y-%m-%d-%T.png</code> will be executed, and that will save a screen shot to the ~/Pictures directory. You can also do
+        this with default screenshot programs like for example 'Spectacle' for KDE-Plasma Desktop Environment I use. After that I used ffmpeg to combine
+        these images to a short movie.
         <br>
         <pre>
           ffmpeg -framerate 2 -i %03d.png -c:v libx264 -r 10 -pix_fmt yuv420p test.mp4
         </pre>
+        <br> I had renamed all image files as 001.png, 002.png 003.png..... using the batch rename properties of KDE (just select all files you want to rename
+        and select rename).
         <br>
-        I had renamed all image files as 001.png, 002.png 003.png..... using the batch rename properties of KDE (just select all files you want to rename and
-        select rename).
+        <code>-framerate 2</code> tells that two images per second or in other words each image will get 1/2 a second.
         <br>
-        <code>-framerate 2</code>
-        tells that two images per second or in other words each image will get 1/2 a second.
+        <code>-i %03d.png</code> tells that the files are named as 001.png, 002.png 003.png.....
         <br>
-        <code>-i %03d.png</code>
-        tells that the files are named as 001.png, 002.png 003.png.....
+        <code>-c:v libx264</code> tells to use the x264 video codec
         <br>
-        <code>-c:v libx264</code>
-        tells to use the x264 video codec
-        <br>
-        <code>-r 10</code>
-        will give a final video stream with 10 frames per second, 10 fps is fine as we don't have any fast moving action, its all static images.
+        <code>-r 10</code> will give a final video stream with 10 frames per second, 10 fps is fine as we don't have any fast moving action, its all static
+        images.
         <br>
         <br>
         <video width="720" controls>
-          <source src="antimony-stepper.mp4" type="video/mp4">
-          Your browser does not support the video tag.
+          <source src="antimony-stepper.mp4" type="video/mp4"> Your browser does not support the video tag.
         </video>
         <br>
         <br>
         <a href="motor.sb" download="sibu-stepper-antimony.sb">Antimony files for the above design</a>.
         <br>
-        <br>
-        As you can see, I can change few numbers like the diameter of the motor, shaft-length and I get a new motor. I had to do this because I'm not sure
-        that all the motors I will be getting will be of the same dimensions, but in general, shape of the motors are all the same. Antimony is really good at
-        this, it's a parametric CAD. If you want to make a correction to any dimension or sometimes the shape, most probably you can do that with just
-        changing a few numbers. Tools like
-        <a href="https://www.rhino3d.com/">Rhino3D</a>
-        cannot do this, you have to redesign the entire model from scratch.
-        <br>
-        This parametric design feature will be very useful, especially when you want to fine-tune dimensions of your design. One scenario where this will be
-        useful is when you want to design a press-fit construction for cutting in a laser cutter or CNC mill. The benefit is that you can just adjust a few
-        parameters depending on what cutting tool you are using or whats the beam width of the laser. You can fine tune the design by changing the parameters
-        till you get a very tight fit.
-        <br>
-        There are few draw-backs to Antimony. One important thing is that its not stable enough, atleast with my installation. It crashes sometimes when I
-        move the object too much, so at times I lose my unsaved progress and will have to start-over. At times it is really stable too. Another demerit is
-        that the rendering is not really that good or fast enough. I wish the software uses GPU for rendering (I don't know if it already does, but if yes it
-        looks like the implementation is not efficient). Third major problem I faced is the lack of tools, it doesn't have the huge set of functions/tools
+        <br> As you can see, I can change few numbers like the diameter of the motor, shaft-length and I get a new motor. I had to do this because I'm not
+        sure that all the motors I will be getting will be of the same dimensions, but in general, shape of the motors are all the same. Antimony is really
+        good at this, it's a parametric CAD. If you want to make a correction to any dimension or sometimes the shape, most probably you can do that with
+        just changing a few numbers. Tools like
+        <a href="https://www.rhino3d.com/">Rhino3D</a> cannot do this, you have to redesign the entire model from scratch.
+        <br> This parametric design feature will be very useful, especially when you want to fine-tune dimensions of your design. One scenario where this will
+        be useful is when you want to design a press-fit construction for cutting in a laser cutter or CNC mill. The benefit is that you can just adjust
+        a few parameters depending on what cutting tool you are using or whats the beam width of the laser. You can fine tune the design by changing the
+        parameters till you get a very tight fit.
+        <br> There are few draw-backs to Antimony. One important thing is that its not stable enough, atleast with my installation. It crashes sometimes when
+        I move the object too much, so at times I lose my unsaved progress and will have to start-over. At times it is really stable too. Another demerit
+        is that the rendering is not really that good or fast enough. I wish the software uses GPU for rendering (I don't know if it already does, but
+        if yes it looks like the implementation is not efficient). Third major problem I faced is the lack of tools, it doesn't have the huge set of functions/tools
         that major CAD softwares comes with, but the idea is to create everything with simple 'building blocks'. For this reason I'll have to use something
         like SolidWorks or AutoCad for more complicated design.
       </p>
       <p>
-        Now I need to design the rest of the machine. I cannot do this unless I procure all the raw material I can gather. Once I have them, I'll design a
-        machine that will make the best use of the parts I collected.
+        Now I need to design the rest of the machine. I cannot do this unless I procure all the raw material I can gather. Once I have them, I'll design a machine
+        that will make the best use of the parts I collected.
       </p>
 
       <h2>2D-CAD</h2>
       <p>
-        I wanted to make a 2D sketch/design of a possible press-fit construction set for the next module, but I also want this to be a part of my final
-        project or atleast something that will be useful in future.
+        I wanted to make a 2D sketch/design of a possible press-fit construction set for the next module, but I also want this to be a part of my final project
+        or atleast something that will be useful in future.
       </p>
       <p>
         I made this design in
@@ -254,9 +241,8 @@
           <figcaption style="display:inline; color:grey">OpenSCAD rendering of the above script.</figcaption>
         </figure>
         Let me explain what this is,
-        <br>
-        This is a script to make a square-box (top open), press-fit construction kit. This is parametric, means you can change the appropriate values at the
-        beginning of the script to change the properties of the box. You can alter the following.
+        <br> This is a script to make a square-box (top open), press-fit construction kit. This is parametric, means you can change the appropriate values
+        at the beginning of the script to change the properties of the box. You can alter the following.
         <ul>
           <li>Length=Width (square base) and Height of the box (obviously).</li>
           <li>The number of slots on the base as well as the walls.</li>
@@ -268,44 +254,48 @@
         <br>
         <br>
         <video width="720" controls>
-          <source src="OpenSCAD.mp4" type="video/mp4">
-          Your browser does not support the video tag.
+          <source src="OpenSCAD.mp4" type="video/mp4"> Your browser does not support the video tag.
         </video>
       </p>
 
       <p>
-        Okay, OpenSCAD is a script based parametric 3D-CAD tool. It's a script based tool, which means you will program your model, using various primitives
-        like, points, line, circle, rectangle, polygon, curves, cylinder , cubes etc. Then can do various mathematical and logical operations on these
-        primitives and get your final design.
-        <br>
-        I played with a few other tools for getting this design done. I tried the following, and I abandoned them for some reason.
+        Okay, OpenSCAD is a script based parametric 3D-CAD tool. It's a script based tool, which means you will program your model, using various primitives like,
+        points, line, circle, rectangle, polygon, curves, cylinder , cubes etc. Then can do various mathematical and logical operations on these primitives
+        and get your final design.
+        <br> I played with a few other tools for getting this design done. I tried the following, and I abandoned them for some reason.
         <br>
         <h4>Antimony</h4>
-        <br>
-        Well this was the first tool I tried. I could get somewhere with it. But Antimony tries to render the script live, so when I make some mistake,
-        sometimes the software crashes and I will loose all the progress. This was frustrating, also the scripting language is Python something I'm not that
-        familiar with. Another problem I came across is the limitation on the number of primitives and operations. And finally I didn't have the command over
-        the entire script, when I try to make some mathematical relations between some object/parameters etc., I get some weired errors, and was frustrating.
+        <br> Well this was the first tool I tried. I could get somewhere with it. But Antimony tries to render the script live, so when I make some mistake,
+        sometimes the software crashes and I will loose all the progress. This was frustrating, also the scripting language is Python something I'm not
+        that familiar with. Another problem I came across is the limitation on the number of primitives and operations. And finally I didn't have the command
+        over the entire script, when I try to make some mathematical relations between some object/parameters etc., I get some weired errors, and was frustrating.
         <br>
         <h4>Rhino-Blocks</h4>
-        <br>
-        I followed this very informative
+        <br> I followed this very informative
         <a href="https://vimeo.com/155032336">
-          tutorial on using blocks</a>
-        by
-        <a href="https://vimeo.com/155032336">Saverio Silli</a>. It was helpful. And I could do something with the blocks. But I didn't like to have my design
-        scattered across multiple 'block files', but having individual files for individual parts (like nuts, bolts, motors etc) in a big design is
-        convenient. But fro something simple as what I'm trying to do, multiple files are not very attractive. Also for any change I have to manually edit the
-        blocks, I cannot just enter a few numbers like I did with OpenSCAD. And finally Rhino is not free, (90-day Evaluation) and not available for Linux
-        (Wine can be used to run Rhino in Linux, but may not give the best performance or stability).
+          tutorial on using blocks</a> by
+        <a href="https://vimeo.com/155032336">Saverio Silli</a>. It was helpful. And I could do something with the blocks. But I didn't like to have my
+        design scattered across multiple 'block files', but having individual files for individual parts (like nuts, bolts, motors etc) in a big design
+        is convenient. But fro something simple as what I'm trying to do, multiple files are not very attractive. Also for any change I have to manually
+        edit the blocks, I cannot just enter a few numbers like I did with OpenSCAD. And finally Rhino is not free, (90-day Evaluation) and not available
+        for Linux (Wine can be used to run Rhino in Linux, but may not give the best performance or stability).
         <br>
         <h4>Grasshopper</h4>
         <br>
-        <a href="www.grasshopper3d.com/">Grasshopper</a>
-        is a plugin or a frontend to Rhino. It uses the Rhino as a back-end for rendering etc. Basically it's like Antimony, a lot more powerful it seems,
-        with a lot of new primitives, and operations. But time was running out and I found it too difficult/confusing to do something very simple like a
-        rectangle. Again, it uses Rhino3D and I have to switch OS for using it. I didn't like leaving my customized Linux Desktop Environment, so goodbye to
-        Rhino3D and Grasshopper3D.
+        <a href="www.grasshopper3d.com/">Grasshopper</a> is a plugin or a frontend to Rhino. It uses the Rhino as a back-end for rendering etc. Basically
+        it's like Antimony, a lot more powerful it seems, with a lot of new primitives, and operations. But time was running out and I found it too difficult/confusing
+        to do something very simple like a rectangle. Again, it uses Rhino3D and I have to switch OS for using it. I didn't like leaving my customized
+        Linux Desktop Environment, so goodbye to Rhino3D and Grasshopper3D.
+      </p>
+      <p>
+        More designs could be found in the coming modules. For example a few more designs with Antimony and OpenSCAD can be seen in <a href="../w3/w3.html"> next module</a>.
+        Similarly a few more designs using Rhino can be seen at <a href="../w5/w5.html">3D Scanning and Printing</a> page. For example
+        <br>
+        <iframe width="640" height="480" src="https://sketchfab.com/models/5087115376a24f6198be6b5f0b88cbf8/embed" frameborder="0" allowfullscreen mozallowfullscreen="true"
+          webkitallowfullscreen="true" onmousewheel=""></iframe>
+        <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+          <a href="https://sketchfab.com/models/5087115376a24f6198be6b5f0b88cbf8?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Klein-Bottle</a>          by <a href="https://sketchfab.com/sibu?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">sibu</a>          on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+        </p>
       </p>
       <h3>OpenSCAD resources</h3>
       <p>
