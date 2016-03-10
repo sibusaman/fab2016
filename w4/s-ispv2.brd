@@ -9,18 +9,18 @@
 <grid distance="0.05" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.05" altunitdist="mm" altunit="mm"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="no" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
@@ -467,43 +467,43 @@ Optimized for fast milling using 1.0 mm tool
 <element name="X1" library="SparkFun" package="USB-A-PCB" value="USBPCB" x="5.08" y="8.255"/>
 <element name="IC1" library="fab" package="SOIC14" value="ATTINY44-SSU" x="24.942" y="12.303" smashed="yes">
 <attribute name="NAME" x="26.085" y="12.8745" size="1.27" layer="25" ratio="10" rot="R180"/>
-<attribute name="VALUE" x="22.402" y="11.6045" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="19.552" y="11.4545" size="1.27" layer="27" ratio="10"/>
 </element>
 <element name="X2" library="fab" package="2X03SMD" value="AVRISPSMD" x="36.061" y="11.378" smashed="yes" rot="R270">
 <attribute name="NAME" x="34.791" y="10.616" size="1.27" layer="25"/>
-<attribute name="VALUE" x="30.981" y="15.188" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="30.812" y="10.331" size="1.27" layer="27"/>
 </element>
 <element name="D1" library="fab" package="SOD123" value="3.3" x="13.716" y="11.303" smashed="yes" rot="R90">
-<attribute name="NAME" x="14.351" y="13.716" size="1.27" layer="25" rot="R90"/>
-<attribute name="VALUE" x="16.891" y="9.398" size="1.27" layer="27" rot="R90"/>
+<attribute name="NAME" x="14.301" y="11.616" size="1.27" layer="25" rot="R90"/>
+<attribute name="VALUE" x="14.291" y="10.348" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="D2" library="fab" package="SOD123" value="3.3" x="11.43" y="9.271" smashed="yes" rot="R90">
-<attribute name="NAME" x="12.065" y="11.811" size="1.27" layer="25" rot="R90"/>
-<attribute name="VALUE" x="14.605" y="7.366" size="1.27" layer="27" rot="R90"/>
+<attribute name="NAME" x="11.965" y="10.011" size="1.27" layer="25" rot="R90"/>
+<attribute name="VALUE" x="12.005" y="7.416" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R1" library="rcl" package="R1206" value="49.9" x="18.288" y="11.557" smashed="yes" rot="R270">
-<attribute name="NAME" x="17.653" y="12.573" size="1.27" layer="25" rot="R270"/>
-<attribute name="VALUE" x="15.748" y="12.827" size="1.27" layer="27" rot="R270"/>
+<attribute name="NAME" x="17.653" y="13.373" size="1.27" layer="25" rot="R270"/>
+<attribute name="VALUE" x="17.748" y="13.277" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R2" library="rcl" package="R1206" value="49.9" x="16.002" y="11.557" smashed="yes" rot="R90">
-<attribute name="NAME" x="16.637" y="10.287" size="1.27" layer="25" rot="R90"/>
-<attribute name="VALUE" x="18.542" y="10.287" size="1.27" layer="27" rot="R90"/>
+<attribute name="NAME" x="16.537" y="11.087" size="1.27" layer="25" rot="R90"/>
+<attribute name="VALUE" x="16.592" y="9.837" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R3" library="rcl" package="R1206" value="1K" x="13.716" y="5.715" smashed="yes" rot="R270">
-<attribute name="NAME" x="13.081" y="6.858" size="1.27" layer="25" rot="R270"/>
-<attribute name="VALUE" x="11.176" y="6.985" size="1.27" layer="27" rot="R270"/>
+<attribute name="NAME" x="13.781" y="6.608" size="1.27" layer="25" rot="R270"/>
+<attribute name="VALUE" x="13.076" y="6.585" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R4" library="rcl" package="R1206" value="10K" x="17.907" y="7.62" smashed="yes" rot="R180">
 <attribute name="NAME" x="18.923" y="8.128" size="1.27" layer="25" rot="R180"/>
-<attribute name="VALUE" x="19.177" y="10.16" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="19.177" y="8.16" size="1.27" layer="27" rot="R180"/>
 </element>
 <element name="C4" library="rcl" package="C1206" value="1u" x="18.574" y="3.533" smashed="yes" rot="R270">
-<attribute name="NAME" x="17.939" y="4.676" size="1.27" layer="25" rot="R270"/>
-<attribute name="VALUE" x="16.034" y="4.803" size="1.27" layer="27" rot="R270"/>
+<attribute name="NAME" x="18.939" y="4.576" size="1.27" layer="25" rot="R270"/>
+<attribute name="VALUE" x="17.534" y="4.353" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R6" library="rcl" package="R1206" value="499" x="16.002" y="3.683" smashed="yes" rot="R270">
-<attribute name="NAME" x="15.367" y="4.699" size="1.27" layer="25" rot="R270"/>
-<attribute name="VALUE" x="13.462" y="4.953" size="1.27" layer="27" rot="R270"/>
+<attribute name="NAME" x="15.917" y="4.649" size="1.27" layer="25" rot="R270"/>
+<attribute name="VALUE" x="15.412" y="5.103" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R7" library="rcl" package="R1206" value="499" x="35.655" y="3.77"/>
 <element name="R8" library="rcl" package="R1206" value="499" x="22.555" y="1.545"/>
