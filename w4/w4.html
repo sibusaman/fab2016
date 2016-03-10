@@ -490,18 +490,42 @@
       <h3>Making and Debugging</h3>
       <figure>
         <img src="s-ispv2.png" alt="final ISP component place " width="350" onmouseover="this.width='750'" onmouseout="this.width='350'">
+        <figcaption style="display:block; color:grey">The component placement diagram.</figcaption>
         <img src="s-ispv2-1.jpg" alt="final ISP top populated" width="350" onmouseover="this.width='950'" onmouseout="this.width='350'">
+        <figcaption style="display:block; color:grey">The top layer, populated with components.</figcaption>
         <img src="s-ispv2-2.jpg" alt="final ISP bottom" width="350" onmouseover="this.width='550'" onmouseout="this.width='350'">
-        <figcaption style="display:block; color:grey"></figcaption>
+        <figcaption style="display:block; color:grey">The bottom layer, fully tinned to prevent rusting and discoloration, Notice the interconnects between the layers, I used few strands of thin copper wires from the soldering
+          wick to make this. The tinning process is slightly thicker at USB connector area to make it thicker for a snug fit.</figcaption>
       </figure>
     </p>
-
+    <h4 style="color:red">Error</h4>
     <p>
-      <h4>TODO</h4>
+      There he is, I missed him so much!
+      <br> The command <code>dmesg</code> shows the following output on plugging the device in the USB port.
+      <figure>
+        <img src="s-isp-err.png" alt="error " width="750">
+      </figure>
+      <br> I spent some time figuring out what this error is.
       <ul>
-        <li>Make the new ISP with indicator LEDs</li>
+        <li>Checked the ssoldering: There was no issue in soldering, all the connections are proper.</li>
+        <li>Found that this is because system detected something and the device is not behaving as a USB device should.</li>
+        <li>First I suspected that the new LEDs were the culprit. SO I removed the xurrent limiting resistors of the LEDs as reheating the LEDs again and again is not good.
+          <b>No Luck</b>
+        </li>
+        <li>Used a DSO to see if I put the right resonator, I might have used 8MHz instead of 20, because I took a component which fell of from the reel, there is chance that someone took
+          it by mistake and put it in the wrong box. </li>
+        <li>Great!! No signal from the resonator, what could be the problem? Short circuit?</li>
+        <li>I found the problem!
+          <img src="s-ispv2-short.jpg" alt="short" width="350"> </li>
+        <li>There was thin strand of copper shorting the two pins the resonator was connected and another nearby pin to the right. This piece of copper might have came from the soldering
+          wick during my drag soldering or from the PCB itself, the thin copper left behind by the milling process. </li>
+        <li>After cleaning the short circuit, the PC <h4>detected</h4> the board.</li>
+        <li>Soldered the Resistors back.</li>
+        <li>The LEDs are not glowing, but this was expected as the MISO/MOSI pins are kept at a high impedance state when not in use.</li>
+        <li>So I connected an Arduino board and tried programming it via the FabISP.</li>
       </ul>
     </p>
+
 
   </section>
 
