@@ -500,7 +500,7 @@
     </p>
     <h4 style="color:red">Error</h4>
     <p>
-      There he is, I missed him so much!
+      There he is! I missed him so much!
       <br> The command <code>dmesg</code> shows the following output on plugging the device in the USB port.
       <figure>
         <img src="s-isp-err.png" alt="error " width="750">
@@ -519,13 +519,26 @@
           <img src="s-ispv2-short.jpg" alt="short" width="350"> </li>
         <li>There was thin strand of copper shorting the two pins the resonator was connected and another nearby pin to the right. This piece of copper might have came from the soldering
           wick during my drag soldering or from the PCB itself, the thin copper left behind by the milling process. </li>
-        <li>After cleaning the short circuit, the PC <h4>detected</h4> the board.</li>
+        <li>After cleaning the short circuit, the PC
+          <h4>recognized</h4> the board.</li>
         <li>Soldered the Resistors back.</li>
         <li>The LEDs are not glowing, but this was expected as the MISO/MOSI pins are kept at a high impedance state when not in use.</li>
-        <li>So I connected an Arduino board and tried programming it via the FabISP.</li>
+        <li>So I connected an Arduino board and tried programming it via the FabISP.</li> Now the LEDs are lighting up, but again, only when there is data flow through the MISO/MOSI pins.
       </ul>
     </p>
-
+    <p>
+      Since the board is working happily with two LEDs, I thought why not one more, a power LED, an indicator that the ISP is getting power. I didn't want to make a new board, so I just soldered
+      an LED and a 499 Ohm resistor to the board, between the VCC and GND.
+      <figure>
+        <img src="s-ispv2-fin1.jpg" alt="final ISP with power led " width="350" onmouseover="this.width='750'" onmouseout="this.width='350'">
+        <figcaption style="display:block; color:grey">The power LED added, the new LED and the resistor is connected like a flyover bridge over two traces.</figcaption>
+        <img src="s-ispv2-fin2.jpg" alt="ISP with power led on" width="350" onmouseover="this.width='750'" onmouseout="this.width='350'">
+        <figcaption style="display:block; color:grey">The power LED shines when I plugged the ISP to a power bank.</figcaption>
+        <img src="isp-evo.jpg" alt="ISP evolution" width="350" onmouseover="this.width='750'" onmouseout="this.width='350'">
+        <figcaption style="display:block; color:grey">Evolution of the ISP, and the remnants. The heart of the ISP the AtTiny and few critical components like the Zener Diode and few of the resistors and the capacitors moved on
+          to the new boards.</figcaption>
+      </figure>
+    </p>
 
   </section>
 
