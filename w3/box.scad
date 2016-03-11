@@ -98,7 +98,7 @@
             difference ()
             {
                 circle(d=(6+1.4*thick));    //outer diameter
-                circle(d=1.4*thick);        //inner diameter root(2)times the thickness
+                circle(d=1.35*thick);        //inner diameter root(2)times the thickness, 1.35 for a tight fit
             }
           }
           
@@ -134,7 +134,7 @@
         translate ( [ l/2 + wall_height + 2 + 2*thick, -lid_size/2, 0] )
         difference()
         {   
-            square ( size = [lid_size+thick, lid_size], center = false);    // overall shape of teh lid
+            square ( size = [lid_size+thick, lid_size], center = false);    // overall shape of the lid
             translate ( [ thick, 0, 0] )
             square ( size = [3.4, thick], center = false);                  // bottom cutout
             translate ( [ thick, lid_size -thick, 0] )

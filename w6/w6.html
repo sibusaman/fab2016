@@ -121,10 +121,64 @@
       made the top layer from that board and made the funny looking rails for VCC and GND. The ISP connector has been mirrored so that it is on the bottom layer. The long rail with
       lot of connection is GND and th other one is obviously VCC.
     </p>
+    <h3>Programming a 20MHz board.</h3>
+    <p>
+      This is not compatible with any of the standard Arduino boards, because this board uses a 20MHz resonator. All the standard Arduinos using Atmega328p is running at either 26MHz or at
+      8MHz. It was my first time making a custom Micro-controller board. So I looked around to see who else has made a 20MHz version, many Fabduinos are like this, so someone must have
+      the required instructions.
+      <br> I found a page of a previous fab academy student
+      <a href="http://fab.cba.mit.edu/classes/863.13/people/amir/work/week8.html">Amir Lazarovich</a>, he made a 20MHz Fabduino and he shared therequired files, the <code>Makefile</code>, the <code>boards.txt</code> file and the bootloader. I used these files
+      to program my board, I copies the boards definition from this file and added a few on my own, these definitions were appended to <code>~/.arduino15/packages/arduino/hardware/avr/1.6.10/boards.txt</code>.
+      Similarly I modified the Makefile located at <code>~/.arduino15/packages/arduino/hardware/avr/1.6.10/bootloaders/atmega/</code> to suit the new board.
+    </p>
+    <p>
+      Though the documentation by Amir was really helpful, I couldn't get the Arduino IDE to program my board, I was getting an error <code>Error while uploading: missing 'upload.tool' configuration parameter</code>.
+      Then I found
+      <a href="this page">https://github.com/arduino/Arduino/wiki/Arduino-Hardware-Cores-migration-guide-from-1.0-to-1.6</a> and I followed this to edit my boards.txt file further. This was due to some
+      additional requirement by the new Arduino IDE. Finally I could program my board using my
+      <a href="../w4/w4.html">UsbTiny-FabISP</a>.
+      <br> This is a video of the board being programmed I made for
+      <a href="../w4/w4.html">Electronics Production</a> Week.
+      <br>
+      <video width="620" controls>
+        <source src="../w4/isp prog.m4v" type="video/mp4"> Your browser does not support the video tag.
+      </video>
+      <br>
+      <h4>The Makefile, boards.txt and the hex file can be downloaded below. The location of the files as in my system is also shown.</h4>
+      <br>
+      <a href="Makefile" download="Makefile">~/.arduino15/packages/arduino/hardware/avr/1.6.10/bootloaders/atmega/Makefile</a>
+      <br>
+      <a href="boards.txt" download="boards.txt">~/.arduino15/packages/arduino/hardware/avr/1.6.10/boards.txt</a>
+      <br>
+      <a href="ATmegaBOOT_168_atmega328_pro_20MHz.hex" download="ATmegaBOOT_168_atmega328_pro_20MHz.hex">~/.arduino15/packages/arduino/hardware/avr/1.6.10/bootloaders/atmega/ATmegaBOOT_168_atmega328_pro_20MHz.hex</a>
+    </p>
+    <p>
+      <h4>Few Resources I Found Useful</h4>
+      <br>
+      <ul>
+        <li>
+          <a href="http://www.grozeaion.com/electronics/arduino/155-overclocking-atmega328p">Overclocking ATMega328P</a>
+        </li>
+        <li>
+          <a href="http://www.grozeaion.com/electronics/arduino/131-atmega328p-burning-bootloader.html">ATMega328P - Burning bootloader</a>
+        </li>
+        <li>
+          <a href="http://www.avrfreaks.net/forum/tutsoft-recovering-locked-out-avr?name=PNphpBB2&file=viewtopic&t=106325">Recovering from a "locked out" AVR</a>
+        </li>
+      </ul>
+    </p>
+    <h3>Problems</h3>
+    <p>
+      I had a one major issue so far, the ISP connector is soldered on very thin pads and some pressure on the ISP pins pushed them inside, thorough the holes and the pads came off and the
+      lost connection to the traces. I fixed it somehow using thin copper strands and glue gun, put it's not a good or reliable solution. A better solution would be to use a thicker
+      pads or add rectangle section ion eagle to make the pads bigger, like in the figure below.
+      <br>
+      <img src="sduino-fix.png" alt="sduino-fix.png" width="500" onmouseover="this.width='900'" onmouseout="this.width='500'">
+    </p>
 
     <h2>Exploring Further.</h2>
     <p>
-      I know, I have done more than enough for this modules assignment. But all of the above circuits were made before and I have a week to do something, I'm exploring a few options. I have
+      I know, I have done more than enough for this modules assignment. But most of the above circuits were made before and I have a week to do something, I'm exploring a few options. I have
       a few ideas, few things I needed, so I might be making one or more of the below list.
       <ol>
         <li>
