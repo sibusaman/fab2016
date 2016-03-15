@@ -37,14 +37,101 @@
 
     <h1>Computer-Controlled Machining</h1>
     <p>
-      Making a week7 page is not big deal, right?
-      <br>
-      <h3> SO HERE IT GOES</h3>
+      <h2> A Gaming Chair for Work.</h2>
     </p>
-    <h2>What I'm planning to make for Computer-Controlled Machining</h2>
-<p>
-  <img src="chair.svg" alt="chair rough" />
-</p>
+
+    <p>
+      I'm planning to make a chair, like,
+      <figure>
+        <img src="emperor.jpg" alt="emperor" width="500" />
+        <figcaption style="display:block; color:grey">Emperor Chair by
+          <a href="http://www.mwelab.com/en/">MWE Lab</a>.</figcaption>
+
+        <img src="ch-id.jpg" alt="insp 2" />
+        <figcaption style="display:block; color:grey">Another Interesting Design.</figcaption>
+      </figure>
+
+      <h3>'Rapid Prototype'</h3>
+      <figure>
+        <img src="chair.svg" alt="chair rough" />
+        <figcaption style="display:block; color:grey">What I'm planing to make.</figcaption>
+      </figure>
+
+      The first part of the figure is made using some measurements I made, like my height, knee to ankle length, angle to waist etc. But this way, I had no option to check if it suits my
+      application without actually making a prototype.
+      <br> The second part of the picture is made with the the help of my friends
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/384/index.html">
+        Yadu</a>
+      and
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/394/index.html">
+        Rashid</a>. Rashid supported me from the back and Yadu tool photographs of me from the side. The cardboard sheet in the background is exactly 30" wide, so I have some known
+      reference to scale the image. Then the image was cropped and exported to Inkscape, which I used to draw the shape of the chair.
+    </p>
+    <h3>Redesign</h3>
+    <p>
+      Our instructor Luciano and my Brother in Law who is an orthopediatrician had a few suggestions. Also I myself thought this chair is not 'lazy' enough fro me!
+      <br> So I redesigned.
+      <br>
+      <figure>
+        <img src="rp-1.jpg" alt="rapid proto 1" width="500" onmouseover="this.width='900'" onmouseout="this.width='500'" />
+        <figcaption style="display:block; color:grey">Rashid supporting me, a quick 'prototype'. Notice the scale on my thigh, this is a reference object, object with known length. Yadu is the 'photographer'.</figcaption>
+
+        <img src="rp-2.png" alt="rapid proto 2" width="600" onmouseover="this.width='1200'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">New design with more obtuse angles and better curves to support the back.</figcaption>
+      </figure>
+      I'm planning to cut two pieces of this shape and a
+      <b>Flexure</b> structure on the top. The length for which (the longest piece) is also given in the previous diagram. A simple OpenScad code has been written to generate the flexure
+      patterns.
+      <br>
+      <pre>
+module copy_tran(vec=[5,5,0])
+{
+  children();
+  translate(vec) children();
+}
+
+
+sd = 1;          //diameter and the width of the slots in flexure
+sl = 10;         //length of the flexure slots
+
+fw = 50;         //total width of the flexure
+fl = 200;        //total length of the flexure
+
+sepslotx = 6;     //spacing between slots along x
+sepsloty = 3;     //spacing between slot along y
+
+$fn = 64;        //smoother render, this number gives how many frangments are used for a circle
+
+difference ()
+{
+  translate ( [ 0, -sepsloty] )
+  square ( size = [ fw, fl], center = false);
+
+  for ( i = [0 : 3])
+  {
+    for ( j = [0 : 20])
+    {
+      copy_tran(vec=[i*(sl + sepslotx), 2*j*sepsloty, 0])
+      copy_tran(vec=[(sl + sepslotx)/2, sepsloty, 0])                 //duplicate and translate the copy
+      union()
+      {
+        square ( size = [ sl-sd, sd ], center = true );
+
+        translate ( [(sl-sd)/2, 0, 0])          //right circle
+        circle ( d = sd );
+        translate ( [-(sl-sd)/2, 0, 0])         //left circle
+        circle ( d = sd );
+      }
+    }
+  }
+}
+      </pre>
+      <br>
+      <figure>
+        <img src="flexure.svg" alt="flexure" height="200" onmouseover="this.height='600'" onmouseout="this.height='200'" />
+        <figcaption style="display:block; color:grey">The output of the above code.</figcaption>
+      </figure>
+    </p>
 
   </section>
 
