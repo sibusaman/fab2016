@@ -167,7 +167,14 @@
         </li>
       </ul>
     </p>
-    <h2>The Arduino Permission FIx</h2>
+    <h2>The Arduino Permission Fix</h2>
+    <p>
+      After installing the Arduino IDE in Arch or Arch based Distros like Manjaro, you need to add yourself to a few groups so that you can access serial devices.
+      <br>
+      <code>gpasswd -a $USER uucp</code>
+      <br>
+      <code>gpasswd -a $USER lock</code>
+    </p>
     <p>
       You may find that you can't use Arduino IDE to program your board unless you start IDE as 'root'. There is a fix for this. Define the correct
       <b>udev.rules</b>. For the Arch based distribution which I use, I created a file <code>/etc/udev/rules.d/50-embedded_devices.rules</code>
@@ -196,11 +203,28 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2140", GROUP="user
       </pre> You can add more device IDs as you wish. Also edit the files as required for your device. For example, edit the <code>Group</code> to suit yours.
       <br> After the new rules, you need to reload the rules and make the system aware of the new rules.
       <br> For
-      <b>ARCH BAsed Distros</b>
+      <b>ARCH Based Distros</b>
       <br>
       <code>udevadm control --reload</code>
       <br>
       <code>udevadm trigger</code> To manually force udev to trigger your rules.
+    </p>
+    <p>
+      Resources
+      <ul>
+        <li>
+          <a href="http://blog.opensensors.io/blog/2014/09/13/getting-started-with-arduino-on-linux/">Getting Started With Arduino on Linux (Ubuntu)</a>
+        </li>
+        <li>
+          <a href="http://playground.arduino.cc/Learning/Linux">Installing Arduino on Linux</a>
+        </li>
+        <li>
+          <a href="http://playground.arduino.cc/Linux/Ubuntu">Install Arduino on Ubuntu Linux</a>
+        </li>
+        <li>
+          <a href="https://wiki.archlinux.org/index.php/Arduino">Arduino  On Arch/Manjaro</a>
+        </li>
+      </ul>
     </p>
     <h3>Problems</h3>
     <p>
