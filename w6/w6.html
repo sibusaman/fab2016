@@ -167,7 +167,10 @@
         </li>
       </ul>
     </p>
-    <h2>The Arduino Permission Fix</h2>
+    <h2 style="color:red">The Arduino Permission Fix</h2>
+    <p>
+      You may find that you can't use Arduino IDE to program your board unless you start IDE as 'root'. There is a fix for this.
+    </p>
     <p>
       After installing the Arduino IDE in Arch or Arch based Distros like Manjaro, you need to add yourself to a few groups so that you can access serial devices.
       <br>
@@ -176,8 +179,7 @@
       <code>gpasswd -a $USER lock</code>
     </p>
     <p>
-      You may find that you can't use Arduino IDE to program your board unless you start IDE as 'root'. There is a fix for this. Define the correct
-      <b>udev.rules</b>. For the Arch based distribution which I use, I created a file <code>/etc/udev/rules.d/50-embedded_devices.rules</code>
+      <b>Define the correct udev.rules</b>. For the Arch based distribution which I use, I created a file <code>/etc/udev/rules.d/50-embedded_devices.rules</code>
       <pre>
 # USBtinyISP Programmer rules
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="1781", ATTRS{idProduct}=="0c9f", GROUP="users", MODE="0666"
@@ -222,7 +224,7 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2140", GROUP="user
           <a href="http://playground.arduino.cc/Linux/Ubuntu">Install Arduino on Ubuntu Linux</a>
         </li>
         <li>
-          <a href="https://wiki.archlinux.org/index.php/Arduino">Arduino  On Arch/Manjaro</a>
+          <a href="https://wiki.archlinux.org/index.php/Arduino">Arduino On Arch/Manjaro</a>
         </li>
       </ul>
     </p>
