@@ -37,7 +37,33 @@
   <section>
 
     <h1>Embedded Programming</h1>
-
+    <p>
+      Goals for this module includes
+      <ul>
+        <li>Go through the microcontroller/microprocessor data sheets and document what I have learned.</li>
+        <li>Program a 'Hello World' board I made before; in my case, the Fabduino variant I made
+          <a href="../w6/w6.html">before</a>.</li>
+        <li>Try different options to program the board; I'm planning to try Arduino IDE, pure C (avr-c) and assembly.</li>
+        <li>For extra credit, try a different architecture.</li>
+      </ul>
+    </p>
+    <p>
+      I have already programmed my board using Arduino IDE. I spent some time setting up the Arduino environment, added the new 20MHz variant to the list of the boards (boards.txt), added
+      new bootloader and new makefile. I also setup the Udev rules and few other tweaks, you can read about those in my
+      <a href="../w6/w6.html">Electronics Design</a> page.
+      <br> I didn't make the bootloader hex file or the makefile, I just sources it from various locations in internet, so this is the time to learn about those too, means I will be trying
+      to compile my own Arduino bootloader and Makefile.
+    </p>
+    <h2>So my goals for this module is.</h2>
+    <p>
+      <ol>
+        <li>Go through the microcontroller/microprocessor data sheets and document what I have learned.</li>
+        <li>Try Arduino IDE, AVR-C and assembly to program the Fabudino.</li>
+        <li>Try making the Arduino bootloader for the 20MHz Fabduino.</li>
+        <li>Create a makefile for compiling the avr-c code and programming.</li>
+        <li>Since I have access to AVR and PIC boards as well as ARM (Raspberry PI), I may try some of them.</li>
+      </ol>
+    </p>
   </section>
 
 </body>
