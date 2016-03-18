@@ -51,7 +51,7 @@
       I have already programmed my board using Arduino IDE. I spent some time setting up the Arduino environment, added the new 20MHz variant to the list of the boards (boards.txt), added
       new bootloader and new makefile. I also setup the Udev rules and few other tweaks, you can read about those in my
       <a href="../w6/w6.html">Electronics Design</a> page.
-      <br> I didn't make the bootloader hex file or the makefile, I just sources it from various locations in internet, so this is the time to learn about those too, means I will be trying
+      <br> I didn't make the bootloader hex file or the makefile, I just sources it from various locations in Internet, so this is the time to learn about those too, means I will be trying
       to compile my own Arduino bootloader and Makefile.
     </p>
     <h2>So my goals for this module is.</h2>
@@ -64,6 +64,177 @@
         <li>Since I have access to AVR and PIC boards as well as ARM (Raspberry PI), I may try some of them.</li>
       </ol>
     </p>
+    <p>
+      So I have downloaded the datasheet for the 8bit AVR microcontrollers,
+      <a href="http://www.atmel.com/images/atmel-8271-8-bit-avr-microcontroller-atmega48a-48pa-88a-88pa-168a-168pa-328-328p_datasheet_complete.pdf">ATmega48A/PA/88A/PA/168A/PA/328/P
+      </a>. I will be going through this documentation as and when I require.
+      <br> For those who are interested in the board I'm using; this is a 20MHz variant of the Fabduino I made during
+      <a href="../w6/w6.html">Electronics Design</a>.
+      <br>
+      <b>So, Lets begin....</b>
+    </p>
+
+    <h2>Programming With Arduino IDE and AVR C.</h2>
+    <p>
+      <h4 style="color:orange">The Arduino Code</h4>
+      <pre>
+void setup() {
+  // initialize digital pin 13 as an output.
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(1000);              // wait for a second
+  digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
+  delay(1000);              // wait for a second
+}
+      </pre>
+      <h4 style="color:orange">The AVR C Code</h4> Essentially the same code as above.
+      <pre>
+#define F_CPU 20000000UL
+#include &ltavr/io.h&gt
+#include &ltutil/delay.h&gt
+
+#define BLINK_DELAY_MS 1000
+
+int main (void)
+{
+  /* pin 5 of PORTB as output*/
+  DDRB = (1&lt&ltPB5);
+  //DDRB = 0b00100000; //does the same thing as above line
+
+  while(1)
+  {
+    /* pin 5 high = turn led on */
+    PORTB = 0b00100000;
+    _delay_ms(BLINK_DELAY_MS);
+    /* pin 5 low = turn led off */
+    PORTB = 0b00000000;
+    _delay_ms(BLINK_DELAY_MS);
+  }
+}
+      </pre> This code is written with the help of datasheet of the AtMega328p, specifically section 14.2 on
+      <b>Ports as General Digital I/O</b> and my own experience.
+      <br> The following shell script was written to automate the compilation and uploading.
+      <pre>
+rm out*
+avr-gcc -Os -DF_CPU=20000000UL -mmcu=atmega328p -c -o out.o blink0.1.c
+avr-gcc -mmcu=atmega328p out.o -o out
+avr-objcopy -O ihex -R .eeprom out out.hex
+avrdude -F -V  -p ATMEGA328P -P usb -c usbtiny -b 115200 -U flash:w:out.hex
+
+      </pre>
+    </p>
+    <br>
+    <b style="color:green"> It's working, but, </b>
+    <br>
+
+    <h3 style="color:red">We Have A Problem</h3>
+    <p>
+      <video width="520" controls>
+        <source src="timing-1.m4v" type="video/mp4"> Your browser does not support the video tag.
+      </video>
+      <br> The video has two boards, an Arduino UNO clone based on Atmega328p but working at 16MHz and my board, based on the same chip but working at 20MHz. Both the boards are running
+      the same code for blinking the LED, one second on and one second off.
+      <br> As you can see, my board is clearly not pulsing with one second delay, it's way above one second. Something is wrong, and I guess it's the clock speed. I defined 20MHz clock
+      in program and during compilation and the chip is not running at a lower clock. So if the chip was indeed working at 20MHz I wouldn't face such an error. So I suspect three things,
+      <ol>
+        <li>I used a 8MHz resonator, (that is the only other resonator we have in the inventory)</li>
+        <li>The connection/soldering of the resonator/IC pins is not proper.</li>
+        <li>The chip was programmed with wrong FUSE bits when I programmed it the first time, I don't exactly rememberer what values I used. So if I had messed up here the chip may not
+          accept external clock.</li>
+      </ol>
+    </p>
+    <h4>So Why Is Clock Important?</h4>
+    <p>
+      For normal operations the clock is not necessary, for example you want your board to control some appliances based on some user inputs, such as turn on the lights when the sun goes
+      down, or a solar tracker using a few motors(not servos or steppers) and light sensors.
+      <br> But for anything where the timing is important, such as communication, servo/stepper/BLDC motor control etc. or even the simple blinking LED program require precise timing. The
+      Microcontroller should work at a precise known clock speed, else we will have no control over the 'time'.
+      <br> From the datasheet, I know that the chip has an internal clock and independent watchdog timers (I will explore this later). The internal clock is limited to 8MHz, you may be
+      overclock it and get higher clock speed, but that's not good, because the internal clock generator is unreliable above 8Mhz, so time critical functions such as communication will
+      fail. For any value above 8MHz, upto a limit of 20MHz we can use external clock.
+    </p>
+    <h4>'Time' To Fix The 'Timing'</h4>
+    <p>
+      First thing I did is to see what happens if I compile the program with <code>-DF_CPU=8000000UL</code> instead of<code>-DF_CPU=20000000UL</code>.
+      <br> As expected the LED starts blinking with one Second delay; so the problem is what is suspected, chip running at lower clock.
+      <br> First I tried too read the FUSE bits.
+      <br>
+      <pre>
+        sibu@manjaro emb % avrdude -P usb -b 19200 -c usbtiny -p m328p -v
+
+         avrdude: Version 6.3, compiled on Feb 21 2016 at 13:33:25
+         Copyright (c) 2000-2005 Brian Dean, http://www.bdmicro.com/
+         Copyright (c) 2007-2014 Joerg Wunsch
+
+         System wide configuration file is "/etc/avrdude.conf"
+         User configuration file is "/home/sibu/.avrduderc"
+         User configuration file does not exist or is not a regular file, skipping
+
+         Using Port                    : usb
+         Using Programmer              : usbtiny
+         Overriding Baud Rate          : 19200
+         avrdude: usbdev_open(): Found USBtinyISP, bus:device: 001:011
+         AVR Part                      : ATmega328P
+         Chip Erase delay              : 9000 us
+         PAGEL                         : PD7
+         BS2                           : PC2
+         RESET disposition             : dedicated
+         RETRY pulse                   : SCK
+         serial program mode           : yes
+         parallel program mode         : yes
+         Timeout                       : 200
+         StabDelay                     : 100
+         CmdexeDelay                   : 25
+         SyncLoops                     : 32
+         ByteDelay                     : 0
+         PollIndex                     : 3
+         PollValue                     : 0x53
+         Memory Detail                 :
+
+                                  Block Poll               Page                       Polled
+           Memory Type Mode Delay Size  Indx Paged  Size   Size #Pages MinW  MaxW   ReadBack
+           ----------- ---- ----- ----- ---- ------ ------ ---- ------ ----- ----- ---------
+           eeprom        65    20     4    0 no       1024    4      0  3600  3600 0xff 0xff
+           flash         65     6   128    0 yes     32768  128    256  4500  4500 0xff 0xff
+           lfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           hfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           efuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           lock           0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           calibration    0     0     0    0 no          1    0      0     0     0 0x00 0x00
+           signature      0     0     0    0 no          3    0      0     0     0 0x00 0x00
+
+         Programmer Type : USBtiny
+         Description     : USBtiny simple USB programmer, http://www.ladyada.net/make/usbtinyisp/
+         avrdude: programmer operation not supported
+
+         avrdude: Using SCK period of 10 usec
+         avrdude: AVR device initialized and ready to accept instructions
+
+         Reading | ################################################## | 100% 0.00s
+
+         avrdude: Device signature = 0x1e950f (probably m328p)
+         avrdude: safemode: hfuse reads as DE
+         avrdude: safemode: efuse reads as FD
+
+         avrdude: safemode: hfuse reads as DE
+         avrdude: safemode: efuse reads as FD
+         avrdude: safemode: Fuses OK (E:FD, H:DE, L:FF)
+
+         avrdude done.  Thank you.
+      </pre> Okay, so I haven't set any lfuse or hfuse. But I don't think that is the cause. Let us explore further, I'm going to check the Resonator using the DSO.
+      <br>
+      <figure>
+        <img src="debug1.jpg" alt="debug-1" width="500" onmouseover="this.width='1300'" onmouseout="this.width='500'">
+        <figcaption style="display:block; color:grey">DSO CH1 connected to the LED pin. As you can see the time period is about 5sec, hence the actual delay is 2.5sec, means the actual Freq is 20MHz/2.5 = 8Mhz! just as expected.</figcaption>
+        <img src="debug2.jpg" alt="debug-2" width="500" onmouseover="this.width='1300'" onmouseout="this.width='500'">
+        <figcaption style="display:block; color:grey">Examining the Resonator, DSO CH1 to one of the pin (other than the middle, GND) of the resonator. Confirmed my suspicion, the resonator was indeed 8MHz, people tends to mix
+          items in the component bays!</figcaption>
+      </figure>
+    </p>
+
   </section>
 
 </body>

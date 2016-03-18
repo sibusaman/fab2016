@@ -70,8 +70,7 @@
       <figure>
         <img src="sch.png" alt="schematic" width="500" onmouseover="this.width='1300'" onmouseout="this.width='500'">
         <figcaption style="display:inline; color:grey"> The schematic of the amplifier board."</figcaption>
-      </figure>
-      <figure>
+
         <img src="brd.png" alt="sch brd" width="500" onmouseover="this.width='1300'" onmouseout="this.width='500'">
         <figcaption style="display:inline; color:grey">The top layer of the board (bottom is just a ground plane, no traces. The outer rectangle is drawn in milling layer and this will be used to cutout the board after milling.</figcaption>
       </figure>
@@ -84,8 +83,7 @@
       <figure>
         <img src="pop%20top.JPG" alt="populated board top" width="500" onmouseover="this.width='900'" onmouseout="this.width='500'">
         <figcaption style="display:inline; color:grey">The amplifier/control board populated with all components (except few wires and the NTC sensor section at bottom left).</figcaption>
-      </figure>
-      <figure>
+
         <img src="pop%20bot.JPG" alt="populated board bottom" width="500" onmouseover="this.width='900'" onmouseout="this.width='500'">
         <figcaption style="display:inline; color:grey">Bottom side of the same board, you can see the 'DIY' interconnects. Well, whats with the texture you may ask; I used sand-blaster it, why not?. It had lot of fingerprints and
           other dirt on it, so 'I did what I have to do'. (or!!! what I wanted to do). And YES, this is a double sided PCB.
@@ -128,7 +126,7 @@
       8MHz. It was my first time making a custom Micro-controller board. So I looked around to see who else has made a 20MHz version, many Fabduinos are like this, so someone must have
       the required instructions.
       <br> I found a page of a previous fab academy student
-      <a href="http://fab.cba.mit.edu/classes/863.13/people/amir/work/week8.html">Amir Lazarovich</a>, he made a 20MHz Fabduino and he shared therequired files, the <code>Makefile</code>, the <code>boards.txt</code> file and the bootloader. I used these files
+      <a href="http://fab.cba.mit.edu/classes/863.13/people/amir/work/week8.html">Amir Lazarovich</a>, he made a 20MHz Fabduino and he shared the required files, the <code>Makefile</code>, the <code>boards.txt</code> file and the bootloader. I used these files
       to program my board, I copies the boards definition from this file and added a few on my own, these definitions were appended to <code>~/.arduino15/packages/arduino/hardware/avr/1.6.10/boards.txt</code>.
       Similarly I modified the Makefile located at <code>~/.arduino15/packages/arduino/hardware/avr/1.6.10/bootloaders/atmega/</code> to suit the new board.
     </p>
