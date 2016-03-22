@@ -30,6 +30,8 @@
         <a href="../w6/w6.html" class="btn" title="Electronics Design">6</a>
         <a href="../w7/w7.html" class="btn" title="Computer-Controlled Machining">7</a>
         <a href="../w8/w8.html" class="btn" title="Embedded Programming">8</a>
+        <a href="../w9/w9.html" class="btn" title="Mechanical Design">9</a>
+        <a href="../w10/w10.html" class="btn" title="Machine Design">10</a>
 
       </section>
     </div>
@@ -100,10 +102,9 @@ void loop() {
 
 int main (void)
 {
-  /* pin 5 of PORTB as output*/
-  DDRB = (1&lt&ltPB5);
-  //DDRB = 0b00100000; //does the same thing as above line
-
+  /* set (PB5) of PORTB for output*/
+  //DDRB = (1&lt&ltPB5);
+  DDRB = 0b00100000; //does the same thing as above line
   while(1)
   {
     /* pin 5 high = turn led on */
@@ -224,7 +225,10 @@ avrdude -F -V  -p ATMEGA328P -P usb -c usbtiny -b 115200 -U flash:w:out.hex
          avrdude: safemode: Fuses OK (E:FD, H:DE, L:FF)
 
          avrdude done.  Thank you.
-      </pre> Okay, so I haven't set any lfuse or hfuse. But I don't think that is the cause. Let us explore further, I'm going to check the Resonator using the DSO.
+      </pre> Okay,
+      <strike>it seems that I haven't set any lfuse or hfuse. But I don't think</strike> So the last couple of lines suggest that I have indeed set the fuses, so that is the cause. Let us explore
+      further, I'm going to check the Resonator using the DSO. Actually, if there were no fuses set, the AVR will run at default value of 1MHz, the fuse values set here says the chip
+      to expect for an external clock source, as per the DATASHEET.
       <br>
       <figure>
         <img src="debug1.jpg" alt="debug-1" width="500" onmouseover="this.width='1300'" onmouseout="this.width='500'">
@@ -233,6 +237,7 @@ avrdude -F -V  -p ATMEGA328P -P usb -c usbtiny -b 115200 -U flash:w:out.hex
         <figcaption style="display:block; color:grey">Examining the Resonator, DSO CH1 to one of the pin (other than the middle, GND) of the resonator. Confirmed my suspicion, the resonator was indeed 8MHz, people tends to mix
           items in the component bays!</figcaption>
       </figure>
+      <br> Anyway, my board is working fine now, no timing issues.
     </p>
 
   </section>
