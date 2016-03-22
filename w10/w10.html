@@ -40,9 +40,49 @@
 
     <h1>Machine Design</h1>
     <br>
+
+    <h2>Gestalt Node</h2>
+    <p>
+      For the machine week, we are recommended to use modular design, reconfigurable X,Y and Z stages. So it's better to use modular electronics too. Our instructor Francisco asked me to
+      take a look at the Gestalt Stepper Driver/Gestalt Node. He asked me to go through
+      <a href="http://mtm.cba.mit.edu/machines/stages/">mtm.cba.mit.edu/machines/stages
+      </a> page and the
+      <a href="https://github.com/imoyer/086-005">github</a> page. Later I found a few other useful resources and articles
+      <ul>
+        <li>
+          <a href="https://github.com/imoyer/gestalt/blob/master/nodes.py">The Gestalt Framework</a>
+        </li>
+        <li>An
+          <a href="https://hackaday.com/tag/ilan-moyer/">Hackaday</a> article which links to
+          <a href="http://monograph.io/james/m-mtm">this</a> wonderful page.</li>
+      </ul>
+    </p>
+    <p>
+      <figure>
+        <img src="fabnet.jpg" alt="fabnet" width="600" onmouseover="this.width='1200'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">Gestalt nodes as Stepper drivers for a single Stepper/Axis.</figcaption>
+      </figure>
+      The Gestalt node is a single stepper driver that is controlled by the PC. All the commands to the motor, how many steps to move in what direction is sent from the PC via an USB to RS-485
+      converter. The individual nodes can be then daisy chained to a bus that connects them to the RS-485 lines and the power for the motor and the board as well as few other signals.
+    </p>
     <h2>Modified Gestalt Node</h2>
     <p>
-      
+      These boards are required to make a fully module stages. Or it can be something similar, a networked stepper controller like our instructors used for his final project
+      <a href="http://fabacademy.org/archives/2013/students/sanchez.francisco/final-project/index.html">FAB 9000</a>. Anyway I accepted his challenge to make the Gestalt node in-house, because buying them will cost about $500/- as per our instructor. But the BOM will cost much less
+      than that, but there are few problems some of the components are not a part of the FabLab inventory or some components like the Stepper driver A4982 is not so common is India,
+      but we get A4988 as breakout boards and they are very cheap. Fortunately I have a several of these breakout boards with me.
+    </p>
+    <p>
+      I also thought about replacing the RS-484 with some easily available and familiar serial protocol, but decided not to, as RS-485 is using a differential pair and capable of long ranges
+      (upto 1200m) and high speed (a few Mbits/s) communication, it also supports several devices in a single daisy chain.
+    </p>
+    <p>
+      So I decided to redesign the Gestalt node mainly to use A4988 breakout. Other differences includes the modifications on on the pads and spacings so that it can be milled in MDX-20 mill.
+      <ul>
+        <li>The A4982 and several components associated will be replaced by A4988 breakout connector </li>
+        <li>Some of the passive components packages has been changed from smaller 0805 to 1206.</li>
+        <li>The pads of the connectors has been elongated so that they won't be too thin after milling, else they will come out while milling, placing the component, cleaning or while soldering.</li>
+      </ul>
     </p>
 
 
