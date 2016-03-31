@@ -82,8 +82,44 @@
         <li>The A4982 and several components associated will be replaced by A4988 breakout connector </li>
         <li>Some of the passive components packages has been changed from smaller 0805 to 1206.</li>
         <li>The pads of the connectors has been elongated so that they won't be too thin after milling, else they will come out while milling, placing the component, cleaning or while soldering.</li>
+        <li>Thicker traces for Motor Power Bus.</li>
+        <li>A4988 is capable of 1/16 micro-stepping, so I used an extra Digital PIN from the Micro-Controller.</li>
       </ul>
     </p>
+    <p>
+      <h3>Here is the original Schematic of the
+        <a href="https://github.com/imoyer/086-005/tree/master/board/rev0.3">Gestalt Node V0.3</a>
+      </h3>
+      <br>
+      <figure>
+        <img src="org-sch.png" alt="original schematic" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">Original Schematic.</figcaption>
+      </figure>
+      Now
+      <h3>Here is the modified version.</h3>
+      <figure>
+        <img src="sch.png" alt="modified schematic" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">Modified Gestalt Node Schematic with A4988.</figcaption>
+      </figure>
+      <h3>The Boards</h3>
+      <br>
+      <h3>Original</h3>
+      <figure>
+        <img src="org-brd.png" alt="original board" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">Original Gestalt Node with A4982.</figcaption>
+      </figure>
+      <h3>Modified</h3>
+      <figure>
+        <img src="brd.png" alt="modified board" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">Modified Gestalt Node with A4988.</figcaption>
+      </figure>
+      <h3>Download Eagle files.</h3>
+      <br>
+      <a href="gest-mod.brd" download="sibu-modified-gestalt-node.brd">Board</a>.     
+      <a href="gest-mod.sch" download="sibu-modified-gestalt-node.sch">Schematic</a>.
+      <a href="gest-mod.lbr" download="sibu-modified-gestalt-node.lbr">Library</a>.
+    </p>
+
 
 
   </section>
