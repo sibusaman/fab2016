@@ -115,9 +115,38 @@
       </figure>
       <h3>Download Eagle files.</h3>
       <br>
-      <a href="gest-mod.brd" download="sibu-modified-gestalt-node.brd">Board</a>.     
+      <a href="gest-mod.brd" download="sibu-modified-gestalt-node.brd">Board</a>.
       <a href="gest-mod.sch" download="sibu-modified-gestalt-node.sch">Schematic</a>.
       <a href="gest-mod.lbr" download="sibu-modified-gestalt-node.lbr">Library</a>.
+    </p>
+    <h2>Milling the Double Sided Board</h2>
+    <p>
+      This was teh first time I'm doing a double sided board, and nobody here at the lab had the experience of making the double sided board. My initial designs were supposed to be milled
+      with 1/100", in some areas. But that bit is too fragile, event the slightest misalignment (in the leveling), or the flexible nature of the Acrylic workpiece holder was sufficient
+      to break the bit. I had two failed attempt with 1/100".
+      <ul>
+        <li>First time I could mill one side of the board completely and the bit broke when I started milling the second side, I guess it happened because the rough edges on the other surface
+          might have disturbed the leveling. Another possible reason could be that I milled the entire board out of 1/100" bit, the bit clearly is not made for such heavy duty. </li>
+        <li>Second time everything was going perfectly and I used the bit to mill only some small sections where the spacing between the traces/pads are too narrow for the 1/64". So I milled
+          the board using 1/64" first and then moved on to 1/100" for some specific areas. But it failed this time too, during the transition from the cutting zone to an area which
+          was already milled by the 1/64". I cannot find a proper reason for this, though a foolish guess could be that the bit broke when the horizontal load on the bit disappeared
+          suddenly and the it caused the bit to release all the spring energy at once and broke it.</li>
+        <li>Anyway I didn't want to experiment more with this expensive fragile 1/100" bit, my final project is anyway an EDM based PCB mill, which in theory could do better than what this
+          machine can do.</li>
+      </ul>
+      <h4>Here are the few failed attempts and few test pieces.</h4>
+      <figure>
+        <img src="doub1.jpg" alt="alignment guides" width="600" onmouseover="this.width='800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">The alignment guides. The three boards were stuck to the base and helps in precisely aligning the workpiece.</figcaption>
+
+        <img src="doub3.jpg" alt="board top" width="600" onmouseover="this.width='800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">The top side of the board. This side of the board was entirely milled using 1/100", bad idea, but this side came out nicely.</figcaption>
+
+        <img src="doub2.jpg" alt="board bot" width="600" onmouseover="this.width='800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">The bottom side with the vias and holes drilled. The milling of this side is incomplete as the bit broke. But you can see that the holes are perfectly aligned. The holes are
+          drilled from both the sides, that is, the holes were drilled halfway from one side and other half from the other side. The PCB is actually 1.7mm thick so I only drill .8mm
+          from one side, leaving a thin .1mm section in between.</figcaption>
+      </figure>
     </p>
 
 
