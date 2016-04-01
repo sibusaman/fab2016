@@ -78,7 +78,7 @@
 
     <h2>Programming With Arduino IDE and AVR C.</h2>
     <p>
-      <h4 style="color:orange">The Arduino Code</h4>
+      <h4 style="color:orange">The Arduino Code </h4>For Blinking the LED.
       <pre>
 void setup() {
   // initialize digital pin 13 as an output.
@@ -239,7 +239,207 @@ avrdude -F -V  -p ATMEGA328P -P usb -c usbtiny -b 115200 -U flash:w:out.hex
       </figure>
       <br> Anyway, my board is working fine now, no timing issues.
     </p>
+    <p>
+      <h3>Assembly code for Blinking LED.</h3>
+      <br> For the assembly code, we need to create a delay between toggling the LEDs. There are no pre-built functions like <code>_delay_ms();</code> in C or <code>delay();</code> in Arduino
+      IDE. One method is to waste clock cycles, just like the functions <code>_delay_ms();</code> in C or <code>delay();</code> in Arduino does. But we will have to write our own routine
+      for this. We can waste clock cycles by making the chip loop through a few calculations or something, since we can calculate how many clock cycles are required by each of those
+      instructions and we know the time period of the clock, we can calculate the length of the loop so that we get a desired delay by executing this routine.
+    </p>
+    <p>
+      I found a few sources which would help me do this
+      <ul>
+        <li>
+          <a href="http://stackoverflow.com/questions/24097526/how-to-make-a-delay-in-assembly-for-avr-microcontrollers">http://stackoverflow.com/questions/24097526/how-to-make-a-delay-in-assembly-for-avr-microcontrollers</a>
+        </li>
+        <li>
+          <a href="http://bretmulvey.com/avrdelay.html">http://bretmulvey.com/avrdelay.html</a>
+        </li>
+      </ul>
+      <pre>
+.equ	DDRB	, 0x04
+.equ	PORTB	, 0x05
 
+.org 0
+jmp 16
+.org 16
+
+wdr
+
+main:
+    ldi r16, 0b00100000
+    out DDRB,r16            ; Set PB5 to output
+    out PORTB,r16           ; Set PB5 high
+
+loop:
+    call delay
+    sbi PORTB, 5
+    call delay
+    cbi PORTB, 5
+    rjmp loop
+delay:
+    ldi  r18, 102
+    ldi  r19, 118
+    ldi  r20, 194
+L1: dec  r20
+    brne L1
+    dec  r19
+    brne L1
+    dec  r18
+    brne L1
+    ret
+      </pre> The delay cycle is from
+      <a href="http://www.bretmulvey.com/avrdelay.html">http://www.bretmulvey.com/avrdelay.html</a>.
+    </p>
+    <p>
+      wasting the clock cycles to blink LED is not an ideal solution, in fact this is a waste of time. The chip is actually capable of doing much more and blinking an LED shouldn't consume
+      all the resources. The solution is to use Internal/External Timers and interrupts. There are three timers in Atmeg328P, out of which one, Timer1 is a 16bit timer/counter. The
+      other two, Timer0 and Timer2 are 8bit/timer/counter. There is a separate 128KHz watchdog timer too these timers/counters can be used to trigger corresponding interrupts and the
+      interrupt routine can have the instructions to toggle the LEDs.
+    </p>
+
+    <h2>Interrupt Based Blink LED Program.</h2>
+    <p>
+      <h3 style="color:orange">Arduino code.</h3>
+      <br>
+      <pre>
+// Arduino timer CTC interrupt example
+#include &ltavr/io.h&gt
+#include &ltavr/interrupt.h&gt
+#define LEDPIN 13
+void setup()
+{
+pinMode(LEDPIN, OUTPUT);
+// initialize Timer1
+cli();          // disable global interrupts
+TCCR1A = 0;     // set entire TCCR1A register to 0
+TCCR1B = 0;     // same for TCCR1B
+
+// set compare match register to desired timer count:
+OCR1A = 19530;
+
+// turn on CTC mode:
+TCCR1B |= (1 &lt&lt WGM12);
+
+// Set CS10 and CS12 bits for 1024 prescaler:
+TCCR1B |= (1 &lt&lt CS10);
+TCCR1B |= (1 &lt&lt CS12);
+
+// enable timer compare interrupt:
+TIMSK1 |= (1 &lt&lt OCIE1A);
+
+// enable global interrupts:
+sei();
+}
+
+void loop()
+{
+// main program
+}
+
+ISR(TIMER1_COMPA_vect)
+{
+digitalWrite(LEDPIN, !digitalRead(LEDPIN));
+}
+      </pre> The program is from
+      <a href="https://arduinodiy.wordpress.com/2012/02/28/timer-interrupts/">https://arduinodiy.wordpress.com/2012/02/28/timer-interrupts/</a>
+      <br> The program counts till a number <code>x</code> and when the counter reaches <code>x</code> it triggers an interrupt. This mode is called
+      <b>Clear Timer on Compare Match</b>, or
+      <b>CTC</b>. The interrupt routine has the code to toggle the LED.
+      <br>
+      <figure>
+        <img src="tccr1b-2.png" width="600" onmouseover="this.width='1000'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">TCCR1B register controlling the Timer1.</figcaption>
+        <img src="tccr1b-1.png" width="600" onmouseover="this.width='1000'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">A table from the Datasheet explaining how to set various modes of operations of the Timer1.</figcaption>
+        <img src="prescale.png" width="600" onmouseover="this.width='1000'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">A table from the Datasheet explaining how to set the prescaler.</figcaption>
+      </figure>
+      As you can see I set the <code>WGM12</code> bit high to enable CTC mode, <code>CS10</code> and <code>CS12</code> bits are set high to enable 1024 prescaler, this means for every
+      1024 clock cycles the counter will increase by one.
+      <br>
+      <br>
+      <code>OCR1A</code> is a 16bit register to store the target count, and when the counter reaches this number it will trigger an interrupt vectored to <code>0x0016</code> or <code>TIMER1_COMPA_vect</code>.
+      We can keep our 'toggle LED' program here.
+      <br>
+      <br>
+      <code>OCIE1A</code> bit of <code>TIMSK1</code> register should be set high to enable the Timer1 compare interrupt, interrupt when the timer reaches the values set at <code>OCR1A</code>.
+    </p>
+
+    <br>
+    <br>
+
+    <h3>How do we calculate the value of <code>OCR1A</code>???</h3>
+    <p>
+      We know that the Timer1 increases by one for every 1024 system clock. Suppose the system clock is at <code>F Hz</code>, the period or the time resolution is <code>1/F</code> seconds.
+      So the Timer one takes <code>1024 * 1/F</code> or <code>1024/F</code> seconds per increment. So for <code>t</code> seconds of delay, we will have <code>t*F/1024</code> counts
+      in the Timer1. So this is the value we need to keep at <code>OCR1A</code> for a <code>t</code> second delay.
+      <br>
+      <br> To be very precise the calculation is actually <code>OCR1A = (t*F/prescale) - 1</code>. The extra <code>-1</code> is to compensate the extra clock cycle required for resetting
+      the Timer1 back to Zero when it reaches the target.
+      <br>
+      <br>
+      For 20MHz clock frequency, and 1 second delay this number would be <code>19530</code>.
+    </p>
+
+    <p>
+      <br>
+      <br>
+      <h3 style="color:orange">Same Program Written in C would like like this.</h3>
+      <pre>
+//timer CTC interrupt test
+#define F_CPU 20000000UL
+#include &ltavr/io.h&gt
+#include &ltavr/interrupt.h&gt
+
+int temp=0;
+int delay=1;
+int main(void)
+{
+	DDRB = 0b00100000;
+	PORTB = (0b00100000);
+	// initialize Timer1 the 16bit timer
+	cli();				// disable global interrupts
+	TCCR1A = 0;
+	TCCR1B = 0;		// same for TCCR1*
+
+	// set compare match register to desired timer count:
+	OCR1A = 19530;
+
+	// turn on CTC mode:
+	TCCR1B |= (1 &lt&lt WGM12);
+
+	// Set CS10 and CS12 bits for 1024 prescaler:
+	TCCR1B |= (1 &lt&lt CS10);
+	TCCR1B |= (1 &lt&lt CS12);
+
+	// enable timer compare interrupt:
+	TIMSK1 |= (1 &lt&lt OCIE1A);
+
+	sei();			// enable global interrupts:
+
+	while(1)
+	{
+					//  my program
+	}
+}
+
+ISR(TIMER1_COMPA_vect)
+{
+	if (temp==1)
+	{
+		PORTB = (0b00100000);
+		temp=0;
+	}
+	else
+	{
+		PORTB = (0b00000000);
+		temp=1;
+	}
+}
+
+      </pre>
+    </p>
   </section>
 
 </body>
