@@ -340,8 +340,7 @@ void loop()
 ISR(TIMER1_COMPA_vect)
 {
 digitalWrite(LEDPIN, !digitalRead(LEDPIN));
-}
-      </pre> The program is from
+}</pre> The program is from
       <a href="https://arduinodiy.wordpress.com/2012/02/28/timer-interrupts/">https://arduinodiy.wordpress.com/2012/02/28/timer-interrupts/</a>
       <br> The program counts till a number <code>x</code> and when the counter reaches <code>x</code> it triggers an interrupt. This mode is called
       <b>Clear Timer on Compare Match</b>, or
@@ -378,8 +377,7 @@ digitalWrite(LEDPIN, !digitalRead(LEDPIN));
       <br> To be very precise the calculation is actually <code>OCR1A = (t*F/prescale) - 1</code>. The extra <code>-1</code> is to compensate the extra clock cycle required for resetting
       the Timer1 back to Zero when it reaches the target.
       <br>
-      <br>
-      For 20MHz clock frequency, and 1 second delay this number would be <code>19530</code>.
+      <br> For 20MHz clock frequency, and 1 second delay this number would be <code>19530</code>.
     </p>
 
     <p>
@@ -436,10 +434,130 @@ ISR(TIMER1_COMPA_vect)
 		PORTB = (0b00000000);
 		temp=1;
 	}
-}
-
-      </pre>
+}</pre>
     </p>
+    <h3 style="color:orange">Assembly</h3>
+    <p>
+      I tried translating the same code to assembly, though I couldn't find whats wrong with the program, it's not working, it's not blinking the LED. Anyway the code can be seen below.
+      <pre>
+; DEFINING MACROS
+.equ	PORTB	, 0x05
+.equ	DDRB	, 0x04
+.equ	TCCR1A	, 0x80	; MEMORY MAPPED
+.equ	TCCR1B	, 0x81	; MEMORY MAPPED
+.equ	OCR1AL	, 0x88	; MEMORY MAPPED
+.equ	OCR1AH	, 0x89	; MEMORY MAPPED
+.equ	TIMSK1	, 0x6f	; MEMORY MAPPED
+
+; TCCR1B - Timer/Counter1 Control Register B
+.equ	CS10	, 0	; Prescaler source of Timer/Counter 1
+.equ	CS11	, 1	; Prescaler source of Timer/Counter 1
+.equ	CS12	, 2	; Prescaler source of Timer/Counter 1
+.equ	WGM12	, 3	; Waveform Generation Mode
+.equ	WGM13	, 4	; Waveform Generation Mode
+.equ	ICES1	, 6	; Input Capture 1 Edge Select
+.equ	ICNC1	, 7	; Input Capture 1 Noise Canceler
+
+; ***** TIMER_COUNTER_1 **************
+; TIMSK1 - Timer/Counter Interrupt Mask Register
+.equ	TOIE1	, 0	; Timer/Counter1 Overflow Interrupt Enable
+.equ	OCIE1A	, 1	; Timer/Counter1 Output CompareA Match Interrupt Enable
+.equ	OCIE1B	, 2	; Timer/Counter1 Output CompareB Match Interrupt Enable
+.equ	ICIE1	, 5	; Timer/Counter1 Input Capture Interrupt Enable
+
+; ***** INTERRUPT VECTORS ************************************************
+.equ	INT0addr	, 0x0002	; External Interrupt Request 0
+.equ	INT1addr	, 0x0004	; External Interrupt Request 1
+.equ	PCI0addr	, 0x0006	; Pin Change Interrupt Request 0
+.equ	PCI1addr	, 0x0008	; Pin Change Interrupt Request 0
+.equ	PCI2addr	, 0x000a	; Pin Change Interrupt Request 1
+.equ	WDTaddr      , 0x000c	; Watchdog Time-out Interrupt
+.equ	OC2Aaddr	, 0x000e	        ; Timer/Counter2 Compare Match A
+.equ	OC2Baddr	, 0x0010	; Timer/Counter2 Compare Match A
+.equ	OVF2addr	, 0x0012	; Timer/Counter2 Overflow
+.equ	ICP1addr	, 0x0014	; Timer/Counter1 Capture Event
+.equ	OC1Aaddr	, 0x0016	; Timer/Counter1 Compare Match A****************************************************************
+.equ	OC1Baddr	, 0x0018	; Timer/Counter1 Compare Match B
+.equ	OVF1addr	, 0x001a	; Timer/Counter1 Overflow
+.equ	OC0Aaddr	, 0x001c	        ; TimerCounter0 Compare Match A
+.equ	OC0Baddr	, 0x001e	        ; TimerCounter0 Compare Match B
+.equ	OVF0addr	, 0x0020	; Timer/Couner0 Overflow
+.equ	SPIaddr         , 0x0022	; SPI Serial Transfer Complete
+.equ	URXCaddr	, 0x0024	; USART Rx Complete
+.equ	UDREaddr	, 0x0026	; USART, Data Register Empty
+.equ	UTXCaddr	, 0x0028	; USART Tx Complete
+.equ	ADCCaddr	, 0x002a	; ADC Conversion Complete
+.equ	ERDYaddr	, 0x002c	        ; EEPROM Ready
+.equ	ACIaddr         , 0x002e	        ; Analog Comparator
+.equ	TWIaddr        , 0x0030	; Two-wire Serial Interface
+.equ	SPMRaddr	, 0x0032	; Store Program Memory Read
+
+;BEGIN ACTUAL PROGRAM
+.equ	INT_VECTORS_SIZE	, 52	     ; size in words
+
+.org 0
+rjmp main
+
+.org 0x0016
+rjmp blink
+
+.org 52
+main:
+    ldi r16, 0b00100000
+    out DDRB,r16            ; Set PB5 to output
+ ;   out PORTB,r16           ; Set PB5 high
+
+    cli                     ;disable global interrupts
+
+    ldi r16, 0x00
+    sts TCCR1A, r16
+    sts TCCR1B, r16         ;set entire TCCR1* registers to 0
+
+    ; writing initial value to OCR1A
+    ;16 bit write operation, high byte first
+
+    ldi r17, 0x4c
+    ldi r16, 0x4a
+    sts OCR1AH, r17
+    sts OCR1AL, r16
+
+    clr r16
+    ;sbi r16, WGM12      ;turn on CTC mode
+    ;sbi r16, CS10           ;Set CS10 and CS12 bits for 1024 prescaler
+    ;sbi r16, CS12
+    ldi r16, 0b00001101
+    sts TCCR1B, r16
+
+    ;enable timer compare interrupt
+    clr r16
+    ldi  r16, 0b00000010
+    sts TIMSK1,  r16
+
+    sei ;enable global interrupts
+
+    ldi r20, 0x00
+
+loop:
+    ;main
+    rjmp loop
+
+blink:
+    cpi r20, 0
+    breq dim
+    rjmp light
+
+light:
+    ldi r20, 0x00
+    sbi PORTB, 5
+    rjmp loop
+
+dim:
+    ldi r20, 0xff
+    cbi PORTB, 5
+    rjmp loop
+  </pre>
+    </p>
+
   </section>
 
 </body>
