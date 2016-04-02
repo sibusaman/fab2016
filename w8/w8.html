@@ -554,8 +554,81 @@ light:
 dim:
     ldi r20, 0xff
     cbi PORTB, 5
-    rjmp loop
-  </pre>
+    rjmp loop</pre>
+    </p>
+    <p>
+      I had struggled a bit before I could 'interpret' this code into hex. I use the following commands to make the hex and flash it to the chip. I'm using the <code>avr-as</code> as
+      the interpreter.
+      <pre>
+avr-as -mmcu=atmega328p -o t.o blink-tim.asm
+avr-ld -o t t.o
+avr-objcopy -O ihex -R .eeprom t t.hex
+avrdude -F -V  -p ATMEGA328P -P usb -c usbtiny -b 115200 -U flash:w:t.hex </pre> I got many errors and I had to change the mnemonics to fix the errors, almost all the time I was
+      getting the error <code>Error: operand out of range:XXX</code>, where XXX can be some number.
+      <br>
+      <br>The main cause of this error is that I'm trying to write the 'extended I/O register' using instructions that are not designed to access them. For example <code>out</code> cannot
+      be used to write to registers
+      <ul>
+        <li><code>TCCR1A</code></li>
+        <li><code>TCCR1B</code></li>
+        <li><code>OCR1AH</code></li>
+        <li><code>OCR1AL</code></li>
+        <li><code>TIMSK1</code></li>
+      </ul>
+      There are many more, if you see the program, the first few lines, where I define the 'macros', you can see many registers are marked as '; MEMORY MAPPED', these can be written with
+      only <code>sts</code>. There might be other instructions too, but I haven't explored them all. Also I couldn't find the equivalent command of <code>sbi</code>, to set individual
+      bits, that works on these memory mapped registers. I have to load the values to a temporary register like <code>r17</code> and then use <code>sts</code> to load these values to
+      the final 'Memory mapped' register.
+      <br>
+      <br>The first few lines, where I define the 'macros', where obtained from
+      <a href="https://github.com/DarkSector/AVR/tree/master/asm/include">https://github.com/DarkSector/AVR/tree/master/asm/include</a>
+    </p>
+
+
+    <p>
+      <br>
+      <br>
+      <h2>Resources</h2>
+      <br>
+      <ul>
+        <li>
+          <a href="http://eleccelerator.com/avr-timer-calculator/">avr-timer-calculator.</a>
+        </li>
+        <li>
+          <a href="http://www.miniwebtool.com/bitwise-calculator/bit-shift/">bitwise operation calculator.</a>
+        </li>
+        <li>
+          <a href="http://www.engbedded.com/fusecalc/">Fuse Calculator.</a>
+        </li>
+        <li>
+          <a href="https://arduinodiy.wordpress.com/2015/06/22/flashing-an-led-with-attiny13/">Flashing an LED with Attiny13: Timer, Watchdog timer and Sleep
+          </a>
+        </li>
+        <li>
+          <a href="https://arduinodiy.wordpress.com/2012/02/28/timer-interrupts/">Timer interrupts</a>
+        </li>
+        <li>
+          <a href="https://arduinodiy.wordpress.com/2015/04/27/timer-interrupts-re-visited/">Timer interrupts re-visited/</a>
+        </li>
+        <li>
+          <a href="http://web.ics.purdue.edu/~jricha14/Timer_Stuff/TIMSK.htm">The Timer/Counter Interrupt Mask Register - TIMSK</a>
+        </li>
+        <li>
+          <a href="http://www.fourwalledcubicle.com/AVRArticles.php">AVR Articles</a>
+        </li>
+        <li>
+          <a href="http://tutor.al-williams.com/avrintc.htm">AVR Interrupt Handling in C</a>
+        </li>
+        <li>
+          <a href="https://sites.google.com/site/qeewiki/books/avr-guide/counter-atmega328">COUNTERS ON THE ATmega168/328</a>
+        </li>
+        <li>
+          <a href="http://extremeelectronics.co.in/avr-tutorials/pwm-signal-generation-by-using-avr-timers-part-ii/">PWM Signal Generation by Using AVR Timers</a>
+        </li>
+        <li>
+          <a href="http://www.atmel.com/images/Atmel-8271-8-bit-AVR-Microcontroller-ATmega48A-48PA-88A-88PA-168A-168PA-328-328P_datasheet_Complete.pdf">Atmel-8271-8-bit-AVR-Microcontroller-ATmega48A-48PA-88A-88PA-168A-168PA-328-328P_datasheet_Complete.pdf</a>
+        </li>
+      </ul>
     </p>
 
   </section>
