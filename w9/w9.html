@@ -39,7 +39,129 @@
   <section>
 
     <h1>Mechanical Design</h1>
-    
+    <p>
+      This time, we are supposed to design a machine. I said we, because this is a group assignment. Franc made our big batch of some 14 students at the
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/">FabLab Trivandrum</a> into two groups of 7.
+      <br> The group one consist of the following members.
+      <ul>
+        <li>
+          <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/390/index.html">Muhammed Jaseel P.</a>
+        </li>
+        <li>
+          <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/376/index.html">Nisha Johnson</a>
+        </li>
+        <li>
+          <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/465/index.html">Paul Anand</a>
+        </li>
+        <li>
+          <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/394/index.html">Rashid Thattayil</a>
+        </li>
+        <li>
+          <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/403/index.html">Vinod Kumar B. G.</a>
+        </li>
+        <li>
+          <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/424/index.html">Yogi Kulkarni</a>
+        </li>
+      </ul>
+      And last but not the least myself, the team leader, as decided by our instructor Francisco.
+    </p>
+
+    <h2>Stage 1. Ideation</h2>
+
+    <p>
+      <br> Our team members came up with the following ideas, inspired by what's seen in the links.
+      <ul>
+        <li>
+          <a href="http://shop.evilmadscientist.com/productsmenu/846">CNC Plotter</a>
+
+          <figure>
+            <img src="plotter.png" alt="CNC plotter" width="600" onmouseover="this.width='900'" onmouseout="this.width='600'" />
+          </figure>
+        </li>
+
+        <li>
+          Foam Cutter
+          <br>
+          <iframe width="420" height="315" src="https://www.youtube.com/embed/HD__nfMsVOs" frameborder="0" allowfullscreen></iframe>
+        </li>
+
+        <li>
+          Mini CNC Lathe
+          <br>
+          <iframe width="420" height="315" src="https://www.youtube.com/embed/4rrh6Pl4vow" frameborder="0" allowfullscreen></iframe>
+          <br>
+          <a href="https://github.com/Intrinsically-Sublime/Printable-Lathe-V2">Sourse</a>
+          <br>
+          <a href="http://www.alibaba.com/product-detail/W10003M-CNC-Mini-CNC-Lathe_1029200691.html">An example from Alibaba</a>
+        </li>
+        <li>
+          Drawing Rover
+          <br>
+          <iframe width="420" height="315" src="https://www.youtube.com/embed/Uo2aUUNhdKs" frameborder="0" allowfullscreen></iframe>
+        </li>
+      </ul>
+    </p>
+    <p>
+      After the internal discussion, with majority voting for 'CNC Lathe', we decided to pool the resources.
+    </p>
+
+    <h2>Pooling</h2>
+    <p>
+      We decided to gather all possible resources we could use for this project. From my own experience and a bit of reading, I knew that there are a few things that is a must for a lathe.
+      <ul>
+        <li>A Headstock with a Chuck to hold the workpiece and a motor to power the spindle.</li>
+        <li>A tool-holder/tool-post that can be moved precisely along X and Y. (one along the axis of spindle and other perpendicular to it)</li>
+      </ul>
+      And optionally a tail-stock to support the workpiece.
+      <br> I found the following designs that could be used as it is or could be modified to suit our needs.
+    </p>
+    <h3>Chuck</h3>
+    <p>
+      <a href="http://www.thingiverse.com/thing:624625">This</a> is a nice 3D-printable chuck design by
+      <a href="http://www.thingiverse.com/bobwomble/about">Bob</a>
+      and made by
+      <a href="http://www.thingiverse.com/yuri9999/about">Yuri9999</a> from
+      <a href="http://www.thingiverse.com/">Thingiverse</a>
+      <figure>
+        <img src="chuck.png" alt="CNC plotter" width="600" onmouseover="this.width='900'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">Source file available
+          <a href="http://www.thingiverse.com/thing:624625/#files">here</a>.</figcaption>
+      </figure>
+      This is already perfect design for a 3D-Printable chuck and we are going to use as it is. No need to reinvent the wheel!
+      <br>
+      <br> This chuck will hold the workpiece and will be attached to a Drill or some other motor or Dremel tool, though I am doubtful if Dremel has the sufficient Torque for the purpose,
+      it definitely has the speed.
+    </p>
+    <h3>X-Y Stages.</h3>
+    <p>
+      The tool need to move in the horizontal plane (X and Y), but unlike 3D-printer X-Y motion this need not be fast. Infact it has to be slow and precise movement. So a lead-screw is the
+      best solution. We plan to use normal threaded rod and bolts for the actuation, as this sis a prototype and proof of concept work. A screw based motion has other advantages like
+      it can withstand lot of axial load.
+      <br>
+      <br> We decided to use a simple stage, 2 guide rodes and a threaded rod at the center attached to a stepper. Something like the first picture in this page, something simple as the
+      modular stages
+      <figure>
+        <img src="recon-stage.png" alt="reconfigurable stage" width="600" onmouseover="this.width='900'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">
+          <a href="http://mtm.cba.mit.edu/machines/stages/">Source</a>.</figcaption>
+      </figure>
+      But this need to be strong too, made using plywood or acrylic. Need not be long as the examples above, we need only about 10-15cm motion along X and Y.
+    </p>
+    <h3>Overall design.</h3>
+    <p>
+      The overall final design could be based on the following sources.
+      <iframe width="420" height="315" src="https://www.youtube.com/embed/4rrh6Pl4vow" frameborder="0" allowfullscreen></iframe>
+      <br>
+      <a href="https://github.com/Intrinsically-Sublime/Printable-Lathe-V2">https://github.com/Intrinsically-Sublime/Printable-Lathe-V2</a>
+      <br>He included a 3D-printed chuck too, and powered by a drill just like how we are planing to use.
+      <br>
+      Another design that we could use is this one,
+      <br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/k-f7Dvw6EnA" frameborder="0" allowfullscreen></iframe>
+      <br>
+      The OpenSCAD file for which is available <a href="http://robinsonia.com/wp/?page_id=338">here</a>.
+    </p>
+
   </section>
 
 </body>
