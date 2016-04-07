@@ -42,6 +42,11 @@
     <p>
       This time, we are supposed to design a machine. I said we, because this is a group assignment. Franc made our big batch of some 14 students at the
       <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/">FabLab Trivandrum</a> into two groups of 7.
+      <br>
+      <br>
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">LINK TO THE GROUP PAGE</a>
+      <br>
+      <br>
       <br> The group one consist of the following members.
       <ul>
         <li>
@@ -105,7 +110,8 @@
       After the internal discussion, with majority voting for 'CNC Lathe', we decided to pool the resources for the same.
     </p>
 
-    <h2>Pooling</h2>
+    <h3>Pooling</h3>
+
     <p>
       We decided to gather all possible resources we could use for this project. From my own experience and a bit of reading, I knew that there are a few things that is a must for a lathe.
       <ul>
@@ -115,7 +121,9 @@
       And optionally a tail-stock to support the workpiece.
       <br> I found the following designs that could be used as it is or could be modified to suit our needs.
     </p>
+
     <h3>Chuck</h3>
+
     <p>
       <a href="http://www.thingiverse.com/thing:624625">This</a> is a nice 3D-printable chuck design by
       <a href="http://www.thingiverse.com/bobwomble/about">Bob</a>
@@ -132,7 +140,9 @@
       <br> This chuck will hold the workpiece and will be attached to a Drill or some other motor or Dremel tool, though I am doubtful if Dremel has the sufficient Torque for the purpose,
       it definitely has the speed.
     </p>
+
     <h3>X-Y Stages.</h3>
+
     <p>
       The tool need to move in the horizontal plane (X and Y), but unlike 3D-printer X-Y motion this need not be fast. Infact it has to be slow and precise movement. So a lead-screw is the
       best solution. We plan to use normal threaded rod and bolts for the actuation, as this sis a prototype and proof of concept work. A screw based motion has other advantages like
@@ -147,19 +157,61 @@
       </figure>
       But this need to be strong too, made using plywood or acrylic. Need not be long as the examples above, we need only about 10-15cm motion along X and Y.
     </p>
+
     <h3>Overall design.</h3>
+
     <p>
       The overall final design could be based on the following sources.
+      <br>
       <iframe width="420" height="315" src="https://www.youtube.com/embed/4rrh6Pl4vow" frameborder="0" allowfullscreen></iframe>
       <br>
       <a href="https://github.com/Intrinsically-Sublime/Printable-Lathe-V2">https://github.com/Intrinsically-Sublime/Printable-Lathe-V2</a>
       <br>He included a 3D-printed chuck too, and powered by a drill just like how we are planing to use.
-      <br>
-      Another design that we could use is this one,
+      <br> Another design that we could use is this one,
       <br>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/k-f7Dvw6EnA" frameborder="0" allowfullscreen></iframe>
-      <br>
-      The OpenSCAD file for which is available <a href="http://robinsonia.com/wp/?page_id=338">here</a>.
+      <br> The OpenSCAD file for which is available
+      <a href="http://robinsonia.com/wp/?page_id=338">here</a>.
+    </p>
+
+    <h2>Stage 2. Gathering Parts</h2>
+    <p>
+      Our instructor set a rule of not buying any mechanical components for the machine, instead salvage or make it yourself. A good suggestion, but I personally do not want to strictly adhere
+      to this. As every comp net we are going to use is bought from somewhere at sometime in some form. So I (and very likely most of us in the lab) will adhere to the rule that "we
+      will be making or salvaging whatever we could, we will do the best we can". This is because not everything could be made or salvaged, for example fasteners, threaded rod, timing
+      belts etc cannot be made, even if we could that won't even match the cheapest options we could find from the market. Then there is time and other resources involved.
+    </p>
+
+    <h3>Scrap Hunt</h3>
+
+    <p>
+      Anyway a few of us Me,
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/384/index.html">Yadu</a>,
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/400/index.html">Vishnu</a>,
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/388/index.html">Nadeem</a> and
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/398/index.html">Safwan</a> went in search of old printers from E-waste collectors. We were hopping to get Motors including stepper motors, threaded rods, smooth rods, timing belts, other useful
+      mechanical components like gears, springs, screws. We could also get many useful electronics components too, like power-bricks (power bricks of the printers), positions sensors,
+      switches, connectors etc.
+    </p>
+    <p>
+      We got a total of 5 printers at an expense of about INR 700 or about USD 10. Since we were at it we also got a few other stuff like two Weller pencils for about INR 30 (about 50 cents),
+      even if the elements are damaged the thick flexible heat resistants cable in those pencils are worth more than we spent on them.
+      <br> In summary, this is what we got.
+      <ul>
+        <li>9 X DC Motors.</li>
+        <li>1 X Stepper motors.</li>
+        <li>3 X 8mm, 40cm smooth rods.</li>
+        <li>3 X 8mm, 30cm smooth rods with a gear like tooths at 1/3rd the length.</li>
+        <li>5 X 6mm smooth rods of various lengths.</li>
+        <li>5 X long timing belts and few shorter ones.</li>
+        <li>2 X Possibly working 230V AC to 19V DC power bricks.</li>
+        <li>Many optical positions sensors and endstops.</li>
+        <li>Many screws and springs and gears of various types and sizes.</li>
+      </ul>
+      There are more items, like all those controller circuits from which we could get many tactile switches, a few Crystals, connectors etc. Then there is an HP scanner head, though I don't
+      know how to use to and couldn't find any resources. Similarly, I recovered a Epson
+      <a href="http://www.epson.com.sg/epson_singapore/explore_epson/innovation/micro_piezo.page">Micro-Piezo</a> inkjet head. This is a good material for future investigation as unlike the HP, thermal Inkjet technology, these Piezo heads can print almost any liquid, and controlling
+      this could be done with precise shaped pulses to the piezo elements. Though this would be difficult, it's not impossible.
     </p>
 
   </section>
