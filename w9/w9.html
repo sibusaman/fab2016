@@ -11,6 +11,13 @@
   <link rel="stylesheet" href="../stylesheets/mine.css">
   <link rel="stylesheet" href="cssgal.css">
   <title>9:-Mechanical Design</title>
+  <style>
+    div.codescroll {
+      width: 1500px;
+      height: 500px;
+      overflow: scroll;
+    }
+  </style>
 </head>
 
 <body>
@@ -212,6 +219,269 @@
       know how to use to and couldn't find any resources. Similarly, I recovered a Epson
       <a href="http://www.epson.com.sg/epson_singapore/explore_epson/innovation/micro_piezo.page">Micro-Piezo</a> inkjet head. This is a good material for future investigation as unlike the HP, thermal Inkjet technology, these Piezo heads can print almost any liquid, and controlling
       this could be done with precise shaped pulses to the piezo elements. Though this would be difficult, it's not impossible.
+    </p>
+
+    <h3>Other parts.</h3>
+
+    <p>
+      We got the smooth rods for the guide rails. But we couldn't get any threaded rods, and we need it for the machines. There are again multiple options, could use standard threaded rods
+      that are used for fastening, we could use long bolts, or we could use the special high quality threaded rods made for actuation, like the ones used in Ultimaker's Z-axis. There
+      was one vendor how refused to give anything short of 3m. We didn't require long threaded rods as this is a experimental build, need only smalled axes. We could use the long bolts
+      instead, and we decided to do so.
+    </p>
+    <p>
+      For the construction will be using 6mm acrylic and may be the thick, 12mm or 18mm plywood as a base. We will be making a press-fit assembly in acrylic but will also use cyano-acrylic
+      glue (super-glue) for extra strength.
+      <br> For the guide rods we planned to use 2 of the 8mm rods and 2 of the 6mm rods.
+      <br> The stepper motor to the threaded rod coupler will be printed. The design is from
+      <a href="http://www.thingiverse.com/thing:1329750">thingiverse</a>.
+
+    </p>
+
+    <h3>Electronics</h3>
+
+    <p>
+      For the electronics, The stepper motor driver chip is
+      <a href="http://www.allegromicro.com/en/Products/Motor-Driver-And-Interface-ICs/Bipolar-Stepper-Motor-Drivers/A4988.aspx">Allegro A4988</a> in a
+      <a href="https://www.pololu.com/product/1182">Breakout board</a>.
+      <br> The stepper used will be the NEMA17 ones available in the Fablab inventory.
+      <br> The main controller board can be my
+      <a href="http://reprap.org/wiki/RAMPS_1.4">RAMPS_1.4</a>. Or it could be the
+      <a href="https://github.com/imoyer/086-005/tree/master/board/rev0.3">Gestalt Node V0.3</a> mod I'm making (
+      <a href="../w10/w10.html">Documentation</a>). This board is mod so that ot uses the A4988 breakout instead of A4982.
+      <br>
+      <br>Though I really don't want to use this board for the following reasons.
+      <ul>
+        <li>We don not need the flexibility/modularity provided by the networked controller nodes.</li>
+        <li>It's a huge waste of recourses, one Atmega328p, a crystal/resonator, the RS485 transceiver chip and whole lot of other passive electronic components for just controlling a stepper
+          motor.
+        </li>
+        <li>The Atmega328p might be capable of controlling the two steppers and other things I wanted to solely.</li>
+        <li>The framework is not mature enough. Or in other words it under heavy development.</li>
+        <li>At present RAMPS 1.4 gives me more flexibility and options for expansion.</li>
+        <li>....</li>
+      </ul>
+    </p>
+
+    <h2>Stage 3. Construction</h2>
+    <p>
+      The difficult part would be the construction of the X-Y stages, the mechanical, linear movements for the X and Y axes. For some reason first we printed the parts that are required only
+      at the last, perhaps we just wanted to start and these prints were made using ready to print files from thingiverse.
+      <br>
+      <br>First we printed the parts for the chuck.
+    </p>
+
+    <h3>Chuck</h3>
+
+    <p>
+      <figure>
+        <img src="chuck.jpg" alt="chuck" width="600" onmouseover="this.width='900'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey"> Some parts for the chuck printed in Stratasys Dimension for the strength and quality it provides, this part is turned using an Allen-key and this will spin a connected gear
+          which will turn a spiral piece and will tighten or loosen the lathe jaws.</figcaption>
+        <img src="chuck-p.jpg" alt="chuck" width="600" onmouseover="this.width='900'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey"> All the parts of the chuck, except for one. The parts in green is printed in PLA in Ultimaker, these parts are very weak, cannot handle the load, but will do fine for demonstration
+          purpose and prototyping a proof of concept version. </figcaption>
+      </figure>
+      <br> More details
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">here</a>.
+    </p>
+
+    <h3>X and Y axes</h3>
+
+    <p>
+      Now comes the actual difficult part of the project. We need to design the X and Y stages using the materials available at the lab and the salvaged parts.
+      <br>
+      <br> We decided to make something simple using the smooth rods we have and the two long bolts. The basic design comes from my
+      <a href="../w3/w3.html">Computer-Controlled Cutting</a> module, where I did a press-fit box in OpenSCAD. I modified the file to get the moving carriage and the overall axes. This is the modified OpenSCAD
+      file for the X or Y carriage, The holes are meant for m8 threaded rod. The holes for the guide rods are such that either m6 or m8 smooth rods, the two set of walls has two different
+      holes.
+      <div class="codescroll">
+        <pre>
+module copy_mirror_adj(vec=[1,1,0])
+      {
+        children();
+        mirror([1,0,0])mirror(vec) children();
+      }
+module copy_mirror_opp(vec=[0,1,0])
+      {
+        children();
+        mirror(vec) children();
+      }
+module copy_tran(vec=[0,0,0])
+      {
+        children();
+        translate(vec) children();
+      }
+
+      $fn = 64; //smoother render, this number gives how many frangments are used for a circle
+
+      l = 60;
+      b = 60;
+      h = 30;
+
+      base_raise = 0;
+
+      beam_width= .4;
+      thick = 6;
+
+      g_rod_1_dia = 5.95;
+      g_rod_2_dia = 7.95;
+      t_rod_dia = 8 ;
+
+      number_of_slots_base_len = 3;
+      number_of_slots_base_wid = 3;
+      number_of_slots_wall = 2;
+
+      wall_length = l;
+      wall_width = b;
+      wall_height = h+2*thick;
+
+      num_slots_base_l = number_of_slots_base_len * 2;
+      num_slots_base_b = number_of_slots_base_wid * 2;
+      num_slots_wall_side = number_of_slots_wall * 2;
+      base_slot_width_l = l / ( num_slots_base_l + 1);
+      base_slot_width_b = b / ( num_slots_base_b + 1);
+      fit_base_slot_width_l = base_slot_width_l + beam_width;
+      fit_base_slot_width_b = base_slot_width_b + beam_width;
+      wall_slot_width = wall_height / ( num_slots_wall_side + 1);
+      fit_wall_slot_width = wall_slot_width + beam_width;
+      slot_depth = thick;
+
+
+
+
+
+//base and top
+      copy_tran([l + 2*thick +1,b + 2*thick +1, 0])
+      union(){
+          translate([-l/2,-b/2,0])
+          union(){
+            for ( i = [ 1: 2: num_slots_base_l ] ) //top and bottom slots
+            {
+                translate ( [ 0, b, 0 ] )
+                translate ( [ (i+.5) * base_slot_width_l , slot_depth/2, 0 ] )
+                square ( size = [ fit_base_slot_width_l, slot_depth ], center = true );
+
+                translate ( [ 0, -slot_depth, 0 ] )
+                translate ( [ (i+.5) * base_slot_width_l , slot_depth/2, 0 ] )
+                square ( size = [ fit_base_slot_width_l, slot_depth ], center = true );
+            }
+
+            for ( i = [ 1: 2: num_slots_base_b ] ) //left and right slots
+            {
+                translate ( [ l, 0, 0 ] )
+                translate ( [ slot_depth/2, (i+.5) * base_slot_width_b, 0 ] )
+                square( size = [ slot_depth, fit_base_slot_width_b ], center = true );
+
+                translate ( [ -slot_depth, 0, 0 ] )
+                translate ( [ slot_depth/2, (i+.5) * base_slot_width_b, 0 ] )
+                square (size = [ slot_depth, fit_base_slot_width_b ], center = true );
+            }
+            square ( size = [l, b], center = false );
+            }
+    }
+
+//wallls
+//top and bottom walls
+    copy_mirror_opp(vec=[0,1,0])
+    translate([-l/2,-b/2,0])
+    union()
+    {
+        difference()
+        {
+            translate ( [ 0, b+1+2*thick, 0 ] )
+            square ( size = [wall_length, wall_height], center = false );
+
+            for ( i = [ 1: 2: num_slots_base_l ] )
+                {
+                    translate ( [ 0, b + 1 + 2*thick + base_raise, 0 ] )
+                    translate ( [ (i+.5) * base_slot_width_l, slot_depth/2, 0 ] )
+                    square ( size = [ base_slot_width_l, slot_depth ], center = true );
+                }
+            for ( i = [ 1: 2: num_slots_base_l ] )
+                {
+                    translate ( [ 0, b + 1 + thick + base_raise + wall_height, 0 ] )
+                    translate ( [ (i+.5) * base_slot_width_l, slot_depth/2, 0 ] )
+                    square ( size = [ base_slot_width_l, slot_depth ], center = true );
+                }
+
+            translate([2*thick, b + 1 + 3*thick + base_raise + g_rod_1_dia, 0 ])
+            circle(d=g_rod_1_dia);
+
+            translate([l-2*thick, b + 1 + 3*thick + base_raise + g_rod_1_dia, 0 ])
+            circle(d=g_rod_1_dia);
+
+            translate([l/2, b + 2 + 3*thick + base_raise + t_rod_dia, 0 ])
+            circle(d=t_rod_dia);
+        }
+        for ( i = [ 0: 2: num_slots_wall_side ] )
+            translate ( [ l, b+1+2*thick, 0 ] )
+            translate ( [ slot_depth/2, (i+.5)*wall_slot_width, 0 ] )
+            square( size = [ slot_depth, wall_slot_width], center = true );
+
+        for ( i = [ 0: 2: num_slots_wall_side ] )
+            translate ( [ -slot_depth, b+1+2*thick, 0 ] )
+            translate ( [ slot_depth/2, (i+.5)*wall_slot_width, 0 ] )
+            square (size = [ slot_depth, wall_slot_width ], center = true );
+    }
+
+//left and right walls
+    copy_mirror_opp(vec=[1,0,0])
+    mirror([1, 1, 0])
+    translate([-b/2,-l/2,0])
+    union()
+    {
+        difference()
+        {
+            translate ( [ 0, l+1+2*thick, 0 ] )
+            square ( size = [wall_width, wall_height], center = false );
+
+            for ( i = [ 1: 2: num_slots_base_b ] )
+            {
+                translate ( [ 0, l + 1 + 2*thick + base_raise, 0 ] )
+                translate ( [ (i+.5) * base_slot_width_b, slot_depth/2, 0 ] )
+                square ( size = [ base_slot_width_b, slot_depth ], center = true );
+            }
+            for ( i = [ 1: 2: num_slots_base_b ] )
+            {
+                translate ( [ 0, l + 1 + thick + base_raise + wall_height, 0 ] )
+                translate ( [ (i+.5) * base_slot_width_b, slot_depth/2, 0 ] )
+                square ( size = [ base_slot_width_b, slot_depth ], center = true );
+            }
+
+            translate([2*thick, l + 1 + 3*thick + base_raise + g_rod_2_dia, 0 ])
+            circle(d=g_rod_2_dia);
+
+            translate([b-2*thick, l + 1 + 3*thick + base_raise + g_rod_2_dia, 0 ])
+            circle(d=g_rod_2_dia);
+
+            translate([b/2, l + 2 + 3*thick + base_raise + t_rod_dia, 0 ])
+            circle(d=t_rod_dia);
+        }
+
+        for ( i = [ 1: 2: num_slots_wall_side ] )
+            translate ( [ wall_width, l+1+2*thick, 0 ] )
+            translate ( [ slot_depth/2, (i+.5)*wall_slot_width, 0 ] )
+            square( size = [ slot_depth, fit_wall_slot_width], center = true );
+
+        for ( i = [ 1: 2: num_slots_wall_side ] )
+            translate ( [ -slot_depth, l+1+2*thick, 0 ] )
+            translate ( [ slot_depth/2, (i+.5)*wall_slot_width, 0 ] )
+            square (size = [ slot_depth, fit_wall_slot_width ], center = true );
+        </pre>
+      </div>
+
+      The result of this code is the following.
+      <br>
+      <figure>
+        <img src="xy-box.svg" alt="box scad" width="400" onmouseover="this.width='900'" onmouseout="this.width='400'" />
+        <figcaption style="display:block; color:grey"> The OpenSCAD render of the above code.</figcaption>
+
+        <img src="y-box.svg" alt="box svg" width="400" onmouseover="this.width='900'" onmouseout="this.width='400'" />
+        <figcaption style="display:block; color:grey"> Post processing image, Added a few bits and pieces which I will be using later as a retention washer or something. The links to all the formats are given, incase of improper scaling issues.
+        <br>
+      </figcaption>
+      </figure>
     </p>
 
   </section>
