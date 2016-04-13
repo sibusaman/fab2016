@@ -558,11 +558,28 @@ module copy_tran(vec=[0,0,0])
       </video>
     </p>
 
+    <h2>The X-Y stages at work</h2>
+    <p>
+      <video width="520" controls>
+        <source src="cnc-first step.m4v" type="video/mp4"> Your browser does not support the video tag.
+      </video>
+      <br> This is our first attempt to control the stepper via Gcode and first real test on my stage design. For more details head over to our
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">team page</a> and
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/424/index.html">Yogi's page</a> who is in charge of all the coding and stuff. Having made the X-Y stages and mounted the steppers, we mounted the stages two a single unit and used the RAMPS 1.4
+      controller board. We decided to use the PC for the hard stuff, generating the Gcode and stuff. The serial communication is used to transfer the Gcodes, individually to the controller
+      board and the Atmega2560 (Arduino Mega) will interpret the Gcode and will send the required signals to the motor controller, A4988. The micro controller need to send three set
+      of data,
+      <ul>
+        <li>Enable:- to enable/disable the </li>
+      </ul>
+    </p>
     <h1>!!!TWIST!!!</h1>
     <p>
       Perhaps you noticed it already, we started with the plan to make a lathe and ended up making a plotter. We may still continue with the lathe, the difficult part was the constructions
       and controlling of the stages, which has been achieved.
+
     </p>
+
 
   </section>
 
