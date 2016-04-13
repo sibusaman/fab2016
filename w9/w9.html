@@ -576,6 +576,8 @@ module copy_tran(vec=[0,0,0])
         <li>Steps (Pulses):- each pulse moves the stepper by one step.</li>
       </ul>
       <br>
+      <b>The motor and the board is powered by a 230V to 12V 3A AC-DC SMPS.</b>
+      <br>
       <br> You can see a video of getting both the to move using the stepper via the serial interface between the computer and the micro-controller.
       <video width="520" controls>
         <source src="cnc-2.m4v" type="video/mp4"> Your browser does not support the video tag.
@@ -596,14 +598,20 @@ module copy_tran(vec=[0,0,0])
       <br> Though we tried for a square, we got something entirely different, but wait, who writes anything right the first time, this is our 'baby' and we are teaching it.
     </p>
 
-    <h2>Problems</h2>
+    <h2>Problems and failures.</h2>
     <p>
       Some of the problems I faced with the mechanical parts.
       <ul>
         <li>For the X-axis I used two nuts and a spring to keep them 'loaded'/under pressure. This worked great, there has been absolutely no problem with this stage except for the expected
           ones due to the bolt we used. The bolt we used is not meant for actuation purpose, it's not consistent or perfectly straight, this was causing some wobbliness. </li>
-          <li>During the constructions of the   </li>
+        <li>During the constructions of the second/Y-stage, there was an issue of misalignment, the nuts glued onto the Y-carriage was offset and was causing massive load on the motor and
+          it was getting stuck/stalled. I fixed this by removing the nut and fixing it at the correct position.</li>
+        <li>The bolt used for Y has a bent/dent or some kind of damage at the middle and the motor will get stuck stalled at the middle, so far we are unable to solve this. The best solution
+          would be to get a new bolt.</li>
       </ul>
+      And finally the best for the last. The stupidest mistake I made was that, I haven't give enough clearance for the mounting screws on the stages. That is if I were to mount the Y-stage
+      to the box of X-stage, the Y carriage would get stuck because of the bolt heads. The bolt heads will come in the way of Y-carriage movement. The temporary solution is not to use the base plate of the box of the Y stage.
+      <br>This has been a bigger problem for the Y-stage as the holes for the guide rods are not symmetric(symmetry over the horizontal plane).
     </p>
 
   </section>
