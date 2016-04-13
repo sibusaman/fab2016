@@ -570,7 +570,10 @@ module copy_tran(vec=[0,0,0])
       board and the Atmega2560 (Arduino Mega) will interpret the Gcode and will send the required signals to the motor controller, A4988. The micro controller need to send three set
       of data,
       <ul>
-        <li>Enable:- to enable/disable the </li>
+        <li>Enable (high/low):- to enable/disable the stepper, enabling means the stepper will always have power, whether it moves or not. When enabled the coils are energized and when not rotating,
+          it holds it's position well, withstands a lot of load(external torque) before it spins. Obviously this has to be enabled  if one wishes to use the stepper.</li>
+          <li>Dir (high/low):- sets the direction of rotation.</li>
+          <li>Steps (Pulses):- each pulse moves the stepper by one step.</li>
       </ul>
     </p>
     <h1>!!!TWIST!!!</h1>
