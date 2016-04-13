@@ -570,19 +570,41 @@ module copy_tran(vec=[0,0,0])
       board and the Atmega2560 (Arduino Mega) will interpret the Gcode and will send the required signals to the motor controller, A4988. The micro controller need to send three set
       of data,
       <ul>
-        <li>Enable (high/low):- to enable/disable the stepper, enabling means the stepper will always have power, whether it moves or not. When enabled the coils are energized and when not rotating,
-          it holds it's position well, withstands a lot of load(external torque) before it spins. Obviously this has to be enabled  if one wishes to use the stepper.</li>
-          <li>Dir (high/low):- sets the direction of rotation.</li>
-          <li>Steps (Pulses):- each pulse moves the stepper by one step.</li>
+        <li>Enable (high/low):- to enable/disable the stepper, enabling means the stepper will always have power, whether it moves or not. When enabled the coils are energized and when
+          not rotating, it holds it's position well, withstands a lot of load(external torque) before it spins. Obviously this has to be enabled if one wishes to use the stepper.</li>
+        <li>Dir (high/low):- sets the direction of rotation.</li>
+        <li>Steps (Pulses):- each pulse moves the stepper by one step.</li>
       </ul>
+      <br>
+      <br> You can see a video of getting both the to move using the stepper via the serial interface between the computer and the micro-controller.
+      <video width="520" controls>
+        <source src="cnc-2.m4v" type="video/mp4"> Your browser does not support the video tag.
+      </video>
+      <br>
+      <h2 style="color:red">For more details on programming and controls head over to our</h2>
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">team page</a> and
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/424/index.html">Yogi's page</a>.
     </p>
     <h1>!!!TWIST!!!</h1>
     <p>
       Perhaps you noticed it already, we started with the plan to make a lathe and ended up making a plotter. We may still continue with the lathe, the difficult part was the constructions
       and controlling of the stages, which has been achieved.
-
+      <br>
+      <video width="520" controls>
+        <source src="cnc-fin.m4v" type="video/mp4"> Your browser does not support the video tag.
+      </video>
+      <br> Though we tried for a square, we got something entirely different, but wait, who writes anything right the first time, this is our 'baby' and we are teaching it.
     </p>
 
+    <h2>Problems</h2>
+    <p>
+      Some of the problems I faced with the mechanical parts.
+      <ul>
+        <li>For the X-axis I used two nuts and a spring to keep them 'loaded'/under pressure. This worked great, there has been absolutely no problem with this stage except for the expected
+          ones due to the bolt we used. The bolt we used is not meant for actuation purpose, it's not consistent or perfectly straight, this was causing some wobbliness. </li>
+          <li>During the constructions of the   </li>
+      </ul>
+    </p>
 
   </section>
 
