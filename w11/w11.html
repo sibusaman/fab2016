@@ -41,8 +41,19 @@
   <section>
 
     <h1>Input Devices</h1>
+    <p>
+      For this week we are expected to experiment with input devices, to read some data from some sensor or some other source. We can use a wide variety of sensors available. The input can
+      be as simple as a digital high/low state, or slightly complicated analogue signal which can be read using ADC, or more complicated serial communication protocols like I2C.
+    </p>
 
     <h2>2-in one Stepper/Servo Tester with Rotary Switch.</h2>
+    <p>
+      As a first step I plan to make a single board to control a stepper motor or a servo motor with a rotary switch as an input. The rotation of the switch will be read and the appropriate
+      motor will rotate in the corresponding direction. The built-in push button will be used to change the mode of operation, to begin with just two modes, one to control the servo
+      another to control the stepper. There will be two LEDs to indicate various aspects like
+      <br>..mode of operation
+      <br>..direction of rotation etc.
+    </p>
     <p>
       <figure>
         <img src="schem.png" alt="original schematic" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
@@ -60,6 +71,52 @@
       <h4>Eagle files for download:-&gt</h4>
       <a href="ss-test.sch" download="sibu-stepper-servo-tester.sch">Schematic</a>.
       <a href="ss-test.brd" download="sibu-stepper-servo-tester.lbr">Board</a>.
+    </p>
+    <p>
+      This is the picture of the completed board populated, except for the A4988 motor driver.
+      <br>
+      <figure>
+        <img src="step-ser.jpg" alt="picture of the populated pcb" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">Populated pcb.</figcaption>
+      </figure>
+      <br> Notice the two extra wires, this is because I had to edit the board slightly, because I made a stupid mistake. I had connected the <code>MOSI</code> pin to the Rotary switch,
+      this has been causing a lot of trouble. As the <code>MOSI</code> pin is always kept high or low depending on the position of the Rotary switch. Because of this, the ISP cannot
+      program the board. So I had the following modification.
+      <figure>
+        <img src="schem-mod1.png" alt="original schematic" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">Modified Schematic,
+          <b style="color:white">WHITE</b> is the deleted (removed) trace and
+          <b style="color:green">GREEN</b> is the new connection made.</figcaption>
+
+        <img src="board-mod1.png" alt="original board" width="400" onmouseover="this.width='1800'" onmouseout="this.width='400'" />
+        <figcaption style="display:block; color:grey">Modified Board,
+          <b style="color:white">WHITE</b> is the deleted (removed) trace and
+          <b style="color:green">GREEN</b> is the new connection.</figcaption>
+
+        <img src="top-64-mod1.png" alt="original schematic" width="300" onmouseover="this.width='800'" onmouseout="this.width='300'" />
+        <figcaption style="display:block; color:grey">The top layer showing the modification,
+          <b style="color:red">RED</b> is the deleted (removed) trace and
+          <b style="color:green">GREEN</b> is the new connection.</figcaption>
+      </figure>
+      <br>
+      <h4>Modified (rev-1) Eagle files for download:-&gt</h4>
+      <a href="ss-test-rev1.sch" download="sibu-stepper-servo-tester-rev1.sch">Schematic</a>.
+      <a href="ss-test-rev1.brd" download="sibu-stepper-servo-tester-rev1.lbr">Board</a>.
+    </p>
+    <h4>Make the ATTINY44 run at 8MHz using the internal RC oscillator.</h4>
+    <p>
+      The ATTINY44 will, out-of-the-box, run at 1MHZ using the internal RC oscillator. The internal RC oscillator will always run at 8MHZ. Out the box the chip is set to use a 1/8 scaling
+      as the operating frequency, to change this we need to edit the fuse.
+      <br> To operate the Attiny44 at 8 MHz using the internal oscillator the low fuse (lfuse) has to be changed to (from the default value of 62) <code>0xE2</code>.
+      <code>avrdude -P usb -b 19200 -c usbtiny -p  t44 -U lfuse:w:0xE2:m</code>
+      <figure>
+        <img src="1mhz.png" alt="default" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">Default fuse settings or factory settings.</figcaption>
+        <img src="8mhz.png" alt="default" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">Fuse settings for 8MHz, disabling <code>CKDIV8</code>.</figcaption>
+      </figure>
+      The fuse values was calculated based on the data from the data sheet and confirmed with the help of this
+      <a href="http://www.engbedded.com/fusecalc/">Fuse Calculator.</a>
     </p>
 
   </section>
