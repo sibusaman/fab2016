@@ -103,7 +103,9 @@
       <a href="ss-test-rev1.sch" download="sibu-stepper-servo-tester-rev1.sch">Schematic</a>.
       <a href="ss-test-rev1.brd" download="sibu-stepper-servo-tester-rev1.lbr">Board</a>.
     </p>
-    <h4>Make the ATTINY44 run at 8MHz using the internal RC oscillator.</h4>
+
+    <h4>Make the ATTINY44 Run at 8MHz Using the Internal RC Oscillator.</h4>
+
     <p>
       The ATTINY44 will, out-of-the-box, run at 1MHZ using the internal RC oscillator. The internal RC oscillator will always run at 8MHZ. Out the box the chip is set to use a 1/8 scaling
       as the operating frequency, to change this we need to edit the fuse.
@@ -118,6 +120,260 @@
       The fuse values was calculated based on the data from the data sheet and confirmed with the help of this
       <a href="http://www.engbedded.com/fusecalc/">Fuse Calculator.</a>
     </p>
+
+    <h2>First step, Trying to use the Rotary Switch.</h2>
+
+    <p>
+      The first step is to get the Rotary switch to work. The Rotary switch has two power connectors, and three data lines, two for rotary switch and one for inbuilt push button. The outputs
+      from the rotary switch is digital pulses. The other line for push button goes high when the button is pressed. The Push button I have has PCB witha few current limiting, pull
+      down resistors, but no denouncing capacitors.
+    </p>
+    <p>
+      From my research, I found that the rotary switch output lines change state when rotated by a step, though they are not in sync/phase. Both of the outputs change state when the position
+      of the rotary switch change, though one of them toggle before the other one. Lets call the rotary switch outputs as 'A' and 'B'. The function is like this, the data line 'A' always
+      toggles first when the knob is rotated clockwise, and the B toggles just a while after. When rotated counter-clockwise, 'B' toggles first followed by 'A', always. So we can detect
+      the direction of rotation by checking which of the pins toggles first.
+    </p>
+
+    <h4>A few of the resources:-</h4>
+
+    <p>
+      <a href="http://www.allaboutcircuits.com/projects/how-to-use-a-rotary-encoder-in-a-mcu-based-project/">http://www.allaboutcircuits.com/projects/how-to-use-a-rotary-encoder-in-a-mcu-based-project/</a>
+      <br>
+      <br>
+      <a href="http://bildr.org/2012/08/rotary-encoder-arduino/">http://bildr.org/2012/08/rotary-encoder-arduino/</a>
+    </p>
+
+    <h3>Using the Rotary Switch.</h3>
+    <p>
+      I found about a common method for using the rotary switch. Using the interrupts to detect if the device has been used or not, and then using a code (at interrupt vector) to detect the
+      direction of the rotation. One can use the following truth table to identify the direction of rotation.
+      <figure>
+        <img src="rotary-pulse.png" alt="switch pulse" width="600" />
+        <figcaption style="display:block; color:grey">Rotary switch pulse and truth table.
+          <br>image courtesy:
+          <a href="http://www.allaboutcircuits.com/projects/how-to-use-a-rotary-encoder-in-a-mcu-based-project/">http://www.allaboutcircuits.com/projects/how-to-use-a-rotary-encoder-in-a-mcu-based-project/</a>
+        </figcaption>
+      </figure>
+    </p>
+    <p>
+      I made a logic of my own to use the rotary switch. It might have it's draw backs. The idea is to use both the interprets, and the fact that each step toggles both the pins, 'A' and
+      'B'. So we will have two interrupt vectors, one for each of 'A' and 'B', and we use 'PIN CHANGE INTERRUPTS (PCINT)', which will fire interrupt whenever there is a change of logical
+      state in the pins where we enabled the 'pin change interrupts'. Though there we can enable PCINT on almost all digital pins,
+      <b style="color:red">THERE ARE ONLY TWO, ACTUAL INTERPRET VECTORS</b> for ATTINY44. In most AVR chips, in my best knowledge, there is only one actual external interrupt vector per port. So we can
+      use two interrupts without any difficulty if we connect the pins to two separate ports. But if we are going to use the push-button too, it's going to be difficult. But for the
+      time being, we can use it this way.
+    </p>
+    <p>
+      What I'm planning to do is to have an interrupt vector to set a flag <code>skip</code> and update the counter or do whatever action we are supposed to when we rotate the encoder.
+      The code is made to just skip the entire action if it sees that the flag <code>skip</code> has been set and clears it. This way for every step, even-though both the interrupts
+      get fired, action will be taken only for the first and sets the flag, the second interrupt vector just clears the flag. But when rotated the other way, the second vector takes
+      the action and sets the flag and the first vector just clears it, again only one action per step.
+      <br>
+      <br>
+      <h4>The code using the above logic to toggle a couple of LEDs.</h4>
+      <pre>
+#define F_CPU 8000000UL
+#include &ltavr/io.h&gt
+#include &ltavr/interrupt.h&gt
+int skip = 0;
+int main(void)
+{
+	DDRA = 0b01100000; Setting output pins
+	cli();				// disable global interrupts
+
+	//enble pin change interrupts on porta and portb
+	GIMSK|= (1&l&lPCIE0) | (1&l&lPCIE1); //PCCIR is GIMSK in attiny
+
+	//enable external interrupts for rotary switch
+	PCMSK0 |= (1&l&lPCINT7); //CLK or 'A' of Rotary
+	PCMSK1 |= (1&l&lPCINT9); //DT or 'B' of Rotary
+
+	sei();			// enable global interrupts:
+
+	while(1)
+	{					//  my program         	}
+}
+
+ISR(PCINT0_vect)
+{
+	if (skip == 1)
+		skip = 0;
+	else
+	{
+		PORTA = 0b00000000;
+	}
+}
+
+ISR(PCINT1_vect)
+{
+	if (skip == 1)
+		skip = 0;
+	else
+	{
+		PORTA = 0b01100000;
+	}
+}      </pre>
+    </p>
+
+    <h3>Driving the Servo.</h3>
+
+    <p>
+      Driving the servo motor is actually quite easy, with arduino it's very easy, matter of just a few lines of code with all those built-in libraries. With C it's a bit more difficult,
+      and if you goof up something while designing the circuit, well, it's even more so!
+    </p>
+    <p>
+      The servo expects 20ms or 50Hz pulse(50Hz for historical reasons
+      <!-- TODO: reason? -->) with about 5-10% duty cycle, that is for 0 degree, we will sent pulses of 1ms on time every 20ms, for full 180 degree, we sent 2ms pulse every 20ms. More precisely it is, 1ms
+      on and 19ms off for 0 degree and 2ms on and 18ms off for 180 degree. Though from my experience whats more important is the on time. The small variation in pulse frequency doesn't
+      matter much as long as the on time remains intact, I think the servo measures the on time rather than the duty cycle.
+    </p>
+    <p>
+      So what did I mess up? Well, I should have connected the Servo to one of the pins which can have PWM pulses controlled by the 16-bit timer/counter, Timer1. The pin I presently connected
+      the servo to, is controlled by the 8-bit timer/counter, Timer0. The <code>OC0A</code> pin can have 8bit PWM when the Timer0 is used in PWM mode. But 8-bit resolution is
+      not enough to control the servo precisely, with 8-bit we can only have less than 10 discrete position between 0 and 180 deg.
+    </p>
+    <p>
+      So, I could either use 8-bit timer or change the circuit or find some crazy way to actually make a 16-bit PWM with the current setup. First two options are too trivial and doesn't involve
+      much learning, I will be just doing what I already know. So I decided to make a 16-bit PWM with the current setup itself.
+      <br>
+      <br>SPOILER:- it actually works.
+    </p>
+    <p>
+      Okay, I decided to use one of my old program, a blinking LED program made for
+      <a href="../w8/w8.html">Embedded Programming</a> module. This program uses internal 16- bit timer/counter and internal interrupts when the timer reaches a particular value, to toggle the LEDs. Here I'm
+      going to modify the program to have two interrupts at two preset values, both will toggle the status of the output pin of choice. This technique is effectively like a software
+      implementation of PWM. The Timer1 can trigger two separate interrupts, on compare match with two entries, OCR1A and OCR1B. So lets get to it, here is the program.
+      <pre>
+#define F_CPU 8000000UL
+#include &ltavr/io.h&gt
+#include &ltavr/interrupt.h&gt
+int angle = 90;
+int main(void)
+{
+	DDRA = 0b01100000;
+	DDRB |= (1 &lt&lt PB2);
+
+	cli();				// disable global interrupts
+
+	TCCR1A = 0;   // initialize Timer1 the 16bit timer
+	TCCR1B = 0;
+	TCCR1B |= (1 &lt&lt CS11);       // 1/8 prescaler:
+
+	OCR1A = angle*11+520;            //scaling 0-180 to 520 to 2500, min 520=0deg 2500=180deg
+	OCR1B = 20000;                   //For 20ms cycle
+
+	TIMSK1 |= (1 &lt&lt OCIE1A);     // enable timer compare interrupt, on 'A'
+	TIMSK1 |= (1 &lt&lt OCIE1B);     // enable timer compare interrupt, on 'B'
+
+	sei();			// enable global interrupts:
+
+	while(1)
+	{					//  my program       	}
+}
+ISR(TIM1_COMPB_vect)
+{
+	PORTA = 0b01100000;      //set LED pins
+	PORTB |= (1 &lt&lt PB2); //set servo pin, at the beginning of the pulse
+	TCNT1 = 0;               //reset the timer to begin the new cycle
+}
+
+ISR(TIM1_COMPA_vect)
+{
+		PORTA = 0b00000000;   //unset LED pins
+		PORTB = 0x00;         //unset servo pin
+}      </pre>A strange thing is that if I just swap interrupt vectors, that is, to make <code>ISR(TIM1_COMPA_vect)</code> set the servo and <code>ISR(TIM1_COMPB_vect)</code> unset the servo
+      pin, the program doesn't work, reason is yet to be figured out. Ofcourse I'm exchanging the initial values too.
+    </p>
+    <p>
+      I think the program is simple and self explanatory, the calculations for the timer values has been given in
+      <a href="../w8/w8.html">Embedded Programming</a> module, not so complicated. But for some reason the actual required values are slightly off. I was expecting the values of OCR1A to be within 1000 and
+      2000, 1000 being equivalent for 0 degree, and 2000 for 180 degree. Well the actual values are off, 520 and 2500, found after trial and error. I need to access a DSO and find out
+      what happened.
+    </p>
+
+    <h3>Controlling the Servo with the Rotary Switch</h3>
+    <p>
+      Now we can put the programs together so that we can rotate the knob to turn the servo back and forth. Here is the program which does this, it's just a combination of the previous two
+      programs.
+      <pre>
+#define F_CPU 8000000UL
+#include &ltavr/io.h&gt
+#include &ltavr/interrupt.h&gt
+int skip = 0;
+int angle = 0;
+int main(void)
+{
+  DDRA = 0b01100000;
+  DDRB |= (1 &lt&lt PB2);
+
+  cli();				// disable global interrupts
+
+  TCCR1A = 0;   // initialize Timer1 the 16bit timer
+  TCCR1B = 0;
+  TCCR1B |= (1 &lt&lt CS11);       // 1/8 prescaler:
+
+  //OCR1A = angle*11+520;          //scaling 0-180 to 520 to 2500, min 520=0deg 2500=180deg
+	OCR1B = 20000;                   //For 20ms cycle
+
+	TIMSK1 |= (1 &lt&lt OCIE1A);     // enable timer compare interrupt, on 'A'
+	TIMSK1 |= (1 &lt&lt OCIE1B);     // enable timer compare interrupt, on 'B'
+
+	//enble pin change interrupts on porta and portb
+	GIMSK |= (1&lt&ltPCIE0) | (1&lt&ltPCIE1); //PCCIR is GIMSK in attiny
+
+	//enable external interrupts for rotary switch
+	PCMSK0 |= (1&lt&ltPCINT7);     //CLK of Rotary
+	PCMSK1 |= (1&lt&ltPCINT9);     //DT of Rotary
+	//PCMSK1 |= (1&lt&ltPCINT8);   //push button of Rotary
+
+	sei();			                   // enable global interrupts:
+
+	while(1)
+	{
+		OCR1A = angle*11+520;       //update timer values to control the PWM
+	}
+}
+
+ISR(TIM1_COMPA_vect)
+{
+	PORTB = 0x00;               //unset servo pin
+}
+
+ISR(TIM1_COMPB_vect)
+{
+	PORTB |= (1 &lt&lt PB2);    //set servo pin
+	TCNT1 = 0;                  //reset timer to start the cycle over.
+}
+
+ISR(PCINT0_vect)
+{
+	if (skip == 1)
+		skip = 0;                 //unset skip flag
+	else                        //update angle if skip flag is unset
+	{
+		angle -= 1;
+		PORTA = 0b00000000;       //toggle LED pins
+		if (angle &lt 0)          //keep the min angle at 0 degree
+			angle = 0;
+		skip = 1;                 //set skip flag
+	}
+}
+ISR(PCINT1_vect)
+{
+	if (skip == 1)
+		skip = 0;                 //unset skip flag
+	else                        //update angle if skip flag is unset
+	{
+		angle += 1;
+		PORTA = 0b01100000;       //toggle LED pins
+		if (angle &gt 180)        //keep the max angle at 180 degree
+			angle = 180;
+		skip = 1;                 //set skip flag
+	}
+}      </pre>
+    </p>
+
 
   </section>
 
