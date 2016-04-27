@@ -11,6 +11,13 @@
   <link rel="stylesheet" href="../stylesheets/mine.css">
   <link rel="stylesheet" href="cssgal.css">
   <title>11:-Input Devices</title>
+  <style>
+    div.codescroll {
+      width: 1500px;
+      height: 500px;
+      overflow: scroll;
+    }
+  </style>
 </head>
 
 <body>
@@ -33,7 +40,7 @@
         <a href="../w9/w9.html" class="btn" title="Mechanical Design">9</a>
         <a href="../w10/w10.html" class="btn" title="Machine Design">10</a>
         <a href="../w11/w11.html" class="btn" title="Input Devices">11</a>
-
+        <a href="../w12/w12.html" class="btn" title="Molding and Casting">12</a>
 
       </section>
     </div>
@@ -109,7 +116,7 @@
     <p>
       The ATTINY44 will, out-of-the-box, run at 1MHZ using the internal RC oscillator. The internal RC oscillator will always run at 8MHZ. Out the box the chip is set to use a 1/8 scaling
       as the operating frequency, to change this we need to edit the fuse.
-      <br> To operate the Attiny44 at 8 MHz using the internal oscillator the low fuse (lfuse) has to be changed to (from the default value of 62) <code>0xE2</code>.
+      <br> To operate the Attiny44 at 8 MHz using the internal oscillator the low fuse (lfuse) has to be changed to (from the default value of <code>0x62</code>) <code>0xE2</code>.
       <code>avrdude -P usb -b 19200 -c usbtiny -p  t44 -U lfuse:w:0xE2:m</code>
       <figure>
         <img src="1mhz.png" alt="default" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
@@ -172,7 +179,8 @@
       <br>
       <br>
       <h4>The code using the above logic to toggle a couple of LEDs.</h4>
-      <pre>
+      <div class="codescroll">
+        <pre>
 #define F_CPU 8000000UL
 #include &ltavr/io.h&gt
 #include &ltavr/interrupt.h&gt
@@ -214,6 +222,7 @@ ISR(PCINT1_vect)
 		PORTA = 0b01100000;
 	}
 }      </pre>
+      </div>
     </p>
 
     <h3>Driving the Servo.</h3>
@@ -244,7 +253,8 @@ ISR(PCINT1_vect)
       <a href="../w8/w8.html">Embedded Programming</a> module. This program uses internal 16- bit timer/counter and internal interrupts when the timer reaches a particular value, to toggle the LEDs. Here I'm
       going to modify the program to have two interrupts at two preset values, both will toggle the status of the output pin of choice. This technique is effectively like a software
       implementation of PWM. The Timer1 can trigger two separate interrupts, on compare match with two entries, OCR1A and OCR1B. So lets get to it, here is the program.
-      <pre>
+      <div class="codescroll">
+        <pre>
 #define F_CPU 8000000UL
 #include &ltavr/io.h&gt
 #include &ltavr/interrupt.h&gt
@@ -282,7 +292,9 @@ ISR(TIM1_COMPA_vect)
 {
 		PORTA = 0b00000000;   //unset LED pins
 		PORTB = 0x00;         //unset servo pin
-}      </pre>A strange thing is that if I just swap interrupt vectors, that is, to make <code>ISR(TIM1_COMPA_vect)</code> set the servo and <code>ISR(TIM1_COMPB_vect)</code> unset the servo
+}      </pre>
+      </div>
+      A strange thing is that if I just swap interrupt vectors, that is, to make <code>ISR(TIM1_COMPA_vect)</code> set the servo and <code>ISR(TIM1_COMPB_vect)</code> unset the servo
       pin, the program doesn't work, reason is yet to be figured out. Ofcourse I'm exchanging the initial values too.
     </p>
     <p>
@@ -296,7 +308,8 @@ ISR(TIM1_COMPA_vect)
     <p>
       Now we can put the programs together so that we can rotate the knob to turn the servo back and forth. Here is the program which does this, it's just a combination of the previous two
       programs.
-      <pre>
+      <div class="codescroll">
+        <pre>
 #define F_CPU 8000000UL
 #include &ltavr/io.h&gt
 #include &ltavr/interrupt.h&gt
@@ -372,8 +385,31 @@ ISR(PCINT1_vect)
 		skip = 1;                 //set skip flag
 	}
 }      </pre>
+      </div>
     </p>
 
+
+    <h2 style="color:red">Fixing the wrong FUSE settings.</h2>
+    <p>
+      AT one stage I antecedently flashed the chip with a FUSE setting that makes the chip to use external clock source, but as you can see I don't have an external clock source and I have
+      used almost all pins on the chip including the pins where we would connect the external crystal/resonator. What happened was, instead of setting the <code>lfuse</code> as
+      <code>0xE2</code> or <code>0x62</code> which would use internal clock, I accidentally set the fuse to <code>0xFF</code> which makes the chip to wait for external clock.
+    </p>
+    <p>
+      Once this was done there is no easy way back, the chip now requires external clock to function. So I had to give it one. I could use
+      <ul>
+        <li>a function generator to give external clock</li>
+        <li>or an external crystal/resonator</li>
+      </ul>
+      I decided to use an external resonator,
+    </p>
+    <figure>
+      <img src="reson.jpg" alt="box" width="600" onmouseover="this.width='900'" onmouseout="this.width='600'" />
+      <figcaption style="display:block; color:grey"> The resonator with jumper wires soldered to the three pads.
+      </figcaption>
+    </figure>
+    But still I had to remove the rotary switch and connect the resonator to the main circuit, I just had to keep the resonator wires touching the corresponding Micro-controller pins for
+    a few seconds, enough for a friend to execute the command to flash the correct fuses.
 
   </section>
 
