@@ -50,9 +50,14 @@
 
     <h1>Input Devices</h1> and output devices
     <p>
-      <h3 style="color:red">NOTE:- This is a combined assignment for both Input devices and Output Devices modules, the input is the rotary switch and the output devices are the stepper or servo motors as well as the two LEDs. </h3>
+      <h3 style="color:red">NOTE:- This is a combined assignment for both Input devices and Output Devices modules, the input is the rotary switch and the output devices are the stepper or servo motors as
+        well as the two LEDs. </h3>
     </p>
-    <br><br><br><br><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <p>
       For this week we are expected to experiment with input devices, to read some data from some sensor or some other source. We can use a wide variety of sensors available. The input can
       be as simple as a digital high/low state, or slightly complicated analogue signal which can be read using ADC, or more complicated serial communication protocols like I2C.
@@ -408,14 +413,36 @@ ISR(PCINT1_vect)
       </ul>
       I decided to use an external resonator,
     </p>
-    <figure>
-      <img src="reson.jpg" alt="box" width="600" onmouseover="this.width='900'" onmouseout="this.width='600'" />
-      <figcaption style="display:block; color:grey"> The resonator with jumper wires soldered to the three pads.
-      </figcaption>
-    </figure>
-    But still I had to remove the rotary switch and connect the resonator to the main circuit, I just had to keep the resonator wires touching the corresponding Micro-controller pins for
-    a few seconds, enough for a friend to execute the command to flash the correct fuses.
-
+    <p>
+      <figure>
+        <img src="reson.jpg" alt="box" width="600" onmouseover="this.width='900'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey"> The resonator with jumper wires soldered to the three pads.
+        </figcaption>
+      </figure>
+      But still I had to remove the rotary switch and connect the resonator to the main circuit, I just had to keep the resonator wires touching the corresponding Micro-controller pins for
+      a few seconds, enough for a friend to execute the command to flash the correct fuses.
+    </p>
+    <br>
+    <br>
+    <h2 style="color:red">De-bouncing.</h2>
+    <p>
+      The bouncing effect happens with almost every mechanical switches, the contact will become permanent only after some bouncing. As the name suggest, when you make contact its not made
+      instantly, it settles down only after a few bouncing around. This causes multiple inputs or in-case of interrupts, will fire multiple interrupts instead of one. There are multiple
+      solutions to de-bounce, you can do it in software by introducing a delay after the first input to ignore all the following bounces, or make the program to skip all the inputs
+      except for the first one, coming in a very short time, which would be improbable to be done by a human.
+    </p>
+    <p>
+      Another solution is hardware based, a capacitor of the right value, to smooth-out any short pulses. The capacitance cannot be too high as this will capacitor will take a long time to
+      get charged and once it does, it maintains that charge for some time, this will result in poor response time and will also skip inputs if given too fast. Too small capacitance
+      will not fix the bouncing issue. Generally <code>100 nF</code> capacitor is recommended. So I soldered 3 <code>100 nF</code> 0805 capacitors I had in my personal inventory
+      (FabLab do not have 100nF) to the two rotary output pins and the push button pin of the rotary switch. I also put bit of hot-melt-glue to keep them in place. The capacitors were
+      all connected between the corresponding pins and GND.
+      <figure>
+        <img src="bounce.jpg" alt="box" width="600" onmouseover="this.width='900'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey"> The de-bouncing capacitors buried under the hot-melt-glue, you can also see the ground wire.
+        </figcaption>
+      </figure>
+    </p>
   </section>
 
 </body>
