@@ -9289,6 +9289,7 @@ include  Type MT6; con-amp-mt6.lbr&lt;p&gt;
 <part name="C2" library="fork0.1" deviceset="RCL_CPOL-US" device="140CLH-0810" value="100uf"/>
 <part name="R1" library="fab" deviceset="RES-US" device="1206FAB" value="499"/>
 <part name="R2" library="fab" deviceset="RES-US" device="1206FAB" value="499"/>
+<part name="R3" library="fab" deviceset="RES-US" device="1206FAB" value="10k"/>
 </parts>
 <sheets>
 <sheet>
@@ -9302,12 +9303,12 @@ include  Type MT6; con-amp-mt6.lbr&lt;p&gt;
 <instance part="A4988" gate="G$1" x="91.44" y="81.28"/>
 <instance part="TINY44" gate="1" x="-71.12" y="91.44"/>
 <instance part="ISP" gate="G$1" x="71.12" y="137.16"/>
-<instance part="MICRO-STEP" gate="G$1" x="53.34" y="96.52" rot="R180"/>
+<instance part="MICRO-STEP" gate="G$1" x="38.1" y="96.52" rot="R180"/>
 <instance part="SUPPLY1" gate="GND" x="114.3" y="53.34"/>
 <instance part="SUPPLY2" gate="GND" x="-86.36" y="71.12"/>
 <instance part="SUPPLY3" gate="GND" x="88.9" y="132.08"/>
 <instance part="P+1" gate="VCC" x="88.9" y="142.24"/>
-<instance part="P+2" gate="VCC" x="40.64" y="116.84"/>
+<instance part="P+2" gate="VCC" x="33.02" y="116.84"/>
 <instance part="P+3" gate="VCC" x="-86.36" y="96.52"/>
 <instance part="SUPPLY4" gate="GND" x="22.86" y="86.36"/>
 <instance part="R4" gate="G$1" x="0" y="88.9" rot="R180"/>
@@ -9332,8 +9333,9 @@ include  Type MT6; con-amp-mt6.lbr&lt;p&gt;
 <instance part="ROTARY" gate="-5" x="-5.08" y="137.16" rot="R270"/>
 <instance part="C1" gate="G$1" x="-86.36" y="83.82" rot="R270"/>
 <instance part="C2" gate="G$1" x="109.22" y="88.9" rot="R90"/>
-<instance part="R1" gate="G$1" x="40.64" y="106.68" rot="R270"/>
+<instance part="R1" gate="G$1" x="33.02" y="106.68" rot="R270"/>
 <instance part="R2" gate="G$1" x="0" y="93.98" rot="R180"/>
+<instance part="R3" gate="G$1" x="55.88" y="129.54" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -9370,8 +9372,8 @@ include  Type MT6; con-amp-mt6.lbr&lt;p&gt;
 <segment>
 <pinref part="TINY44" gate="1" pin="(PCINT6/OC1A/SDA/MOSI/ADC6)PA6"/>
 <pinref part="R2" gate="G$1" pin="2"/>
-<wire x1="-20.32" y1="91.44" x2="-5.08" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="-5.08" y1="91.44" x2="-5.08" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="-20.32" y1="91.44" x2="-7.62" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="-7.62" y1="91.44" x2="-5.08" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="ISP" gate="G$1" pin="MOSI"/>
@@ -9392,7 +9394,8 @@ include  Type MT6; con-amp-mt6.lbr&lt;p&gt;
 <net name="RST" class="0">
 <segment>
 <pinref part="ISP" gate="G$1" pin="RST"/>
-<wire x1="68.58" y1="134.62" x2="58.42" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="134.62" x2="55.88" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="R3" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="TINY44" gate="1" pin="(PCINT11/RESET/DW)PB3"/>
@@ -9404,8 +9407,8 @@ include  Type MT6; con-amp-mt6.lbr&lt;p&gt;
 <pinref part="TINY44" gate="1" pin="(PCINT4/T1/SCL/USCK/ADC4)PA4"/>
 <wire x1="-20.32" y1="86.36" x2="-12.7" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="A4988" gate="G$1" pin="EN"/>
-<wire x1="-12.7" y1="86.36" x2="-12.7" y2="83.82" width="0.1524" layer="91"/>
-<wire x1="-12.7" y1="83.82" x2="66.04" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="86.36" x2="-10.16" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="-10.16" y1="83.82" x2="66.04" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="ISP" gate="G$1" pin="SCK"/>
@@ -9426,6 +9429,11 @@ include  Type MT6; con-amp-mt6.lbr&lt;p&gt;
 <pinref part="ISP" gate="G$1" pin="VCC"/>
 <wire x1="76.2" y1="139.7" x2="88.9" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="P+1" gate="VCC" pin="VCC"/>
+<pinref part="R3" gate="G$1" pin="2"/>
+<wire x1="55.88" y1="124.46" x2="93.98" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="124.46" x2="93.98" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="139.7" x2="88.9" y2="139.7" width="0.1524" layer="91"/>
+<junction x="88.9" y="139.7"/>
 </segment>
 <segment>
 <pinref part="A4988" gate="G$1" pin="VDD"/>
@@ -9433,7 +9441,7 @@ include  Type MT6; con-amp-mt6.lbr&lt;p&gt;
 </segment>
 <segment>
 <pinref part="P+2" gate="VCC" pin="VCC"/>
-<wire x1="40.64" y1="111.76" x2="40.64" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="111.76" x2="33.02" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="R1" gate="G$1" pin="1"/>
 </segment>
 <segment>
@@ -9527,8 +9535,8 @@ include  Type MT6; con-amp-mt6.lbr&lt;p&gt;
 <segment>
 <pinref part="TINY44" gate="1" pin="(PCINT0/AREF/ADC0)PA0"/>
 <pinref part="A4988" gate="G$1" pin="DIR"/>
-<wire x1="-20.32" y1="76.2" x2="-20.32" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="-20.32" y1="66.04" x2="66.04" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="-20.32" y1="76.2" x2="-10.16" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="-10.16" y1="66.04" x2="66.04" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$11" class="0">
@@ -9536,8 +9544,8 @@ include  Type MT6; con-amp-mt6.lbr&lt;p&gt;
 <pinref part="TINY44" gate="1" pin="(PCINT1/AIN0/ADC1)PA1"/>
 <wire x1="-20.32" y1="78.74" x2="-17.78" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="A4988" gate="G$1" pin="STEP"/>
-<wire x1="-17.78" y1="78.74" x2="-17.78" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="-17.78" y1="68.58" x2="66.04" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="78.74" x2="-7.62" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="-7.62" y1="68.58" x2="66.04" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$12" class="0">
@@ -9545,8 +9553,8 @@ include  Type MT6; con-amp-mt6.lbr&lt;p&gt;
 <pinref part="TINY44" gate="1" pin="(PCINT2/AIN1/ADC2)PA2"/>
 <wire x1="-20.32" y1="81.28" x2="-15.24" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="A4988" gate="G$1" pin="SLEEP"/>
-<wire x1="-15.24" y1="81.28" x2="-15.24" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="-15.24" y1="71.12" x2="66.04" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="81.28" x2="-5.08" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="-5.08" y1="71.12" x2="66.04" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$13" class="0">
@@ -9554,35 +9562,32 @@ include  Type MT6; con-amp-mt6.lbr&lt;p&gt;
 <pinref part="TINY44" gate="1" pin="(PCINT3/T0/ADC3)PA3"/>
 <wire x1="-20.32" y1="83.82" x2="-12.7" y2="83.82" width="0.1524" layer="91"/>
 <pinref part="A4988" gate="G$1" pin="RST"/>
-<wire x1="-12.7" y1="83.82" x2="-12.7" y2="73.66" width="0.1524" layer="91"/>
-<wire x1="-12.7" y1="73.66" x2="66.04" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="83.82" x2="-2.54" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="-2.54" y1="73.66" x2="66.04" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$5" class="0">
 <segment>
 <pinref part="A4988" gate="G$1" pin="MS1"/>
-<wire x1="66.04" y1="81.28" x2="63.5" y2="81.28" width="0.1524" layer="91"/>
-<wire x1="63.5" y1="81.28" x2="63.5" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="81.28" x2="58.42" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="MICRO-STEP" gate="G$1" pin="RST"/>
-<wire x1="63.5" y1="99.06" x2="55.88" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="81.28" x2="40.64" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$6" class="0">
 <segment>
 <pinref part="A4988" gate="G$1" pin="MS2"/>
-<wire x1="66.04" y1="78.74" x2="60.96" y2="78.74" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="78.74" x2="60.96" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="78.74" x2="58.42" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="MICRO-STEP" gate="G$1" pin="SCK"/>
-<wire x1="60.96" y1="96.52" x2="55.88" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="78.74" x2="40.64" y2="96.52" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$7" class="0">
 <segment>
 <pinref part="A4988" gate="G$1" pin="MS3"/>
 <wire x1="66.04" y1="76.2" x2="58.42" y2="76.2" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="76.2" x2="58.42" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="76.2" x2="40.64" y2="93.98" width="0.1524" layer="91"/>
 <pinref part="MICRO-STEP" gate="G$1" pin="MISO"/>
-<wire x1="58.42" y1="93.98" x2="55.88" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$15" class="0">
@@ -9616,17 +9621,14 @@ include  Type MT6; con-amp-mt6.lbr&lt;p&gt;
 <net name="N$17" class="0">
 <segment>
 <pinref part="MICRO-STEP" gate="G$1" pin="GND"/>
-<wire x1="48.26" y1="99.06" x2="40.64" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="R1" gate="G$1" pin="2"/>
-<wire x1="40.64" y1="99.06" x2="40.64" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="99.06" x2="33.02" y2="101.6" width="0.1524" layer="91"/>
 <pinref part="MICRO-STEP" gate="G$1" pin="VCC"/>
-<wire x1="48.26" y1="93.98" x2="40.64" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="40.64" y1="93.98" x2="40.64" y2="96.52" width="0.1524" layer="91"/>
-<junction x="40.64" y="99.06"/>
+<wire x1="33.02" y1="93.98" x2="33.02" y2="96.52" width="0.1524" layer="91"/>
+<junction x="33.02" y="99.06"/>
 <pinref part="MICRO-STEP" gate="G$1" pin="MOSI"/>
-<wire x1="40.64" y1="96.52" x2="40.64" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="96.52" x2="40.64" y2="96.52" width="0.1524" layer="91"/>
-<junction x="40.64" y="96.52"/>
+<wire x1="33.02" y1="96.52" x2="33.02" y2="99.06" width="0.1524" layer="91"/>
+<junction x="33.02" y="96.52"/>
 </segment>
 </net>
 <net name="N$20" class="0">
