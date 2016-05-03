@@ -85,7 +85,7 @@
         <figcaption style="display:block; color:grey">The top layer, the traces only for milling with 1/64" bit in MDX-20 and cutting file for use with 1/32" bit.</figcaption>
       </figure>
       <br>
-      <h4>Eagle files for download:-&gt</h4>
+      <h4>Eagle files for download:-&gt;</h4>
       <a href="ss-test.sch" download="sibu-stepper-servo-tester.sch">Schematic</a>.
       <a href="ss-test.brd" download="sibu-stepper-servo-tester.lbr">Board</a>.
     </p>
@@ -116,7 +116,7 @@
           <b style="color:green">GREEN</b> is the new connection.</figcaption>
       </figure>
       <br>
-      <h4>Modified (rev-1) Eagle files for download:-&gt</h4>
+      <h4>Modified (rev-1) Eagle files for download:-&gt;</h4>
       <a href="ss-test-rev1.sch" download="sibu-stepper-servo-tester-rev1.sch">Schematic</a>.
       <a href="ss-test-rev1.brd" download="sibu-stepper-servo-tester-rev1.lbr">Board</a>.
     </p>
@@ -174,9 +174,55 @@
       </figure>
     </p>
     <p>
-      I made a logic of my own to use the rotary switch. It might have it's draw backs. The idea is to use both the interprets, and the fact that each step toggles both the pins, 'A' and
-      'B'. So we will have two interrupt vectors, one for each of 'A' and 'B', and we use 'PIN CHANGE INTERRUPTS (PCINT)', which will fire interrupt whenever there is a change of logical
-      state in the pins where we enabled the 'pin change interrupts'. Though there we can enable PCINT on almost all digital pins,
+      If I have the rotary switch which works like above, there is a way to see of the rotation was clockwise or counter-clockwise. Assume that current pin states are <code>A</code>      and <code>B</code>, and previous pin states are <code>A'</code> and <code>B'</code>. Now if we have a number of the form <code>0bXXXX A'B'AB</code>, the values are unique for
+      each step. If you inspect, the last four bits will be.
+      <br>
+      <code>0100, 0010, 1011, 1101</code> are for CW rotation.
+      <br>
+      <code>1000, 0001, 0111, 1110</code> are for CCW rotation.
+      <br>
+    </p>
+    <p>
+      But if you think these are 8 possible combinations, which could be represented by just 3 bits, so lets see if we can simplify the patterns.
+      <br>If we set the highest bit to zero, we get.
+      <br>
+      <code>0100, 0010, 0011, 0101</code> are for CW rotation.
+      <br>
+      <code>0000, 0001, 0111, 0110</code> are for CCW rotation.
+      <br> in decimals, these values corresponds to
+      <br>
+      <code>4, 2, 3, 5</code> are for CW rotation.
+      <br>
+      <code>0, 1, 7, 6</code> are for CCW rotation.
+      <br>
+      <h4>I Could implement this using the below function</h4>
+      <pre>
+void update(void)
+{
+	rotstat *= 4;            //Shift bits to the left by 2 positions converting AB (from last postion) to A'B'
+
+	rotstat |= ( (PINA & 0b10000000) &lt;&lt; 1);      //set Rotary switch output A
+	rotstat |= ( (PINB & 0b00000010) &lt;&lt; 0);      //set Rotary switch output B
+
+	rotstat *= 0b00000111;                     //clear all bits but first three.
+
+	if ( rotstat &lt; 2 || rotstat &gt; 5)           //Decide if the rotation was CW or CCW
+	{
+		step = 1;                           //+1 for CW
+		PORTA =  0b00100000;                //turn LED on to indicate CW rotation
+	}
+	else
+	{
+		step = -1;                          //-1 for CCW
+		PORTA =  0b00000000;                //turn LED off to indicate CCW rotation
+	}
+} </pre>
+    </p>
+
+    <p>
+      But I made a logic of my own to use the rotary switch. It might have it's draw backs. The idea is to use both the interprets, and the fact that each step toggles both the pins, 'A'
+      and 'B'. So we will have two interrupt vectors, one for each of 'A' and 'B', and we use 'PIN CHANGE INTERRUPTS (PCINT)', which will fire interrupt whenever there is a change of
+      logical state in the pins where we enabled the 'pin change interrupts'. Though there we can enable PCINT on almost all digital pins,
       <b style="color:red">THERE ARE ONLY TWO, ACTUAL INTERPRET VECTORS</b> for ATTINY44. In most AVR chips, in my best knowledge, there is only one actual external interrupt vector per port. So we can
       use two interrupts without any difficulty if we connect the pins to two separate ports. But if we are going to use the push-button too, it's going to be difficult. But for the
       time being, we can use it this way.
@@ -192,12 +238,12 @@
       <div class="codescroll">
         <pre>
 #define F_CPU 8000000UL
-#include &ltavr/io.h&gt
-#include &ltavr/interrupt.h&gt
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
 int skip = 0;
 int main(void)
 {
-	DDRA = 0b01100000; Setting output pins
+	DDRA = 0b01100000; //Setting LED output pins
 	cli();				// disable global interrupts
 
 	//enble pin change interrupts on porta and portb
@@ -266,25 +312,25 @@ ISR(PCINT1_vect)
       <div class="codescroll">
         <pre>
 #define F_CPU 8000000UL
-#include &ltavr/io.h&gt
-#include &ltavr/interrupt.h&gt
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
 int angle = 90;
 int main(void)
 {
-	DDRA = 0b01100000;
-	DDRB |= (1 &lt&lt PB2);
+	DDRA = 0b01100000;         //LED Pins
+	DDRB |= (1 &lt;&lt; PB2);    //Servo Pin
 
 	cli();				// disable global interrupts
 
 	TCCR1A = 0;   // initialize Timer1 the 16bit timer
 	TCCR1B = 0;
-	TCCR1B |= (1 &lt&lt CS11);       // 1/8 prescaler:
+	TCCR1B |= (1 &lt;&lt; CS11);       // 1/8 prescaler:
 
 	OCR1A = angle*11+520;            //scaling 0-180 to 520 to 2500, min 520=0deg 2500=180deg
 	OCR1B = 20000;                   //For 20ms cycle
 
-	TIMSK1 |= (1 &lt&lt OCIE1A);     // enable timer compare interrupt, on 'A'
-	TIMSK1 |= (1 &lt&lt OCIE1B);     // enable timer compare interrupt, on 'B'
+	TIMSK1 |= (1 &lt;&lt; OCIE1A);     // enable timer compare interrupt, on 'A'
+	TIMSK1 |= (1 &lt;&lt; OCIE1B);     // enable timer compare interrupt, on 'B'
 
 	sei();			// enable global interrupts:
 
@@ -294,7 +340,7 @@ int main(void)
 ISR(TIM1_COMPB_vect)
 {
 	PORTA = 0b01100000;      //set LED pins
-	PORTB |= (1 &lt&lt PB2); //set servo pin, at the beginning of the pulse
+	PORTB |= (1 &lt;&lt; PB2); //set servo pin, at the beginning of the pulse
 	TCNT1 = 0;               //reset the timer to begin the new cycle
 }
 
@@ -321,34 +367,34 @@ ISR(TIM1_COMPA_vect)
       <div class="codescroll">
         <pre>
 #define F_CPU 8000000UL
-#include &ltavr/io.h&gt
-#include &ltavr/interrupt.h&gt
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
 int skip = 0;
 int angle = 0;
 int main(void)
 {
-  DDRA = 0b01100000;
-  DDRB |= (1 &lt&lt PB2);
+  DDRA = 0b01100000;          //LED Pins
+  DDRB |= (1 &lt;&lt; PB2);     //Servo Pin
 
   cli();				// disable global interrupts
 
   TCCR1A = 0;   // initialize Timer1 the 16bit timer
   TCCR1B = 0;
-  TCCR1B |= (1 &lt&lt CS11);       // 1/8 prescaler:
+  TCCR1B |= (1 &lt;&lt; CS11);       // 1/8 prescaler:
 
   //OCR1A = angle*11+520;          //scaling 0-180 to 520 to 2500, min 520=0deg 2500=180deg
 	OCR1B = 20000;                   //For 20ms cycle
 
-	TIMSK1 |= (1 &lt&lt OCIE1A);     // enable timer compare interrupt, on 'A'
-	TIMSK1 |= (1 &lt&lt OCIE1B);     // enable timer compare interrupt, on 'B'
+	TIMSK1 |= (1 &lt;&lt; OCIE1A);     // enable timer compare interrupt, on 'A'
+	TIMSK1 |= (1 &lt;&lt; OCIE1B);     // enable timer compare interrupt, on 'B'
 
 	//enble pin change interrupts on porta and portb
-	GIMSK |= (1&lt&ltPCIE0) | (1&lt&ltPCIE1); //PCCIR is GIMSK in attiny
+	GIMSK |= (1&lt;&lt;PCIE0) | (1&lt;&lt;PCIE1); //PCCIR is GIMSK in attiny
 
 	//enable external interrupts for rotary switch
-	PCMSK0 |= (1&lt&ltPCINT7);     //CLK of Rotary
-	PCMSK1 |= (1&lt&ltPCINT9);     //DT of Rotary
-	//PCMSK1 |= (1&lt&ltPCINT8);   //push button of Rotary
+	PCMSK0 |= (1&lt;&lt;PCINT7);     //CLK of Rotary
+	PCMSK1 |= (1&lt;&lt;PCINT9);     //DT of Rotary
+	//PCMSK1 |= (1&lt;&lt;PCINT8);   //push button of Rotary
 
 	sei();			                   // enable global interrupts:
 
@@ -365,7 +411,7 @@ ISR(TIM1_COMPA_vect)
 
 ISR(TIM1_COMPB_vect)
 {
-	PORTB |= (1 &lt&lt PB2);    //set servo pin
+	PORTB |= (1 &lt;&lt; PB2);    //set servo pin
 	TCNT1 = 0;                  //reset timer to start the cycle over.
 }
 
@@ -377,7 +423,7 @@ ISR(PCINT0_vect)
 	{
 		angle -= 1;
 		PORTA = 0b00000000;       //toggle LED pins
-		if (angle &lt 0)          //keep the min angle at 0 degree
+		if (angle &lt; 0)          //keep the min angle at 0 degree
 			angle = 0;
 		skip = 1;                 //set skip flag
 	}
@@ -390,13 +436,258 @@ ISR(PCINT1_vect)
 	{
 		angle += 1;
 		PORTA = 0b01100000;       //toggle LED pins
-		if (angle &gt 180)        //keep the max angle at 180 degree
+		if (angle &gt; 180)        //keep the max angle at 180 degree
 			angle = 180;
 		skip = 1;                 //set skip flag
 	}
 }      </pre>
       </div>
     </p>
+
+    <h2>Another Logic to Interpret Data From Rotary Switch</h2>
+    <p>
+      I had to do this because I found, on inspection with DSO, that the Rotary switch pulses are actually slightly different. During rotation, during each step, both the pins goes low and
+      comes back to high, in another words the Pins stays high, during the 'stable' positions of the rotary switch. Same with the push button, it normally stays high.
+    </p>
+    <p>
+      What you are seeing below is my drawing of the pulse generated at A and B, when the rotary switch transitions from one stable position to the next (not full 360 deg). Also Assume that
+      we enabled the pin-change-interrupt on A.
+    </p>
+    <p>
+      <figure>
+        <img src="interrupt.svg" alt="box" width="600" onmouseover="this.width='900'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey"> </figcaption>
+      </figure>
+      As you can see, there will be two interrupts fired on each step of the rotary switch. We need to ignore the second one. Also notice two important things, If we execute a code Immediately
+      after the interrupt, for example the interrupt vector the code will see that
+      <ol>
+        <li> <code>A &ne; B</code> for CW and <code>A = B</code> for CCW. </li>
+        <li> First interrupt is always on falling edge, means <code>A = 0</code> immediately after the first interrupt.</li>
+      </ol>
+      <br>SO the interrupt code could be
+      <pre>
+        if ( A == 0 )
+          if ( B == 1 )
+            step = 1;     // CW rotation on A = 0 and B = 1
+          else            // means B = 0
+            step = -1;    // CCW rotation on A = 0 and B = 0</pre>
+    </p>
+    <h4>Code Using the Above Logic.</h4>
+    <div class="codescroll">
+      <pre>
+#define F_CPU 8000000UL
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
+
+void update(void);                // function declaration
+
+int angle = 90;
+int step = 0 ;
+
+int main(void)
+{
+	DDRA = 0b01100000;
+	DDRB |= (1 &lt;&lt; PB2);
+
+	cli();                           // disable global interrupts
+	// initialize Timer1 the 16bit timer
+	TCCR1A = 0;
+	TCCR1B = 0;
+
+
+	OCR1B = 20000;                        // set compare match register to desired timer count:
+	TCCR1B |= (1 &lt;&lt; CS11);          // Use CS10, CS11 and CS12 bits for 1/8 prescaler:
+	// enable timer compare interrupt:
+  TIMSK1 |= (1 &lt;&lt; OCIE1B);
+	TIMSK1 |= (1 &lt;&lt; OCIE1A);
+
+	//enble pin change interrupts on porta and portb
+	GIMSK |= (1&lt;&lt;PCIE0) | (1&lt;&lt;PCIE1); //PCICR is GIMSK in attiny
+
+	//enable external interrupts for rotary switch
+	PCMSK0 |= (1&lt;&lt;PCINT7);          //CLK of Rotary
+	//PCMSK1 |= (1&lt;&lt;PCINT9);        //DT of Rotary
+	//PCMSK1 |= (1&lt;&lt;PCINT8);        //push button of Rotary
+
+	sei();                                // enable global interrupts:
+
+	while(1)
+	{
+		OCR1A = angle*11+520;
+	}
+}
+
+ISR(TIM1_COMPA_vect)
+{
+	PORTB = 0x00;
+}
+
+ISR(TIM1_COMPB_vect)
+{
+	PORTB |= (1 &lt;&lt; PB2);
+	TCNT1 = 0;
+}
+
+ISR(PCINT1_vect)
+{
+
+}
+ISR(PCINT0_vect)
+{
+	if ((PINB & 0b00000001))
+	{
+		update();
+		PORTA ^=  0b01000000;
+	}
+
+	angle += step;
+	step = 0;
+	if (angle &gt; 180)
+		angle = 180;
+	else if (angle &lt; 0)
+		angle = 0;
+}
+void update(void)
+{
+	if ( PINA & 0b10000000 )
+		if ( PINB & 0b00000010 )
+		{
+			step = 1;                     //+1 for CW
+			PORTA =  0b00100000;
+		}
+		else
+		{
+			step = -1;                    //-1 for CCW
+			PORTA =  0b00000000;
+		}
+}      </pre>
+    </div>
+
+    <h2>Stepper</h2>
+    <p>
+      Controlling the stepper motor with the Micr-Controller and the A4988 driver is very easy. At bare minimum, the driver need only two inputs from the Micro-Controller,
+      <ul>
+        <li>Step:- This is input is given as pulses, the frequency of which determines the rotational frequency of the motor, and the number of pulses corresponds to number of steps. So
+          if we need the stepper to move 10 steps, we just give 10 pules, and the rate at which we give the pulse determines how fast the stepper moves those 10 steps.</li>
+        <li>Dir:- This controls the direction in which the stepper moves. This pin can be High or Low, and obviously high and low corresponds to the CW and CCW rotations.</li>
+      </ul>
+      Then there are more pins which we could use or somehow bypass. Including
+      <br>
+      <br>
+      <ul>
+        <li><code>MS1, MS2, MS3</code> :- Micro-stepping selection
+          <br> Normally low, could be set high as per the table to enable micro-stepping for higher resolution movements.
+          <br>
+          <img src="micro-step.png" alt="debug-2" width="500" onmouseover="this.width='700'" onmouseout="this.width='500'">
+          <br>
+        </li>
+        <li><code style="text-decoration: overline">Enable</code>:- (Normally Low) Setting this Pin High, will disable the FETs in the chip, killing the power to the motor.</li>
+        <li><code style="text-decoration: overline">Sleep</code>:- (Normally High) Set this pin Low to put the chip in sleep mode to save power when the Motor/Chip is not in use.</li>
+        <li><code style="text-decoration: overline">Reset</code>:- (Normally Floating) This is a floating pin and should be kept high to use the motor normally, when set low the motor shall
+          return to the original position the motor was in when the chip was turned on. Should refer to the Data-sheet for more information. If this pin is low all STEP signals are
+          ignored.
+        </li>
+      </ul>
+
+      <h3>Below is the Code For Controlling the Speed and Direction of the Stepper Motor Using the Rotary Switch.</h3>
+
+      <div class="codescroll">
+        <pre>
+#define F_CPU 8000000UL
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
+/*
+  PA0		dir
+  PA1		step
+  PA2		sleep
+  PA3		reset
+  PA4		enable
+  PA5		orange LED
+  PA6		Blue LED
+
+  Rotate the knob to adjust the speed of rotation and use the built-in push-button to toggle the direction.
+ */
+
+int temp = 20000;
+int step = 1000;
+
+void update(void);
+
+int main(void)
+{
+	DDRA |= (1 &lt;&lt; PA6) | (1 &lt;&lt; PA5) | (1 &lt;&lt; PA4) |  (1 &lt;&lt; PA3) |(1 &lt;&lt; PA2) | (1 &lt;&lt; PA1) | (1 &lt;&lt; PA0);
+	PORTA |= (0 &lt;&lt; PA5);  //orange led
+	// initialize Timer1 the 16bit timer
+	cli();				// disable global interrupts
+	TCCR1A = 0;
+	TCCR1B = 0;
+
+	// set compare match register to desired timer count:
+	OCR1A = temp;
+
+	TCCR1B |= (1 &lt;&lt; WGM12);		// turn on CTC mode:
+	TCCR1B |= (1 &lt;&lt; CS11);		// Use CS10, CS11 and CS12 bits for 1/8 prescaler:
+
+	// enable timer compare interrupt:
+	TIMSK1 |= (1 &lt;&lt; OCIE1A);
+
+	//enble pin change interrupts on porta and portb
+	GIMSK |= (1&lt;&lt;PCIE0) | (1&lt;&lt;PCIE1); //PCICR is GIMSK in attiny
+
+	//enable external interrupts for rotary switch
+	PCMSK0 |= (1&lt;&lt;PCINT7); //CLK of Rotary
+	PCMSK1 |= (1&lt;&lt;PCINT8); //push button of Rotary
+
+	sei();			// enable global interrupts:
+
+	PORTA |= (1&lt;&lt;PA3) | (1&lt;&lt;PA2);   //sleep and reset
+	PORTA |=  (0 &lt;&lt; PA4);			//enable
+	while(1)
+	{
+		OCR1A = temp;
+	}
+}
+
+ISR(TIM1_COMPA_vect)
+{
+	PORTA ^= (1&lt;&lt;PA1);
+	PORTA ^= (1&lt;&lt;PA5);
+}
+ISR(PCINT1_vect)
+{
+	if ((PINB & 0b00000001))
+	{
+		PORTA ^=  (1&lt;&lt;PA6);
+		PORTA ^=  (1&lt;&lt;PA0);		//change direction on push button
+	}
+}
+
+ISR(PCINT0_vect)
+{
+	if ((PINB & 0b00000001))
+		update();
+}
+void update(void)
+{
+	if ( PINA & 0b10000000 )
+		if ( PINB & 0b00000010 )
+			temp -= step;
+		else
+			temp += step;
+	step = temp/30;
+	if (temp &gt; 25000)
+		temp = 25000;
+	if (temp &lt; 600)
+		temp=600;
+	if (step &lt; 10)
+		step = 10;
+}        </pre>
+
+      </div>
+    </p>
+
+
+
 
 
     <h2 style="color:red">Fixing the wrong FUSE settings.</h2>

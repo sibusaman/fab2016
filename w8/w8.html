@@ -98,15 +98,15 @@ void loop() {
       <h4 style="color:orange">The AVR C Code</h4> Essentially the same code as above.
       <pre>
 #define F_CPU 20000000UL
-#include &ltavr/io.h&gt
-#include &ltutil/delay.h&gt
+#include &lt;avr/io.h&gt;
+#include &lt;util/delay.h&gt;
 
 #define BLINK_DELAY_MS 1000
 
 int main (void)
 {
   /* set (PB5) of PORTB for output*/
-  //DDRB = (1&lt&ltPB5);
+  //DDRB = (1&lt;&lt;PB5);
   DDRB = 0b00100000; //does the same thing as above line
   while(1)
   {
@@ -359,8 +359,8 @@ L1: dec  r20
       <br>
       <pre>
 // Arduino timer CTC interrupt example
-#include &ltavr/io.h&gt
-#include &ltavr/interrupt.h&gt
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
 #define LEDPIN 13
 void setup()
 {
@@ -374,14 +374,14 @@ TCCR1B = 0;     // same for TCCR1B
 OCR1A = 19530;
 
 // turn on CTC mode:
-TCCR1B |= (1 &lt&lt WGM12);
+TCCR1B |= (1 &lt;&lt; WGM12);
 
 // Set CS10 and CS12 bits for 1024 prescaler:
-TCCR1B |= (1 &lt&lt CS10);
-TCCR1B |= (1 &lt&lt CS12);
+TCCR1B |= (1 &lt;&lt; CS10);
+TCCR1B |= (1 &lt;&lt; CS12);
 
 // enable timer compare interrupt:
-TIMSK1 |= (1 &lt&lt OCIE1A);
+TIMSK1 |= (1 &lt;&lt; OCIE1A);
 
 // enable global interrupts:
 sei();
@@ -442,8 +442,8 @@ digitalWrite(LEDPIN, !digitalRead(LEDPIN));
       <pre>
 //timer CTC interrupt test
 #define F_CPU 20000000UL
-#include &ltavr/io.h&gt
-#include &ltavr/interrupt.h&gt
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
 
 int temp=0;
 int delay=1;
@@ -460,14 +460,14 @@ int main(void)
 	OCR1A = 19530;
 
 	// turn on CTC mode:
-	TCCR1B |= (1 &lt&lt WGM12);
+	TCCR1B |= (1 &lt;&lt; WGM12);
 
 	// Set CS10 and CS12 bits for 1024 prescaler:
-	TCCR1B |= (1 &lt&lt CS10);
-	TCCR1B |= (1 &lt&lt CS12);
+	TCCR1B |= (1 &lt;&lt; CS10);
+	TCCR1B |= (1 &lt;&lt; CS12);
 
 	// enable timer compare interrupt:
-	TIMSK1 |= (1 &lt&lt OCIE1A);
+	TIMSK1 |= (1 &lt;&lt; OCIE1A);
 
 	sei();			// enable global interrupts:
 
