@@ -116,8 +116,7 @@
           <b style="color:red">RED</b> is the deleted (removed) trace and
           <b style="color:green">GREEN</b> is the new connection.</figcaption>
       </figure>
-      <br>
-      I also added a pull-up resistor for <code>RST</code>.
+      <br> I also added a pull-up resistor for <code>RST</code>.
       <br>
       <h4>Modified (rev-1) Eagle files for download:-&gt;</h4>
       <a href="ss-test-rev1.sch" download="sibu-stepper-servo-tester-rev1.sch">Schematic</a>.
@@ -565,6 +564,147 @@ void update(void)
 		}
 }      </pre>
     </div>
+
+    <br>
+    <br>
+    <h3>The Final Code for Controlling Servo, BLDC Motor ESC.</h3>
+    <p>
+      The following code will enable two modes of operation, which can be toggled using the push button. One of the mode is for fine adjustments and the other is for coarse. In coarse the
+      servo moves by 1 degree for every step of the rotary switch. In fine, one step if the rotary switch corresponds something a little less than 1/10th of a degree.
+      <br> The program can be used to control the hobby
+      <a href="https://en.wikipedia.org/wiki/Electronic_speed_control">ESC (Electronic Speed Control) of
+        <a href="https://en.wikipedia.org/wiki/Brushless_DC_electric_motor"></a>BLDC (BrushLess DC electric motor)</a> too. The program is meant to
+      <a href="https://www.youtube.com/watch?v=OOplk52R4no">calibrate</a> the ESC. This is because the board sends the full 'throttle' when it starts and the ESC will remember this and will wait for the minimum 'throttle'. Once you push
+      the button, the the PWM immediately goes to a level corresponds to lowest 'throttle' level. This will calibrate the ESC.
+    </p>
+<div class="codescroll">
+  <pre>
+#define F_CPU 8000000UL
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
+
+void update(void); 			// function declaration
+/*
+  PA5		orange LED
+  PA6		Blue LED
+  PB2		Servo Pin
+*/
+int min = 520;		//1554 for ESC and 520 for servo
+int max = 2500;		//1775 for ESC and2500 for servo
+int servo_pos = 2500;
+int step = 11;
+int rot_dir = 0 ;
+int calib = 1;
+int sub_mod = 1; //sub_mod =1 for servo mode and 0 for ESC mod
+
+int main(void)
+{
+	DDRA |= (1 &lt;&lt; PA6)|(1 &lt;&lt; PA5);		 //blue led and Orange LED
+	DDRB |= (1 &lt;&lt; PB2);				//servo pin
+
+	cli();				// disable global interrupts
+	// initialize Timer1 the 16bit timer
+	TCCR1A = 0;
+	TCCR1B = 0;
+
+	// set compare match register to desired timer count:
+	//OCR1A = servo_pos*11+520; //min 520 0deg 2500 180deg
+	OCR1B = 20000;
+
+	// Use CS10, CS11 and CS12 bits for 1/8 prescaler:
+	TCCR1B |= (1 &lt;&lt; CS11);
+
+	// enable timer compare interrupt:
+	TIMSK1 |= (1 &lt;&lt; OCIE1A);
+	TIMSK1 |= (1 &lt;&lt; OCIE1B);
+
+	//enble pin change interrupts on porta and portb
+	GIMSK |= (1&lt;&lt;PCIE0) | (1&lt;&lt;PCIE1); //PCICR is GIMSK in attiny
+
+	//enable external interrupts for rotary switch
+	PCMSK0 |= (1&lt;&lt;PCINT7); //CLK of Rotary
+	PCMSK1 |= (1&lt;&lt;PCINT8); //push button of Rotary
+
+	sei();			// enable global interrupts:
+
+	while(1)
+	{
+		OCR1A = servo_pos;
+	}
+}
+
+ISR(TIM1_COMPA_vect)
+{
+	PORTB = 0x00;
+}
+
+ISR(TIM1_COMPB_vect)
+{
+	PORTB |= (1 &lt;&lt; PB2);
+	TCNT1 = 0;
+}
+
+ISR(PCINT1_vect)
+{
+	if (PINB & 0b00000001)
+	{
+		if (sub_mod)
+		{
+			PORTA &=  ~ (1 &lt;&lt; PA6);	//clear LED
+			step = 11;
+			sub_mod = 0;
+		}
+		else
+		{
+			PORTA |=   (1 &lt;&lt; PA6);
+			step = 1;
+			sub_mod = 1;
+		}
+		if (calib)
+		{
+			servo_pos = min;
+			calib = 0;
+		}
+	}
+}
+
+ISR(PCINT0_vect)
+{
+	if (PINB & 0b00000001)   //if push button is not pressed and held
+		update();
+
+	servo_pos += rot_dir;
+	rot_dir = 0;
+	if (servo_pos &gt; max)
+		servo_pos = max;
+	else if (servo_pos &lt; min)
+		servo_pos = min;
+}
+void update(void)
+{
+	if ( PINA & 0b10000000 )
+		if ( PINB & 0b00000010 )
+		{
+			rot_dir = step;									//+1 for CW
+			PORTA &=  ~ (1 &lt;&lt; PA5);
+		}
+		else
+		{
+			rot_dir = -1*step;								//-1 for CCW
+			PORTA |=   (1 &lt;&lt; PA5);
+		}
+}
+
+  </pre>
+
+</div>
+
+
+
+
+
+
+
 
     <h2>Stepper</h2>
     <p>
