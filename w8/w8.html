@@ -36,6 +36,8 @@
         <a href="../w12/w12.html" class="btn" title="Molding and Casting">12</a>
         <a href="../w13/w13.html" class="btn" title="Output Devices">13</a>
         <a href="../w14/w14.html" class="btn" title="Composites">14</a>
+        <a href="../w15/w15.html" class="btn" title="Networking and Communications">15</a>
+        <a href="../w16/w16.html" class="btn" title="Interface and Application Programming">16</a>
 
       </section>
     </div>
@@ -129,9 +131,9 @@ avr-gcc -mmcu=atmega328p out.o -o out
 avr-objcopy -O ihex -R .eeprom out out.hex
 avrdude -F -V  -p ATMEGA328P -P usb -c usbtiny -b 115200 -U flash:w:out.hex </pre>
 
-<h3 style="color:red">Makefile</h3>
+      <h3 style="color:red">Makefile</h3>
 
-<pre>
+      <pre>
 DEVICE  = atmega328p
 F_CPU   = 20000000	# in Hz
 FUSE_L  = 0xFF # 0xE2 for internal 8Mhz 0xFF for external and 0X62 for internal 1MHz
@@ -645,7 +647,22 @@ avrdude -F -V  -p ATMEGA328P -P usb -c usbtiny -b 115200 -U flash:w:t.hex </pre>
       <br>
       <br>
       <h2>Resources</h2>
-      <br>
+    </p>
+    <h3>The Most Important Resource for this assignment or any other projects involving micro-controller or any other electronics components for that matter is the datasheet of the respective
+      components.
+    </h3>
+    <p>
+      From the datasheet of the micro-controllers I got the following details any many more.
+      <ul>
+        <li>The Pin-out and sample schematics from the application motes.</li>
+        <li>Absolute maximum and minimum ratings for current and voltage, clock frequency etc.</li>
+        <li>Details about data registers, control registers and their usage.
+          <br> For example, the timer initialization and control registers, interrupt control registers etc.</li>
+        <li>Instruction sets, mnemonics to be used in assembly coding and their usage examples</li>
+        <li>FUSE bits and their usage, though I found an Online FUSE calculator.</li>
+      </ul>
+    </p>
+    <p>
       <ul>
         <li>
           <a href="http://eleccelerator.com/avr-timer-calculator/">avr-timer-calculator.</a>
