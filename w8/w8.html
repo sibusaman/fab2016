@@ -194,7 +194,7 @@ disasm:	main.elf
       <video width="520" controls>
         <source src="timing-1.m4v" type="video/mp4"> Your browser does not support the video tag.
       </video>
-      <br> The video has two boards, an Arduino UNO clone based on Atmega328p but working at 16MHz and my board, based on the same chip but working at 20MHz. Both the boards are running
+      <br> The video has two boards, an Arduino UNO clone based on Atmega328p working at 16MHz and my board which is also based on the same chip but supposedly working at 20MHz. Both the boards are running
       the same code for blinking the LED, one second on and one second off.
       <br> As you can see, my board is clearly not pulsing with one second delay, it's way above one second. Something is wrong, and I guess it's the clock speed. I defined 20MHz clock
       in program and during compilation and the chip is not running at a lower clock. So if the chip was indeed working at 20MHz I wouldn't face such an error. So I suspect three things,

@@ -43,7 +43,93 @@
     </div>
   </header>
   <section>
-
+    <h1>An Interface for the Digital Caliper.</h1>
+    <p>
+      This is another combined project involving
+      <b>Networking and Communications</b> and
+      <b>Interfacing and Application Programming</b>.
+    </p>
+    <p>
+      While playing around with the digital caliper, I found a 'secret', 4-pin port on the device. I was executing it be some kind of programming or data out port.
+      <br>
+      <figure>
+        <img src="calip-conn.jpg" width="600" onmouseover="this.width='1000'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey"></figcaption>
+      </figure>
+      On further 'research with Google', I found that it indeed is a data out, it can be used to get the reading as it is displayed on the LCD.
+    </p>
+    <p>
+      I'm going to try make an interface to get the data from the caliper and interpret the bit stream to the real value. The micro-controller board I'll be making could be sending the data
+      directly to a phone or computer via serial/bluetooth/wi-fi/2.4GHz NRF2L01. A computer/android software will be written to show the values, which will be the 'interface programming
+      assignment'.
+      <br> For the communication part, I'm considering bluetooth/wi-fi/2.4GHz NRF2L01.
+    </p>
+    <h2>The Interface Data Protocol</h2>
+    <p>
+      Before I proceed further I need to know if I can get any data out of it and even if I get, whether I'll be able to interpret it, because chances are there that the device could be communicating
+      with some proprietary protocols.
+      <br> So I started browsing again and found that many Chinese calipers are using a couple of common protocols. By the looks of it and the way the brand-name 'Neiko' sounds, the digital
+      caliper we have belongs to the 'Chinese caliper family'. I got confidence now!,
+      <b>let's move on</b>.
+    </p>
+    <p>
+      On further reading I found that the caliper's pins are vcc(+1.5v as it is powered from a button cell), DATA, CLOCK and GND.
+      <figure>
+        <img src="pinout.jpg" width="600" onmouseover="this.width='1000'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey"></figcaption>
+      </figure>
+      So I started probing the pins using a DSO.
+      <figure>
+        <img src="clock.jpg" width="600" onmouseover="this.width='800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">The clock pulse train, corresponds to 24 bit data, 6 sets of 4 bit data.</figcaption>
+        <img src="data.jpg" width="600" onmouseover="this.width='800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">The data pulse train.</figcaption>
+      </figure>
+      This is not exactly the direct reading from the caliper, this is the data from the caliper passed through a
+      <a href="https://en.wikipedia.org/wiki/Schmitt_trigger">Schmitt-Trigger</a> configured as a logic level converter, to convert the low 1.5v pulses from the caliper to 5v pulses so that we can feed it to the AVR chip. The details of
+      the Schmitt-Trigger is explained further down.
+    </p>
+    <p>
+      On further analysis I found that this pattern is identical to what this gut had
+      <a href="http://nut-bolt.nl/2012/reading-digital-calipers-with-an-arduino/">here</a>. So I can now interpret the data, we have to consider
+      <ul>
+        <li>First 16-bits only, for the unsigned value.</li>
+        <li>The bits are in reverse, 1st bit in the data stream corresponds to the least significant bit.</li>
+        <li>Also the the bits are inverted, high pulse corresponds to 0, and low corresponds to 1.</li>
+        <li>21st bit for sign.</li>
+      </ul>
+    </p>
+    <p>
+      So the setup is going to
+      <ul>
+        <li>Have two Schmitt-Trigger based logic level converters, for <code>Clock</code> and <code>Data</code>.</li>
+        <li>The <code>Clock</code> will be connected to <code>INT0</code> or PB2.</li>
+        <li>Use the clock as an interrupt which will trigger on falling edge, the interpret vector will read the data.</li>
+        <li>Since there is a long delay between the packets(not between the bits of a single packet), we can setup a timer which counts the time since the last interpret (last clock) and
+          if it is more than a particular we will start processing a new packet.</li>
+        <li>If the new value is different from last, we will sent it via serial/bluetooth/wi-fi etc.</li>
+        <li></li>
+      </ul>
+    </p>
+    <p>
+      Here is the circuit diagram I designed for this assignment,<br>
+      it has the following features.
+      <ul>
+        <li>Two Schmitt-Triggers as logic level converters, convert 1.5v logic to 5v logic for the micro-controller.</li>
+        <li>AtTiny44 with 20MHz resonator as the main micro-controller.</li>
+        <li>FTDI header for serial communication (software serial has to be implemented as the tiuny44 does not come with hardwares necessary), and an ISP header for, well, programming, what other use we had for an ISP so far? </li>
+      </ul>
+      <figure>
+        <img src="sch.png" width="600" onmouseover="this.width='1200'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">The schematic.</figcaption>
+        <img src="brd.png" width="600" onmouseover="this.width='800'" onmouseout="this.width='600'" />
+        <figcaption style="display:block; color:grey">The board image.</figcaption>
+      </figure>
+      <h2>EAGLE Files are here</h2>
+      <br>
+      <a href="calip2.brd" download="sibu-caliper-interface.brd">Board</a>
+      <a href="calip2.sch" download="sibu-caliper-interface.sch">Schematic</a>
+    </p>
 
   </section>
 
