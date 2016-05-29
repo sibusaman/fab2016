@@ -38,6 +38,9 @@
         <a href="../w14/w14.html" class="btn" title="Composites">14</a>
         <a href="../w15/w15.html" class="btn" title="Networking and Communications">15</a>
         <a href="../w16/w16.html" class="btn" title="Interface and Application Programming">16</a>
+        <a href="../w17/w17.html" class="btn" title="Applications and Implications">17</a>
+        <a href="../w18/w18.html" class="btn" title="Invention, Intellectual Property, and Income">18</a>
+        <a href="../project/project.html" class="btn" title="Final Project:- Sparky the EDM PCB Mill">project</a>
 
       </section>
     </div>
@@ -76,10 +79,10 @@
       <h4>Pictures</h4>
       <br>
       <figure>
-        <img src="sch.png" alt="schematic" width="500" onmouseover="this.width='1300'" onmouseout="this.width='500'">
+        <img src="sch.png" alt="schematic" width="500" onclick="this.width='1300'" onmouseout="this.width='500'">
         <figcaption style="display:inline; color:grey"> The schematic of the amplifier board."</figcaption>
 
-        <img src="brd.png" alt="sch brd" width="500" onmouseover="this.width='1300'" onmouseout="this.width='500'">
+        <img src="brd.png" alt="sch brd" width="500" onclick="this.width='1300'" onmouseout="this.width='500'">
         <figcaption style="display:inline; color:grey">The top layer of the board (bottom is just a ground plane, no traces. The outer rectangle is drawn in milling layer and this will be used to cutout the board after milling.</figcaption>
       </figure>
       <br> An interesting video of the component placement and routing.
@@ -89,10 +92,10 @@
       </video>
       <br>
       <figure>
-        <img src="pop%20top.JPG" alt="populated board top" width="500" onmouseover="this.width='900'" onmouseout="this.width='500'">
+        <img src="pop%20top.JPG" alt="populated board top" width="500" onclick="this.width='900'" onmouseout="this.width='500'">
         <figcaption style="display:inline; color:grey">The amplifier/control board populated with all components (except few wires and the NTC sensor section at bottom left).</figcaption>
 
-        <img src="pop%20bot.JPG" alt="populated board bottom" width="500" onmouseover="this.width='900'" onmouseout="this.width='500'">
+        <img src="pop%20bot.JPG" alt="populated board bottom" width="500" onclick="this.width='900'" onmouseout="this.width='500'">
         <figcaption style="display:inline; color:grey">Bottom side of the same board, you can see the 'DIY' interconnects. Well, whats with the texture you may ask; I used sand-blaster it, why not?. It had lot of fingerprints and
           other dirt on it, so 'I did what I have to do'. (or!!! what I wanted to do). And YES, this is a double sided PCB.
         </figcaption>
@@ -106,7 +109,7 @@
       software, no hardware/pin compatibility) micro-controller board for use in the soldering station.
       <br>
       <figure>
-        <img src="sduino.png" alt="sduino-eagle image" width="500" onmouseover="this.width='900'" onmouseout="this.width='500'" />
+        <img src="sduino.png" alt="sduino-eagle image" width="500" onclick="this.width='900'" onmouseout="this.width='500'" />
         <figcaption style="display:inline; color:grey">The Eagle snapshot of Fabduino variant I made.</figcaption>
       </figure>
       <br>
@@ -118,10 +121,10 @@
     <p>
       The pictures are here.
       <figure>
-        <img src="sd1.jpg" alt="sduino-top" width="500" onmouseover="this.width='900'" onmouseout="this.width='500'" />
+        <img src="sd1.jpg" alt="sduino-top" width="500" onclick="this.width='900'" onmouseout="this.width='500'" />
         <figcaption style="display:inline; color:grey">The top of the board.</figcaption>
         <br>
-        <img src="sd2.jpg" alt="sduino-bot" width="500" onmouseover="this.width='900'" onmouseout="this.width='500'" />
+        <img src="sd2.jpg" alt="sduino-bot" width="500" onclick="this.width='900'" onmouseout="this.width='500'" />
         <figcaption style="display:inline; color:grey">The bottom, with the power rails and the ISP connector.</figcaption>
       </figure>
       <br> I planned a proper double sided PCB with VCC and GND rails in the bottom layer. Since I had piece of single sided PCB laying around which is just enough for this board, so I
@@ -241,7 +244,7 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2140", GROUP="user
       lost connection to the traces. I fixed it somehow using thin copper strands and glue gun, put it's not a good or reliable solution. A better solution would be to use a thicker
       pads or add rectangle section ion eagle to make the pads bigger, like in the figure below.
       <br>
-      <img src="sduino-fix.png" alt="sduino-fix.png" width="500" onmouseover="this.width='900'" onmouseout="this.width='500'">
+      <img src="sduino-fix.png" alt="sduino-fix.png" width="500" onclick="this.width='900'" onmouseout="this.width='500'">
     </p>
 
     <h2>Exploring Further.</h2>

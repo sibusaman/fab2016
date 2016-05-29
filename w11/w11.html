@@ -45,6 +45,9 @@
         <a href="../w14/w14.html" class="btn" title="Composites">14</a>
         <a href="../w15/w15.html" class="btn" title="Networking and Communications">15</a>
         <a href="../w16/w16.html" class="btn" title="Interface and Application Programming">16</a>
+        <a href="../w17/w17.html" class="btn" title="Applications and Implications">17</a>
+        <a href="../w18/w18.html" class="btn" title="Invention, Intellectual Property, and Income">18</a>
+        <a href="../project/project.html" class="btn" title="Final Project:- Sparky the EDM PCB Mill">project</a>
 
       </section>
     </div>
@@ -76,15 +79,15 @@
     </p>
     <p>
       <figure>
-        <img src="schem.png" alt="original schematic" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
+        <img src="schem.png" alt="original schematic" width="600" onclick="this.width='1800'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey">Original Schematic.</figcaption>
 
-        <img src="board.png" alt="original board" width="400" onmouseover="this.width='1800'" onmouseout="this.width='400'" />
+        <img src="board.png" alt="original board" width="400" onclick="this.width='1800'" onmouseout="this.width='400'" />
         <figcaption style="display:block; color:grey">Original Board layout.</figcaption>
 
-        <img src="top.png" alt="original schematic" width="300" onmouseover="this.width='800'" onmouseout="this.width='300'" />
-        <img src="top-64.png" alt="original schematic" width="300" onmouseover="this.width='800'" onmouseout="this.width='300'" />
-        <img src="top-32.png" alt="original schematic" width="300" onmouseover="this.width='800'" onmouseout="this.width='300'" />
+        <img src="top.png" alt="original schematic" width="300" onclick="this.width='800'" onmouseout="this.width='300'" />
+        <img src="top-64.png" alt="original schematic" width="300" onclick="this.width='800'" onmouseout="this.width='300'" />
+        <img src="top-32.png" alt="original schematic" width="300" onclick="this.width='800'" onmouseout="this.width='300'" />
         <figcaption style="display:block; color:grey">The top layer, the traces only for milling with 1/64" bit in MDX-20 and cutting file for use with 1/32" bit.</figcaption>
       </figure>
       <br>
@@ -96,24 +99,24 @@
       This is the picture of the completed board populated, except for the A4988 motor driver.
       <br>
       <figure>
-        <img src="step-ser.jpg" alt="picture of the populated pcb" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
+        <img src="step-ser.jpg" alt="picture of the populated pcb" width="600" onclick="this.width='1800'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey">Populated pcb.</figcaption>
       </figure>
       <br> Notice the two extra wires, this is because I had to edit the board slightly, because I made a stupid mistake. I had connected the <code>MOSI</code> pin to the Rotary switch,
       this has been causing a lot of trouble. As the <code>MOSI</code> pin is always kept high or low depending on the position of the Rotary switch. Because of this, the ISP cannot
       program the board. So I had the following modification.
       <figure>
-        <img src="schem-mod1.png" alt="original schematic" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
+        <img src="schem-mod1.png" alt="original schematic" width="600" onclick="this.width='1800'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey">Modified Schematic,
           <b style="color:white">WHITE</b> is the deleted (removed) trace and
           <b style="color:green">GREEN</b> is the new connection made.</figcaption>
 
-        <img src="board-mod1.png" alt="original board" width="400" onmouseover="this.width='1800'" onmouseout="this.width='400'" />
+        <img src="board-mod1.png" alt="original board" width="400" onclick="this.width='1800'" onmouseout="this.width='400'" />
         <figcaption style="display:block; color:grey">Modified Board,
           <b style="color:white">WHITE</b> is the deleted (removed) trace and
           <b style="color:green">GREEN</b> is the new connection.</figcaption>
 
-        <img src="top-64-mod1.png" alt="original schematic" width="300" onmouseover="this.width='800'" onmouseout="this.width='300'" />
+        <img src="top-64-mod1.png" alt="original schematic" width="300" onclick="this.width='800'" onmouseout="this.width='300'" />
         <figcaption style="display:block; color:grey">The top layer showing the modification,
           <b style="color:red">RED</b> is the deleted (removed) trace and
           <b style="color:green">GREEN</b> is the new connection.</figcaption>
@@ -133,9 +136,9 @@
       <br> To operate the Attiny44 at 8 MHz using the internal oscillator the low fuse (lfuse) has to be changed to (from the default value of <code>0x62</code>) <code>0xE2</code>.
       <code>avrdude -P usb -b 19200 -c usbtiny -p  t44 -U lfuse:w:0xE2:m</code>
       <figure>
-        <img src="1mhz.png" alt="default" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
+        <img src="1mhz.png" alt="default" width="600" onclick="this.width='1800'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey">Default fuse settings or factory settings.</figcaption>
-        <img src="8mhz.png" alt="default" width="600" onmouseover="this.width='1800'" onmouseout="this.width='600'" />
+        <img src="8mhz.png" alt="default" width="600" onclick="this.width='1800'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey">Fuse settings for 8MHz, disabling <code>CKDIV8</code>.</figcaption>
       </figure>
       The fuse values was calculated based on the data from the data sheet and confirmed with the help of this
@@ -459,7 +462,7 @@ ISR(PCINT1_vect)
     </p>
     <p>
       <figure>
-        <img src="interrupt.svg" alt="box" width="600" onmouseover="this.width='900'" onmouseout="this.width='600'" />
+        <img src="interrupt.svg" alt="box" width="600" onclick="this.width='900'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey"> </figcaption>
       </figure>
       As you can see, there will be two interrupts fired on each step of the rotary switch. We need to ignore the second one. Also notice two important things, If we execute a code Immediately
@@ -723,7 +726,7 @@ void update(void)
         <li><code>MS1, MS2, MS3</code> :- Micro-stepping selection
           <br> Normally low, could be set high as per the table to enable micro-stepping for higher resolution movements.
           <br>
-          <img src="micro-step.png" alt="debug-2" width="500" onmouseover="this.width='700'" onmouseout="this.width='500'">
+          <img src="micro-step.png" alt="debug-2" width="500" onclick="this.width='700'" onmouseout="this.width='500'">
           <br>
         </li>
         <li><code style="text-decoration: overline">Enable</code>:- (Normally Low) Setting this Pin High, will disable the FETs in the chip, killing the power to the motor.</li>
@@ -851,7 +854,7 @@ void update(void)
     </p>
     <p>
       <figure>
-        <img src="reson.jpg" alt="box" width="600" onmouseover="this.width='900'" onmouseout="this.width='600'" />
+        <img src="reson.jpg" alt="box" width="600" onclick="this.width='900'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey"> The resonator with jumper wires soldered to the three pads.
         </figcaption>
       </figure>
@@ -874,7 +877,7 @@ void update(void)
       (FabLab do not have 100nF) to the two rotary output pins and the push button pin of the rotary switch. I also put bit of hot-melt-glue to keep them in place. The capacitors were
       all connected between the corresponding pins and GND.
       <figure>
-        <img src="bounce.jpg" alt="box" width="600" onmouseover="this.width='900'" onmouseout="this.width='600'" />
+        <img src="bounce.jpg" alt="box" width="600" onclick="this.width='900'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey"> The de-bouncing capacitors buried under the hot-melt-glue, you can also see the ground wire.
         </figcaption>
       </figure>

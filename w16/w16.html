@@ -45,6 +45,9 @@
         <a href="../w14/w14.html" class="btn" title="Composites">14</a>
         <a href="../w15/w15.html" class="btn" title="Networking and Communications">15</a>
         <a href="../w16/w16.html" class="btn" title="Interface and Application Programming">16</a>
+        <a href="../w17/w17.html" class="btn" title="Applications and Implications">17</a>
+        <a href="../w18/w18.html" class="btn" title="Invention, Intellectual Property, and Income">18</a>
+        <a href="../project/project.html" class="btn" title="Final Project:- SPARKY the EDM PCB Mill">project</a>
 
       </section>
     </div>
@@ -62,7 +65,7 @@
       While playing around with the digital caliper, I found a 'secret', 4-pin port on the device. I was executing it be some kind of programming or data out port.
       <br>
       <figure>
-        <img src="calip-conn.jpg" width="600" onmouseover="this.width='1000'" onmouseout="this.width='600'" />
+        <img src="calip-conn.jpg" width="600" onclick="this.width='1000'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey"></figcaption>
       </figure>
       On further 'research with Google', I found that it indeed is a data out, it can be used to get the reading as it is displayed on the LCD.
@@ -86,14 +89,14 @@
     <p>
       On further reading I found that the caliper's pins are vcc(+1.5v as it is powered from a button cell), DATA, CLOCK and GND.
       <figure>
-        <img src="pinout.jpg" width="600" onmouseover="this.width='1000'" onmouseout="this.width='600'" />
+        <img src="pinout.jpg" width="600" onclick="this.width='1000'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey"></figcaption>
       </figure>
       So I started probing the pins using a DSO.
       <figure>
-        <img src="clock.jpg" width="600" onmouseover="this.width='800'" onmouseout="this.width='600'" />
+        <img src="clock.jpg" width="600" onclick="this.width='800'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey">The clock pulse train, corresponds to 24 bit data, 6 sets of 4 bit data.</figcaption>
-        <img src="data.jpg" width="600" onmouseover="this.width='800'" onmouseout="this.width='600'" />
+        <img src="data.jpg" width="600" onclick="this.width='800'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey">The data pulse train.</figcaption>
       </figure>
       This is not exactly the direct reading from the caliper, this is the data from the caliper passed through a
@@ -113,9 +116,9 @@
     <p>
       Here are some pictures explaining the interpretation.
       <figure>
-        <img src="data-inter-1.jpg" width="600" onmouseover="this.width='1200'" onmouseout="this.width='600'" />
+        <img src="data-inter-1.jpg" width="600" onclick="this.width='1200'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey">You can see that the Caliper reads 7.01. The green channel is the clock and the yellow is the data.</figcaption>
-        <img src="data-inter.jpg" width="600" onmouseover="this.width='800'" onmouseout="this.width='600'" />
+        <img src="data-inter.jpg" width="600" onclick="this.width='800'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey">This is a better picture of the oscilloscope. You can see almost all of the first 16 bits, in set of four. They will read as
           <br><code>0100, 0010, 1011, 1111, 1111....</code></figcaption>
       </figure>
@@ -155,9 +158,9 @@
         <li>Provision for adding a 3.3v DC-DC module for the wireless module as most of them uses 3.3v supply.</li>
       </ul>
       <figure>
-        <img src="sch.png" width="600" onmouseover="this.width='1200'" onmouseout="this.width='600'" />
+        <img src="sch.png" width="600" onclick="this.width='1200'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey">The schematic.</figcaption>
-        <img src="brd.png" width="600" onmouseover="this.width='800'" onmouseout="this.width='600'" />
+        <img src="brd.png" width="600" onclick="this.width='800'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey">The board image.</figcaption>
       </figure>
       <h2>EAGLE Files are here</h2>
@@ -168,9 +171,9 @@
       <br>
       <br>
       <figure>
-        <img src="pcb-top.jpg" width="600" onmouseover="this.width='1200'" onmouseout="this.width='600'" />
+        <img src="pcb-top.jpg" width="600" onclick="this.width='1200'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey">The top side of the board, the white jumper wire is a replacement for a trace I forgot to add.</figcaption>
-        <img src="pcb-bot.jpg" width="600" onmouseover="this.width='800'" onmouseout="this.width='600'" />
+        <img src="pcb-bot.jpg" width="600" onclick="this.width='800'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey">Bottom side of the PCB, the copper wires replaces the few traces in the bottom layer, the long wire with a piece of PCB at the end is the ground used for connecting DSO etc.
           and sometimes used when the caliper connector looses ground connection.</figcaption>
       </figure>
