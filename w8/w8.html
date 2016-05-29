@@ -11,6 +11,13 @@
   <link rel="stylesheet" href="../stylesheets/mine.css">
   <link rel="stylesheet" href="cssgal.css">
   <title>8:-Embedded Programming</title>
+  <style>
+    div.codescroll {
+      width: 1500px;
+      height: 500px;
+      overflow: scroll;
+    }
+  </style>
 </head>
 
 <body>
@@ -102,7 +109,8 @@ void loop() {
 }
       </pre>
       <h4 style="color:orange">The AVR C Code</h4> Essentially the same code as above.
-      <pre>
+      <div class="codescroll">
+        <pre>
 #define F_CPU 20000000UL
 #include &lt;avr/io.h&gt;
 #include &lt;util/delay.h&gt;
@@ -125,18 +133,18 @@ int main (void)
   }
 }
       </pre> This code is written with the help of datasheet of the AtMega328p, specifically section 14.2 on
-      <b>Ports as General Digital I/O</b> and my own experience.
-      <br> The following shell script was written to automate the compilation and uploading.
-      <pre>
+        <b>Ports as General Digital I/O</b> and my own experience.
+        <br> The following shell script was written to automate the compilation and uploading.
+        <pre>
 rm out*
 avr-gcc -Os -DF_CPU=20000000UL -mmcu=atmega328p -c -o out.o blink0.1.c
 avr-gcc -mmcu=atmega328p out.o -o out
 avr-objcopy -O ihex -R .eeprom out out.hex
 avrdude -F -V  -p ATMEGA328P -P usb -c usbtiny -b 115200 -U flash:w:out.hex </pre>
 
-      <h3 style="color:red">Makefile</h3>
+        <h3 style="color:red">Makefile</h3>
 
-      <pre>
+        <pre>
 DEVICE  = atmega328p
 F_CPU   = 20000000	# in Hz
 FUSE_L  = 0xFF # 0xE2 for internal 8Mhz 0xFF for external and 0X62 for internal 1MHz
@@ -187,6 +195,7 @@ disasm:	main.elf
 	avr-objdump -d main.elf
 
 </pre>
+      </div>
     </p>
     <br>
     <b style="color:green"> It's working, but, </b>
@@ -197,8 +206,8 @@ disasm:	main.elf
       <video width="520" controls>
         <source src="timing-1.m4v" type="video/mp4"> Your browser does not support the video tag.
       </video>
-      <br> The video has two boards, an Arduino UNO clone based on Atmega328p working at 16MHz and my board which is also based on the same chip but supposedly working at 20MHz. Both the boards are running
-      the same code for blinking the LED, one second on and one second off.
+      <br> The video has two boards, an Arduino UNO clone based on Atmega328p working at 16MHz and my board which is also based on the same chip but supposedly working at 20MHz. Both the
+      boards are running the same code for blinking the LED, one second on and one second off.
       <br> As you can see, my board is clearly not pulsing with one second delay, it's way above one second. Something is wrong, and I guess it's the clock speed. I defined 20MHz clock
       in program and during compilation and the chip is not running at a lower clock. So if the chip was indeed working at 20MHz I wouldn't face such an error. So I suspect three things,
       <ol>
@@ -317,7 +326,8 @@ disasm:	main.elf
           <a href="http://bretmulvey.com/avrdelay.html">http://bretmulvey.com/avrdelay.html</a>
         </li>
       </ul>
-      <pre>
+      <div class="codescroll">
+        <pre>
 .equ	DDRB	, 0x04
 .equ	PORTB	, 0x05
 
@@ -349,7 +359,8 @@ L1: dec  r20
     dec  r18
     brne L1
     ret
-      </pre> The delay cycle is from
+      </pre>
+      </div> The delay cycle is from
       <a href="http://www.bretmulvey.com/avrdelay.html">http://www.bretmulvey.com/avrdelay.html</a>.
     </p>
     <p>
@@ -445,7 +456,8 @@ digitalWrite(LEDPIN, !digitalRead(LEDPIN));
       <br>
       <br>
       <h3 style="color:orange">Same Program Written in C would like like this.</h3>
-      <pre>
+      <div class="codescroll">
+        <pre>
 //timer CTC interrupt test
 #define F_CPU 20000000UL
 #include &lt;avr/io.h&gt;
@@ -496,10 +508,12 @@ ISR(TIMER1_COMPA_vect)
 		temp=1;
 	}
 }</pre>
+      </div>
     </p>
     <h3 style="color:orange">Assembly</h3>
     <p>
       I tried translating the same code to assembly, though I couldn't find whats wrong with the program, it's not working, it's not blinking the LED. Anyway the code can be seen below.
+      <div class="codescroll">
       <pre>
 ; DEFINING MACROS
 .equ	PORTB	, 0x05
@@ -616,6 +630,7 @@ dim:
     ldi r20, 0xff
     cbi PORTB, 5
     rjmp loop</pre>
+    </div>
     </p>
     <p>
       I had struggled a bit before I could 'interpret' this code into hex. I use the following commands to make the hex and flash it to the chip. I'm using the <code>avr-as</code> as
