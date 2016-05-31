@@ -3,6 +3,7 @@
 
 <head>
 
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
@@ -42,14 +43,165 @@
         <a href="../w17/w17.html" class="btn" title="Applications and Implications">17</a>
         <a href="../w18/w18.html" class="btn" title="Invention, Intellectual Property, and Income">18</a>
         <a href="../project/project.html" class="btn" title="Final Project:- Sparky the EDM PCB Mill">project</a>
-
-
       </section>
     </div>
   </header>
+
   <section>
+    <h1>Sparky: the EDM PCB Mill </h1>
+    <br>
+    <br>
 
+    <h2>What?</h2>
+    <p>
+      <h3>Electrical Discharge Machining PCB Mill</h3>
+      <br>
+      <br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Zf7_GY7GMV4" frameborder="0" allowfullscreen></iframe>
+      <br> In case if you haven't figured it out yet from the title and the video, this is basically a PCB milling machine, but the material removal is achieved with spark erosion.
+    </p>
 
+    <h2>What will it do?</h2>
+    <p>
+      Intended use is PCB milling. But if it works it could do more than that. It could be used to drill tiny holes in any metal, it could work as an extremely crude and light duty CNC mill
+      for milling on any metal, irrespective of whether the metals hardened or not.
+    </p>
+
+    <h2>Who's done what beforehand?</h2>
+    <p>
+      A PCB mill based on this technique?
+      <br>From my searches, no one have done this. Yay, it's 2016 and there is something that is not done by others.
+      <br> But how can it be, out of the 7billion+ alive and rest who does didn't think about this?
+      <br>It's very unlikely.
+      <br> AND I FOUND IT.
+      <a href="https://www.youtube.com/user/LoialOtter?feature=hovercard">Loial Otter</a> had the same idea as mine and he did a similar test what I did in the first video in this page. But he didn't have any other information, he didn't post any updates
+      anywhere.
+      <br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/GVSST58x_FE" frameborder="0" allowfullscreen></iframe>
+    </p>
+    <br>
+    <br>
+    <br>
+    <p>
+      But this guy,
+      <a href="https://hackaday.io/Jarrett">Jarrett</a> actually made a good progress, though it's not finished yet.
+      <br>You can read about him and his project
+      <ul>
+        <li>
+          <a href="http://jrainimo.com/build/?page_id=122">About him and his personal site</a>
+        </li>
+        <li>
+          <a href="https://github.com/JarrettR">GitHub</a>
+        </li>
+        <li>
+          <a href="https://hackaday.io/project/3232/logs">Hackaday article on the project.</a>
+        </li>
+        <li>
+          <a href="https://github.com/JarrettR/EDM">His GitHub page for the project.</a>
+        </li>
+        <br>I'm sending him a mail ASAP!.
+      </ul>
+    </p>
+    <p>
+      Then I found a
+      <a href="http://www.electronicspoint.com/threads/edm-applied-to-make-pcbs.71130/">discussion thread</a>. Actully there are a lot of discussion and failed and successful attempts to make DIY EDMs.
+
+      <h4 style="color:red;">
+        So in essence, no.
+        <br>Nobody have a working EDM PCB mill/prototypeer.
+      </h4>
+    </p>
+
+    <h2>What materials and components will be required?</h2>
+    <p>
+      <ul>
+        <li>Stepper motors, min 4.</li>
+        <li>
+          <a href="http://reprap.org/wiki/RAMPS_1.4">RAMPS_1.4</a> as the controller.
+          <br>Arduino Mega2560, 4/5 x A4988 stepper drivers.
+        </li>
+        <li>CORE XY stage.</li>
+        <li>Threaded rod/smooth rods, pulleys, bearings, nuts, bolts, washers......</li>
+        <li>Timing belt</li>
+        <li>A water bath.</li>
+        <li>A water source, pump, and filter. (for the final version only)</li>
+        <li>A wire extruder.</li>
+        <li>Tungsten/brass/molybdenum wire.</li>
+        <li>Servo motor, BLDC motor with spindle and a drill bit for making the via. (optional)</li>
+        <li>Power supply, capacitors.</li>
+      </ul>
+      <br> Detailed BOM will be generated, once the project is done.
+    </p>
+
+    <h2>where will they come from?</h2>
+    <p>
+      Most of the parts I have bought/will be buying, is from aliexpress. I have a full set of the 3D-printer controller, Ramps 1.4 with 5 stepper drivers and all the required parts. This
+      was sourced from Aliexpress.
+      <br> Some of the pulleys, and couplers could be made with laser, or printed or casted. But as a backup, I have purchased the ready made parts too. Also bought the timing belt.
+      <br>The Core XY, stage will have to be designed and made in the lab itself with acrylic and other materials available.
+      <br>The threaded rods, if required will have to be bought, but smooth rods could be salvaged from the printers.
+      <br>The =linear bearing required could either be made as in my molding and casting assignment or I can use ready made LM8UU type.
+      <br>Extruder will be made.
+      <br>Stepper motors are available in the FabLab inventory.
+      <br>Tungsten and Molybdenum wires are bought from aliexpress.
+      <br>Servo motor is available in the lab, BLDC motors are available in my personal inventory.
+      <br>
+      <br> Other components like fasteners will be sourced locally.
+      <br>
+      <br> More details, once the project is done.
+    </p>
+
+    <h2>how much will it cost?</h2>
+    <p>
+      Cannot estimate accurately. Though it could be between, 10-15k INR, &lt:$150.
+    </p>
+
+    <h2>what parts and systems will be made?</h2>
+    <p>
+      <ul>
+        <li>End effector, the wire feeder.</li>
+        <li>Entire mechanical assembly, including the core xy stage.</li>
+        <li>Water bath.</li>
+        <li>list incomplete.....</li>
+      </ul>
+    </p>
+
+    <h2>What processes will be used?</h2>
+    <p>
+      <ul>
+        <li>CAD, 3D and 2D.</li>
+        <li>3D printing.</li>
+        <li>Laser cutting, computer aided cutting.</li>
+        <li>Molding and casting.</li>
+        <li>Probably composites.</li>
+        <li>Programming.</li>
+        <li>Machine/Mechanical design and manufacturing.</li>
+        <li>Electronic design and production, and definitely a lot of it debugging.</li>
+        <li>Input and Output devices.</li>
+        <li>May be interfacing, networking.</li>
+      </ul>
+    </p>
+
+    <h2>What tasks need to be completed?</h2>
+    <p>
+      Planning to get a prototype done in 20days, staring from
+      <time>June, 1, 2016</time>
+    </p>
+
+    <h2>what questions need to be answered?</h2>
+    <p>
+
+    </p>
+
+    <h2>What is the schedule?</h2>
+    <p>
+      Prototype before the final project presentation on 22nd June and a more refined version with improvements within a month from there.
+    </p>
+
+    <h2>how will it be evaluated?</h2>
+    <p>
+
+    </p>
   </section>
 
 </body>
