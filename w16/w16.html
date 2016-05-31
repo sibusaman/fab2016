@@ -260,7 +260,6 @@ unsigned int bit_count, sign_bit;
 void put_char(volatile unsigned char *port, unsigned char pin, char txchar)
 {
 // send character in txchar on port pin,  assumes line driver (inverts bits)
-	int i=0;
 	clear(*port,pin);             // start bit
 	bit_delay();
 	if bit_test(txchar,0)
@@ -385,10 +384,10 @@ ISR(INT0_vect)
 	{
 		if (bit_count &lt; 15)
 		{
-			temp_read /= 2;	                 	//right shift
+			temp_read = temp_read&gt;&gt;1; 				// temp_read /= 2;	  //right shift
 			if (~PINA & 0b00000100)
 			{
-				temp_read += 32768;	            //2^15
+				temp_read |= 32768;	            //2^15
 			}
 		}
 		else
@@ -409,7 +408,13 @@ ISR(INT0_vect)
         <br> Secondly, there is something wrong with my interpretation technique, the output is always ends with an even number, somehow it skips the odd number and rounds off to the nearest
         even number, must be missing the least significant bit, which being 1 decided the if the final value if odd or even.
         <br>
+        <figure>
+          <img src="output.png" width="600" onclick="this.width='1000'" onmouseout="this.width='600'" />
+          <figcaption style="display:block; color:grey"></figcaption>
+        </figure>
+        <br>
         <br> Now I need to send this data wirelessly to another board and write a computer program/android app to display this value.
+
       </p>
 
 
