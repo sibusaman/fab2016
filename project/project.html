@@ -57,6 +57,8 @@
       <iframe width="560" height="315" src="https://www.youtube.com/embed/Zf7_GY7GMV4" frameborder="0" allowfullscreen></iframe>
       <br>
     </p>
+
+    <h2>How?</h2>
     <p>
       Anyway the process is very simple, as we all know, sparks are not good, most of the time, as it corrodes. But here we are using just that, the corrosive nature of the sparks, we are
       going tame the 'devil' and use to for good. We will control parameters of the sparks, such as frequency (number of sparks per second), voltage, current (or in better words charge
@@ -67,6 +69,20 @@
       Here the sparks are not made in an air gap, instead water bath is used. It acts as a dielectric, a coolant and as a cleaning agent which cleans the work-area of eroded metal. Without
       the water as a coolant we cannot have high energy sparks without it affecting a large area, this means that if we don't use water as a coolant we cannot mill thin traces as fast
       as we want , without the trace being lifted off, or burned, or vaporised.
+    </p>
+    <p>
+      I will be connecting one end of the power supply to the PCB and the other end to a thin wire which will be the 'milling bit'. This electrode also erodes as the proses progresses, so
+      this wire has to be supplied from a spool of wire and need to be extruded via something like 3d-printer head/extruder.
+      <br>The tip of this wire and the PCB will all be submerged in water. The wire will be kept just above the copper to be removed and when the supply is activated, with the right voltage
+      and the right spacing the electric field intensity in the water between the wire and the copper will be so high that the dielectric will break down, sending a short pulse. This
+      pulse will remove material from both the wire and the copper.
+    </p>
+    <p>
+      Since the wire also erodes in the process, I'm thinking about using titanium or molybdenum wires as they have high melting point and are highly durable.
+      <br> Also, since the water used will not be deionized, it will have conductivity. Even if deionized water is used, the process generates chemicals/metallic compounds that spoil the
+      water.
+      <br>The point I'm trying to say is that since the water will be slightly conductive, there will be electrolysis and this process will remove the material from the Anode. Hence the
+      copper (workpiece) will be connected to the ground/cathode, hence no material will be removed from the workpiece, though some may get deposited.
     </p>
 
     <h2>Merits</h2>
@@ -83,7 +99,6 @@
       </ul>
     </p>
 
-
     <h2>Draw-backs</h2>
     <p>
       <br> Even if this project is implemented correctly there will be drawbacks, like
@@ -92,6 +107,9 @@
         <li>Chances of electrical short and shock (especially since water and electricity comes together), but it's will be relatively safe as we are not dealing with mains level of voltages.</li>
         <li>Messy, there is a water bath and water circulation system included. </li>
         <li>Consumes more power than other PCB milling, may be, I have to confirm this.</li>
+        <li>As mentioned above, the electrolysis effect.</li>
+        <li>Since the process requires electrical connection to the site being machined, the gcode/tool-path generation will be slightly complicated. This is because we cannot machine an
+          area which has been electrically isolated by a previous pass. </li>
         <li>The machine cannot cut or drill the PCB (substrate), so you will have to manually drill and cut the required area from a larger piece of copper clad board.</li>
         <li>Very intolerant to even the slightest of surface imperfections and leveling errors.</li>
       </ul>
@@ -105,6 +123,31 @@
       <iframe width="560" height="315" src="https://www.youtube.com/embed/R8o2Sy-KPUU" frameborder="0" allowfullscreen></iframe>
       <br> well, technically it's not bed leveling, because we are not leveling the bed. We are actually profiling the surface (in very low resolution), in another words, we are '2.5D scanning'
       the surface and moving the end-effector up and down according to the surface profile.
+    </p>
+
+    <h2>The Rough Idea</h2>
+    <p>
+      <figure>
+        <img src="../w1/draft.jpg" alt="drawing" width="500" onclick="this.width='1000'" onmouseout="this.width='499'">
+        <figcaption style="display:block; color:grey">The EDM process</figcaption>
+      </figure>
+      <ul>
+        <li>The end-effector will be something like a 3d printer extruder without the heater. </li>
+        <li>X-Y axis movements will be done using
+          <a href="http://corexy.com/index.html">core-xy</a>. Or will be a simple X-Y movement assembly.</li>
+        <li>The end effector will also act as a probe for profiling the surface of the PCB for the 'auto-bed-level' function.</li>
+        <li></li>
+      </ul>
+
+    </p>
+
+
+    <h2>To-Do</h2>
+    <p>
+      <ul>
+        <li>Decide the approximate voltage and current level, and/or the capacitor values to be used </li>
+        <li>Make the end effector, which</li>
+      </ul>
     </p>
 
 
