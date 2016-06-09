@@ -55,8 +55,7 @@
       it works, thats why the video!).
       <br>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/Zf7_GY7GMV4" frameborder="0" allowfullscreen></iframe>
-      <br>
-      In case if you haven't figured it out yet, this is basically a PCB milling machine, but the material removal is achieved with spark erosion.
+      <br> In case if you haven't figured it out yet, this is basically a PCB milling machine, but the material removal is achieved with spark erosion.
     </p>
 
     <h2>How?</h2>
@@ -144,9 +143,7 @@
         <li>An additional power supply with/without a capacitor bank will be required for the machining process. The power-source may need to be of variable voltage and variable frequency,
           though variable frequency could be done easily with a switching MOSFET. </li>
       </ul>
-
     </p>
-
 
     <h2>To-Do</h2>
     <p>
@@ -163,6 +160,74 @@
           <a href="http://linuxcnc.org/">Linux-CNC (EMC2)</a>
         </li>
       </ul>
+    </p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h1>Let's Begin Shall We?</h1>
+    <p>
+      As a first step, I tried contacting
+      <a href="https://hackaday.io/Jarrett">Jarrett</a>, whim I mentioned in my
+      <a href="../w17/w17.html">Applications and Implications</a> page.
+      <br> To my my surprise he responded quickly with a lot of details, like the troubles he faced, his ideas and he briefed me about his work till now. He also shared a few external links
+      and threads.
+    </p>
+    <p>
+      One of the difficulty he faced is the design of a wire extruder. So I decided to start working on that itself.
+    </p>
+
+    <h2>The wire Feeding Mechanism.</h2>
+    <p>
+      The wire feeder should be able to feed the thin wire and simultaneously supply connect it to the +ve rail of the power supply. I was thinking about a click pencil mechanism or a normal
+      pinch wheel mechanism. I decided to stick with the pinch wheel mechanism as it seems simple.
+    </p>
+    <p>
+      The idea is to use a rubber wheel found in the paper feeder unit of a printer and a 608/606 bearing. I talked about us getting a few printers from the 'scrapyard' for salvaging parts
+      for our
+      <a href="../w9/w9.html">Mechanical Design</a> assignment. All the rods and many other parts for this project will also come from the salvaged components of the printer.
+    </p>
+    <p>
+      I used the 626-2RS bearing and the rubber wheels from the printer. Made an assembly using acrylic to make a nice compact wire feeding mechanism.
+      <figure>
+        <img src="wire-feeder.svg" width="500" onclick="this.width='1300'" onmouseout="this.width='500'">
+        <figcaption style="display:block; color:grey"> As you know, the
+          <b style="color:red">red</b> lines are the cutting lines and the
+          <b style="color:black">black</b> lines and fills are the engraving area. This engraving will create a small surface depression that allows the bearing to run freely. The
+          <b>second piece will be sandwiched between two of the first type</b>. A piece of 6mm shaft will be used to mount the bearing and 4 screws will mount the sandwich to the stepper
+          motor.
+        </figcaption>
+      </figure>
+    </p>
+    <p>
+      <figure>
+        <img src="wire-feed2.jpg" width="500" onclick="this.width='1200'" onmouseout="this.width='500'">
+        <figcaption style="display:block; color:grey"> All the three pieces cut and ready to assemble. The center piece has holes drilled into it, manually to allow the wire to pass through.
+          <br>Also the engraving didn't work as i expected it to, In one trial it just went through the boundary in the other it didn't go that deep. Since I didn't want to waste those
+          I just took a Dremel to fix it.</figcaption>
+
+        <img src="wire-feed3.jpg" width="500" onclick="this.width='1200'" onmouseout="this.width='500'">
+        <figcaption style="display:block; color:grey"> The two acrylic pieces in place, and the bearing is secured using a piece of the 6mm smooth rod I found from the printer. </figcaption>
+
+        <img src="wire-feed4.jpg" width="500" onclick="this.width='1200'" onmouseout="this.width='500'">
+        <figcaption style="display:block; color:grey"> Everything mounted and ready for a test.</figcaption>
+      </figure>
+    </p>
+
+    <h3>Test</h3>
+    <p>
+      <video width="720" controls>
+        <source src="wire feeder test.m4v" type="video/mp4"> Your browser does not support the video tag.
+      </video>
+      <br> The video shows the wire feeder in action. The controller is the result of my
+      <a href="../w11/w11.html">Input/Output</a> assignment. As evident from the test, the result is a smashing success. The grip is very good, I can even pull on the thin copper wire to make the stepper rotate,
+      thats how good the grip is.
+      <br>
+      <b>As a bonus this mechanism also straightens the wire, unintended.</b>
+      <br> The only problem is feeding the wire, as of now I have to disassemble and insert the wire and assemble it back.
     </p>
 
   </section>

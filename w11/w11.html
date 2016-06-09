@@ -582,8 +582,8 @@ void update(void)
       <a href="https://www.youtube.com/watch?v=OOplk52R4no">calibrate</a> the ESC. This is because the board sends the full 'throttle' when it starts and the ESC will remember this and will wait for the minimum 'throttle'. Once you push
       the button, the the PWM immediately goes to a level corresponds to lowest 'throttle' level. This will calibrate the ESC.
     </p>
-<div class="codescroll">
-  <pre>
+    <div class="codescroll">
+      <pre>
 #define F_CPU 8000000UL
 #include &lt;avr/io.h&gt;
 #include &lt;avr/interrupt.h&gt;
@@ -702,7 +702,7 @@ void update(void)
 
   </pre>
 
-</div>
+    </div>
 
 
 
@@ -834,6 +834,16 @@ void update(void)
       </div>
     </p>
 
+    <h3>The Code in Action</h3>
+    <p>
+      Here is a video from my
+      <a href="../project/project.html">Final Project</a>. This circuit with the above code is used to drive the stepper motor. The rotary switch is turned CW to increase the speed of rotation, CCW for decreasing the
+      same and pushing the button will change the direction of the rotation.
+      <br>
+      <video width="720" controls>
+        <source src="../project/wire feeder test.m4v" type="video/mp4"> Your browser does not support the video tag.
+      </video>
+    </p>
 
 
 
