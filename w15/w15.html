@@ -2,59 +2,537 @@
 <html>
 
 <head>
-  <meta http-equiv="refresh" content="5; url=../w16/w16.html" />
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-  <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="../stylesheets/github-dark.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print">
-  <link rel="stylesheet" href="../stylesheets/mine.css">
-  <link rel="stylesheet" href="cssgal.css">
-  <title>15:-Networking and Communications</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print">
+    <link rel="stylesheet" href="../stylesheets/mine.css">
+    <link rel="stylesheet" href="cssgal.css">
+    <title>15:-Networking and Communications</title>
+
+    <style>
+        div.codescroll {
+            width: 1500px;
+            height: 500px;
+            overflow: scroll;
+        }
+    </style>
 </head>
 
 <body>
-  <link rel="icon" type="image/png" href="../favicon.png">
-  <header>
-    <div class="container">
-      <h1>Fab2016</h1>
-      <h3>/ Module 15</h3>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <header>
+        <div class="container">
+            <h1>Fab2016</h1>
+            <h3>/ Module 15</h3>
 
-      <section id="Module">
-        <a href="../index.html">Home</a>
-        <a href="../w1/w1.html" class="btn" title="Principles and Practices, Project Management ">1</a>
-        <a href="../w2/w2.html" class="btn" title="Computer-Aided Design">2</a>
-        <a href="../w3/w3.html" class="btn" title="Computer-Controlled Cutting">3</a>
-        <a href="../w4/w4.html" class="btn" title="Electronics Production">4</a>
-        <a href="../w5/w5.html" class="btn" title="3D Scanning and Printing">5</a>
-        <a href="../w6/w6.html" class="btn" title="Electronics Design">6</a>
-        <a href="../w7/w7.html" class="btn" title="Computer-Controlled Machining">7</a>
-        <a href="../w8/w8.html" class="btn" title="Embedded Programming">8</a>
-        <a href="../w9/w9.html" class="btn" title="Mechanical Design">9</a>
-        <a href="../w10/w10.html" class="btn" title="Machine Design">10</a>
-        <a href="../w11/w11.html" class="btn" title="Input Devices">11</a>
-        <a href="../w12/w12.html" class="btn" title="Molding and Casting">12</a>
-        <a href="../w13/w13.html" class="btn" title="Output Devices">13</a>
-        <a href="../w14/w14.html" class="btn" title="Composites">14</a>
-        <a href="../w15/w15.html" class="btn" title="Networking and Communications">15</a>
-        <a href="../w16/w16.html" class="btn" title="Interface and Application Programming">16</a>
-        <a href="../w17/w17.html" class="btn" title="Applications and Implications">17</a>
-        <a href="../w18/w18.html" class="btn" title="Invention, Intellectual Property, and Income">18</a>
-        <a href="../project/project.html" class="btn" title="Final Project:- Sparky the EDM PCB Mill">project</a>
+            <section id="Module">
+                <a href="../index.html">Home</a>
+                <a href="../w1/w1.html" class="btn" title="Principles and Practices, Project Management ">1</a>
+                <a href="../w2/w2.html" class="btn" title="Computer-Aided Design">2</a>
+                <a href="../w3/w3.html" class="btn" title="Computer-Controlled Cutting">3</a>
+                <a href="../w4/w4.html" class="btn" title="Electronics Production">4</a>
+                <a href="../w5/w5.html" class="btn" title="3D Scanning and Printing">5</a>
+                <a href="../w6/w6.html" class="btn" title="Electronics Design">6</a>
+                <a href="../w7/w7.html" class="btn" title="Computer-Controlled Machining">7</a>
+                <a href="../w8/w8.html" class="btn" title="Embedded Programming">8</a>
+                <a href="../w9/w9.html" class="btn" title="Mechanical Design">9</a>
+                <a href="../w10/w10.html" class="btn" title="Machine Design">10</a>
+                <a href="../w11/w11.html" class="btn" title="Input Devices">11</a>
+                <a href="../w12/w12.html" class="btn" title="Molding and Casting">12</a>
+                <a href="../w13/w13.html" class="btn" title="Output Devices">13</a>
+                <a href="../w14/w14.html" class="btn" title="Composites">14</a>
+                <a href="../w15/w15.html" class="btn" title="Networking and Communications">15</a>
+                <a href="../w16/w16.html" class="btn" title="Interface and Application Programming">16</a>
+                <a href="../w17/w17.html" class="btn" title="Applications and Implications">17</a>
+                <a href="../w18/w18.html" class="btn" title="Invention, Intellectual Property, and Income">18</a>
+                <a href="../project/project.html" class="btn" title="Final Project:- Sparky the EDM PCB Mill">project</a>
 
-      </section>
-    </div>
-  </header>
-  <section>
-    <h2>My
-      <a href="../w16/w16.html">Interface and Application Programming</a> module and
-      <b>Networking and Communications</b> modules is a part of single big assignment involving reading data from a vernier caliper and sending it via an nrf2l01 module. For more details
-      head over
-      <a href="../w16/w16.html">here</a>.
-    </h2>
-  </section>
+            </section>
+        </div>
+    </header>
+    <section>
+
+        <h1> LED Indicator Display. </h1>
+        <p>
+            Recently I had chance to play with
+            <a href="https://www.amazon.com/Amazon-Echo-Bluetooth-Speaker-with-WiFi-Alexa/dp/B00X4WHP5E">Amazon Echo</a> and I found that the LED indicator on the device interesting. Well, this is just one of the many aspects of the device that caught my attention. I thought
+            this will be a great thing to make, and it could be used as an indicator for the temperature of our (me and
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/384/">Yadu</a>)
+            <a href="http://sibusaman.github.io/DIY-Soldering-Station/">soldering station project</a>. This will be a great addition to the project. I plan to install a display for a more detailed manipulations, like calibration, fine tuning
+            the temperature etc. But I want to use the LED display for indicating the present temperature and the target temperature in a nice animated form.
+        </p>
+
+
+        <h2>The Design, Schematic and Board</h2>
+        <p>
+            I decided to make the LED board separate from the main controller. and to make a 10 LED semi-circular display with Tiny44 as a controller. Even if I dedicate one pin for communication
+            and leave the RESET pin alone, I'll have 10 digital I/O pins for the LED. Even without multiplexing I can have 10 LEDs in the indicator.
+        </p>
+        <p>
+            I could implement software PWM code to enable dimming of any LED of my choice to indicate fractional values. For example if I want to indicate 6.5, I'll turn on 6 LEDs and put the 7th
+            one at half the brightness.
+        </p>
+        <p>
+            It's better to use the <code>INT0 or PB2</code> pin for the communication, <code>PB3</code> is <code>RESET</code>. So that leaves me with <code>PB0 and PB1</code> from PORTB
+            and all of PORTA <code>PA0-7</code> for the LEDs. So I'l be assigning
+            <code>PB0</code> to LED1, <code>PB1</code> to LED2, <code>PA0</code> to LED3, <code>PA1</code> to LED4......
+        </p>
+        <p>
+            Now it's time to make the PCB, so lets get the eagle and design it.
+            <br> And it is!
+            <br>
+            <br>
+            <figure>
+                <img src="sch.png" width="600" onclick="this.width='1000'" onmouseout="this.width='600'" />
+                <figcaption style="display:block; color:grey">The Schematic.</figcaption>
+                <img src="brd.png" width="600" onclick="this.width='1000'" onmouseout="this.width='600'" />
+                <figcaption style="display:block; color:grey">The Board Layout.</figcaption>
+            </figure>
+        </p>
+        <p>
+            <h4>These are the Eagle Files for the LED Indicator Board.</h4>
+            <br>
+            <a href="sibu-led-board.sch" download="sibu-led-board.sch">Schematic</a>
+            <a href="sibu-led-board.brd" download="sibu-led-board.brd">Board</a>
+        </p>
+
+        <h2>Stuffing</h2>
+        <p>
+            When I first designed and milled the board I was in a hurry and I made a few mistakes, I forgot to connect <code>MOSI, MISO and SCK</code> of the ISP to the Tiny44. So I
+            had to use wires to bridge them. I also forgot a 10uF filter capacitor across the VCC-GND. All these mistakes and a few more(I'll talk about this later) is resolved in the
+            above schematic and board layout, that's why you will see that the board layout doesn't match with what you will be seeing now.
+
+            <figure>
+                <img src="hero-shot.jpg" width="600" onclick="this.width='1000'" onmouseout="this.width='600'" />
+                <figcaption style="display:block; color:grey">Here is the 'Hero Shot' of my board. I know that everyone hates wires, so am I. It's a mess. But mistakes are inevitable, especially when you do something in a hurry,
+                    as we are human. The wires connect the ISP to <code>MISO, MOSI and SCk</code> there are few more wires which connects additional components I added later, like the
+                    pull-down resistor and a filter capacitor for the "data_in" pin.</figcaption>
+            </figure>
+        </p>
+
+        <h2>Testing</h2>
+        <p>
+            First let's see if all the LEDs are working.
+        </p>
+        <h3>Blinking the LEDs</h3>
+        <p>
+            <div class="codescroll">
+                <pre>
+                  //timer CTC interrupt test
+                  #define F_CPU 8000000UL
+                  #include &lt;avr/io.h&gt;
+                  #include &lt;avr/interrupt.h&gt;
+
+                  int temp=0;
+                  int main(void)
+                  {
+                    DDRB = 0b00000011;
+                    DDRA = 0xff;
+                  // initialize Timer1 the 16bit timer
+                    cli();				// disable global interrupts
+                    TCCR1A = 0;
+                  	TCCR1B = 0;		// same for TCCR1*
+
+                    // set compare match register to desired timer count:
+                    OCR1A = 10000;
+
+                    // turn on CTC mode:
+                    TCCR1B |= (1 &lt;&lt; WGM12);
+
+                    TCCR1B |= (1 &lt;&lt; CS11);
+
+                    // enable timer compare interrupt:
+                    TIMSK1 |= (1 &lt;&lt; OCIE1A);
+
+                    sei();			// enable global interrupts:
+                  }
+
+                  ISR(TIM1_COMPA_vect)
+                  {
+                    if (temp==1)
+                    {
+                      PORTB = (0b00000011);
+                      PORTA = 0xff;
+                      temp=0;
+                  	}
+                    else
+                    {
+                      PORTB = (0b00000000);
+                      PORTA = 0x00;
+                      temp=1;
+                  	}
+                  }</pre>
+            </div>
+            <br>
+            <video width="520" controls>
+                <source src="blink.mp4" type="video/mp4"> Your browser does not support the video tag.
+            </video>
+        </p>
+        <br>
+        <br>
+        <h3>Single LED Sweep.</h3>
+        <p>
+            Testing sweeping pattern, one LED is on at a time.
+            <div class="codescroll">
+                <pre>
+                #define F_CPU 1000000UL
+                #include &lt;avr/io.h&gt;
+                #include &lt;util/delay.h&gt;
+                #define BLINK_DELAY_MS 75
+
+                int temp = 0;
+                int inc = 1;
+
+                int main (void)
+                {
+                /* set (PB5) of PORTB for output*/
+                	DDRA = 0xff; //does the same thing as above line
+                  DDRB = 0b00000011;
+
+                  while(1)
+                  {
+                    _delay_ms(BLINK_DELAY_MS);
+                    switch (temp)
+                    {
+                      case 1:
+                      	PORTB = 0b00000001;
+                        PORTA = 0x00;
+                        break;
+                      case 2:
+                        PORTB = 0b00000010;
+                        PORTA = 0x00;
+                        break;
+                      case 3:
+                        PORTB = 0x00;
+                        PORTA = 0b00000001;
+                        break;
+                      case 4:
+                      	PORTA = 0b00000010;
+                        break;
+                      case 5:
+                        PORTA = 0b00000100;
+                        break;
+                      case 6:
+                        PORTA = 0b00001000;
+                        break;
+                      case 7:
+                      	PORTA = 000010000;
+                        break;
+                    	case 8:
+                      	PORTA = 0b00100000;
+                        break;
+                      case 9:
+                      	PORTA = 0b01000000;
+                        break;
+                      case 10:
+                      	PORTA = 0b10000000;
+                        inc*=-1;
+                        break;
+                      default:
+                      	temp = 0;
+                        inc*=-1;
+                    }
+                    temp+=inc;
+                  }
+                }</pre>
+            </div>
+            <br>
+            <video width="520" controls>
+                <source src="blink-sweep.mp4" type="video/mp4"> Your browser does not support the video tag.
+            </video>
+        </p>
+        <h3>Testing Sweep with Dimming</h3>
+        <p>
+            Here is a test code that's very close to being the final code, here I'm testing the software PWM (explained in Input/Output module) functions to adjust the brightness of the last LED
+            to indicate fractional values.
+            <br>During this test I had learned that the human eye doesn't respond linearly to the energy of the light source (well I knew this before, about sound, as I knew that the sound
+            is measured in dBs and they are logarithmic). That is if I reduce the power of the light source by half, or reduce the PWM duty cycle to .5 (on half the time, off the other
+            half, reducing the energy delivered averaged over time to half), my eye is receiving half the power, but I won't be seeing half the intensity, i would be seeing less than
+            that.
+            <br> Most of our sensory organs works this way, they follow a power law, of the form. <code>p(I) = kI<sup>a</sup></code>. Where <code>p(I)</code> is the perceived intensity/strength
+            of the physical quantity <code>I</code>, k is the proportionality constant, a is the exponent. More details
+            <a href="https://en.wikipedia.org/wiki/Stevens%27_power_law">here</a>.
+        </p>
+        <p>
+            Anyway, I didn't use the accurate numbers, instead just went for square function. 50% brightness means 25% duty cycle. But I found that my results are good, and on further inspection
+            I found that my function is close to what many people suggested at different forums.
+            <br> For example, these are the values for a 32-step, 10-bit PWM.
+            <br> 0, 1, 3, 6, 10, 16, 23, 32, 43, 56, 71, 88, 107, 129, 154, 181, 210, 242, 277, 315, 356, 400, 447, 498, 551, 608, 668, 732, 799, 869, 944, 1022. Here is a plot of this
+            function along with what I'm using.
+            <figure>
+                <img src="plot.png" width="600" onclick="this.width='1000'" onmouseout="this.width='600'" />
+                <figcaption style="display:block; color:grey">The Red curve represents square function I use and the Black curve represents the above data.</figcaption>
+            </figure>
+            <div class="codescroll">
+                <pre>
+    #define F_CPU 8000000UL
+    #include &lt;avr/io.h&gt;
+    #include &lt;avr/interrupt.h&gt;
+
+    int temp=0;
+    int val=0;
+    int prev_val = 0;
+    int last_led_val;
+    unsigned int last_led=0;
+    unsigned int shift;
+
+    int main(void)
+    {
+    	DDRB = 0b00000011;
+    	DDRA = 0xff;
+    	// initialize Timer1 the 16bit timer
+    	cli();				// disable global interrupts
+    	TCCR1A = 0;
+    	TCCR1B = 0;
+    	TCCR0A = 0;
+    	TCCR0B = 0;
+
+    	// set compare match register to desired timer count:
+    	OCR0B = 200;
+
+    	TCCR0B |= (1 &lt;&lt; CS11);;
+
+    	// enable timer compare interrupt:
+    	TIMSK0 |= (1 &lt;&lt; OCIE0A);
+    	TIMSK0 |= (1 &lt;&lt; OCIE0B);
+
+    	sei();			// enable global interrupts:
+
+    	while(1)
+    	{
+    		while (prev_val  != val)
+    		{
+    			last_led = val/10;
+    			last_led_val =  (val - 10*last_led);
+    			last_led_val = last_led_val * last_led_val  * 2;
+    			PORTB = 0x00;
+    			PORTA = 0x00;
+    			if (last_led &lt; 2)
+    			{
+    				shift = 8 - last_led;
+    				PORTB = 0b11000000 &lt;&lt; shift;
+    			}
+    			else
+    			{
+    				PORTB = 0b00000011;
+    				shift = 10 - last_led;
+    				PORTA = 0xff &lt;&lt; shift;
+    			}
+    			OCR0A = last_led_val+1;
+    			prev_val =val;
+    		}
+
+    		if (temp &gt; 500)
+    		{
+    			temp = 0;
+    			val++;
+    			if (val &gt; 98)
+    			{
+    				val = 0;
+    			}
+    		}
+    	temp ++;
+    	}
+    	while(0)
+    	{
+    		OCR0A = 20;
+    	}
+    }
+
+    ISR(TIM0_COMPA_vect)
+    {
+    	if (last_led &lt; 2)
+    	{
+    		PORTB &= 0xff^ (1 &lt;&lt; last_led) ;
+    	}
+    	else
+    	{
+    		PORTA &= 0xff^ (1 &lt;&lt; (last_led-2)) ;
+    	}
+    }
+
+    ISR(TIM0_COMPB_vect)
+    {
+    	if (last_led &lt; 2)
+    	{
+    		PORTB |= (1 &lt;&lt; last_led) ;
+    	}
+    	else
+    	{
+    		PORTA |= (1 &lt;&lt; (last_led-2));
+    	}
+    	TCNT0 = 0;
+    }</pre>
+            </div>
+            <br>
+            <video width="520" controls>
+                <source src="semi-final.mp4" type="video/mp4"> Your browser does not support the video tag.
+            </video>
+        </p>
+
+
+        <h2>The Final Code and The Test Result</h2>
+        <p>
+            I need to sent values, which are the duty cycle to the board, I though of various methods like software serial communication as done in my interfacing board (basically Neil's hello.ftdi.c
+            code), sending as BCD (Binary-coded decimal) pulses....
+            <br> But for something this simple, I don't need to. So I'll be sending the data as pulses who's duration will be the data to be sent. Something like, 2ms pulse represents zero
+            and 102ms represents 100. The 16 bit timer counter will be used measure the length of the pulse and the <code>INT0</code> will be configured to trigger interrupt on logic
+            level change, both high-to-low and low-to-high. The timer will start counting on low-to-high and will stop at high-to-low, measuring the pulse duration, after which it will
+            be reset to zero again on the next low-to-high pulse.
+        </p>
+        <h3>Code</h3>
+        <p>
+            <div class="codescroll">
+                <pre>
+#define F_CPU 8000000UL
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
+
+int temp=0;
+ int val=1;
+ int prev_val = 100;
+ int last_led_val;
+unsigned int last_led=0;
+unsigned int shift;
+
+int main(void)
+{
+	DDRB = 0b00000011;
+	DDRA = 0xff;
+	// initialize Timer1 the 16bit timer
+	cli();				// disable global interrupts
+
+	//enble pin change interrupts on int0
+	GIMSK |= (1&lt;&lt;INT0);
+	MCUCR= (1&lt;&lt;ISC00) | (1&lt;&lt;ISC00);
+
+	TCCR1A = 0;
+	TCCR1B = 0;
+	TCCR0A = 0;
+	TCCR0B = 0;
+
+	// set compare match register to desired timer count:
+	OCR0B = 200;
+
+	TCCR0B |= (1 &lt;&lt; CS01);
+	TCCR1B |= (1 &lt;&lt; CS11);
+
+	// enable timer compare interrupt:
+	TIMSK0 |= (1 &lt;&lt; OCIE0A);
+	TIMSK0 |= (1 &lt;&lt; OCIE0B);
+
+	sei();			// enable global interrupts:
+
+	while(1)
+	{
+		last_led = val/10;
+		last_led_val =  (val - 10*last_led);
+		last_led_val = last_led_val * last_led_val  * 2;
+		PORTB = 0x00;
+		PORTA = 0x00;
+		if (last_led &lt; 2)
+		{
+			shift = 8 - last_led;
+			PORTB = 0b11000000&gt;&gt;shift;
+		}
+		else
+		{
+			PORTB = 0b00000011;
+			shift = 10 - last_led;
+			PORTA = 0xff&gt;&gt;shift;
+		}
+		if (prev_val  != val )
+		{
+			OCR0A = last_led_val+1;
+		}
+		prev_val =val;
+
+	}
+}
+
+ISR(INT0_vect)
+{
+		if (PINB && 0b00000100)
+		{
+			TCNT1 = 0;
+		}
+		else
+		{
+			val = TCNT1/2;
+			TCNT1 = 0;
+		}
+}
+
+ISR(TIM0_COMPA_vect)
+{
+	if (last_led &lt; 2)
+	{
+		PORTB &= 0xff^ (1&lt;&lt; last_led) ;
+	}
+	else
+	{
+		PORTA &= 0xff^ (1&lt;&lt; (last_led-2)) ;;
+	}
+}
+
+ISR(TIM0_COMPB_vect)
+{
+	if (last_led &lt; 2)
+	{
+		PORTB |= (1 &lt;&lt; last_led) ;
+	}
+	else
+	{
+		PORTA |= (1 &lt;&lt; (last_led-2));
+	}
+	TCNT0 = 0;
+}</pre>
+            </div>
+        </p>
+
+        <h3>Problems</h3>
+        <p>
+            While testing this code, I had one major issue, whatever I do, I wasn't getting the any results, I knew that there was nothing wrong in the code, after-all, most of these codes are
+            bits and pieces from my own codes, written before, they are all tested and proven.
+        </p>
+        <p>
+            So only one possibility is left, NOISE.
+        </p>
+        <p>
+            I examined with DSO and Function generator, where the function generator is used to make pulses of the duration within the limits of what the code expects. And it was working perfectly.
+            So I was sure that the problem is the noise. I have been using the
+            <a href="../w11/w11.html">Stepper-Servo-Tester</a> as the master board, which will sent the data as PWM pulses via the servo controller pin to the slave board(The LED Display board we are discussing
+            about)
+        </p>
+        <p>
+            The issue was the noise for sure, I left the input pin of the slave and the output of the master floating, Bad idea!. I should have put a pull down resistor here. Also I didn't have
+            a bypass/decoupling capacitor (a low value capacitor close to the input pin, between the input pin and the ground, to ground any high frequency noise signal).
+        </p>
+        <h3>The fix.</h3>
+        <p>
+            We now know the issue, so the fox is easy, add a pull down resistor and a capacitor close to the input pin.
+            <br>I choose 10nF capacitor and 5K resistor.
+            <br>Now the circuit is working beautifully.
+        </p>
+        <h3>Result</h3>
+        <p>
+            <br>
+            <video width="520" controls>
+                <source src="final.mp4" type="video/mp4"> Your browser does not support the video tag.
+            </video>
+        </p>
+
+        <p>
+            The values like the prescaler for Timer1, the multiplier at the end of the the expression <code>last_led_val = last_led_val * last_led_val  * 2;</code> etc. could be adjusted
+            to make the circuit work in different range of pulse durations.
+        </p>
+
+
+    </section>
 
 </body>
 

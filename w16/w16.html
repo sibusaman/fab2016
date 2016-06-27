@@ -57,24 +57,19 @@
     <h1>An Interface for the Digital Caliper.</h1>
 
     <p>
-      This is another combined project involving
-      <b>Networking and Communications</b> and
-      <b>Interfacing and Application Programming</b>.
-    </p>
-    <p>
       While playing around with the digital caliper, I found a 'secret', 4-pin port on the device. I was executing it be some kind of programming or data out port.
       <br>
       <figure>
         <img src="calip-conn.jpg" width="600" onclick="this.width='1000'" onmouseout="this.width='600'" />
         <figcaption style="display:block; color:grey"></figcaption>
       </figure>
-      On further 'research with Google', I found that it indeed is a data out, it can be used to get the reading as it is displayed on the LCD.
+      On 're-search with Google', I found that it indeed is a data out, it can be used to get the reading as it is displayed on the LCD.
     </p>
     <p>
       I'm going to try make an interface to get the data from the caliper and interpret the bit stream to the real value. The micro-controller board I'll be making could be sending the data
       directly to a phone or computer via serial/bluetooth/wi-fi/2.4GHz NRF2L01. A computer/android software will be written to show the values, which will be the 'interface programming
       assignment'.
-      <br> For the communication part, I'm considering bluetooth/wi-fi/2.4GHz NRF2L01.
+      <br> For the communication part I will be using soft serial, as the Tiny44 doesn't support it natively.
     </p>
 
     <h2>The Interface Data Protocol</h2>
@@ -413,8 +408,7 @@ ISR(INT0_vect)
           <figcaption style="display:block; color:grey"></figcaption>
         </figure>
         <br>
-        <br> Now I need to send this data wirelessly to another board and write a computer program/android app to display this value.
-
+        <br> Now I need to send this data to a computer program/android app to display this value. Which will complete the interface designing assignment.
       </p>
 
 
