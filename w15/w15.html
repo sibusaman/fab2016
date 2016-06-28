@@ -531,6 +531,31 @@ ISR(TIM0_COMPB_vect)
             to make the circuit work in different range of pulse durations.
         </p>
 
+        <h2>Identity</h2>
+        <p>
+            So far, the program do not give any identity to the slaves, so if we have many boards connected to the same network, all of the slaves respond similarly to the commands from the master.
+            <br> To resolve this, we have to find a way to add an entry in the data stream which will let the slaves decide if the data is meant for them or not. Basically this is an address,
+            something like a code, name, pattern to distinguish one slave from another. For this to work, obviously we need to divide the data stream into packets.
+        </p>
+        <p>
+            Each of these packets will have some way to identify the beginning and end, also these packets will contain the address. A simple example would be, if we are using UART (software/bit-banged
+            or hardware) for the communication, as we know it has a few bits dedicated to mark the beginning of a packet, end of a packet and parity, that is some way to detect error
+            in transmission. I found this
+            <a href="https://learn.sparkfun.com/tutorials/serial-communication">sparkfun article on serial communication</a> quite informative. But clearly these protocol doesn't have a method for addressing, that is there is no way for the slave to
+            know what is meant for whom.
+        </p>
+        <p>
+            For my need, I have to sent only Decimal numbers, and if I use UART, except the 10 combinations meant for the 10 digits, all other combinations are left for any purpose of my choice.
+            So I can dedicate, say A to Z for addressing and some special key like # for marking the end of the current stream.
+            <br> so, <code>A83#</code> when sent, will go to all the slaves, but only one slave that is programmed to listen/accept command formatted like AXX# will take any action.
+        </p>
+        <p>
+            If I use A-Z and a-z for addressing, I can have 52 unique identities, infact if I use 8 bit data packets, I can have 256-10=246 unique identities, if I'm just sending only numbers
+            to all the slaves.
+        </p>
+
+
+
 
     </section>
 
