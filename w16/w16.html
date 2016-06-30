@@ -60,7 +60,7 @@
       While playing around with the digital caliper, I found a 'secret', 4-pin port on the device. I was executing it be some kind of programming or data out port.
       <br>
       <figure>
-        <img src="calip-conn.jpg" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
+        <img src="calip-conn.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey"></figcaption>
       </figure>
       On 're-search with Google', I found that it indeed is a data out, it can be used to get the reading as it is displayed on the LCD.
@@ -84,14 +84,14 @@
     <p>
       On further reading I found that the caliper's pins are vcc(+1.5v as it is powered from a button cell), DATA, CLOCK and GND.
       <figure>
-        <img src="pinout.jpg" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
+        <img src="pinout.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey"></figcaption>
       </figure>
       So I started probing the pins using a DSO.
       <figure>
-        <img src="clock.jpg" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
+        <img src="clock.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey">The clock pulse train, corresponds to 24 bit data, 6 sets of 4 bit data.</figcaption>
-        <img src="data.jpg" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
+        <img src="data.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey">The data pulse train.</figcaption>
       </figure>
       This is not exactly the direct reading from the caliper, this is the data from the caliper passed through a
@@ -111,9 +111,9 @@
     <p>
       Here are some pictures explaining the interpretation.
       <figure>
-        <img src="data-inter-1.jpg" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='600'" />
+        <img src="data-inter-1.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey">You can see that the Caliper reads 7.01. The green channel is the clock and the yellow is the data.</figcaption>
-        <img src="data-inter.jpg" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
+        <img src="data-inter.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey">This is a better picture of the oscilloscope. You can see almost all of the first 16 bits, in set of four. They will read as
           <br><code>0100, 0010, 1011, 1111, 1111....</code></figcaption>
       </figure>
@@ -153,9 +153,9 @@
         <li>Provision for adding a 3.3v DC-DC module for the wireless module as most of them uses 3.3v supply.</li>
       </ul>
       <figure>
-        <img src="sch.png" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='600'" />
+        <img src="sch.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey">The schematic.</figcaption>
-        <img src="brd.png" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
+        <img src="brd.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey">The board image.</figcaption>
       </figure>
       <h2>EAGLE Files are here</h2>
@@ -166,9 +166,9 @@
       <br>
       <br>
       <figure>
-        <img src="pcb-top.jpg" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='600'" />
+        <img src="pcb-top.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey">The top side of the board, the white jumper wire is a replacement for a trace I forgot to add.</figcaption>
-        <img src="pcb-bot.jpg" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
+        <img src="pcb-bot.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey">Bottom side of the PCB, the copper wires replaces the few traces in the bottom layer, the long wire with a piece of PCB at the end is the ground used for connecting DSO etc.
           and sometimes used when the caliper connector looses ground connection.</figcaption>
       </figure>
@@ -190,7 +190,7 @@
       <a href="http://www.analog.com/media/en/technical-documentation/data-sheets/AD8615_8616_8618.pdf">AD-8615</a> to configure it as a Schmitt-Trigger. The calculator is an
       <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/electronic/schmitt.html">hyperphysics.phy-astr.gsu.edu</a> page on Schmitt-Trigger.
       <figure>
-        <img src="schmitt.png" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
+        <img src="schmitt.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey"></figcaption>
       </figure>
       Since the caliper is powered by a <code>1.5v</code> cell, I had assumed that the the logic level/ logic high would be at <code>1.5v</code>. But I was wrong, Its only about 1v.
@@ -206,9 +206,9 @@
       <a href="http://www.thingiverse.com/thing:1543247">thingiverse</a>. So I made the print and decided to add spring contacts salvaged from the scrap ink-jet printers. The spring contacts were soldered and then buried deep into the
       grooves for the connector pins.
       <figure>
-        <img src="conn-pre.jpg" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
+        <img src="conn-pre.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey"></figcaption>
-        <img src="conn.jpg" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
+        <img src="conn.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey"></figcaption>
       </figure>
     </p>
@@ -404,7 +404,7 @@ ISR(INT0_vect)
         even number, must be missing the least significant bit, which being 1 decided the if the final value if odd or even.
         <br>
         <figure>
-          <img src="output.png" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
+          <img src="output.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
           <figcaption style="display:block; color:grey"></figcaption>
         </figure>
         <br>
