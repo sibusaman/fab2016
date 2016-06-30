@@ -302,10 +302,10 @@ disasm:	main.elf
             here says the chip to expect for an external clock source, as per the DATASHEET.
             <br>
             <figure>
-                <img src="debug1.jpg" alt="debug-1" width="500" onclick="this.width='1300'" onmouseout="this.width='500'">
+                <img src="debug1.jpg" alt="debug-1" width="500" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1300'" onclick="this.width='500'">
                 <figcaption style="display:block; color:grey">DSO CH1 connected to the LED pin. As you can see the time period is about 5sec, hence the actual delay is 2.5sec, means the actual Freq is 20MHz/2.5 = 8Mhz! just as
                     expected.</figcaption>
-                <img src="debug2.jpg" alt="debug-2" width="500" onclick="this.width='1300'" onmouseout="this.width='500'">
+                <img src="debug2.jpg" alt="debug-2" width="500" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1300'" onclick="this.width='500'">
                 <figcaption style="display:block; color:grey">Examining the Resonator, DSO CH1 to one of the pin (other than the middle, GND) of the resonator. Confirmed my suspicion, the resonator was indeed 8MHz, people tends
                     to mix items in the component bays!</figcaption>
             </figure>
@@ -421,11 +421,11 @@ digitalWrite(LEDPIN, !digitalRead(LEDPIN));
             <b>CTC</b>. The interrupt routine has the code to toggle the LED.
             <br>
             <figure>
-                <img src="tccr1b-2.png" width="600" onclick="this.width='1000'" onmouseout="this.width='600'" />
+                <img src="tccr1b-2.png" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
                 <figcaption style="display:block; color:grey">TCCR1B register controlling the Timer1.</figcaption>
-                <img src="tccr1b-1.png" width="600" onclick="this.width='1000'" onmouseout="this.width='600'" />
+                <img src="tccr1b-1.png" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
                 <figcaption style="display:block; color:grey">A table from the Datasheet explaining how to set various modes of operations of the Timer1.</figcaption>
-                <img src="prescale.png" width="600" onclick="this.width='1000'" onmouseout="this.width='600'" />
+                <img src="prescale.png" width="600" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
                 <figcaption style="display:block; color:grey">A table from the Datasheet explaining how to set the prescaler.</figcaption>
             </figure>
             As you can see I set the <code>WGM12</code> bit high to enable CTC mode, <code>CS10</code> and <code>CS12</code> bits are set high to enable 1024 prescaler, this means for
