@@ -48,7 +48,7 @@
   <section>
     <h1>Principles and Practices, Project Management</h1>
     <p>
-      Officially the first week started on Wednesday, 27th, February. But we had a few conversations with our remote instructor Mr. Francisco Sanchez, via slack and SIP calls. As he instructed
+      Officially the first week started on February 27, 2016. But we had a few conversations with our remote instructor Mr. Francisco Sanchez, via slack and SIP calls. As he instructed
       we had signed up at
       <a href="https://www.fablabs.io/">fablabs.io</a>
       and
@@ -82,7 +82,7 @@
 
     <h2>Git and setting up the key</h2>
     <p>
-      For the Pre-Academy we hosted our site at
+      For the Pre-Academy, we hosted our site at
       <a href="https://github.com/">github</a>. Now we are supposed to host our site at
       <a href="http://git.fabacademy.org">git.fabacademy.org</a>. This is a dedicated GitLab server run for FabAcademy. The general usage is same as that of github. We had to signup at
       <a href="https://www.fablabs.io/">fablabs.io</a>
@@ -90,7 +90,7 @@
       <a href="http://git.fabacademy.org/fabacademy2016/fablabtrivandrum">local-repo</a>.
     </p>
     <p>
-      We can access the git via ssh or https protocol, though I prefer ssh access, because the ease of use. For this we have to generate a ssh-key pair and upload the public key to server
+      We can access the git via ssh or https protocol, though I prefer ssh access, because of the ease of use. For this we have to generate a ssh-key pair and upload the public key to server
       (in profile settings/ssh keys section). Following this
       <a href="https://help.github.com/articles/generating-an-ssh-key/">tutorial
       </a>
@@ -106,7 +106,7 @@
       each time you try to push/pull. We don't want to do that, and the trick is to use 'ssh-agent'.
       <br>Make sure that ssh-agent is running by
       <br>
-      <code>eval `ssh-agent -s</code>.
+      <code>eval `ssh-agent -s'</code>.
       <br> If the agent is not running start it by.
       <br>
       <code>exec ssh-agent bash</code>
@@ -143,7 +143,7 @@
       with online repo.
     </p>
     <p>
-      I had only one option if I have to do things faster, use the restricted but faster network, but somehow get around the restrictions. For Github things were very easy, I found that the
+      I had only one option if I have to do things faster, use the restricted but faster network, but somehow bypass the restrictions. For Github things were very easy, I found that the
       port 443 is open, I used
       <a href="http://angryip.org/">angryip scanner</a>
       to do that. Luckily Github also supports port 443 for SSH access (not the class repo). So now its just a matter of editing
@@ -155,7 +155,7 @@
         </pre>
     </p>
     <p>
-      But, it's not over, I need to push to class archive too, and the above method won't work. So I decided to try VPN. I have been using VPN for some time. So I decided to stay one free
+      But, it's not over, I need to push to class archive too, and the above method won't work. So I decided to try VPN. I have been using VPN for some time. So I decided to stick with a free
       service that I always find trustworthy,
       <a href="http://www.vpnbook.com/">vpnbook</a>. I downloaded the openvpn profile bundle for Euro-2 server (which was the fastest from my experience). If you are doing this for the first time you may have to install
       the 'openvpn'. Run
@@ -163,7 +163,7 @@
           [path to config file]</code>, enter super-user/admin password, enter vpn username (vpnbook) and password (check the site, updated weakly), and you are good to go. I
       used port 53 as that's a port open on most networks as it is used for DNS queries.
       <br> So once the VPN is setup you might see a new network named 'tun0' or something when you type
-      <code>ifconfig</code>. Anyway once I had the VPN, everything was working fine, all ports are now open, and I can now save a lot of time !
+      <code>ifconfig</code>. Anyway once I had the VPN, everything was working fine, all ports are now open, and I can now save a lot of time.
     </p>
     <br>
     <br>
@@ -176,19 +176,19 @@
       or Electrical Discharge Machining is also known as spark machining, spark eroding, die sinking. Perhaps the name gives some clues regarding the process. The technique uses the sparks
       to erode material away to get the desired final structure. The technique is that the spark between two electrodes removes material from both the electrodes. One of the electrode
       known as the tool can be just a thin wire which is kept at a small separation from the other electrode known as the workpiece. The electrodes are submerged in dielectric liquid
-      (commonly water), which acts as coolant and cleaning liquid which flushes the milling siite. The tool need not be a wire all the time, in Die-sink EDMs its a die made of solid
+      (commonly water), which acts as coolant and cleaning liquid which flushes the milling site. The tool need not be a wire all the time, in Die-sink EDMs its a die made of solid
       metal.
-      <br> The system requires some way of generating a controlled electrical pulses, the rate of which determines the material removal rate. I believe that this technique, if implemented
+      <br> The system requires some way of generating controlled electrical pulses, the rate of which determines the material removal rate. I believe that this technique, if implemented
       the way I want to, can mill PCB's with very narrow tracks and separation, which cannot be produced by conventional milling.
     </p>
     <p>
       Now the idea is that we will have an X-Y CNC machine with a 3D-printer like head extruding the tool wire (the tool wire gets eroded). The PCB will be submerged in a bath of water and
       the tool-head moves in a raster pattern to remove the material where it is not required. The raster pattern, because the technique works only on conductors, and if we have to
       use vector files, the tool path predictor will have to be complicated. The X-Y movement can be achieved with two actuators from CD/DVD drives. The working area will be very small
-      but for a proof-of-concpet machine that will do just fine.
+      but, for a proof-of-concept machine that will do just fine.
     </p>
     <h4>Some Pics</h4>
-    Disclaimer :- I'm very bad at drawing so bear with me.
+    Disclaimer :- I'm very bad at drawing so please bear with me.
     <br>
     <figure>
       <img src="draft.jpg" alt="drawing" width="500" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='499'">
@@ -209,7 +209,7 @@
     <br>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/-XhMT4wXSG4" frameborder="0" allowfullscreen></iframe>
   </section>
-  <br> The tool wire extruder will be similar to what that of a 3D-printer.
+  <br> The tool wire extruder will be similar to that of a 3D-printer.
   <br> The merits of this system would be
   <ul>
     <li>Can have extremely close tracks which is impossible with the conventional milling machines.</li>
