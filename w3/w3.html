@@ -356,7 +356,7 @@
 
             </div>
             <br>This one I made when
-            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/387/">Sarath S.M</a> sujjested me to add option to adjust length, width and height independently, this is almost general purpose. You now have control over length, width and height
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/387/">Sarath S.M</a> suggested me to add options to adjust length, width and height independently, this is almost general purpose. You now have control over length, width and height
             as well as control over how high the base plate should be. This was modified and used by him for his project, a water tester.
             <figure>
                 <img src="sibu-box-mutant-1.svg" width="700" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1300'" onclick="this.width='499'">
@@ -551,21 +551,21 @@ module copy_tran(vec=[0,0,0])
         <h2>Vinyl Cutter</h2>
         <p>
             As I said, I have had some experience with the vinyl cutter. I cut some vinyl stickers using the machine. This time I have more time and I want to go advanced. I decided to try something
-            new something I couldn't do before. So, I choose to go with flexible PCBs.
+            new which I couldn't do before. So, I choose to go with flexible PCBs.
         </p>
 
         <h3>GPS Antenna for my phone</h3>
         <p>
             In past, as a part of an unsuccessful experiment to fix the poor GPS reception of my LG-G2 phone, I had lost it's original GPS antenna. This is perfect chance to cut a GPS antenna from
             the 'copper sticker'. I knew the basic theory of the antenna as I did a 'mini-project' in college, the project was about constructing and measuring the radiation pattern
-            of a Bi-Quad antenna for Wi-Fi. Anyway I didn't want to go that deep and decided to stick with something very simple, a folded Dipole antenna. The Folded Dipole antenna
+            of a Bi-Quad antenna for Wi-Fi. Anyway, I didn't want to go that deep and decided to stick with something very simple, a folded Dipole antenna. The Folded Dipole antenna
             will have a total length (length of the loop) approximately equal to the wavelength of the signal the antenna is going to receive(or transmit). The GPS system uses many
             wavelengths, but for civilian navigation the signals are transmitted at
             <a href="https://en.wikipedia.org/wiki/Global_Positioning_System#Satellite_frequencies">1575.42 MHz</a>. This corresponds a wavelength of about 190mm in vacuum. But the electrical signals in copper don't travel as fast the light and we have to compensate for
-            that, and the antenna will be shorter than the calculated wavelength. The factor depends on the material of the wire as the thickness and wavelength, typically it will be
+            that, and the antenna will be shorter than the calculated wavelength. The factor depends on the material of the wire, the thickness and wavelength, typically it will be
             around .96-.98.
-            <br> Anyway I approximated the length as 185mm and designed it (made in
-            <a href="http://www.cadsoftusa.com/download-eagle/">Eagle-CAD</a>). The antenna will have a rough shape as follows the long strip (part other than the main loop) will go into the phone through a slit in the back cover of
+            <br> Anyway I approximated the length to be 185mm and designed it (using in
+            <a href="http://www.cadsoftusa.com/download-eagle/">Eagle-CAD</a>). The antenna will have a rough shape as in the picture below. <br>The long strip (part other than the main loop) will go into the phone through a slit in the back cover of
             the phone (I have to make the slit, may be using the laser cutter!!).
             <br>
             <figure>
@@ -637,16 +637,17 @@ module copy_tran(vec=[0,0,0])
             </figure>
         </p>
         <p>
-            All I need to do is to find a thin co-axial cable (I must have some, in my pile of e-junk) and make a connection from the spring contacts on the phone to the antenna. I'll update with
+            All I need is to find a thin co-axial cable (I must have some, in my pile of e-junk) and make a connection from the spring contacts on the phone to the antenna. I'll update with
             more pictures and a few screen shots once I have the coaxial cable. If there is no tuning required on thus design, I'll finalize it and cut an antenna from a fresh copper
             sheet.
-            <!-- TODO: pics, test results with screenshots  -->
+            <br>
+            <i style="color:red"> edit:- since my phone for the experiment now has a dead battery, I can't test the antenna at the moment.</i>
         </p>
 
         <h2>Multi-Layer PCB Test</h2>
         <p>
             I know that the vinyl cutter can be used to make flexible circuits. And I have seen people doing it. I wanted to check if I can use the individual copper layers to make a multi-layer
-            PCB. I don't have a need of an actual multi-layer circuit, so I decided to make something simple a, multilayer coil. This something similar to what we can find on an
+            PCB. I don't have a need of an actual multi-layer circuit, so I decided to make something simple, a multilayer coil. This is something similar to what we can find on an
             <a href="https://commons.wikimedia.org/wiki/File:Blue_and_Purple_RFID_tag.jpg">RFID/NFC tag</a>
             or a
             <a href="http://www.etradesupply.com/oem-nokia-lumia-920-wireless-charging-coil.html">wireless charger</a>. The difference is that we use multi-layer circuit instead of the traditional copper wire for the coil, and may result in a thinner profile. I intended
@@ -701,7 +702,7 @@ module copy_tran(vec=[0,0,0])
             <h2 style="color:red">
                 PLEASE DON'T FORGET TO MIRROR THE LAYERS AS REQUIRED, DEPENDING ON HOW YOU PLAN TO ASSEMBLE.</h2>
             <h3 style="color:red">
-                Just use commonsense to find out which layers are to be inverted.</h3>
+                Just use simple reasoning to find out which layers are to be inverted.</h3>
             <br>
             <br> These files went through a 'beautification' by GIMP. For original png files of the four layer click
             <a href="original-layers.tar.gz" download="original-layers.tar.gz">here</a>.
