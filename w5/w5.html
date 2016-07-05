@@ -50,17 +50,17 @@
 
         <h1>3D Scanning and Printing</h1>
         <p>
-            Tasks for this module involves deep understanding about 3D printer, testing the 3D printer to it's limits to find-out its capabilities and limits. Assignments also involves exploring
+            Tasks for this module involves deep understanding about 3D printer, testing the 3D printer to it's limits to find-out its capabilities and limitations. Assignments also involves exploring
             various 3D scanning methods like Modella MDX-20 (R.A.P.S), Kinect other hardwares like LEAP. We have to design and print an object and explain why it can't be made subtractively,
-            and optionally make a 3D scanner ourself, print the scanned object.
+            and optionally make a 3D scanner ourselves, print the scanned object.
         </p>
         <h2>3D Printing</h2>
         <p>
             This is an opportunity for learning and experimenting on the 3D printer. Me and
             <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/384/index.html">
-                Yadu</a> have assembled a 3d Printer (
-            <a href="http://reprap.org/wiki/Prusa_i3">RepRap Prusa i3</a>) . This is a perfect time to document our experience with this machine, we learned a lot while assembling and tuning the 3D printer. Documenting our
-            experience will benefit other people who might face same troubles and will also help us because we can refer them later; our memories fade.
+                Yadu</a> have already assembled a 3D Printer (
+            <a href="http://reprap.org/wiki/Prusa_i3">RepRap Prusa i3</a>). This is a perfect time to document our experience with this machine, we learned a lot while assembling and tuning the 3D printer. Documenting our experience
+            will benefit other people who might face same troubles and will also help us because we can refer them later; our memories fade.
         </p>
         <h3>About 3D Printing</h3>
         <p>3D printing, as the name implies is a method for manufacturing 3 Dimensional objects. Its an additive manufacturing technology in which the object is created by many thin layers
@@ -97,7 +97,7 @@
                 <li>
                     <a href="https://en.wikipedia.org/wiki/Selective_laser_melting">Selective Laser Melting (SLM):</a> same as above but uses Laser, so metal and non-metal can be used.</li>
                 <li>
-                    <a href="https://en.wikipedia.org/wiki/Selective_laser_sintering">Selective Laser Sintering (SLS):</a> same as above but material is not melted and binded but sintered.</li>
+                    <a href="https://en.wikipedia.org/wiki/Selective_laser_sintering">Selective Laser Sintering (SLS):</a> same as above but material is sintered, not melted and fused.</li>
                 <li>
                     <a href="https://en.wikipedia.org/wiki/Laminated_object_manufacturing">Laminated Object Manufacturing (LOM)</a>: Each layer is cut from a sheet of material in pasted successively to build the final object.</li>
 
@@ -107,8 +107,8 @@
         <h3>Assembly, Challenges and Fixes</h3>
         <p>
             I have purchased the 3D printer kit by a Chinese manufacturer,
-            <a href="http://www.sunhokey.com/">Sunhokey</a>. I selected this model after a lot of searches and reading, it seems they have a good international customer base and there an active community. So even if
-            I face any trouble I can be sure about help.
+            <a href="http://www.sunhokey.com/">Sunhokey</a>. I selected this model after a lot of searches and reading, it seems they have a good international customer base and there is an active community. So even
+            if I face any trouble, I can be sure about help.
             <br> This was the
             <a href="http://www.aliexpress.com/item/Hot-Full-Acrylic-Quality-High-Precision-Reprap-Prusa-i3-LCD-Acquired-DIY-3d-Printer-Kit-with/2026704108.html">Aliexpress</a> page from which I made the purchase.
             <br> I also found
@@ -233,7 +233,7 @@
         </p>
         <p>
             Once we powered the machine and selected 'auto-home' function, printer was going crazy, and we had to kill the power immoderately. The X-axis motor moves left when it was supposed to
-            move right, one of the Z-zxis motor was also spinning the other way. This is more dangerous as the z motors spinning the opposite way means the z carriage will bend and
+            move right, one of the Z-axis motor was also spinning the other way. This is more dangerous as the z motors spinning the opposite way means the z carriage will bend and
             eventually break. There are two fixes for it.
             <br>
             <ol>
@@ -254,16 +254,17 @@
                 </figcaption>
             </figure>
             <br> The stepper driver reverses the direction of rotation by reversing the current flow through one of the coil (done using the H-bridges). If we were to manually do this,
-            we can fix the direction of rotation. First step is to identify which pin is which put of the 4-pins in th connector, this can be done with the help of a multimeter. Once
-            identified the pins of anyone of the coil can be swapped. The pins can be removed from the connector by pressing on the retention clip and pulling on the wire simultaneously.
+            we can fix the direction of rotation. First step is to identify pins corresponding to each coil, of the the 4-pins in the connector, this can be done with the help of a
+            multimeter. Once identified, the pins of any one of the coil can be swapped. The pins can be removed from the connector by pressing on the retention clip and pulling on
+            the wire simultaneously.
         </p>
         <h4>Clogging and leaking</h4>
         <p>
-            I had faced clogging problems multiple times and the material was leaking out. The clogging mainly happens when using the printer after a few days of not using it, very likely because
-            of the accumulated dirt. In such case I had to detach the extruder assembly and unscrew the nozzle-heater section and remove all the leftover plastic from there. I find
-            that unscrewing is easier when the nozzle is at about 180 &#8451. Once I remove the nozzle, I keep heating it to about 200 &#8451 and I will put a piece of scrap the same
-            plastic filament and once it is molten and flows well inside the cavity, let it cool down to about 120&#8451-100&#8451. Once 'cooled' pull on the filament slowly to get
-            all the material inside the nozzle.
+            We had faced clogging problems multiple times and the material was leaking out. The clogging mainly happens when using the printer after a few days of not using it, very likely because
+            of the accumulated dirt. In such case extruder has to be detatched from the assembly and unscrew the nozzle-heater section and remove all the leftover plastic from inside.
+            Unscrewing is easier when the nozzle is at about 180 &#8451. Once the nozzle is removed, heat it till about 200 &#8451 and put a piece of scrap the same plastic filament
+            and once it is molten and flows well inside the cavity, let it cool down to about 120&#8451-100&#8451. Once 'cooled' pull on the filament slowly to get all the material
+            inside the nozzle.
             <figure>
                 <img src="3dp/clog1.jpg" width="250" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='600'" onclick="this.width='250'">
                 <figcaption style="display:block; color:grey">The clogged nozzle.</figcaption>
@@ -286,9 +287,9 @@
                 />
                 <figcaption style="display:block; color:grey">The PTFE tape applied on the heat-sink.</figcaption>
             </figure>
-            I doubt is PTFE can handle temperatures around 200&#8451,
-            <a href="https://en.wikipedia.org/wiki/Polytetrafluoroethylene#Safety">Wikipedia</a> page on PTFE says it starts to decompose above 200&#8451. It also says the the decomposition is major issue when the temperature is above 260&#8451. Anyway
-            I haven't faced any issue so far nor did I smell anything different, lets wait and see!
+            I doubt if PTFE can handle temperatures around 200&#8451,
+            <a href="https://en.wikipedia.org/wiki/Polytetrafluoroethylene#Safety">Wikipedia</a> page on PTFE says it starts to decompose above 200&#8451. It also says that the decomposition is a major issue when the temperature is above 260&#8451. Anyway
+            haven't faced any issue so far nor did we smell anything different, lets wait and see!
         </p>
 
         <h3>Firmware, driver, slicer....</h3>
@@ -302,9 +303,9 @@
             panel provides.
         </p>
         <p>
-            Once everything is working, there are two ways to actually transfer the data to the printer. Through the USB connection between the printer and the computer using the Repetier-Host.
-            Other method is to generate the G-Code file using any software (but with the correct parameters for this printer) and put it an SD-card and print from it. The printer has
-            an SD-Card reader built into the LCD control module.
+            Once everything is working, there are two ways to actually transfer the data to the printer. One method is via the USB serial interface between the printer and the Repetier-Host. Other
+            method is to generate the G-Code file using any software (but with the correct parameters for this printer) and put it an SD-card and print from it. The printer has an SD-Card
+            reader built into the LCD control module.
         </p>
         <p>
             Before start printing, the printer bed has to be leveled and tuned.
@@ -312,16 +313,16 @@
         <h3>Tuning</h3>
         <p>
             The printer bed has to be leveled first. Even before this, we have to level the printer itself and more importantly the Z-carriage. A spirit-level and a leveled and flat surface is
-            recommended for this step(and recommended for normal operation too).
+            recommended for this step(and recommended for normal operations too).
             <br> Once the printer is on the flat, horizontal surface, first thing to do is level the Z-carriage. This is very important step and printer should be switched off during this
             step. We have to keep the spirit level on the Z-carriage. Its tricky, but doable, if you move the head to a side and keep the spirit-level on the smooth rods. The leveling
             is done by manually rotating one of the Z-steppers until you get a horizontal Z-carriage.
         </p>
         <p>
-            After leveling the Z-carriage, now its time for leveling the bed and setting the Z-axis home position. The Z-endstop micro-switch was mounted on an adjustable mount, and can be adjusted
-            for coarse changes. For fine tuning the Z-stage the screw which is going to hit the Z-end-stop has to be used.
-            <br> For the bed-leveling , there are four thumb screws on the bed to adjust the height. Use these screws to keep the bed level. I leveled by adjusting the screws such that
-            head will leave a small gap, just enough for a sheet of paper. This was done on all four corners, and the control panel on the printer was used to move the head to the required
+            After leveling the Z-carriage, now its time for leveling the bed and setting the Z-axis home position. The Z-axis-endstop micro-switch was mounted on an adjustable mount, and can be
+            adjusted for coarse changes. For fine tuning the Z-stage the screw which is going to hit the Z-end-stop has to be used.
+            <br> For the bed-leveling, there are four thumb screws on the bed to adjust the height. Use these screws to keep the bed level. I leveled by adjusting the screws such that head
+            will leave a small gap, just enough for a sheet of paper. This was done on all four corners, and the control panel on the printer was used to move the head to the required
             position.
         </p>
         <p>
@@ -331,15 +332,15 @@
 
         <h3>Testing and Printing</h3>
         <p>
-            We made a couple of small test prints over the time. Large prints were impossible as the power is not stable here, nobody knows when it goes and when it will be back. Many prints failed
-            due to power-failure, I wish there was an option to resume prints even after rebooting/power failure(I can try this in future). As the printer consumes a lot of power when
-            it is working, even a normal consumer level Desktop UPS is incapable of keeping the printer online for more than a few minutes. One major issue is the inefficient AC-DC-AC
-            conversion in the UPS, the printer require only 12v DC, the UPS's internal battery is a 12v Lead-Acid battery, but when ewe use UPS, the UPS first converts the 12v to 2630v
-            AC and the n the SMPS od the printer converts it back to 12v DC. The overall efficiency of this process will be about 50% only. I'm thinking about making an online UPS designed
-            specifically for this printer, consisting of a decent 12v Lead-Acid battery, a 12v stabilizer/battery protection circuit and a power-supply capable of charging the battery
-            and simultaneously supply enough power to the printer. This might be the next assignment.
-            <br> Once I get to connect the printer to an UPS from YAdu's home, we test printed a
-            <a href="http://www.thingiverse.com/thing:830666">clip</a> for supporting the LCD panel as it slexes while using the push button (reset) or the rotary switch. The design is from
+            We made a couple of small test prints over the time. Large prints were impossible due to irregular power supply here. Many prints failed due to power-failure, I wish there was an option
+            to resume prints even after rebooting/power failure(I can try this in future). As the printer consumes a lot of power when it is working, even a normal consumer level Desktop
+            UPS is incapable of keeping the printer online for more than a few minutes. One major issue is the inefficient AC-DC-AC conversion in the UPS, the printer require only 12v
+            DC, the UPS's internal battery is a 12v Lead-Acid battery, but when we use UPS, the UPS first converts the 12v to 230v AC and then the SMPS of the printer converts it back
+            to 12v DC. The overall efficiency of this process will be about 50% only. I'm thinking about making an online UPS designed specifically for this printer, consisting of a
+            decent 12v Lead-Acid battery, a 12v stabilizer/battery protection circuit and a power-supply capable of charging the battery and simultaneously supply enough power to the
+            printer. This might be the next assignment.
+            <br> Once I get to connect the printer to an UPS from Yadu's home, we test printed a
+            <a href="http://www.thingiverse.com/thing:830666">clip</a> for supporting the LCD panel as it flexes while using the push button (reset) or the rotary switch. The design is from
             <a href="http://www.thingiverse.com/">Thingiverse</a>.
             <br>
             <br> Some more pictures can be seen below.
@@ -367,12 +368,12 @@
         <h2>Testing the 3D-Printer</h2>
         <p>
             There was a group assignment we have to do. The goal was to print a test object and study what the printer can do. The thing is I'm not that interested in the testing of Ultimaker because
-            Ultimaker is standered machine and the capabilities are documented very well. The deviations if any will happen mainly because of 'human error', that is imperfectly aligned
+            Ultimaker is a standered machine and the capabilities are documented very well. The deviations if any will happen mainly because of 'human error', that is imperfectly aligned
             bed, wrong print settings like feed rate, head/nozzle temperature, print speed, retraction, fill density, type of support used, type of platform adhesion used etc.
             <br>But these things will vary from design to design, and will also depend on the material we use. We cannot test it all here, though we can test some aspects, the rest will
             be called the 'experience'.
-            <br>The fact is that I wanted to test my 3D printer well, it' something I assembled and I don't the limits of that machine. I didn't get enough time to do that properly because
-            of the hectic schedule of the Fab Academy, so I'll be making some conclusions from the few test prints I have made using my printer.
+            <br>The fact is that I wanted to test my 3D printer well, it's something I assembled and I don't know the limitations of the machine. I didn't get enough time to do that properly
+            because of the hectic schedule of the Fab Academy, so I'll be making some conclusions from the few test prints I have made using my printer.
             <br> Then I'll also talk about the test print we have done as a group assignment.
         </p>
 
@@ -402,7 +403,7 @@
                 <figcaption style="display:block; color:grey">The test print.</figcaption>
             </figure>
             <br>
-            <h4>The test print test (list taken from the thingiverese page)</h4>
+            <h4>The test print has the following tests in it.(list taken from the thingiverese page)</h4>
             <br>
             <ul>
                 <li>01 Nut, Size M4 Nut should fit perfectly</li>
@@ -430,7 +431,7 @@
         </p>
         <h4>Conclusions</h4>
         <p>
-            The Result is good and was expected, because this is what I have found from my searches through many Ultimaker forums, almost all users report similar results. No surprises here.
+            The Result is good and it was expected, because this is what I have found from my searches through many Ultimaker forums, almost all users report similar results. No surprises here.
             <br>Here is the list of where the test failed.
             <ul>
                 <li>Wasn't able to print any gap less than .5mm, even the .5mm was not .5mm it seems much narrow.</li>
@@ -450,9 +451,9 @@
         <h2>3D-Printing Assignment</h2>
 
         <p>
-            Now it's time for the assignment. We are supposed to print something that can't be made subtractively. After a few thought I decoded to print a mobile stand/dock with audio canals for
-            redirecting the sound. Such a Dock will have internal channels for directing audio, and this is something that cannot be made using even the most advanced CNC mill, absolutely
-            no way to create subtractively as a single piece, because no tool can get inside the solid block to carve out complex cavities.
+            Now it's time for the assignment. We are supposed to print something that can't be made subtractively. After a little thought I decided to print a mobile stand/dock with audio canals
+            for redirecting the sound. Such a Dock will have internal channels for directing audio, and this is something that cannot be made using even the most advanced CNC mill,
+            absolutely no way to create subtractively as a single piece, because no tool can get inside the solid block to carve out complex cavities.
         </p>
         <h4>Dock for OnePlus One</h4>
         <p>
@@ -505,7 +506,7 @@
             This is another design I made,
             <a href="https://en.wikipedia.org/wiki/Klein_bottle">Klein Bottle</a>, this structure is something similar to
             <a href="https://en.wikipedia.org/wiki/M%C3%B6bius_strip">Mobius Strip</a>, a one sided one edged surface. A true Klein Bottle is a 4-Dimensional object and what I designed/going to make is a 3D-projection/Immersion of the true
-            Klein Bottle. In another words it's similar to seeing a photograph, which is 2D, but the object seen in the photograph may be 3D, so we see a 2D photograph of a 3D object.
+            Klein Bottle. In other words it's similar to seeing a photograph, which is 2D, but the object seen in the photograph may be 3D, so we see a 2D photograph of a 3D object.
             Just like that what I'm going to make is a 3D-photograph or a 3D-print of the 4D-Klein bottle.
             <br>
             <iframe width="640" height="480" src="https://sketchfab.com/models/5087115376a24f6198be6b5f0b88cbf8/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
@@ -517,10 +518,10 @@
             </p>
             <br> This was a quick design in Rhino3D. I saw Yadu trying to design another version of this after getting inspired by a talk by
             <a href="https://www.youtube.com/watch?v=1wAaI_6b9JE">Matt Parker</a>. I extruded two circles along two rails, which is actually the cross section of the Klein-Bottle. The actual cross section would be a single line, so I broke
-            the line at the bottom, in to two segments and used them as the rails for the circles to sweep (sweep2). The Two circles are necessary Two create a solid wall, else the
-            object will be just a shell without0 any thickness and it cannot be 3D-printed. Then the bottoms where capped to close and a solid base was created to give the bottom some
-            thickness. Also 'trim' command was used create the hole which should have been there at the intersection of the surface(at the bottom of the 'handle').
-            <br> This again is an object impossible to made subtractively, there is no way the tool can reach the inside of the bottle.
+            the line at the bottom, in to two segments and used them as the rails for the circles to sweep (sweep2). The two circles are necessary, as the two will create a solid wall,
+            else the object will be just a shell without any thickness and it cannot be 3D-printed. Then the bottoms where capped to close and a solid base was created to give the bottom
+            some thickness. Also 'trim' command was used to create the hole which should have been there at the intersection of the surface(at the bottom of the 'handle').
+            <br> This again is an object impossible to be made subtractively, there is no way the tool can reach the inside of the bottle.
         </p>
         <h3>Random</h3>
         <p>
@@ -560,7 +561,7 @@
         <p>
             <a href="http://www.rolanddg.com/product/3d/3d/mdx-20_15/mdx-20_15.html">Roland Active Piezo Sensor (R.A.P.S.)</a> uses a needle attached to a Piezo element which will probe the surface to be scanned, this can be analogues to how a blind man
             'feels' texture of a surface to get a mental picture.
-            <br>It's process that is painfully slow, even more so if you want the finest quality.
+            <br>It's a process that is painfully slow, even more so if you want the finest quality.
         </p>
         <p>
             <figure>
@@ -583,7 +584,7 @@
             </video>
         </p>
         <p>
-            Here are snapshots of the result of the draft scan, which took about 3 Hr.
+            Here are snapshots of the result of the draft scan, which took about 3 Hrs.
             <br>
             <figure>
                 <img src="mesh.jpg" alt="dock internal" width="550" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1500'" onclick="this.width='550'"
@@ -611,7 +612,7 @@
         </p>
         <h3>Now lets do a fine scan.</h3>
         <p>
-            As we have already seen, a draft scan took about 3 hrs, so a fine scan with <code>0.4mm or 0.014"</code> pitch will take long time. So I removed one object to save time,
+            As we have already seen, a draft scan took about 3 hrs, so a fine scan with <code>0.4mm or 0.014"</code> pitch will take a long time. So I removed one object to save time,
             still it took about 8 hrs.
             <figure>
                 <img src="fine.jpg" alt="dock internal" width="550" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1500'" onclick="this.width='550'"
@@ -655,7 +656,7 @@
         </p>
         <p>
             It's clear that this scanning technique, given time can do a very good quality scan, I can get a scan that is way better than what I have done, the machine can do 0.001" steps in Z
-            and 0.002" steps in X/Y, that's the resolution it can do. In my scan I used 0.014", 7 times less reselotion. But I'm guessing it's going to take at least 5 times more time
+            and 0.002" steps in X/Y, that's the resolution it can do. In my scan I used 0.014", 7 times less resolution. But I'm guessing it's going to take at least 5 times more time
             to do this. So I won't be doing that.
         </p>
         <p>
@@ -668,10 +669,11 @@
         <p>
             <h3>todo</h3>
             <ul>
-                <li>explore
+                <li>Explore
                     <a href="https://github.com/jakobwilm/slstudio">slstudio</a>
                 </li>
-                <li>subtractive scan, like milk scanner</li>
+                <li>Subtractive scan, like milk scanner. (done(failed attempt though!), as a group assignment, need to document)</li>
+
                 <li>Acetone vapor bath</li>
             </ul>
         </p>

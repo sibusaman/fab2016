@@ -50,9 +50,9 @@
 
         <h1>Electronics Production</h1>
         <p>
-            Objectives for this module is focused on make an In-System-Programmer, a Fab-ISP. I have already made this during the one month long Pre-Academy. I first made Neil's version and then
-            the USB key version (when I found that USB-mini cables are hard to come-by), using the components from the original board. So I'm not making a new Fab ISP, because its just
-            a waste of resources, instead I'm thinking about exploring something new and help fellow students to make their ISP.
+            Objective for this module is focused on make an In-System-Programmer, a Fab-ISP. I have already made this during the one month long Pre-Academy. I first made Neil's version and then
+            the USB key version (when I found that USB-mini cables are hard to come-by), using the components from the original board. So I'm not making another Fab ISP, but I'll modify
+            the existing design and add more features. Also I'm thinking about exploring something new and help fellow students to make their ISP.
         </p>
         <p>
             Since I made the board before, I'm writing about that same experience.
@@ -149,13 +149,13 @@
         <p>
             <b>The soldering first.</b>
             <br> Most important thing is that you need a clean surface to solder on, if the PCB is not clean enough, we have to do that first. The flux will help, but only to an extend.
-            The flux used in the lead-free solder is a nasty stuff and recommend NOT TO BREATH it. I use a flux pen to dispense the flux in small quantities, the flux pen has rosin
+            The flux used in the lead-free solder is a nasty stuff and recommended NOT TO BREATH it. I use a flux pen to dispense the flux in small quantities, the flux pen has rosin
             (comparatively safer, and is a natural substance) dissolved in a solvent (isopropyl alcohol). By the way, I made this mixture myself. Apply the flux only if necessary, too
             much is not good. Also keep in mind that the solder wire itself has flux built into the core.
         </p>
         <p>
-            Begin the soldering from the center and move out, smaller components first. But the order is matter of personal choice, Important thing is that the soldered components shouldn't hinder
-            access to the new components being soldered. For components like SMT resistors/capacitors start by putting a bit of solder onto one of the pad, place the component, melt
+            Begin the soldering from the center and move out, smaller components first. But the order is matter of personal choice, important thing is that the soldered components shouldn't hinder
+            access to the new components being soldered. For components like SMT resistors and capacitors, start by putting a bit of solder onto one of the pad, place the component, melt
             the solder and align. Don't solder the other lead, not yet, you better wait till you place most of the similar components and verify once before soldering the second pads.
         </p>
         <p>
@@ -180,7 +180,7 @@
             How to de-solder?
             <br> One can either use the heat-gun or the soldering iron to remove the components. But for the IC or any component that has more than two pins you may want to use the heat
             gun.
-            <br> Using the heat gun very easy, just start it, aim it toward the component to remove (don't forget to move it around to distribute the heat, else you will burn the component
+            <br> Using the heat gun is very easy, just start it, aim it toward the component to remove (don't forget to move it around to distribute the heat, else you will burn the component
             or PCB) and once the solder is melted just use the tweezers to remove the component. Applying light upward force during the process will cause the gravity to do the work.
             <br> Using the iron to remove the component is bit tricky, you need to heat both pads alternatively and as fast as possible, this will keep the solder on both the pads molten
             and you can use the iron itself to push the component away.
@@ -256,14 +256,15 @@
             <br> Now I have a perfect little ISP of my own, and no need of any USB cables. I can now start programming new micro-controller boards, help others to give 'soul' to their own
             ISPs....
         </p>
+        <h2>ISP with LEDs</h2>
         <p>
-            Although this works perfectively as an ISP, there is no LED to indicate communication. I like to have LEDs on Rx and Tx channels like the ones in an Arduino board. I found another Fabable
+            Although this works perfectively as an ISP, there are no LEDs to indicate communication. I like to have LEDs on Rx and Tx channels like the ones in an Arduino board. I found another Fabable
             ISP,
             <a href="http://fabacademy.org/archives/2015/doc/FabTinyIsp/index.html">FabTinyIsp</a>. This has a few more features like LEDs on Rx/Tx lines to indicate communication, a reset switch, a smaller chip etc. I'm thinking about making this board,
             with one modification, the ISP connector to the side, the connection would be made from the side rather than top of the board. Or I will solder the ISP on the board itself
-            and I plan for a makeshift conformal coating, using 'glue-sticks'. I'll update once I start working on this.
-            <!-- TODO: make this new board -->
+            and I plan for a makeshift conformal coating, using 'glue-sticks'.
         </p>
+        <h2>Re-Designing the ISP to include LEDs</h2>
         <p>
             I changed my mind;
             <br> Instead of making the FabTinyISP, I decided to modify the design of the FabISP key I have made; just added two LEDs and current limiting resistors. The LEDs were added
@@ -473,7 +474,7 @@
         <p>
             I made a few mistakes in the previous design/milling operation.
             <ul>
-                <li>Made holes for via on the test pads(the pads which are to be shorted only if the chip needed programming)</li>
+                <li>Made holes for via(interconnect between layers) on the test pads(the pads which are to be shorted only if the chip needed programming)</li>
                 <li>The cutout path in the milling layer was too thin, it should have been 1/32" or about 0.8mm. The result was the board won't get cut with default settings, when I forced
                     the bit size as 0.3mm in fabmodules, the board got cut but one of the traces became too thin. Picture can be seen below.
                 </li>
@@ -545,9 +546,9 @@
             </figure>
             <br> I spent some time figuring out what this error is.
             <ul>
-                <li>Checked the ssoldering: There was no issue in soldering, all the connections are proper.</li>
+                <li>Checked the soldering: There was no issue in soldering, all the connections are proper.</li>
                 <li>Found that this is because system detected something and the device is not behaving as a USB device should.</li>
-                <li>First I suspected that the new LEDs were the culprit. SO I removed the xurrent limiting resistors of the LEDs as reheating the LEDs again and again is not good.
+                <li>First I suspected that the new LEDs were the culprit. SO I removed the current limiting resistors of the LEDs as reheating the LEDs again and again is not good.
                     <b>No Luck</b>
                 </li>
                 <li>Used a DSO to see if I put the right resonator, I might have used 8MHz instead of 20, because I took a component which fell of from the reel, there is chance that someone
@@ -585,7 +586,7 @@
         <h3>Conformal Coating</h3>
         <p>
             Here is the picture of the ISP in a makeshift conformal coating. I used hot melt glue as the conformal coating, the tools used for this are the glue gun, hot air gun and 'wet finger'
-            to shape the softened glue. This will protect the board again the atmosphere and other elements causing corrosion, rough handling, vibrations, and short circuits from dirt
+            to shape the softened glue. This will protect the board against the atmospheric and other elements causing corrosion, rough handling, vibrations, and short circuits from dirt
             and water.
             <br>
             <img src="conformal.jpg" alt="conformal coating" width="350" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='750'" onclick="this.width='350'">
