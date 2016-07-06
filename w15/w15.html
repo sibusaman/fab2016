@@ -533,6 +533,16 @@ ISR(TIM0_COMPB_vect)
 
         <h2>Identity</h2>
         <p>
+            <b>Identity is an important aspect of any networked system, if there were only two nodes, we might not need an identity, but when there are more than two nodes, we have to
+                fins a mechanism to tell what is meant for whom.</b>
+        </p>
+        <p>
+            The identities can be specified by may methodes. some of the methodes that comes to my mind are
+            <ul>
+                <li></li>
+            </ul>
+        </p>
+        <p>
             So far, the program do not give any identity to the slaves, so if we have many boards connected to the same network, all of the slaves respond similarly to the commands from the master.
             <br> To resolve this, we have to find a way to add an entry in the data stream which will let the slaves decide if the data is meant for them or not. Basically this is an address,
             something like a code, name, pattern to distinguish one slave from another. For this to work, obviously we need to divide the data stream into packets.
@@ -550,8 +560,8 @@ ISR(TIM0_COMPB_vect)
             <br> so, <code>A83#</code> when sent, will go to all the slaves, but only one slave that is programmed to listen/accept command formatted like AXX# will take any action.
         </p>
         <p>
-            If I use A-Z and a-z for addressing, I can have 52 unique identities, infact if I use 8 bit data packets, I can have 256-10=246 unique identities, if I'm just sending only numbers
-            to all the slaves.
+            If I use A-Z and a-z for addressing, I can have 52 unique identities, infact if I use 8 bit data packets, I can have 256-10=246 unique identities, if I'm just sending only numbers to
+            all the slaves.
         </p>
 
 

@@ -47,7 +47,7 @@
   </header>
   <section>
 
-    <h1>Machine Design</h1>
+    <h1><strike>Machine Design</strike> Gestalt Board Making</h1>
     <br>
     <br>
     <br>
@@ -88,26 +88,26 @@
         <img src="fabnet.jpg" alt="fabnet" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey">Gestalt nodes as Stepper drivers for a single Stepper/Axis.</figcaption>
       </figure>
-      The Gestalt node is a single stepper driver that is controlled by the PC. All the commands to the motor, how many steps to move in what direction is sent from the PC via an USB to RS-485
+      The Gestalt node is a single stepper driver that is controlled by the PC. All the commands to the motor, how many steps to move in what direction are sent from the PC via USB to RS-485
       converter. The individual nodes can be then daisy chained to a bus that connects them to the RS-485 lines and the power for the motor and the board as well as few other signals.
     </p>
     <h2>Modified Gestalt Node</h2>
     <p>
-      These boards are required to make a fully module stages. Or it can be something similar, a networked stepper controller like our instructors used for his final project
+      These boards are required to make a fully modulular stages. Or it can be something similar, a networked stepper controller like our instructor Franc used for his final project
       <a href="http://fabacademy.org/archives/2013/students/sanchez.francisco/final-project/index.html">FAB 9000</a>. Anyway I accepted his challenge to make the Gestalt node in-house, because buying them will cost about $500/- as per our instructor. But the BOM will cost much less
-      than that, but there are few problems some of the components are not a part of the FabLab inventory or some components like the Stepper driver A4982 is not so common is India,
-      but we get A4988 as breakout boards and they are very cheap. Fortunately I have a several of these breakout boards with me.
+      than that, but there are a few problems, some of the components are not part of the FabLab inventory or some components like the Stepper driver A4982 are not so common in India,
+      but we get (and got) A4988 as breakout boards and they are very cheap. Fortunately I have several of these breakout boards with me.
     </p>
     <p>
       I also thought about replacing the RS-484 with some easily available and familiar serial protocol, but decided not to, as RS-485 is using a differential pair and capable of long ranges
       (upto 1200m) and high speed (a few Mbits/s) communication, it also supports several devices in a single daisy chain.
     </p>
     <p>
-      So I decided to redesign the Gestalt node mainly to use A4988 breakout. Other differences includes the modifications on on the pads and spacings so that it can be milled in MDX-20 mill.
+      So I decided to redesign the Gestalt node mainly to use A4988 breakout. Other differences include, the modifications on the pads and spacings so that it can be milled in MDX-20 mill.
       <ul>
-        <li>The A4982 and several components associated will be replaced by A4988 breakout connector </li>
-        <li>Some of the passive components packages has been changed from smaller 0805 to 1206.</li>
-        <li>The pads of the connectors has been elongated so that they won't be too thin after milling, else they will come out while milling, placing the component, cleaning or while soldering.</li>
+        <li>The A4982 and several components associated will be replaced by A4988 breakout connector. </li>
+        <li>Some of the passive component's package(eagle package) has been changed from smaller 0805 to 1206.</li>
+        <li>The pads of the connectors have been elongated so that they won't be too thin after milling, else they will come out while milling, placing the component, cleaning or while soldering.</li>
         <li>Thicker traces for Motor Power Bus.</li>
         <li>A4988 is capable of 1/16 micro-stepping, so I used an extra Digital PIN from the Micro-Controller.</li>
       </ul>
@@ -147,7 +147,7 @@
     </p>
     <h2>Milling the Double Sided Board</h2>
     <p>
-      This was teh first time I'm doing a double sided board, and nobody here at the lab had the experience of making the double sided board. My initial designs were supposed to be milled
+      This was the first time I'm doing a double sided board, and nobody here at the lab had the experience of making the double sided board. My initial designs were supposed to be milled
       with 1/100", in some areas. But that bit is too fragile, event the slightest misalignment (in the leveling), or the flexible nature of the Acrylic workpiece holder was sufficient
       to break the bit. I had two failed attempt with 1/100".
       <ul>
@@ -156,8 +156,8 @@
         <li>Second time everything was going perfectly and I used the bit to mill only some small sections where the spacing between the traces/pads are too narrow for the 1/64". So I milled
           the board using 1/64" first and then moved on to 1/100" for some specific areas. But it failed this time too, during the transition from the cutting zone to an area which
           was already milled by the 1/64". I cannot find a proper reason for this, though a foolish guess could be that the bit broke when the horizontal load on the bit disappeared
-          suddenly and the it caused the bit to release all the spring energy at once and broke it.</li>
-        <li>Anyway I didn't want to experiment more with this expensive fragile 1/100" bit, my final project is anyway an EDM based PCB mill, which in theory could do better than what this
+          suddenly and, caused the bit to release all the 'spring energy' at once which broke it.</li>
+        <li>Anyway, I didn't want to experiment more with this expensive fragile 1/100" bit, my final project is anyway an EDM based PCB mill, which in theory could do better than what this
           machine can do.</li>
       </ul>
       <h4>Here are the few failed attempts and few test pieces.</h4>

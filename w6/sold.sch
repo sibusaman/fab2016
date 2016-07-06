@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.4.0">
+<eagle version="7.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -4510,6 +4510,7 @@ Source: www.epcos.com .. 01430148.pdf</description>
 <part name="SUPPLY2" library="supply2" deviceset="GND" device=""/>
 <part name="P+2" library="supply1" deviceset="VCC" device=""/>
 <part name="ADC2" library="wirepad" deviceset="WIREPAD" device="SMD5-1,8"/>
+<part name="SUPPLY3" library="supply2" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4542,12 +4543,12 @@ Source: www.epcos.com .. 01430148.pdf</description>
 <instance part="TC+" gate="G$1" x="-99.06" y="33.02"/>
 <instance part="TC-" gate="G$1" x="-99.06" y="22.86"/>
 <instance part="HT+" gate="G$1" x="-109.22" y="-17.78"/>
-<instance part="HT-" gate="G$1" x="-109.22" y="-30.48"/>
-<instance part="+24V" gate="G$1" x="93.98" y="-12.7" rot="R180"/>
-<instance part="PAD11" gate="G$1" x="93.98" y="-20.32" rot="R180"/>
-<instance part="R10" gate="G$1" x="2.54" y="-12.7"/>
-<instance part="C6" gate="G$1" x="-78.74" y="-22.86" rot="R270"/>
-<instance part="T1" gate="A" x="-27.94" y="-17.78" rot="R270"/>
+<instance part="HT-" gate="G$1" x="-109.22" y="-5.08"/>
+<instance part="+24V" gate="G$1" x="60.96" y="-20.32" rot="R180"/>
+<instance part="PAD11" gate="G$1" x="60.96" y="-12.7" rot="R180"/>
+<instance part="R10" gate="G$1" x="-5.08" y="-10.16"/>
+<instance part="C6" gate="G$1" x="-76.2" y="-12.7" rot="R90"/>
+<instance part="T1" gate="A" x="-22.86" y="-20.32"/>
 <instance part="SUPPLY1" gate="GND" x="-86.36" y="0"/>
 <instance part="C7" gate="G$1" x="-50.8" y="76.2" rot="R270"/>
 <instance part="R11" gate="G$1" x="-43.18" y="88.9" rot="R90"/>
@@ -4555,6 +4556,7 @@ Source: www.epcos.com .. 01430148.pdf</description>
 <instance part="SUPPLY2" gate="GND" x="-43.18" y="68.58"/>
 <instance part="P+2" gate="VCC" x="-50.8" y="93.98" rot="R270"/>
 <instance part="ADC2" gate="G$1" x="-27.94" y="83.82" rot="R180"/>
+<instance part="SUPPLY3" gate="GND" x="-22.86" y="-30.48"/>
 </instances>
 <busses>
 </busses>
@@ -4717,8 +4719,7 @@ Source: www.epcos.com .. 01430148.pdf</description>
 <wire x1="0" y1="20.32" x2="0" y2="2.54" width="0.1524" layer="91"/>
 <junction x="0" y="2.54"/>
 <wire x1="-81.28" y1="2.54" x2="-86.36" y2="2.54" width="0.1524" layer="91"/>
-<wire x1="-86.36" y1="2.54" x2="-58.42" y2="2.54" width="0.1524" layer="91"/>
-<wire x1="-58.42" y1="2.54" x2="-38.1" y2="2.54" width="0.1524" layer="91"/>
+<wire x1="-86.36" y1="2.54" x2="-38.1" y2="2.54" width="0.1524" layer="91"/>
 <wire x1="-38.1" y1="2.54" x2="-22.86" y2="2.54" width="0.1524" layer="91"/>
 <wire x1="-22.86" y1="2.54" x2="-12.7" y2="2.54" width="0.1524" layer="91"/>
 <wire x1="-12.7" y1="2.54" x2="0" y2="2.54" width="0.1524" layer="91"/>
@@ -4739,17 +4740,9 @@ Source: www.epcos.com .. 01430148.pdf</description>
 <wire x1="-96.52" y1="12.7" x2="-81.28" y2="12.7" width="0.1524" layer="91"/>
 <pinref part="GND" gate="G$1" pin="P"/>
 <pinref part="PAD11" gate="G$1" pin="P"/>
-<wire x1="91.44" y1="-20.32" x2="45.72" y2="-20.32" width="0.1524" layer="91"/>
-<wire x1="45.72" y1="-20.32" x2="45.72" y2="2.54" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="-12.7" x2="45.72" y2="-12.7" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="-12.7" x2="45.72" y2="2.54" width="0.1524" layer="91"/>
 <junction x="45.72" y="2.54"/>
-<pinref part="HT-" gate="G$1" pin="P"/>
-<wire x1="-106.68" y1="-30.48" x2="-78.74" y2="-30.48" width="0.1524" layer="91"/>
-<wire x1="-78.74" y1="-30.48" x2="-58.42" y2="-30.48" width="0.1524" layer="91"/>
-<wire x1="-58.42" y1="-30.48" x2="-58.42" y2="2.54" width="0.1524" layer="91"/>
-<junction x="-58.42" y="2.54"/>
-<pinref part="C6" gate="G$1" pin="2"/>
-<wire x1="-78.74" y1="-27.94" x2="-78.74" y2="-30.48" width="0.1524" layer="91"/>
-<junction x="-78.74" y="-30.48"/>
 <pinref part="SUPPLY1" gate="GND" pin="GND"/>
 <junction x="-86.36" y="2.54"/>
 </segment>
@@ -4759,6 +4752,11 @@ Source: www.epcos.com .. 01430148.pdf</description>
 <pinref part="SUPPLY2" gate="GND" pin="GND"/>
 <wire x1="-43.18" y1="71.12" x2="-50.8" y2="71.12" width="0.1524" layer="91"/>
 <junction x="-43.18" y="71.12"/>
+</segment>
+<segment>
+<pinref part="T1" gate="A" pin="S"/>
+<pinref part="SUPPLY3" gate="GND" pin="GND"/>
+<wire x1="-22.86" y1="-25.4" x2="-22.86" y2="-27.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -4774,7 +4772,7 @@ Source: www.epcos.com .. 01430148.pdf</description>
 <segment>
 <pinref part="R10" gate="G$1" pin="1"/>
 <pinref part="T1" gate="A" pin="G"/>
-<wire x1="-2.54" y1="-12.7" x2="-30.48" y2="-12.7" width="0.1524" layer="91"/>
+<wire x1="-10.16" y1="-10.16" x2="-27.94" y2="-22.86" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$13" class="0">
@@ -4784,27 +4782,21 @@ Source: www.epcos.com .. 01430148.pdf</description>
 <wire x1="81.28" y1="10.16" x2="93.98" y2="10.16" width="0.1524" layer="91"/>
 <pinref part="R10" gate="G$1" pin="2"/>
 <wire x1="81.28" y1="-5.08" x2="7.62" y2="-5.08" width="0.1524" layer="91"/>
-<wire x1="7.62" y1="-5.08" x2="7.62" y2="-12.7" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="-5.08" x2="0" y2="-10.16" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$14" class="0">
 <segment>
-<wire x1="38.1" y1="-17.78" x2="38.1" y2="-12.7" width="0.1524" layer="91"/>
 <pinref part="+24V" gate="G$1" pin="P"/>
-<wire x1="38.1" y1="-12.7" x2="91.44" y2="-12.7" width="0.1524" layer="91"/>
-<pinref part="T1" gate="A" pin="D"/>
-<wire x1="-22.86" y1="-17.78" x2="38.1" y2="-17.78" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$9" class="0">
-<segment>
+<wire x1="25.4" y1="-20.32" x2="58.42" y2="-20.32" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="-20.32" x2="25.4" y2="-38.1" width="0.1524" layer="91"/>
 <pinref part="HT+" gate="G$1" pin="P"/>
-<pinref part="T1" gate="A" pin="S"/>
-<wire x1="-106.68" y1="-17.78" x2="-78.74" y2="-17.78" width="0.1524" layer="91"/>
+<wire x1="-106.68" y1="-17.78" x2="-76.2" y2="-17.78" width="0.1524" layer="91"/>
 <pinref part="C6" gate="G$1" pin="1"/>
-<wire x1="-78.74" y1="-17.78" x2="-33.02" y2="-17.78" width="0.1524" layer="91"/>
-<wire x1="-78.74" y1="-17.78" x2="-78.74" y2="-20.32" width="0.1524" layer="91"/>
-<junction x="-78.74" y="-17.78"/>
+<wire x1="-76.2" y1="-17.78" x2="-76.2" y2="-15.24" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="-38.1" x2="-76.2" y2="-38.1" width="0.1524" layer="91"/>
+<wire x1="-76.2" y1="-38.1" x2="-76.2" y2="-17.78" width="0.1524" layer="91"/>
+<junction x="-76.2" y="-17.78"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -4819,6 +4811,18 @@ Source: www.epcos.com .. 01430148.pdf</description>
 <wire x1="-50.8" y1="83.82" x2="-30.48" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="-50.8" y1="78.74" x2="-50.8" y2="83.82" width="0.1524" layer="91"/>
 <junction x="-50.8" y="83.82"/>
+</segment>
+</net>
+<net name="N$15" class="0">
+<segment>
+<pinref part="HT-" gate="G$1" pin="P"/>
+<wire x1="-106.68" y1="-5.08" x2="-76.2" y2="-5.08" width="0.1524" layer="91"/>
+<pinref part="C6" gate="G$1" pin="2"/>
+<wire x1="-76.2" y1="-7.62" x2="-76.2" y2="-5.08" width="0.1524" layer="91"/>
+<junction x="-76.2" y="-5.08"/>
+<pinref part="T1" gate="A" pin="D"/>
+<wire x1="-76.2" y1="-5.08" x2="-22.86" y2="-5.08" width="0.1524" layer="91"/>
+<wire x1="-22.86" y1="-5.08" x2="-22.86" y2="-15.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

@@ -151,7 +151,7 @@
         <figcaption style="display:block; color:grey">Source file available
           <a href="http://www.thingiverse.com/thing:624625/#files">here</a>.</figcaption>
       </figure>
-      This is already perfect design for a 3D-Printable chuck and we are going to use as it is. No need to reinvent the wheel!
+      This is already a perfect design for a 3D-Printable chuck and we are going to use as it is. No need to reinvent the wheel!
       <br>
       <br> This chuck will hold the workpiece and will be attached to a Drill or some other motor or Dremel tool, though I am doubtful if Dremel has the sufficient Torque for the purpose,
       it definitely has the speed.
@@ -160,11 +160,11 @@
     <h3>X-Y Stages.</h3>
 
     <p>
-      The tool need to move in the horizontal plane (X and Y), but unlike 3D-printer X-Y motion this need not be fast. Infact it has to be slow and precise movement. So a lead-screw is the
+      The tool need to move in the horizontal plane (X and Y), but unlike a 3D-printer XY-stage this need not be fast. In fact it has to be slow and precise movement. So a lead-screw is the
       best solution. We plan to use normal threaded rod and bolts for the actuation, as this sis a prototype and proof of concept work. A screw based motion has other advantages like
       it can withstand lot of axial load.
       <br>
-      <br> We decided to use a simple stage, 2 guide rodes and a threaded rod at the center attached to a stepper. Something like the first picture in this page, something simple as the
+      <br> We decided to use a simple stage, two guide rods and a threaded rod at the center attached to a stepper. Something like the first picture in this page, something simple as the
       modular stages
       <figure>
         <img src="recon-stage.png" alt="reconfigurable stage" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
@@ -193,7 +193,7 @@
     <h2>Stage 2. Gathering Parts</h2>
     <p>
       Our instructor set a rule of not buying any mechanical components for the machine, instead salvage or make it yourself. A good suggestion, but I personally do not want to strictly adhere
-      to this. As every comp net we are going to use is bought from somewhere at sometime in some form. So I (and very likely most of us in the lab) will adhere to the rule that "we
+      to this. As every component we are going to use is bought from somewhere at sometime in some form. So I (and very likely most of us in the lab) will adhere to the rule that "we
       will be making or salvaging whatever we could, we will do the best we can". This is because not everything could be made or salvaged, for example fasteners, threaded rod, timing
       belts etc cannot be made, even if we could that won't even match the cheapest options we could find from the market. Then there is time and other resources involved.
     </p>
@@ -216,21 +216,21 @@
 
     <p>
       We got a total of 5 printers at an expense of about INR 700 or about USD 10. Since we were at it we also got a few other stuff like two Weller pencils for about INR 30 (about 50 cents),
-      even if the elements are damaged the thick flexible heat resistants cable in those pencils are worth more than we spent on them.
+      even if the elements are damaged the thick flexible heat resistant cables in those pencils are worth more than we spent on them.
       <br> In summary, this is what we got.
       <ul>
         <li>9 X DC Motors.</li>
-        <li>1 X Stepper motors.</li>
+        <li>1 X Stepper motor.</li>
         <li>3 X 8mm, 40cm smooth rods.</li>
-        <li>3 X 8mm, 30cm smooth rods with a gear like tooths at 1/3rd the length.</li>
+        <li>3 X 8mm, 30cm smooth rods with gear like pattern at 1/3rd the length.</li>
         <li>5 X 6mm smooth rods of various lengths.</li>
         <li>5 X long timing belts and few shorter ones.</li>
         <li>2 X Possibly working 230V AC to 19V DC power bricks.</li>
         <li>Many optical positions sensors and endstops.</li>
         <li>Many screws and springs and gears of various types and sizes.</li>
       </ul>
-      There are more items, like all those controller circuits from which we could get many tactile switches, a few Crystals, connectors etc. Then there is an HP scanner head, though I don't
-      know how to use to and couldn't find any resources. Similarly, I recovered a Epson
+      There are more items, like all those controller circuits from which we could get many tactile switches, a few crystals, connectors etc. Then there is an HP scanner head, though I don't
+      know how to use it and couldn't find any resources. Similarly, I also recovered a Epson
       <a href="http://www.epson.com.sg/epson_singapore/explore_epson/innovation/micro_piezo.page">Micro-Piezo</a> inkjet head. This is a good material for future investigation as unlike the HP, thermal Inkjet technology, these Piezo heads can print almost any liquid, and controlling
       this could be done with precise shaped pulses to the piezo elements. Though this would be difficult, it's not impossible.
     </p>
@@ -240,11 +240,11 @@
     <p>
       We got the smooth rods for the guide rails. But we couldn't get any threaded rods, and we need it for the machines. There are again multiple options, could use standard threaded rods
       that are used for fastening, we could use long bolts, or we could use the special high quality threaded rods made for actuation, like the ones used in Ultimaker's Z-axis. There
-      was one vendor how refused to give anything short of 3m. We didn't require long threaded rods as this is a experimental build, need only smalled axes. We could use the long bolts
+      was one vendor who refused to give anything short of 3m. We didn't require long threaded rods as this is an experimental build, need only smaller axes. We could use the long bolts
       instead, and we decided to do so.
     </p>
     <p>
-      For the construction will be using 6mm acrylic and may be the thick, 12mm or 18mm plywood as a base. We will be making a press-fit assembly in acrylic but will also use cyano-acrylic
+      The construction will be using 6mm acrylic and may be the thick, 12mm or 18mm plywood as a base. We will be making a press-fit assembly in acrylic but will also use cyano-acrylic
       glue (super-glue) for extra strength.
       <br> For the guide rods we planned to use 2 of the 8mm rods and 2 of the 6mm rods.
       <br> The stepper motor to the threaded rod coupler will be printed. The design is from
@@ -267,7 +267,7 @@
       <br>Though I really don't want to use this board for the following reasons.
       <ul>
         <li>We don not need the flexibility/modularity provided by the networked controller nodes.</li>
-        <li>It's a huge waste of recourses, one Atmega328p, a crystal/resonator, the RS485 transceiver chip and whole lot of other passive electronic components for just controlling a stepper
+        <li>It's a huge waste of resources, one Atmega328p, a crystal/resonator, the RS485 transceiver chip and whole lot of other passive electronic components for just controlling a stepper
           motor.
         </li>
         <li>The Atmega328p might be capable of controlling the two steppers and other things I wanted to solely.</li>
@@ -571,7 +571,7 @@ module copy_tran(vec=[0,0,0])
       </video>
       <br> This is our first attempt to control the stepper via Gcode and first real test on my stage design. For more details head over to our
       <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">team page</a> and
-      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/424/index.html">Yogi's page</a> who is in charge of all the coding and stuff. Having made the X-Y stages and mounted the steppers, we mounted the stages two a single unit and used the RAMPS 1.4
+      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/424/index.html">Yogi's page</a> who is in charge of all the coding and stuff. Having made the X-Y stages and mounted the steppers, then merged the two stages to a single unit and used the RAMPS 1.4
       controller board. We decided to use the PC for the hard stuff, generating the Gcode and stuff. The serial communication is used to transfer the Gcodes, individually to the controller
       board and the Atmega2560 (Arduino Mega) will interpret the Gcode and will send the required signals to the motor controller, A4988. The micro controller need to send three set
       of data,
@@ -619,7 +619,7 @@ module copy_tran(vec=[0,0,0])
         <li>The bolt used for Y has a bent/dent or some kind of damage at the middle and the motor will get stuck stalled at the middle, so far we are unable to solve this. The best solution
           would be to get a new bolt.</li>
       </ul>
-      And finally the best for the last. The stupidest mistake I made was that, I haven't give enough clearance for the mounting screws on the stages. That is if I were to mount the Y-stage
+      And finally the best for the last. The stupidest mistake I made was that, I haven't given enough clearance for the mounting screws on the stages. That is if I were to mount the Y-stage
       to the box of X-stage, the Y carriage would get stuck because of the bolt heads. The bolt heads will come in the way of Y-carriage movement. The temporary solution is not to use
       the base plate of the box of the Y stage.
       <br>This has been a bigger problem for the Y-stage as the holes for the guide rods are not symmetric(symmetry over the horizontal plane).
