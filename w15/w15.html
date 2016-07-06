@@ -58,18 +58,18 @@
 
         <h1> LED Indicator Display. </h1>
         <p>
-            Recently I had chance to play with
+            Recently I had a chance to play with
             <a href="https://www.amazon.com/Amazon-Echo-Bluetooth-Speaker-with-WiFi-Alexa/dp/B00X4WHP5E">Amazon Echo</a> and I found that the LED indicator on the device interesting. Well, this is just one of the many aspects of the device that caught my attention. I thought
             this will be a great thing to make, and it could be used as an indicator for the temperature of our (me and
             <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/384/">Yadu</a>)
-            <a href="http://sibusaman.github.io/DIY-Soldering-Station/">soldering station project</a>. This will be a great addition to the project. I plan to install a display for a more detailed manipulations, like calibration, fine tuning
+            <a href="http://sibusaman.github.io/DIY-Soldering-Station/">soldering station project</a>. This will be a great addition to the project. I plan to install a display for a more detailed manipulation, like calibration, fine tuning
             the temperature etc. But I want to use the LED display for indicating the present temperature and the target temperature in a nice animated form.
         </p>
 
 
         <h2>The Design, Schematic and Board</h2>
         <p>
-            I decided to make the LED board separate from the main controller. and to make a 10 LED semi-circular display with Tiny44 as a controller. Even if I dedicate one pin for communication
+            I decided to make the LED board separate from the main controller, and to make a 10 LED semi-circular display with Tiny44 as a controller. Even if I dedicate one pin for communication
             and leave the RESET pin alone, I'll have 10 digital I/O pins for the LED. Even without multiplexing I can have 10 LEDs in the indicator.
         </p>
         <p>
@@ -77,8 +77,8 @@
             one at half the brightness.
         </p>
         <p>
-            It's better to use the <code>INT0 or PB2</code> pin for the communication, <code>PB3</code> is <code>RESET</code>. So that leaves me with <code>PB0 and PB1</code> from PORTB
-            and all of PORTA <code>PA0-7</code> for the LEDs. So I'l be assigning
+            It's better to use the <code>INT0 or PB2</code> pin for the communication, <code>PB3</code> is <code>RESET</code>. So, that leaves me with <code>PB0 and PB1</code> from PORTB
+            and all of PORTA <code>PA0-7</code> for the LEDs. Hence I'll be assigning
             <code>PB0</code> to LED1, <code>PB1</code> to LED2, <code>PA0</code> to LED3, <code>PA1</code> to LED4......
         </p>
         <p>
@@ -250,8 +250,8 @@
             Here is a test code that's very close to being the final code, here I'm testing the software PWM (explained in Input/Output module) functions to adjust the brightness of the last LED
             to indicate fractional values.
             <br>During this test I had learned that the human eye doesn't respond linearly to the energy of the light source (well I knew this before, about sound, as I knew that the sound
-            is measured in dBs and they are logarithmic). That is if I reduce the power of the light source by half, or reduce the PWM duty cycle to .5 (on half the time, off the other
-            half, reducing the energy delivered averaged over time to half), my eye is receiving half the power, but I won't be seeing half the intensity, i would be seeing less than
+            is measured in dBs and they are logarithmic). That is, if I reduce the power of the light source by half, or reduce the PWM duty cycle to .5 (on half the time, off the other
+            half, reducing the energy delivered averaged over time to half), my eye is receiving half the power, but I won't be seeing half the intensity, I would be seeing less than
             that.
             <br> Most of our sensory organs works this way, they follow a power law, of the form. <code>p(I) = kI<sup>a</sup></code>. Where <code>p(I)</code> is the perceived intensity/strength
             of the physical quantity <code>I</code>, k is the proportionality constant, a is the exponent. More details
@@ -377,10 +377,10 @@
 
         <h2>The Final Code and The Test Result</h2>
         <p>
-            I need to sent values, which are the duty cycle to the board, I though of various methods like software serial communication as done in my interfacing board (basically Neil's hello.ftdi.c
+            I need to sent values, which are the duty cycle to the board, I thought of various methods like software serial communication as done in my interfacing board (basically Neil's hello.ftdi.c
             code), sending as BCD (Binary-coded decimal) pulses....
             <br> But for something this simple, I don't need to. So I'll be sending the data as pulses who's duration will be the data to be sent. Something like, 2ms pulse represents zero
-            and 102ms represents 100. The 16 bit timer counter will be used measure the length of the pulse and the <code>INT0</code> will be configured to trigger interrupt on logic
+            and 102ms represents 100. The 16 bit timer counter will be used to measure the length of the pulse and the <code>INT0</code> will be configured to trigger interrupt on logic
             level change, both high-to-low and low-to-high. The timer will start counting on low-to-high and will stop at high-to-low, measuring the pulse duration, after which it will
             be reset to zero again on the next low-to-high pulse.
         </p>
@@ -496,14 +496,14 @@ ISR(TIM0_COMPB_vect)
 
         <h3 style="color:red">Problems</h3>
         <p>
-            While testing this code, I had one major issue, whatever I do, I wasn't getting the any results, I knew that there was nothing wrong in the code, after-all, most of these codes are
+            While testing this code, I had one major issue, whatever I do, I wasn't getting the results, I knew that there was nothing wrong in the code, after-all, most of these codes are
             bits and pieces from my own codes, written before, they are all tested and proven.
         </p>
         <p>
             So only one possibility is left, NOISE.
         </p>
         <p>
-            I examined with DSO and Function generator, where the function generator is used to make pulses of the duration within the limits of what the code expects. And it was working perfectly.
+            I examined with DSO and function generator, where the function generator is used to make pulses of the duration within the limits of what the code expects. And it was working perfectly.
             So I was sure that the problem is the noise. I have been using the
             <a href="../w11/w11.html">Stepper-Servo-Tester</a> as the master board, which will sent the data as PWM pulses via the servo controller pin to the slave board(The LED Display board we are discussing
             about)
@@ -514,8 +514,8 @@ ISR(TIM0_COMPB_vect)
         </p>
         <h3>The fix.</h3>
         <p>
-            We now know the issue, so the fox is easy, add a pull down resistor and a capacitor close to the input pin.
-            <br>I choose 10nF capacitor and 5K resistor.
+            We now know the issue, so the fix is easy, add a pull down resistor and a capacitor close to the input pin.
+            <br>I chose a 10nF capacitor and 5K resistor.
             <br>Now the circuit is working beautifully.
         </p>
         <h3>Result</h3>
@@ -555,12 +555,12 @@ ISR(TIM0_COMPB_vect)
             know what is meant for whom.
         </p>
         <p>
-            For my need, I have to sent only Decimal numbers, and if I use UART, except the 10 combinations meant for the 10 digits, all other combinations are left for any purpose of my choice.
+            For my need, I have to sent only decimal numbers, and if I use UART, except the 10 combinations meant for the 10 digits, all other combinations are left for any purpose of my choice.
             So I can dedicate, say A to Z for addressing and some special key like # for marking the end of the current stream.
             <br> so, <code>A83#</code> when sent, will go to all the slaves, but only one slave that is programmed to listen/accept command formatted like AXX# will take any action.
         </p>
         <p>
-            If I use A-Z and a-z for addressing, I can have 52 unique identities, infact if I use 8 bit data packets, I can have 256-10=246 unique identities, if I'm just sending only numbers to
+            If I use A-Z and a-z for addressing, I can have 52 unique identities, in fact if I use 8 bit data packets, I can have 256-10=246 unique identities, if I'm just sending only numbers to
             all the slaves.
         </p>
 
