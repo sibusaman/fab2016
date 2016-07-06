@@ -57,7 +57,7 @@
     <h1>An Interface for the Digital Caliper.</h1>
 
     <p>
-      While playing around with the digital caliper, I found a 'secret', 4-pin port on the device. I was executing it be some kind of programming or data out port.
+      While playing around with the digital caliper, I found a 'secret', 4-pin port on the device. I was expecting it to be some kind of programming or data out port.
       <br>
       <figure>
         <img src="calip-conn.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
@@ -66,7 +66,7 @@
       On 're-search with Google', I found that it indeed is a data out, it can be used to get the reading as it is displayed on the LCD.
     </p>
     <p>
-      I'm going to try make an interface to get the data from the caliper and interpret the bit stream to the real value. The micro-controller board I'll be making could be sending the data
+      I'm going to try to make an interface to get the data from the caliper and interpret the bit stream to the real value. The micro-controller board I'll be making could be sending the data
       directly to a phone or computer via serial/bluetooth/wi-fi/2.4GHz NRF2L01. A computer/android software will be written to show the values, which will be the 'interface programming
       assignment'.
       <br> For the communication part I will be using soft serial, as the Tiny44 doesn't support it natively.
@@ -147,7 +147,7 @@
       <ul>
         <li>Two Schmitt-Triggers as logic level converters, convert <code>1.5v</code> logic to 5v logic for the micro-controller.</li>
         <li>AtTiny44 with 20MHz resonator as the main micro-controller.</li>
-        <li>FTDI header for serial communication (software serial has to be implemented as the tiuny44 does not come with hardwares necessary), and an ISP header for programming, for what
+        <li>FTDI header for serial communication (software serial has to be implemented as the tiny44 does not come with hardwares necessary), and an ISP header for programming, for what
           else used an ISP so far? </li>
         <li>Provision for connecting serial wireless communication module such as bluetooth, wi-fi or NRF2L01.</li>
         <li>Provision for adding a 3.3v DC-DC module for the wireless module as most of them uses 3.3v supply.</li>
@@ -170,7 +170,7 @@
         <figcaption style="display:block; color:grey">The top side of the board, the white jumper wire is a replacement for a trace I forgot to add.</figcaption>
         <img src="pcb-bot.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey">Bottom side of the PCB, the copper wires replaces the few traces in the bottom layer, the long wire with a piece of PCB at the end is the ground used for connecting DSO etc.
-          and sometimes used when the caliper connector looses ground connection.</figcaption>
+          and sometimes used when the caliper connector loses ground connection.</figcaption>
       </figure>
     </p>
 
@@ -178,11 +178,11 @@
 
     <p>
       This is an interesting design using an Op-Amp. We could just use a transistor as a logic level converter, but this is not ideal as they may respond to the noise too. The Schmitt-Trigger
-      has to thresholds an upper threshold and a lower one. The Schmitt Trigger goes high/maximum voltage when it encounters an input above the upper threshold, and stays there even
+      has two thresholds an upper threshold and a lower one. The Schmitt Trigger goes high/maximum voltage when it encounters an input above the upper threshold, and stays there even
       if the noise or some unintended fluctuation brings it down below this value. The value goes low/minimum voltage only when the input goes below the lower threshold.
-      <br> So if we set high and low thresholds as .9v and .1v respectively, for a 1v logic pulse, and supply it with 5v driving voltage, the output will high only when it detects an input
-      greater than .9v and remains high as ling the input doesn't fall below .1v, now once it falls below .1v the output goes to zero and stays there till it gets an input greater than
-      .9v. This is a neat way to clean some nosies, also the Op-Amp provides high input impedance.
+      <br> So if we set high and low thresholds as .9v and .1v respectively, for a 1v logic pulse, and a supply voltage of 5v, the output will become high only when it detects an input
+      greater than .9v and remains high as long as the input doesn't fall below .1v. Now, once it falls below .1v, the output goes to zero and stays there till it gets an input greater than
+      .9v. This is a neat way to clean some noise, also the Op-Amp provides high input impedance.
     </p>
 
     <p>
@@ -193,16 +193,16 @@
         <img src="schmitt.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey"></figcaption>
       </figure>
-      Since the caliper is powered by a <code>1.5v</code> cell, I had assumed that the the logic level/ logic high would be at <code>1.5v</code>. But I was wrong, Its only about 1v.
+      Since the caliper is powered by a <code>1.5v</code> cell, I had assumed that the logic level/ logic high would be at <code>1.5v</code>. But I was wrong, Its only about 1v.
       May be the cell is weak, but the caliper is working and the logic levels are 1v and 0v. So I had to change the Schmitt-Trigger design from the initial design for <code>1.5v</code>      logic pulse, I had to change the resistor, R1 from <code>1K&#8486</code> to <code>0.5K&#8486</code>.
     </p>
 
     <h3>Connector</h3>
     <p>
-      Its not a good idea to solder wires to the caliper, so I decided to make a connector.
+      It's not a good idea to solder wires to the caliper, so I decided to make a connector.
       <br> First I tried making a connector using PCB. thickened at the contacts using the solder. This fits nicely but the contacts are not even/flat and hence not all the terminals make
       contact at the same time.
-      <br>So I thought about 3d Printed connectors. And found out a design from
+      <br>So I thought about 3D printed connectors. And found out a design from
       <a href="http://www.thingiverse.com/thing:1543247">thingiverse</a>. So I made the print and decided to add spring contacts salvaged from the scrap ink-jet printers. The spring contacts were soldered and then buried deep into the
       grooves for the connector pins.
       <figure>
@@ -401,7 +401,7 @@ ISR(INT0_vect)
         This program is not the perfect, need a little workaround, first of all I wanted the program to send the latest reading only if it is different from the last, else the code will sent
         10 readings per second, like what it is doing right now.
         <br> Secondly, there is something wrong with my interpretation technique, the output is always ends with an even number, somehow it skips the odd number and rounds off to the nearest
-        even number, must be missing the least significant bit, which being 1 decided the if the final value if odd or even.
+        even number, must be missing the least significant bit, which decided the if the final value if odd or even.
         <br>
         <figure>
           <img src="output.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />

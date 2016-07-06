@@ -77,8 +77,8 @@
             one at half the brightness.
         </p>
         <p>
-            It's better to use the <code>INT0 or PB2</code> pin for the communication, <code>PB3</code> is <code>RESET</code>. So, that leaves me with <code>PB0 and PB1</code> from PORTB
-            and all of PORTA <code>PA0-7</code> for the LEDs. Hence I'll be assigning
+            It's better to use the <code>INT0 or PB2</code> pin for the communication, <code>PB3</code> is <code>RESET</code>. So, that leaves me with <code>PB0 and PB1</code> from
+            PORTB and all of PORTA <code>PA0-7</code> for the LEDs. Hence I'll be assigning
             <code>PB0</code> to LED1, <code>PB1</code> to LED2, <code>PA0</code> to LED3, <code>PA1</code> to LED4......
         </p>
         <p>
@@ -375,7 +375,7 @@
         </p>
 
 
-        <h2>The Final Code and The Test Result</h2>
+        <h2>The Final Code without identity and The Test Result</h2>
         <p>
             I need to sent values, which are the duty cycle to the board, I thought of various methods like software serial communication as done in my interfacing board (basically Neil's hello.ftdi.c
             code), sending as BCD (Binary-coded decimal) pulses....
@@ -403,7 +403,7 @@ int main(void)
 {
 	DDRB = 0b00000011;
 	DDRA = 0xff;
-	// initialize Timer1 the 16bit timer
+	// initialize Timer1 the 16bit timer which measures the pulse length
 	cli();				// disable global interrupts
 
 	//enble pin change interrupts on int0
@@ -496,8 +496,8 @@ ISR(TIM0_COMPB_vect)
 
         <h3 style="color:red">Problems</h3>
         <p>
-            While testing this code, I had one major issue, whatever I do, I wasn't getting the results, I knew that there was nothing wrong in the code, after-all, most of these codes are
-            bits and pieces from my own codes, written before, they are all tested and proven.
+            While testing this code, I had one major issue, whatever I do, I wasn't getting the results, I knew that there was nothing wrong in the code, after-all, most of these codes are bits
+            and pieces from my own codes, written before, they are all tested and proven.
         </p>
         <p>
             So only one possibility is left, NOISE.
@@ -539,7 +539,9 @@ ISR(TIM0_COMPB_vect)
         <p>
             The identities can be specified by may methodes. some of the methodes that comes to my mind are
             <ul>
-                <li></li>
+                <li>Reserving a few bits at the beginning of each packet, exclusively for addressing. So, start bit/s, address bits, parity bit/s and stop bit/s.</li>
+                <li>Using encoding; the packets will be encoded with a common key and only the nodes who know the key can decode the message, understands the message and takes the action.</li>
+                <li>Using separate packets for address, with a predefined pattern. One such idea is explained below, I feel that this is just an easy way to implement the first.</li>
             </ul>
         </p>
         <p>
@@ -560,11 +562,444 @@ ISR(TIM0_COMPB_vect)
             <br> so, <code>A83#</code> when sent, will go to all the slaves, but only one slave that is programmed to listen/accept command formatted like AXX# will take any action.
         </p>
         <p>
-            If I use A-Z and a-z for addressing, I can have 52 unique identities, in fact if I use 8 bit data packets, I can have 256-10=246 unique identities, if I'm just sending only numbers to
-            all the slaves.
+            If I use A-Z and a-z for addressing, I can have 52 unique identities, in fact if I use 8 bit data packets, I can have 256-10=246 unique identities, if I'm just sending only numbers
+            to all the slaves. So let's write a code shall we?
         </p>
 
+        <h3>Code for Communicating with Identity.</h3>
+        <p>
+            I will be using Neil's software serial code for serial listening function of the LED board. No surprise here, Neil already did what I'm planning to do, except for the "#" to signify
+            the end of message. Thinking about it further, I don't need to signify the end of stream, if I'm just sending plain numbers. The alphabets signifies the end of one stream
+            and the beginning of the next.
+        </p>
+        <p>
+            While testing the reliability of this communication method with the following code, I found that I'll have to repeat the characters, so that the slave get's it. This could be because
+            there is no buffer in the software serial. There are some ideas I have to solve this, will talk about it later.
+            <div class="codescroll">
+                <pre>
 
+#define F_CPU 8000000UL
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
+#include &lt;util/delay.h&gt;
+#include &lt;avr/pgmspace.h&gt;
+#include &lt;string.h&gt;
+
+#define output(directions,pin) (directions |= pin) // set port direction for output
+#define input(directions,pin) (directions &= (~pin)) // set port direction for input
+#define set(port,pin) (port |= pin) // set port pin
+#define clear(port,pin) (port &= (~pin)) // clear port pin
+#define pin_test(pins,pin) (pins & pin) // test for port pin
+#define bit_test(byte,bit) (byte & (1 &lt;&lt; bit)) // test for bit set
+#define bit_delay_time 98// bit delay for 9600 with overhead
+#define bit_delay() _delay_us(bit_delay_time) // RS232 bit delay
+#define half_bit_delay() _delay_us(bit_delay_time/2) // RS232 half bit delay
+
+#define serial_port PORTB
+#define serial_direction DDRB
+#define serial_pins PINB
+#define serial_pin_in (1 &lt;&lt; PB2)
+//#define serial_pin_out (1 &lt;&lt; PB4)
+
+/////////////////////////////////////////
+#define identity = 'A'
+
+int temp=0;
+ int val=1;
+ int prev_val = 100;
+ int last_led_val;
+unsigned int last_led=0;
+unsigned int shift;
+unsigned int val_done = 0;
+
+void get_char(volatile unsigned char *pins, unsigned char pin, char *rxbyte)
+{
+	// This function is written by Neil Gershenfeld
+	// read character into rxbyte on pins pin
+	//  assumes line driver (inverts bits)
+	//
+	*rxbyte = 0;
+	while (pin_test(*pins,pin))
+		// wait for start bit
+		// delay to middle of first data bit
+		half_bit_delay();
+	bit_delay();
+	//
+	// unrolled loop to read data bits
+	//
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 0);
+	else
+		*rxbyte |= (0 &lt;&lt; 0);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 1);
+	else
+		*rxbyte |= (0 &lt;&lt; 1);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 2);
+	else
+		*rxbyte |= (0 &lt;&lt; 2);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 3);
+	else
+		*rxbyte |= (0 &lt;&lt; 3);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 4);
+	else
+		*rxbyte |= (0 &lt;&lt; 4);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 5);
+	else
+		*rxbyte |= (0 &lt;&lt; 5);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 6);
+	else
+		*rxbyte |= (0 &lt;&lt; 6);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 7);
+	else
+		*rxbyte |= (0 &lt;&lt; 7);
+	//
+	// wait for stop bit
+	//
+	bit_delay();
+	half_bit_delay();
+}
+
+
+int main(void)
+{
+	static char chr;
+	DDRB = 0b00000011;
+	DDRA = 0xff;
+
+	cli();				// disable global interrupts
+
+	// set clock divider to /1
+	CLKPR = (1 &lt;&lt; CLKPCE);
+	CLKPR = (0 &lt;&lt; CLKPS3) | (0 &lt;&lt; CLKPS2) | (0 &lt;&lt; CLKPS1) | (0 &lt;&lt; CLKPS0);
+
+	//enble pin change interrupts on int0
+//	GIMSK |= (1&lt;&lt;INT0);
+//	MCUCR= (1&lt;&lt;ISC00) | (1&lt;&lt;ISC00);
+
+//	TCCR1A = 0;
+//	TCCR1B = 0;
+	TCCR0A = 0;
+
+	TCCR0B = 0;
+
+	// set compare match register to desired timer count:
+	OCR0B = 200;
+	TCCR0B |= (1 &lt;&lt; CS01);
+//	TCCR1B |= (1 &lt;&lt; CS11);
+
+	// enable timer compare interrupt:
+	TIMSK0 |= (1 &lt;&lt; OCIE0A);
+	TIMSK0 |= (1 &lt;&lt; OCIE0B);
+
+	sei();			// enable global interrupts:
+
+	while(1)
+	{
+		get_char(&serial_pins, serial_pin_in, &chr);
+
+		 if (chr == 'A')
+			val = 10;
+
+		if (chr == 'B')
+			val = 50;
+
+		if (chr == 'C')
+			val = 90;
+
+
+		last_led = val/10;
+		last_led_val =  (val - 10*last_led);
+		last_led_val = last_led_val * last_led_val  * 2;
+		PORTB = 0x00;
+		PORTA = 0x00;
+		if (last_led &lt; 2)
+		{
+			shift = 8 - last_led;
+			PORTB = 0b11000000&gt;&gt;shift;
+		}
+		else
+		{
+			PORTB = 0b00000011;
+			shift = 10 - last_led;
+			PORTA = 0xff&gt;&gt;shift;
+		}
+		if (prev_val  != val )
+		{
+			OCR0A = last_led_val+1;
+		}
+		prev_val =val;
+	}
+}
+
+ISR(TIM0_COMPA_vect)
+{
+	if (last_led &lt; 2)
+	{
+		PORTB &= 0xff^ (1&lt;&lt; last_led) ;
+	}
+	else
+	{
+		PORTA &= 0xff^ (1&lt;&lt; (last_led-2)) ;;
+	}
+}
+
+ISR(TIM0_COMPB_vect)
+{
+	if (last_led &lt; 2)
+	{
+		PORTB |= (1 &lt;&lt; last_led) ;
+	}
+	else
+	{
+		PORTA |= (1 &lt;&lt; (last_led-2));
+	}
+	TCNT0 = 0;
+}            </pre>
+
+            </div>
+
+
+            Though not reliable, I wrote the code any way, the code resets when it finds a '#' or another alphabet in the address range.
+
+            <div class="codescroll">
+                <pre>
+#define F_CPU 8000000UL
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
+#include &lt;util/delay.h&gt;
+#include &lt;avr/pgmspace.h&gt;
+#include &lt;string.h&gt;
+
+#define output(directions,pin) (directions |= pin) // set port direction for output
+#define input(directions,pin) (directions &= (~pin)) // set port direction for input
+#define set(port,pin) (port |= pin) // set port pin
+#define clear(port,pin) (port &= (~pin)) // clear port pin
+#define pin_test(pins,pin) (pins & pin) // test for port pin
+#define bit_test(byte,bit) (byte & (1 &lt;&lt; bit)) // test for bit set
+#define bit_delay_time 98// bit delay for 9600 with overhead
+#define bit_delay() _delay_us(bit_delay_time) // RS232 bit delay
+#define half_bit_delay() _delay_us(bit_delay_time/2) // RS232 half bit delay
+
+#define serial_port PORTB
+#define serial_direction DDRB
+#define serial_pins PINB
+#define serial_pin_in (1 &lt;&lt; PB2)
+//#define serial_pin_out (1 &lt;&lt; PB4)
+
+/////////////////////////////////////////
+#define identity = 'A'
+
+//int temp=0;
+ int val=1;
+ int prev_val = 100;
+ int last_led_val;
+ int temp_val = 0;
+unsigned int last_led=0;
+unsigned int shift;
+
+unsigned int forme = 0;
+
+void get_char(volatile unsigned char *pins, unsigned char pin, char *rxbyte)
+{
+	// This function is written by Neil Gershenfeld
+	// read character into rxbyte on pins pin
+	//  assumes line driver (inverts bits)
+	//
+	*rxbyte = 0;
+	while (pin_test(*pins,pin))
+		// wait for start bit
+		// delay to middle of first data bit
+		half_bit_delay();
+	bit_delay();
+	//
+	// unrolled loop to read data bits
+	//
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 0);
+	else
+		*rxbyte |= (0 &lt;&lt; 0);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 1);
+	else
+		*rxbyte |= (0 &lt;&lt; 1);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 2);
+	else
+		*rxbyte |= (0 &lt;&lt; 2);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 3);
+	else
+		*rxbyte |= (0 &lt;&lt; 3);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 4);
+	else
+		*rxbyte |= (0 &lt;&lt; 4);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 5);
+	else
+		*rxbyte |= (0 &lt;&lt; 5);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 6);
+	else
+		*rxbyte |= (0 &lt;&lt; 6);
+	bit_delay();
+	if pin_test(*pins,pin)
+		*rxbyte |= (1 &lt;&lt; 7);
+	else
+		*rxbyte |= (0 &lt;&lt; 7);
+	//
+	// wait for stop bit
+	//
+	bit_delay();
+	half_bit_delay();
+}
+
+
+int main(void)
+{
+	static char chr;
+	DDRB = 0b00000011;
+	DDRA = 0xff;
+
+	cli();				// disable global interrupts
+
+	// set clock divider to /1
+	CLKPR = (1 &lt;&lt; CLKPCE);
+	CLKPR = (0 &lt;&lt; CLKPS3) | (0 &lt;&lt; CLKPS2) | (0 &lt;&lt; CLKPS1) | (0 &lt;&lt; CLKPS0);
+
+	//enble pin change interrupts on int0
+//	GIMSK |= (1&lt;&lt;INT0);
+//	MCUCR= (1&lt;&lt;ISC00) | (1&lt;&lt;ISC00);
+
+//	TCCR1A = 0;
+//	TCCR1B = 0;
+	TCCR0A = 0;
+
+	TCCR0B = 0;
+
+	// set compare match register to desired timer count:
+	OCR0B = 200;
+	TCCR0B |= (1 &lt;&lt; CS01);
+//	TCCR1B |= (1 &lt;&lt; CS11);
+
+	// enable timer compare interrupt:
+	TIMSK0 |= (1 &lt;&lt; OCIE0A);
+	TIMSK0 |= (1 &lt;&lt; OCIE0B);
+
+	sei();			// enable global interrupts:
+
+	while(1)
+	{
+		get_char(&serial_pins, serial_pin_in, &chr);
+
+		 if (chr == 'A') //set forme flag =1 if found my address
+		 {
+			 forme = 1;
+			  if ( ~temp_val )
+				 val = temp_val;
+			temp_val = 0;
+		 }
+		 else
+		 {
+			 if (chr == '#' || (chr &gt; 64 && chr &lt; 91) )	 //not my address but either a stop char or the address of another slave 65 & 90 are ascii codes for A and Z
+			 {
+				 forme = 0;
+				 if ( temp_val != 0  && chr =='#')
+					 val = temp_val;
+				 if(val&gt;100)
+					 val =90;
+				 temp_val = 0;
+			}
+		}
+
+		if (forme == 1 && (chr &gt; 47 && chr &lt; 58) )
+		{
+			temp_val =temp_val*10 +  (chr - 48);
+		}
+
+		last_led = val/10;
+		last_led_val =  (val - 10*last_led);
+		last_led_val = last_led_val * last_led_val  * 2;
+		PORTB = 0x00;
+		PORTA = 0x00;
+		if (last_led &lt; 2)
+		{
+			shift = 8 - last_led;
+			PORTB = 0b11000000&gt;&gt;shift;
+		}
+		else
+		{
+			PORTB = 0b00000011;
+			shift = 10 - last_led;
+			PORTA = 0xff&gt;&gt;shift;
+		}
+		if (prev_val  != val )
+		{
+			OCR0A = last_led_val+1;
+		}
+		prev_val =val;
+	}
+}
+
+ISR(TIM0_COMPA_vect)
+{
+	if (last_led &lt; 2)
+	{
+		PORTB &= 0xff^ (1&lt;&lt; last_led) ;
+	}
+	else
+	{
+		PORTA &= 0xff^ (1&lt;&lt; (last_led-2)) ;;
+	}
+}
+
+ISR(TIM0_COMPB_vect)
+{
+	if (last_led &lt; 2)
+	{
+		PORTB |= (1 &lt;&lt; last_led) ;
+	}
+	else
+	{
+		PORTA |= (1 &lt;&lt; (last_led-2));
+	}
+	TCNT0 = 0;
+}</pre>
+            </div>
+        </p>
+
+        <p>
+            As expected the code is not working (well, it works once in a while, with a 90% fail rate). I'll have to make a buffer and some other reliable serial reading method.
+        </p>
+        <h3>New Serial Reading Idea</h3>
+        <p>
+            The idea is to use the interrupts and the high resolution Timer1.
+            <ul>
+                <li>The interrupt will trigger on each pin change.</li>
+                <li>The interrupt vector will keep storing the locations of the pin change, this array then can be used to find out the bit sequence.</li>
+                <li>Another method will be to calculate the previous values as we go and to reset the counter everytime we encounter a start-bit.</li>
+            </ul>
+        </p>
 
 
     </section>
