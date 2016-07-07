@@ -2,315 +2,400 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-  <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="../stylesheets/github-dark.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print">
-  <link rel="stylesheet" href="../stylesheets/mine.css">
-  <link rel="stylesheet" href="cssgal.css">
-  <title>9:-Mechanical Design</title>
-  <style>
-    div.codescroll {
-      width: 1500px;
-      height: 500px;
-      overflow: scroll;
-    }
-  </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+    <script src="../stylesheets/js/jquery.min.js"></script>
+    <script src="../stylesheets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print">
+    <link rel="stylesheet" href="../stylesheets/mine.css">
+    <link rel="stylesheet" href="cssgal.css">
+    <title>9:-Mechanical Design</title>
+    <style>
+        div.codescroll {
+            width: 1500px;
+            height: 500px;
+            overflow: scroll;
+        }
+    </style>
 </head>
 
 <body>
-  <link rel="icon" type="image/png" href="../favicon.png">
-  <header>
-    <div class="container">
-      <h1>Fab2016</h1>
-      <h3>/ Module 9</h3>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <header>
+        <div class="container">
+            <h1>Fab2016</h1>
+            <h2>Sibu&#39;s FabAcademy 2016 Documentation Home</h2>
+            <div class="panel-group">
+                <div align="center">
+                    <div>
+                        <font size="6" align="center">
+                            <b style="color:#b5e853">&lt;&lt;&lt; </b>
+                            <a data-toggle="collapse" href="#collapse1">CLICK HERE TO LIST ALL PAGES</a>
+                            <b style="color:#b5e853"> &gt;&gt;&gt;</b>
+                        </font>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <table class="list-group" align="center">
+                            <tr>
+                                <td align="center" colspan="2">
+                                    <a href="../index.html" class="btn">Home</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <a href="../w1/w1.html" class="btn" title="Principles and Practices, Project Management ">Principles and Practices, Project Management. 1</a>
+                                </td>
+                                <td align="left">
+                                    <a href="../w2/w2.html" class="btn" title="Computer-Aided Design">2. Computer-Aided Design</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <a href="../w3/w3.html" class="btn" title="Computer-Controlled Cutting">Computer-Controlled Cutting. 3</a>
+                                </td>
+                                <td align="left">
+                                    <a href="../w4/w4.html" class="btn" title="Electronics Production">4. Electronics Production</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <a href="../w5/w5.html" class="btn" title="3D Scanning and Printing">3D Scanning and Printing. 5</a>
+                                </td>
+                                <td align="left">
+                                    <a href="../w6/w6.html" class="btn" title="Electronics Design">6. Electronics Design</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <a href="../w7/w7.html" class="btn" title="Computer-Controlled Machining">Computer-Controlled Machining. 7</a>
+                                </td>
+                                <td align="left">
+                                    <a href="../w8/w8.html" class="btn" title="Embedded Programming">8. Embedded Programming</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <a href="../w9/w9.html" class="btn" title="Mechanical Design">Mechanical Design. 9</a>
+                                </td>
+                                <td align="left">
+                                    <a href="../w10/w10.html" class="btn" title="Machine Design">10. Machine Design</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <a href="../w11/w11.html" class="btn" title="Input Devices">Input Devices. 11</a>
+                                </td>
+                                <td align="left">
+                                    <a href="../w12/w12.html" class="btn" title="Molding and Casting">12. Molding and Casting</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <a href="../w13/w13.html" class="btn" title="Output Devices">Output Devices. 13</a>
+                                </td>
+                                <td align="left">
+                                    <a href="../w14/w14.html" class="btn" title="Composites">14. Composites</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <a href="../w15/w15.html" class="btn" title="Networking and Communications">Networking and Communications. 15</a>
+                                </td>
+                                <td align="left">
+                                    <a href="../w16/w16.html" class="btn" title="Interface and Application Programming">16. Interface and Application Programming</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <a href="../w17/w17.html" class="btn" title="Applications and Implications">Applications and Implications. 17</a>
+                                </td>
+                                <td align="left">
+                                    <a href="../w18/w18.html" class="btn" title="Invention, Intellectual Property, and Income">18. Invention, Intellectual Property, and Income</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" colspan="2">
+                                    <a href="../project/project.html" class="btn" title="Final Project:- Sparky the EDM PCB Mill">19. Project Development .19</a>
+                                </td>
+                            </tr>
+                        </table>
+                        <!--<div class="panel-footer"></div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
 
-      <section id="Module">
-        <a href="../index.html">Home</a>
-        <a href="../w1/w1.html" class="btn" title="Principles and Practices, Project Management ">1</a>
-        <a href="../w2/w2.html" class="btn" title="Computer-Aided Design">2</a>
-        <a href="../w3/w3.html" class="btn" title="Computer-Controlled Cutting">3</a>
-        <a href="../w4/w4.html" class="btn" title="Electronics Production">4</a>
-        <a href="../w5/w5.html" class="btn" title="3D Scanning and Printing">5</a>
-        <a href="../w6/w6.html" class="btn" title="Electronics Design">6</a>
-        <a href="../w7/w7.html" class="btn" title="Computer-Controlled Machining">7</a>
-        <a href="../w8/w8.html" class="btn" title="Embedded Programming">8</a>
-        <a href="../w9/w9.html" class="btn" title="Mechanical Design">9</a>
-        <a href="../w10/w10.html" class="btn" title="Machine Design">10</a>
-        <a href="../w11/w11.html" class="btn" title="Input Devices">11</a>
-        <a href="../w12/w12.html" class="btn" title="Molding and Casting">12</a>
-        <a href="../w13/w13.html" class="btn" title="Output Devices">13</a>
-        <a href="../w14/w14.html" class="btn" title="Composites">14</a>
-        <a href="../w15/w15.html" class="btn" title="Networking and Communications">15</a>
-        <a href="../w16/w16.html" class="btn" title="Interface and Application Programming">16</a>
-        <a href="../w17/w17.html" class="btn" title="Applications and Implications">17</a>
-        <a href="../w18/w18.html" class="btn" title="Invention, Intellectual Property, and Income">18</a>
-        <a href="../project/project.html" class="btn" title="Final Project:- Sparky the EDM PCB Mill">project</a>
+        <h1>Mechanical Design</h1>
+        <p>
+            This time, we are supposed to design a machine. I said we, because this is a group assignment. Franc made our big batch of some 14 students at the
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/">FabLab Trivandrum</a> into two groups of 7.
+            <br>
+            <br>
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">LINK TO THE GROUP PAGE</a>
+            <br>
+            <br>
+            <br> The group one consist of the following members.
+            <ul>
+                <li>
+                    <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/390/index.html">Muhammed Jaseel P.</a>
+                </li>
+                <li>
+                    <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/376/index.html">Nisha Johnson</a>
+                </li>
+                <li>
+                    <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/465/index.html">Paul Anand</a>
+                </li>
+                <li>
+                    <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/394/index.html">Rashid Thattayil</a>
+                </li>
+                <li>
+                    <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/403/index.html">Vinod Kumar B. G.</a>
+                </li>
+                <li>
+                    <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/424/index.html">Yogi Kulkarni</a>
+                </li>
+            </ul>
+            And last but not the least myself, the team leader, as decided by our instructor Francisco.
+        </p>
 
-      </section>
-    </div>
-  </header>
-  <section>
+        <h2>Stage 1. Ideation</h2>
 
-    <h1>Mechanical Design</h1>
-    <p>
-      This time, we are supposed to design a machine. I said we, because this is a group assignment. Franc made our big batch of some 14 students at the
-      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/">FabLab Trivandrum</a> into two groups of 7.
-      <br>
-      <br>
-      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">LINK TO THE GROUP PAGE</a>
-      <br>
-      <br>
-      <br> The group one consist of the following members.
-      <ul>
-        <li>
-          <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/390/index.html">Muhammed Jaseel P.</a>
-        </li>
-        <li>
-          <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/376/index.html">Nisha Johnson</a>
-        </li>
-        <li>
-          <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/465/index.html">Paul Anand</a>
-        </li>
-        <li>
-          <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/394/index.html">Rashid Thattayil</a>
-        </li>
-        <li>
-          <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/403/index.html">Vinod Kumar B. G.</a>
-        </li>
-        <li>
-          <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/424/index.html">Yogi Kulkarni</a>
-        </li>
-      </ul>
-      And last but not the least myself, the team leader, as decided by our instructor Francisco.
-    </p>
+        <p>
+            <br> Our team members came up with the following ideas, inspired by what's seen in the links.
+            <ul>
+                <li>
+                    <a href="http://shop.evilmadscientist.com/productsmenu/846">CNC Plotter</a>
 
-    <h2>Stage 1. Ideation</h2>
+                    <figure>
+                        <img src="plotter.png" alt="CNC plotter" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'"
+                        />
+                    </figure>
+                </li>
 
-    <p>
-      <br> Our team members came up with the following ideas, inspired by what's seen in the links.
-      <ul>
-        <li>
-          <a href="http://shop.evilmadscientist.com/productsmenu/846">CNC Plotter</a>
+                <li>
+                    Foam Cutter
+                    <br>
+                    <iframe width="420" height="315" src="https://www.youtube.com/embed/HD__nfMsVOs" frameborder="0" allowfullscreen></iframe>
+                </li>
 
-          <figure>
-            <img src="plotter.png" alt="CNC plotter" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
-          </figure>
-        </li>
+                <li>
+                    Mini CNC Lathe
+                    <br>
+                    <iframe width="420" height="315" src="https://www.youtube.com/embed/4rrh6Pl4vow" frameborder="0" allowfullscreen></iframe>
+                    <br>
+                    <a href="https://github.com/Intrinsically-Sublime/Printable-Lathe-V2">Source</a>
+                    <br>
+                    <a href="http://www.alibaba.com/product-detail/W10003M-CNC-Mini-CNC-Lathe_1029200691.html">An example from Alibaba</a>
+                </li>
+                <li>
+                    Drawing Rover
+                    <br>
+                    <iframe width="420" height="315" src="https://www.youtube.com/embed/Uo2aUUNhdKs" frameborder="0" allowfullscreen></iframe>
+                </li>
+            </ul>
+        </p>
+        <p>
+            After the internal discussion, with majority voting for 'CNC Lathe', we decided to pool the resources for the same.
+        </p>
 
-        <li>
-          Foam Cutter
-          <br>
-          <iframe width="420" height="315" src="https://www.youtube.com/embed/HD__nfMsVOs" frameborder="0" allowfullscreen></iframe>
-        </li>
+        <h3>Pooling</h3>
 
-        <li>
-          Mini CNC Lathe
-          <br>
-          <iframe width="420" height="315" src="https://www.youtube.com/embed/4rrh6Pl4vow" frameborder="0" allowfullscreen></iframe>
-          <br>
-          <a href="https://github.com/Intrinsically-Sublime/Printable-Lathe-V2">Source</a>
-          <br>
-          <a href="http://www.alibaba.com/product-detail/W10003M-CNC-Mini-CNC-Lathe_1029200691.html">An example from Alibaba</a>
-        </li>
-        <li>
-          Drawing Rover
-          <br>
-          <iframe width="420" height="315" src="https://www.youtube.com/embed/Uo2aUUNhdKs" frameborder="0" allowfullscreen></iframe>
-        </li>
-      </ul>
-    </p>
-    <p>
-      After the internal discussion, with majority voting for 'CNC Lathe', we decided to pool the resources for the same.
-    </p>
+        <p>
+            We decided to gather all possible resources we could use for this project. From my own experience and a bit of reading, I knew that there are a few things that is a must for a lathe.
+            <ul>
+                <li>A Headstock with a Chuck to hold the workpiece and a motor to power the spindle.</li>
+                <li>A tool-holder/tool-post that can be moved precisely along X and Y. (one along the axis of spindle and other perpendicular to it)</li>
+            </ul>
+            And optionally a tail-stock to support the workpiece.
+            <br> I found the following designs that could be used as it is or could be modified to suit our needs.
+        </p>
 
-    <h3>Pooling</h3>
+        <h3>Chuck</h3>
 
-    <p>
-      We decided to gather all possible resources we could use for this project. From my own experience and a bit of reading, I knew that there are a few things that is a must for a lathe.
-      <ul>
-        <li>A Headstock with a Chuck to hold the workpiece and a motor to power the spindle.</li>
-        <li>A tool-holder/tool-post that can be moved precisely along X and Y. (one along the axis of spindle and other perpendicular to it)</li>
-      </ul>
-      And optionally a tail-stock to support the workpiece.
-      <br> I found the following designs that could be used as it is or could be modified to suit our needs.
-    </p>
+        <p>
+            <a href="http://www.thingiverse.com/thing:624625">This</a> is a nice 3D-printable chuck design by
+            <a href="http://www.thingiverse.com/bobwomble/about">Bob</a>
+            and made by
+            <a href="http://www.thingiverse.com/yuri9999/about">Yuri9999</a> from
+            <a href="http://www.thingiverse.com/">Thingiverse</a>
+            <figure>
+                <img src="chuck.png" alt="CNC plotter" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'"
+                />
+                <figcaption style="display:block; color:grey">Source file available
+                    <a href="http://www.thingiverse.com/thing:624625/#files">here</a>.</figcaption>
+            </figure>
+            This is already a perfect design for a 3D-Printable chuck and we are going to use as it is. No need to reinvent the wheel!
+            <br>
+            <br> This chuck will hold the workpiece and will be attached to a Drill or some other motor or Dremel tool, though I am doubtful if Dremel has the sufficient Torque for the
+            purpose, it definitely has the speed.
+        </p>
 
-    <h3>Chuck</h3>
+        <h3>X-Y Stages.</h3>
 
-    <p>
-      <a href="http://www.thingiverse.com/thing:624625">This</a> is a nice 3D-printable chuck design by
-      <a href="http://www.thingiverse.com/bobwomble/about">Bob</a>
-      and made by
-      <a href="http://www.thingiverse.com/yuri9999/about">Yuri9999</a> from
-      <a href="http://www.thingiverse.com/">Thingiverse</a>
-      <figure>
-        <img src="chuck.png" alt="CNC plotter" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">Source file available
-          <a href="http://www.thingiverse.com/thing:624625/#files">here</a>.</figcaption>
-      </figure>
-      This is already a perfect design for a 3D-Printable chuck and we are going to use as it is. No need to reinvent the wheel!
-      <br>
-      <br> This chuck will hold the workpiece and will be attached to a Drill or some other motor or Dremel tool, though I am doubtful if Dremel has the sufficient Torque for the purpose,
-      it definitely has the speed.
-    </p>
+        <p>
+            The tool need to move in the horizontal plane (X and Y), but unlike a 3D-printer XY-stage this need not be fast. In fact it has to be slow and precise movement. So a lead-screw is the
+            best solution. We plan to use normal threaded rod and bolts for the actuation, as this sis a prototype and proof of concept work. A screw based motion has other advantages
+            like it can withstand lot of axial load.
+            <br>
+            <br> We decided to use a simple stage, two guide rods and a threaded rod at the center attached to a stepper. Something like the first picture in this page, something simple
+            as the modular stages
+            <figure>
+                <img src="recon-stage.png" alt="reconfigurable stage" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'"
+                />
+                <figcaption style="display:block; color:grey">
+                    <a href="http://mtm.cba.mit.edu/machines/stages/">Source</a>.</figcaption>
+            </figure>
+            But this need to be strong too, made using plywood or acrylic. Need not be long as the examples above, we need only about 10-15cm motion along X and Y.
+        </p>
 
-    <h3>X-Y Stages.</h3>
+        <h3>Overall design.</h3>
 
-    <p>
-      The tool need to move in the horizontal plane (X and Y), but unlike a 3D-printer XY-stage this need not be fast. In fact it has to be slow and precise movement. So a lead-screw is the
-      best solution. We plan to use normal threaded rod and bolts for the actuation, as this sis a prototype and proof of concept work. A screw based motion has other advantages like
-      it can withstand lot of axial load.
-      <br>
-      <br> We decided to use a simple stage, two guide rods and a threaded rod at the center attached to a stepper. Something like the first picture in this page, something simple as the
-      modular stages
-      <figure>
-        <img src="recon-stage.png" alt="reconfigurable stage" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">
-          <a href="http://mtm.cba.mit.edu/machines/stages/">Source</a>.</figcaption>
-      </figure>
-      But this need to be strong too, made using plywood or acrylic. Need not be long as the examples above, we need only about 10-15cm motion along X and Y.
-    </p>
+        <p>
+            The overall final design could be based on the following sources.
+            <br>
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/4rrh6Pl4vow" frameborder="0" allowfullscreen></iframe>
+            <br>
+            <a href="https://github.com/Intrinsically-Sublime/Printable-Lathe-V2">https://github.com/Intrinsically-Sublime/Printable-Lathe-V2</a>
+            <br>He included a 3D-printed chuck too, and powered by a drill just like how we are planing to use.
+            <br> Another design that we could use is this one,
+            <br>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/k-f7Dvw6EnA" frameborder="0" allowfullscreen></iframe>
+            <br> The OpenSCAD file for which is available
+            <a href="http://robinsonia.com/wp/?page_id=338">here</a>.
+        </p>
 
-    <h3>Overall design.</h3>
+        <h2>Stage 2. Gathering Parts</h2>
+        <p>
+            Our instructor set a rule of not buying any mechanical components for the machine, instead salvage or make it yourself. A good suggestion, but I personally do not want to strictly adhere
+            to this. As every component we are going to use is bought from somewhere at sometime in some form. So I (and very likely most of us in the lab) will adhere to the rule that
+            "we will be making or salvaging whatever we could, we will do the best we can". This is because not everything could be made or salvaged, for example fasteners, threaded
+            rod, timing belts etc cannot be made, even if we could that won't even match the cheapest options we could find from the market. Then there is time and other resources involved.
+        </p>
 
-    <p>
-      The overall final design could be based on the following sources.
-      <br>
-      <iframe width="420" height="315" src="https://www.youtube.com/embed/4rrh6Pl4vow" frameborder="0" allowfullscreen></iframe>
-      <br>
-      <a href="https://github.com/Intrinsically-Sublime/Printable-Lathe-V2">https://github.com/Intrinsically-Sublime/Printable-Lathe-V2</a>
-      <br>He included a 3D-printed chuck too, and powered by a drill just like how we are planing to use.
-      <br> Another design that we could use is this one,
-      <br>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/k-f7Dvw6EnA" frameborder="0" allowfullscreen></iframe>
-      <br> The OpenSCAD file for which is available
-      <a href="http://robinsonia.com/wp/?page_id=338">here</a>.
-    </p>
+        <h3>Scrap Hunt</h3>
 
-    <h2>Stage 2. Gathering Parts</h2>
-    <p>
-      Our instructor set a rule of not buying any mechanical components for the machine, instead salvage or make it yourself. A good suggestion, but I personally do not want to strictly adhere
-      to this. As every component we are going to use is bought from somewhere at sometime in some form. So I (and very likely most of us in the lab) will adhere to the rule that "we
-      will be making or salvaging whatever we could, we will do the best we can". This is because not everything could be made or salvaged, for example fasteners, threaded rod, timing
-      belts etc cannot be made, even if we could that won't even match the cheapest options we could find from the market. Then there is time and other resources involved.
-    </p>
+        <p>
+            Anyway a few of us Me,
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/384/index.html">Yadu</a>,
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/400/index.html">Vishnu</a>,
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/388/index.html">Nadeem</a> and
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/398/index.html">Safwan</a> went in search of old printers from E-waste collectors. We were hopping to get Motors including stepper motors, threaded rods, smooth rods, timing belts, other
+            useful mechanical components like gears, springs, screws. We could also get many useful electronics components too, like power-bricks (power bricks of the printers), positions
+            sensors, switches, connectors etc.
+            <figure>
+                <img src="scrap.jpg" alt="scrap" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'"
+                />
+                <figcaption style="display:block; color:grey">One printer disassembled, just a beginning, a total of 5 printers were dismantled for the parts.</figcaption>
+            </figure>
+        </p>
 
-    <h3>Scrap Hunt</h3>
+        <p>
+            We got a total of 5 printers at an expense of about INR 700 or about USD 10. Since we were at it we also got a few other stuff like two Weller pencils for about INR 30 (about 50 cents),
+            even if the elements are damaged the thick flexible heat resistant cables in those pencils are worth more than we spent on them.
+            <br> In summary, this is what we got.
+            <ul>
+                <li>9 X DC Motors.</li>
+                <li>1 X Stepper motor.</li>
+                <li>3 X 8mm, 40cm smooth rods.</li>
+                <li>3 X 8mm, 30cm smooth rods with gear like pattern at 1/3rd the length.</li>
+                <li>5 X 6mm smooth rods of various lengths.</li>
+                <li>5 X long timing belts and few shorter ones.</li>
+                <li>2 X Possibly working 230V AC to 19V DC power bricks.</li>
+                <li>Many optical positions sensors and endstops.</li>
+                <li>Many screws and springs and gears of various types and sizes.</li>
+            </ul>
+            There are more items, like all those controller circuits from which we could get many tactile switches, a few crystals, connectors etc. Then there is an HP scanner head, though I don't
+            know how to use it and couldn't find any resources. Similarly, I also recovered a Epson
+            <a href="http://www.epson.com.sg/epson_singapore/explore_epson/innovation/micro_piezo.page">Micro-Piezo</a> inkjet head. This is a good material for future investigation as unlike the HP, thermal Inkjet technology, these Piezo heads can print almost any liquid,
+            and controlling this could be done with precise shaped pulses to the piezo elements. Though this would be difficult, it's not impossible.
+        </p>
 
-    <p>
-      Anyway a few of us Me,
-      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/384/index.html">Yadu</a>,
-      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/400/index.html">Vishnu</a>,
-      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/388/index.html">Nadeem</a> and
-      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/398/index.html">Safwan</a> went in search of old printers from E-waste collectors. We were hopping to get Motors including stepper motors, threaded rods, smooth rods, timing belts, other useful
-      mechanical components like gears, springs, screws. We could also get many useful electronics components too, like power-bricks (power bricks of the printers), positions sensors,
-      switches, connectors etc.
-      <figure>
-        <img src="scrap.jpg" alt="scrap" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">One printer disassembled, just a beginning, a total of 5 printers were dismantled for the parts.</figcaption>
-      </figure>
-    </p>
+        <h3>Other parts.</h3>
 
-    <p>
-      We got a total of 5 printers at an expense of about INR 700 or about USD 10. Since we were at it we also got a few other stuff like two Weller pencils for about INR 30 (about 50 cents),
-      even if the elements are damaged the thick flexible heat resistant cables in those pencils are worth more than we spent on them.
-      <br> In summary, this is what we got.
-      <ul>
-        <li>9 X DC Motors.</li>
-        <li>1 X Stepper motor.</li>
-        <li>3 X 8mm, 40cm smooth rods.</li>
-        <li>3 X 8mm, 30cm smooth rods with gear like pattern at 1/3rd the length.</li>
-        <li>5 X 6mm smooth rods of various lengths.</li>
-        <li>5 X long timing belts and few shorter ones.</li>
-        <li>2 X Possibly working 230V AC to 19V DC power bricks.</li>
-        <li>Many optical positions sensors and endstops.</li>
-        <li>Many screws and springs and gears of various types and sizes.</li>
-      </ul>
-      There are more items, like all those controller circuits from which we could get many tactile switches, a few crystals, connectors etc. Then there is an HP scanner head, though I don't
-      know how to use it and couldn't find any resources. Similarly, I also recovered a Epson
-      <a href="http://www.epson.com.sg/epson_singapore/explore_epson/innovation/micro_piezo.page">Micro-Piezo</a> inkjet head. This is a good material for future investigation as unlike the HP, thermal Inkjet technology, these Piezo heads can print almost any liquid, and controlling
-      this could be done with precise shaped pulses to the piezo elements. Though this would be difficult, it's not impossible.
-    </p>
+        <p>
+            We got the smooth rods for the guide rails. But we couldn't get any threaded rods, and we need it for the machines. There are again multiple options, could use standard threaded rods
+            that are used for fastening, we could use long bolts, or we could use the special high quality threaded rods made for actuation, like the ones used in Ultimaker's Z-axis.
+            There was one vendor who refused to give anything short of 3m. We didn't require long threaded rods as this is an experimental build, need only smaller axes. We could use
+            the long bolts instead, and we decided to do so.
+        </p>
+        <p>
+            The construction will be using 6mm acrylic and may be the thick, 12mm or 18mm plywood as a base. We will be making a press-fit assembly in acrylic but will also use cyano-acrylic glue
+            (super-glue) for extra strength.
+            <br> For the guide rods we planned to use 2 of the 8mm rods and 2 of the 6mm rods.
+            <br> The stepper motor to the threaded rod coupler will be printed. The design is from
+            <a href="http://www.thingiverse.com/thing:1329750">thingiverse</a>.
 
-    <h3>Other parts.</h3>
+        </p>
 
-    <p>
-      We got the smooth rods for the guide rails. But we couldn't get any threaded rods, and we need it for the machines. There are again multiple options, could use standard threaded rods
-      that are used for fastening, we could use long bolts, or we could use the special high quality threaded rods made for actuation, like the ones used in Ultimaker's Z-axis. There
-      was one vendor who refused to give anything short of 3m. We didn't require long threaded rods as this is an experimental build, need only smaller axes. We could use the long bolts
-      instead, and we decided to do so.
-    </p>
-    <p>
-      The construction will be using 6mm acrylic and may be the thick, 12mm or 18mm plywood as a base. We will be making a press-fit assembly in acrylic but will also use cyano-acrylic
-      glue (super-glue) for extra strength.
-      <br> For the guide rods we planned to use 2 of the 8mm rods and 2 of the 6mm rods.
-      <br> The stepper motor to the threaded rod coupler will be printed. The design is from
-      <a href="http://www.thingiverse.com/thing:1329750">thingiverse</a>.
+        <h3>Electronics</h3>
 
-    </p>
+        <p>
+            For the electronics, The stepper motor driver chip is
+            <a href="http://www.allegromicro.com/en/Products/Motor-Driver-And-Interface-ICs/Bipolar-Stepper-Motor-Drivers/A4988.aspx">Allegro A4988</a> in a
+            <a href="https://www.pololu.com/product/1182">Breakout board</a>.
+            <br> The stepper used will be the NEMA17 ones available in the Fablab inventory.
+            <br> The main controller board can be my
+            <a href="http://reprap.org/wiki/RAMPS_1.4">RAMPS_1.4</a>. Or it could be the
+            <a href="https://github.com/imoyer/086-005/tree/master/board/rev0.3">Gestalt Node V0.3</a> mod I'm making (
+            <a href="../w10/w10.html">Documentation</a>). This board is mod so that ot uses the A4988 breakout instead of A4982.
+            <br>
+            <br>Though I really don't want to use this board for the following reasons.
+            <ul>
+                <li>We don not need the flexibility/modularity provided by the networked controller nodes.</li>
+                <li>It's a huge waste of resources, one Atmega328p, a crystal/resonator, the RS485 transceiver chip and whole lot of other passive electronic components for just controlling
+                    a stepper motor.
+                </li>
+                <li>The Atmega328p might be capable of controlling the two steppers and other things I wanted to solely.</li>
+                <li>The framework is not mature enough. Or in other words it under heavy development.</li>
+                <li>At present RAMPS 1.4 gives me more flexibility and options for expansion.</li>
+                <li>....</li>
+            </ul>
+        </p>
 
-    <h3>Electronics</h3>
+        <h2>Stage 3. Construction</h2>
+        <p>
+            The difficult part would be the construction of the X-Y stages, the mechanical, linear movements for the X and Y axes. For some reason first we printed the parts that are required only
+            at the last, perhaps we just wanted to start and these prints were made using ready to print files from thingiverse.
+            <br>
+            <br>First we printed the parts for the chuck.
+        </p>
 
-    <p>
-      For the electronics, The stepper motor driver chip is
-      <a href="http://www.allegromicro.com/en/Products/Motor-Driver-And-Interface-ICs/Bipolar-Stepper-Motor-Drivers/A4988.aspx">Allegro A4988</a> in a
-      <a href="https://www.pololu.com/product/1182">Breakout board</a>.
-      <br> The stepper used will be the NEMA17 ones available in the Fablab inventory.
-      <br> The main controller board can be my
-      <a href="http://reprap.org/wiki/RAMPS_1.4">RAMPS_1.4</a>. Or it could be the
-      <a href="https://github.com/imoyer/086-005/tree/master/board/rev0.3">Gestalt Node V0.3</a> mod I'm making (
-      <a href="../w10/w10.html">Documentation</a>). This board is mod so that ot uses the A4988 breakout instead of A4982.
-      <br>
-      <br>Though I really don't want to use this board for the following reasons.
-      <ul>
-        <li>We don not need the flexibility/modularity provided by the networked controller nodes.</li>
-        <li>It's a huge waste of resources, one Atmega328p, a crystal/resonator, the RS485 transceiver chip and whole lot of other passive electronic components for just controlling a stepper
-          motor.
-        </li>
-        <li>The Atmega328p might be capable of controlling the two steppers and other things I wanted to solely.</li>
-        <li>The framework is not mature enough. Or in other words it under heavy development.</li>
-        <li>At present RAMPS 1.4 gives me more flexibility and options for expansion.</li>
-        <li>....</li>
-      </ul>
-    </p>
+        <h3>Chuck</h3>
 
-    <h2>Stage 3. Construction</h2>
-    <p>
-      The difficult part would be the construction of the X-Y stages, the mechanical, linear movements for the X and Y axes. For some reason first we printed the parts that are required only
-      at the last, perhaps we just wanted to start and these prints were made using ready to print files from thingiverse.
-      <br>
-      <br>First we printed the parts for the chuck.
-    </p>
+        <p>
+            <figure>
+                <img src="chuck.jpg" alt="chuck" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'"
+                />
+                <figcaption style="display:block; color:grey"> Some parts for the chuck printed in Stratasys Dimension for the strength and quality it provides, this part is turned using an Allen-key and this will spin a connected
+                    gear which will turn a spiral piece and will tighten or loosen the lathe jaws.</figcaption>
+                <img src="chuck-p.jpg" alt="chuck" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'"
+                />
+                <figcaption style="display:block; color:grey"> All the parts of the chuck, except for one. The parts in green is printed in PLA in Ultimaker, these parts are very weak, cannot handle the load, but will do fine for
+                    demonstration purpose and prototyping a proof of concept version. </figcaption>
+            </figure>
+            <br> More details
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">here</a>.
+        </p>
 
-    <h3>Chuck</h3>
+        <h3>X and Y axes</h3>
 
-    <p>
-      <figure>
-        <img src="chuck.jpg" alt="chuck" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey"> Some parts for the chuck printed in Stratasys Dimension for the strength and quality it provides, this part is turned using an Allen-key and this will spin a connected gear
-          which will turn a spiral piece and will tighten or loosen the lathe jaws.</figcaption>
-        <img src="chuck-p.jpg" alt="chuck" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey"> All the parts of the chuck, except for one. The parts in green is printed in PLA in Ultimaker, these parts are very weak, cannot handle the load, but will do fine for demonstration
-          purpose and prototyping a proof of concept version. </figcaption>
-      </figure>
-      <br> More details
-      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">here</a>.
-    </p>
-
-    <h3>X and Y axes</h3>
-
-    <p>
-      Now comes the actual difficult part of the project. We need to design the X and Y stages using the materials available at the lab and the salvaged parts.
-      <br>
-      <br> We decided to make something simple using the smooth rods we have and the two long bolts. The basic design comes from my
-      <a href="../w3/w3.html">Computer-Controlled Cutting</a> module, where I did a press-fit box in OpenSCAD. I modified the file to get the moving carriage and the overall axes. This is the modified OpenSCAD
-      file for the X or Y carriage, The holes are meant for m8 threaded rod. The holes for the guide rods are such that either m6 or m8 smooth rods, the two set of walls has two different
-      holes.
-      <div class="codescroll">
-        <pre>
+        <p>
+            Now comes the actual difficult part of the project. We need to design the X and Y stages using the materials available at the lab and the salvaged parts.
+            <br>
+            <br> We decided to make something simple using the smooth rods we have and the two long bolts. The basic design comes from my
+            <a href="../w3/w3.html">Computer-Controlled Cutting</a> module, where I did a press-fit box in OpenSCAD. I modified the file to get the moving carriage and the overall axes. This is the modified
+            OpenSCAD file for the X or Y carriage, The holes are meant for m8 threaded rod. The holes for the guide rods are such that either m6 or m8 smooth rods, the two set of walls
+            has two different holes.
+            <div class="codescroll">
+                <pre>
 module copy_mirror_adj(vec=[1,1,0])
       {
         children();
@@ -479,152 +564,163 @@ module copy_tran(vec=[0,0,0])
             translate ( [ slot_depth/2, (i+.5)*wall_slot_width, 0 ] )
             square (size = [ slot_depth, fit_wall_slot_width ], center = true );
         </pre>
-      </div>
+            </div>
 
-      The result of this code is the following.
-      <br>
-      <figure>
-        <img src="xy-box.svg" alt="box scad" width="400" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='400'" />
-        <figcaption style="display:block; color:grey"> The OpenSCAD render of the above code.</figcaption>
+            The result of this code is the following.
+            <br>
+            <figure>
+                <img src="xy-box.svg" alt="box scad" width="400" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='400'"
+                />
+                <figcaption style="display:block; color:grey"> The OpenSCAD render of the above code.</figcaption>
 
-        <img src="y-box.svg" alt="box svg" width="400" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='400'" />
-        <figcaption style="display:block; color:grey"> Post processing image, I imported this file to Rhino and added a mounting holes and also added a few bits and pieces which I will be using later as a retention washer or something.
-          The links to all the formats are given, incase of improper scaling issues.
-          <br>
-          <a href="y-box.svg" download="box.svg">SVG</a>.
-          <a href="y-box.dwg" download="box.dwg">DWG</a>.
-          <a href="y-box.dxf" download="box.dxf">DXF</a>.
-        </figcaption>
-        <img src="test-cut.jpg" alt="test cut" width="200" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='400'" onclick="this.width='200'" />
-        <figcaption style="display:block; color:grey"> The test cuts made for the 6mm smooth rod, was testing the perfect diameter of the holes which won't be too tight or too loose on the rod, so that the box can slide freely on
-          the smooth rods. This also tests a tight fitting piece for fixing the nuts to the carriage/box. This tests are made in wood, but they were also made in acrylic and also for
-          the 8mm smooth rods. Finally decided to acrylic as the plywood quickly wear off and becomes loose.</figcaption>
-      </figure>
-    </p>
+                <img src="y-box.svg" alt="box svg" width="400" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='400'"
+                />
+                <figcaption style="display:block; color:grey"> Post processing image, I imported this file to Rhino and added a mounting holes and also added a few bits and pieces which I will be using later as a retention washer
+                    or something. The links to all the formats are given, incase of improper scaling issues.
+                    <br>
+                    <a href="y-box.svg" download="box.svg">SVG</a>.
+                    <a href="y-box.dwg" download="box.dwg">DWG</a>.
+                    <a href="y-box.dxf" download="box.dxf">DXF</a>.
+                </figcaption>
+                <img src="test-cut.jpg" alt="test cut" width="200" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='400'" onclick="this.width='200'"
+                />
+                <figcaption style="display:block; color:grey"> The test cuts made for the 6mm smooth rod, was testing the perfect diameter of the holes which won't be too tight or too loose on the rod, so that the box can slide
+                    freely on the smooth rods. This also tests a tight fitting piece for fixing the nuts to the carriage/box. This tests are made in wood, but they were also made in
+                    acrylic and also for the 8mm smooth rods. Finally decided to acrylic as the plywood quickly wear off and becomes loose.</figcaption>
+            </figure>
+        </p>
 
-    <p>
-      The X-Y carriage design is ready, now we need to make an assembly for this box to slide. The base design for this also came from the above OpenSCAD design, this file is also edited
-      in Rhino to have the mounting holes. The sizes of the stages are determined by the length of the smooth rods we have.
-    </p>
+        <p>
+            The X-Y carriage design is ready, now we need to make an assembly for this box to slide. The base design for this also came from the above OpenSCAD design, this file is also edited
+            in Rhino to have the mounting holes. The sizes of the stages are determined by the length of the smooth rods we have.
+        </p>
 
-    <p>
-      During the construction we actually made a few mistakes and wasted a few pieces of acrylic, I should have done a test cut on cardboard before!.
-      <br>
-      <br> So, it's time for the redemption, to compensate for the wasted acrylic I decided to do the test cuts in a cardboard sheet cut from package.
-      <figure>
-        <img src="resuse.jpg" alt="reuse" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">The cardboard sheet from an Amazon packaging cut in shape to fit in the laser cutter, Thanks Amazon for the generous use of packaging material! I should rate you 5 stars for
-          the packaging.
-        </figcaption>
-      </figure>
-    </p>
+        <p>
+            During the construction we actually made a few mistakes and wasted a few pieces of acrylic, I should have done a test cut on cardboard before!.
+            <br>
+            <br> So, it's time for the redemption, to compensate for the wasted acrylic I decided to do the test cuts in a cardboard sheet cut from package.
+            <figure>
+                <img src="resuse.jpg" alt="reuse" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'"
+                />
+                <figcaption style="display:block; color:grey">The cardboard sheet from an Amazon packaging cut in shape to fit in the laser cutter, Thanks Amazon for the generous use of packaging material! I should rate you 5 stars
+                    for the packaging.
+                </figcaption>
+            </figure>
+        </p>
 
-    <p>
-      <figure>
-        <img src="box.jpg" alt="box" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">The final box assembly, Notice that I'm using two nuts on the bolts, and there is a spring in between the nuts. This spring will keep the nuts under load and backlash should
-          be less. Also the two nuts will provide extra stability. The nuts are fixed using the hexagonal acrylic pieces, they will be glued to the box two lock the positions of the
-          nuts. I have only done this for X-axis, so that I can compare the results.
-        </figcaption>
-      </figure>
-      <figure>
-        <img src="Y.svg" alt="Y-box" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">This is the cut file for the Y stage. As I said before, the origin of all these files are the OpenSCAD file, yhey are then modified to have suitable mounting holes and slots
-          for fixing the smooth rods.
-        </figcaption>
+        <p>
+            <figure>
+                <img src="box.jpg" alt="box" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'"
+                />
+                <figcaption style="display:block; color:grey">The final box assembly, Notice that I'm using two nuts on the bolts, and there is a spring in between the nuts. This spring will keep the nuts under load and backlash
+                    should be less. Also the two nuts will provide extra stability. The nuts are fixed using the hexagonal acrylic pieces, they will be glued to the box two lock the
+                    positions of the nuts. I have only done this for X-axis, so that I can compare the results.
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="Y.svg" alt="Y-box" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'"
+                />
+                <figcaption style="display:block; color:grey">This is the cut file for the Y stage. As I said before, the origin of all these files are the OpenSCAD file, yhey are then modified to have suitable mounting holes and
+                    slots for fixing the smooth rods.
+                </figcaption>
 
-        <img src="ready-for-mount.jpg" alt="ready-for-mount" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">The Y-stage ready to be mounted on the X-box/carriage. Three m4 bolts have been used to fix the mounting plate to the bottom of the Y-stage. This will be fitted (press fit)
-          on the X-carriage. The motors too are press-fitted and also supported by a piece of acrylic base-plate glued to the main assembly.
-        </figcaption>
+                <img src="ready-for-mount.jpg" alt="ready-for-mount" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'"
+                />
+                <figcaption style="display:block; color:grey">The Y-stage ready to be mounted on the X-box/carriage. Three m4 bolts have been used to fix the mounting plate to the bottom of the Y-stage. This will be fitted (press
+                    fit) on the X-carriage. The motors too are press-fitted and also supported by a piece of acrylic base-plate glued to the main assembly.
+                </figcaption>
 
-        <img src="assem1.jpg" alt="assembly" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">The complete assembly with a 'makeshift' pen plotter and RAMPS 1.4 controller board.
-        </figcaption>
+                <img src="assem1.jpg" alt="assembly" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'"
+                />
+                <figcaption style="display:block; color:grey">The complete assembly with a 'makeshift' pen plotter and RAMPS 1.4 controller board.
+                </figcaption>
 
-        <img src="assem2.jpg" alt="pen holder" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">Closeup of the pen holder, the long acrylic piece is slightly bend as the length of them pen below the mounting point is more than the height of the entire assembly, This bending
-          give enough downward force on the pen which enables writing, but at the cost of slipping non-smooth motion.
-        </figcaption>
-      </figure>
-    </p>
+                <img src="assem2.jpg" alt="pen holder" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'"
+                />
+                <figcaption style="display:block; color:grey">Closeup of the pen holder, the long acrylic piece is slightly bend as the length of them pen below the mounting point is more than the height of the entire assembly,
+                    This bending give enough downward force on the pen which enables writing, but at the cost of slipping non-smooth motion.
+                </figcaption>
+            </figure>
+        </p>
 
-    <h4>'Machines that make the machines'</h4>
-    <p>
-      We were supposed to be making a lathe, but we had to do a makeshift lathe to,
-      <ul>
-        <li>Cut a few of the smooth rods to length.</li>
-        <li>Cut the head of the long bolts used for the actuation.</li>
-        <li>Cut a few bolts to length, used for mounting.</li>
-      </ul>
-      We did this by fixing the work-piece to the drill and used the metal cutting Hacksaw blade as the cutting tool.
-      <br>
-      <video width="520" controls>
-        <source src="cut.m4v" type="video/mp4"> Your browser does not support the video tag.
-      </video>
-    </p>
+        <h4>'Machines that make the machines'</h4>
+        <p>
+            We were supposed to be making a lathe, but we had to do a makeshift lathe to,
+            <ul>
+                <li>Cut a few of the smooth rods to length.</li>
+                <li>Cut the head of the long bolts used for the actuation.</li>
+                <li>Cut a few bolts to length, used for mounting.</li>
+            </ul>
+            We did this by fixing the work-piece to the drill and used the metal cutting Hacksaw blade as the cutting tool.
+            <br>
+            <video width="520" controls>
+                <source src="cut.m4v" type="video/mp4"> Your browser does not support the video tag.
+            </video>
+        </p>
 
-    <h2>The X-Y stages at work</h2>
-    <p>
-      <video width="520" controls>
-        <source src="cnc-first step.m4v" type="video/mp4"> Your browser does not support the video tag.
-      </video>
-      <br> This is our first attempt to control the stepper via Gcode and first real test on my stage design. For more details head over to our
-      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">team page</a> and
-      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/424/index.html">Yogi's page</a> who is in charge of all the coding and stuff. Having made the X-Y stages and mounted the steppers, then merged the two stages to a single unit and used the RAMPS 1.4
-      controller board. We decided to use the PC for the hard stuff, generating the Gcode and stuff. The serial communication is used to transfer the Gcodes, individually to the controller
-      board and the Atmega2560 (Arduino Mega) will interpret the Gcode and will send the required signals to the motor controller, A4988. The micro controller need to send three set
-      of data,
-      <ul>
-        <li>Enable (high/low):- to enable/disable the stepper, enabling means the stepper will always have power, whether it moves or not. When enabled the coils are energized and when
-          not rotating, it holds it's position well, withstands a lot of load(external torque) before it spins. Obviously this has to be enabled if one wishes to use the stepper.</li>
-        <li>Dir (high/low):- sets the direction of rotation.</li>
-        <li>Steps (Pulses):- each pulse moves the stepper by one step.</li>
-      </ul>
-      <br>
-      <b>The motor and the board is powered by a 230V to 12V 3A AC-DC SMPS.</b>
-      <br>
-      <br> You can see a video of getting both the to move using the stepper via the serial interface between the computer and the micro-controller.
-      <video width="520" controls>
-        <source src="cnc-2.m4v" type="video/mp4"> Your browser does not support the video tag.
-      </video>
-      <br>
-      <h2 style="color:red">For more details on programming and controls head over to our</h2>
-      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">team page</a> and
-      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/424/index.html">Yogi's page</a>.
-    </p>
-    <h1>!!!TWIST!!!</h1>
-    <p>
-      Perhaps you noticed it already, we started with the plan to make a lathe and ended up making a plotter. We may still continue with the lathe, the difficult part was the constructions
-      and controlling of the stages, which has been achieved.
-      <br>
-      <video width="520" controls>
-        <source src="cnc-fin.m4v" type="video/mp4"> Your browser does not support the video tag.
-      </video>
-      <br> Though we tried for a square, we got something entirely different, but wait, who writes anything right the first time, this is our 'baby' and we are teaching it.
-    </p>
-    <p>
-      We have more results at our
-      <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">team page</a>.
-    </p>
+        <h2>The X-Y stages at work</h2>
+        <p>
+            <video width="520" controls>
+                <source src="cnc-first step.m4v" type="video/mp4"> Your browser does not support the video tag.
+            </video>
+            <br> This is our first attempt to control the stepper via Gcode and first real test on my stage design. For more details head over to our
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">team page</a> and
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/424/index.html">Yogi's page</a> who is in charge of all the coding and stuff. Having made the X-Y stages and mounted the steppers, then merged the two stages to a single unit and used the
+            RAMPS 1.4 controller board. We decided to use the PC for the hard stuff, generating the Gcode and stuff. The serial communication is used to transfer the Gcodes, individually
+            to the controller board and the Atmega2560 (Arduino Mega) will interpret the Gcode and will send the required signals to the motor controller, A4988. The micro controller
+            need to send three set of data,
+            <ul>
+                <li>Enable (high/low):- to enable/disable the stepper, enabling means the stepper will always have power, whether it moves or not. When enabled the coils are energized and
+                    when not rotating, it holds it's position well, withstands a lot of load(external torque) before it spins. Obviously this has to be enabled if one wishes to use
+                    the stepper.</li>
+                <li>Dir (high/low):- sets the direction of rotation.</li>
+                <li>Steps (Pulses):- each pulse moves the stepper by one step.</li>
+            </ul>
+            <br>
+            <b>The motor and the board is powered by a 230V to 12V 3A AC-DC SMPS.</b>
+            <br>
+            <br> You can see a video of getting both the to move using the stepper via the serial interface between the computer and the micro-controller.
+            <video width="520" controls>
+                <source src="cnc-2.m4v" type="video/mp4"> Your browser does not support the video tag.
+            </video>
+            <br>
+            <h2 style="color:red">For more details on programming and controls head over to our</h2>
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">team page</a> and
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/424/index.html">Yogi's page</a>.
+        </p>
+        <h1>!!!TWIST!!!</h1>
+        <p>
+            Perhaps you noticed it already, we started with the plan to make a lathe and ended up making a plotter. We may still continue with the lathe, the difficult part was the constructions
+            and controlling of the stages, which has been achieved.
+            <br>
+            <video width="520" controls>
+                <source src="cnc-fin.m4v" type="video/mp4"> Your browser does not support the video tag.
+            </video>
+            <br> Though we tried for a square, we got something entirely different, but wait, who writes anything right the first time, this is our 'baby' and we are teaching it.
+        </p>
+        <p>
+            We have more results at our
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/machine_building/team_1/index.html">team page</a>.
+        </p>
 
-    <h2>Problems and failures.</h2>
-    <p>
-      Some of the problems I faced with the mechanical parts.
-      <ul>
-        <li>For the X-axis I used two nuts and a spring to keep them 'loaded'/under pressure. This worked great, there has been absolutely no problem with this stage except for the expected
-          ones due to the bolt we used. The bolt we used is not meant for actuation purpose, it's not consistent or perfectly straight, this was causing some wobbliness. </li>
-        <li>During the constructions of the second/Y-stage, there was an issue of misalignment, the nuts glued onto the Y-carriage was offset and was causing massive load on the motor and
-          it was getting stuck/stalled. I fixed this by removing the nut and fixing it at the correct position.</li>
-        <li>The bolt used for Y has a bent/dent or some kind of damage at the middle and the motor will get stuck stalled at the middle, so far we are unable to solve this. The best solution
-          would be to get a new bolt.</li>
-      </ul>
-      And finally the best for the last. The stupidest mistake I made was that, I haven't given enough clearance for the mounting screws on the stages. That is if I were to mount the Y-stage
-      to the box of X-stage, the Y carriage would get stuck because of the bolt heads. The bolt heads will come in the way of Y-carriage movement. The temporary solution is not to use
-      the base plate of the box of the Y stage.
-      <br>This has been a bigger problem for the Y-stage as the holes for the guide rods are not symmetric(symmetry over the horizontal plane).
-    </p>
-  </section>
+        <h2>Problems and failures.</h2>
+        <p>
+            Some of the problems I faced with the mechanical parts.
+            <ul>
+                <li>For the X-axis I used two nuts and a spring to keep them 'loaded'/under pressure. This worked great, there has been absolutely no problem with this stage except for
+                    the expected ones due to the bolt we used. The bolt we used is not meant for actuation purpose, it's not consistent or perfectly straight, this was causing some
+                    wobbliness. </li>
+                <li>During the constructions of the second/Y-stage, there was an issue of misalignment, the nuts glued onto the Y-carriage was offset and was causing massive load on the
+                    motor and it was getting stuck/stalled. I fixed this by removing the nut and fixing it at the correct position.</li>
+                <li>The bolt used for Y has a bent/dent or some kind of damage at the middle and the motor will get stuck stalled at the middle, so far we are unable to solve this. The
+                    best solution would be to get a new bolt.</li>
+            </ul>
+            And finally the best for the last. The stupidest mistake I made was that, I haven't given enough clearance for the mounting screws on the stages. That is if I were to mount the Y-stage
+            to the box of X-stage, the Y carriage would get stuck because of the bolt heads. The bolt heads will come in the way of Y-carriage movement. The temporary solution is not
+            to use the base plate of the box of the Y stage.
+            <br>This has been a bigger problem for the Y-stage as the holes for the guide rods are not symmetric(symmetry over the horizontal plane).
+        </p>
+    </section>
 
 </body>
 
