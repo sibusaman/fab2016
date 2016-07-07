@@ -2,226 +2,227 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-  <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="../stylesheets/github-dark.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print">
-  <link rel="stylesheet" href="../stylesheets/mine.css">
-  <link rel="stylesheet" href="cssgal.css">
-  <title>16:-Interface and Application Programming</title>
-  <style>
-    div.codescroll {
-      width: 1500px;
-      height: 500px;
-      overflow: scroll;
-    }
-  </style>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print">
+    <link rel="stylesheet" href="../stylesheets/mine.css">
+    <link rel="stylesheet" href="cssgal.css">
+    <title>16:-Interface and Application Programming</title>
+    <style>
+        div.codescroll {
+            width: 1500px;
+            height: 500px;
+            overflow: scroll;
+        }
+    </style>
 </head>
 
 <body>
-  <link rel="icon" type="image/png" href="../favicon.png">
-  <header>
-    <div class="container">
-      <h1>Fab2016</h1>
-      <h3>/ Module 16</h3>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <header>
+        <div class="container">
+            <h1>Fab2016</h1>
+            <h3>/ Module 16</h3>
 
-      <section id="Module">
-        <a href="../index.html">Home</a>
-        <a href="../w1/w1.html" class="btn" title="Principles and Practices, Project Management ">1</a>
-        <a href="../w2/w2.html" class="btn" title="Computer-Aided Design">2</a>
-        <a href="../w3/w3.html" class="btn" title="Computer-Controlled Cutting">3</a>
-        <a href="../w4/w4.html" class="btn" title="Electronics Production">4</a>
-        <a href="../w5/w5.html" class="btn" title="3D Scanning and Printing">5</a>
-        <a href="../w6/w6.html" class="btn" title="Electronics Design">6</a>
-        <a href="../w7/w7.html" class="btn" title="Computer-Controlled Machining">7</a>
-        <a href="../w8/w8.html" class="btn" title="Embedded Programming">8</a>
-        <a href="../w9/w9.html" class="btn" title="Mechanical Design">9</a>
-        <a href="../w10/w10.html" class="btn" title="Machine Design">10</a>
-        <a href="../w11/w11.html" class="btn" title="Input Devices">11</a>
-        <a href="../w12/w12.html" class="btn" title="Molding and Casting">12</a>
-        <a href="../w13/w13.html" class="btn" title="Output Devices">13</a>
-        <a href="../w14/w14.html" class="btn" title="Composites">14</a>
-        <a href="../w15/w15.html" class="btn" title="Networking and Communications">15</a>
-        <a href="../w16/w16.html" class="btn" title="Interface and Application Programming">16</a>
-        <a href="../w17/w17.html" class="btn" title="Applications and Implications">17</a>
-        <a href="../w18/w18.html" class="btn" title="Invention, Intellectual Property, and Income">18</a>
-        <a href="../project/project.html" class="btn" title="Final Project:- SPARKY the EDM PCB Mill">project</a>
+            <section id="Module">
+                <a href="../index.html">Home</a>
+                <a href="../w1/w1.html" class="btn" title="Principles and Practices, Project Management ">1</a>
+                <a href="../w2/w2.html" class="btn" title="Computer-Aided Design">2</a>
+                <a href="../w3/w3.html" class="btn" title="Computer-Controlled Cutting">3</a>
+                <a href="../w4/w4.html" class="btn" title="Electronics Production">4</a>
+                <a href="../w5/w5.html" class="btn" title="3D Scanning and Printing">5</a>
+                <a href="../w6/w6.html" class="btn" title="Electronics Design">6</a>
+                <a href="../w7/w7.html" class="btn" title="Computer-Controlled Machining">7</a>
+                <a href="../w8/w8.html" class="btn" title="Embedded Programming">8</a>
+                <a href="../w9/w9.html" class="btn" title="Mechanical Design">9</a>
+                <a href="../w10/w10.html" class="btn" title="Machine Design">10</a>
+                <a href="../w11/w11.html" class="btn" title="Input Devices">11</a>
+                <a href="../w12/w12.html" class="btn" title="Molding and Casting">12</a>
+                <a href="../w13/w13.html" class="btn" title="Output Devices">13</a>
+                <a href="../w14/w14.html" class="btn" title="Composites">14</a>
+                <a href="../w15/w15.html" class="btn" title="Networking and Communications">15</a>
+                <a href="../w16/w16.html" class="btn" title="Interface and Application Programming">16</a>
+                <a href="../w17/w17.html" class="btn" title="Applications and Implications">17</a>
+                <a href="../w18/w18.html" class="btn" title="Invention, Intellectual Property, and Income">18</a>
+                <a href="../project/project.html" class="btn" title="Final Project:- SPARKY the EDM PCB Mill">project</a>
 
-      </section>
-    </div>
-  </header>
-  <section>
+            </section>
+        </div>
+    </header>
+    <section>
 
-    <h1>An Interface for the Digital Caliper.</h1>
+        <h1>An Interface for the Digital Caliper.</h1>
 
-    <p>
-      While playing around with the digital caliper, I found a 'secret', 4-pin port on the device. I was expecting it to be some kind of programming or data out port.
-      <br>
-      <figure>
-        <img src="calip-conn.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey"></figcaption>
-      </figure>
-      On 're-search with Google', I found that it indeed is a data out, it can be used to get the reading as it is displayed on the LCD.
-    </p>
-    <p>
-      I'm going to try to make an interface to get the data from the caliper and interpret the bit stream to the real value. The micro-controller board I'll be making could be sending the data
-      directly to a phone or computer via serial/bluetooth/wi-fi/2.4GHz NRF2L01. A computer/android software will be written to show the values, which will be the 'interface programming
-      assignment'.
-      <br> For the communication part I will be using soft serial, as the Tiny44 doesn't support it natively.
-    </p>
+        <p>
+            While playing around with the digital caliper, I found a 'secret', 4-pin port on the device. I was expecting it to be some kind of programming or data out port.
+            <br>
+            <figure>
+                <img src="calip-conn.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey"></figcaption>
+            </figure>
+            On 're-search with Google', I found that it indeed is a data out, it can be used to get the reading as it is displayed on the LCD.
+        </p>
+        <p>
+            I'm going to try to make an interface to get the data from the caliper and interpret the bit stream to the real value. The micro-controller board I'll be making could be sending the
+            data directly to a phone or computer via serial/bluetooth/wi-fi/2.4GHz NRF2L01. A computer/android software will be written to show the values, which will be the 'interface
+            programming assignment'.
+            <br> For the communication part I will be using soft serial, as the Tiny44 doesn't support it natively.
+        </p>
 
-    <h2>The Interface Data Protocol</h2>
+        <h2>The Interface Data Protocol</h2>
 
-    <p>
-      Before I proceed further I need to know if I can get any data out of it and even if I get, whether I'll be able to interpret it, because chances are there that the device could be communicating
-      with some proprietary protocols.
-      <br> So I started browsing again and found that many Chinese calipers are using a couple of common protocols. By the looks of it and the way the brand-name 'Neiko' sounds, the digital
-      caliper we have belongs to the 'Chinese caliper family'. I got confidence now!,
-      <b>let's move on</b>.
-    </p>
-    <p>
-      On further reading I found that the caliper's pins are vcc(+1.5v as it is powered from a button cell), DATA, CLOCK and GND.
-      <figure>
-        <img src="pinout.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey"></figcaption>
-      </figure>
-      So I started probing the pins using a DSO.
-      <figure>
-        <img src="clock.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">The clock pulse train, corresponds to 24 bit data, 6 sets of 4 bit data.</figcaption>
-        <img src="data.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">The data pulse train.</figcaption>
-      </figure>
-      This is not exactly the direct reading from the caliper, this is the data from the caliper passed through a
-      <a href="https://en.wikipedia.org/wiki/Schmitt_trigger">Schmitt-Trigger</a> configured as a logic level converter, to convert the low <code>1.5v</code> pulses from the caliper to 5v pulses so that we can feed it to the AVR chip. The
-      details of the Schmitt-Trigger is explained further down.
-    </p>
-    <p>
-      On further analysis I found that this pattern is identical to what this guy had
-      <a href="http://nut-bolt.nl/2012/reading-digital-calipers-with-an-arduino/">here</a>. So I can now interpret the data, we have to consider
-      <ul>
-        <li>First 16-bits only, for the unsigned value.</li>
-        <li>The bits are in reverse, 1st bit in the data stream corresponds to the least significant bit.</li>
-        <li>Also the the bits are inverted, high pulse corresponds to 0, and low corresponds to 1.</li>
-        <li>20th bit for sign.</li>
-      </ul>
-    </p>
-    <p>
-      Here are some pictures explaining the interpretation.
-      <figure>
-        <img src="data-inter-1.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">You can see that the Caliper reads 7.01. The green channel is the clock and the yellow is the data.</figcaption>
-        <img src="data-inter.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">This is a better picture of the oscilloscope. You can see almost all of the first 16 bits, in set of four. They will read as
-          <br><code>0100, 0010, 1011, 1111, 1111....</code></figcaption>
-      </figure>
-      Now if we take the first 16 bits only and put them in reverse we get,
-      <br><code>1111, 1101, 0100, 0010</code>
-      <br>Inverting them (1's compliment)
-      <br><code>0000, 0010, 1011, 1101</code>
-      <br> Now
-      <br>
-      <code>(0000001010111101)<sub>2</sub> = (701)<sub>10</sub></code>
-      <br> Which is the same as the caliper reading except for the decimal point.
-    </p>
+        <p>
+            Before I proceed further I need to know if I can get any data out of it and even if I get, whether I'll be able to interpret it, because chances are there that the device could be communicating
+            with some proprietary protocols.
+            <br> So I started browsing again and found that many Chinese calipers are using a couple of common protocols. By the looks of it and the way the brand-name 'Neiko' sounds, the
+            digital caliper we have belongs to the 'Chinese caliper family'. I got confidence now!,
+            <b>let's move on</b>.
+        </p>
+        <p>
+            On further reading I found that the caliper's pins are vcc(+1.5v as it is powered from a button cell), DATA, CLOCK and GND.
+            <figure>
+                <img src="pinout.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey"></figcaption>
+            </figure>
+            So I started probing the pins using a DSO.
+            <figure>
+                <img src="clock.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey">The clock pulse train, corresponds to 24 bit data, 6 sets of 4 bit data.</figcaption>
+                <img src="data.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey">The data pulse train.</figcaption>
+            </figure>
+            This is not exactly the direct reading from the caliper, this is the data from the caliper passed through a
+            <a href="https://en.wikipedia.org/wiki/Schmitt_trigger">Schmitt-Trigger</a> configured as a logic level converter, to convert the low <code>1.5v</code> pulses from the caliper to 5v pulses so that we can feed it to the AVR chip.
+            The details of the Schmitt-Trigger is explained further down.
+        </p>
+        <p>
+            On further analysis I found that this pattern is identical to what this guy had
+            <a href="http://nut-bolt.nl/2012/reading-digital-calipers-with-an-arduino/">here</a>. So I can now interpret the data, we have to consider
+            <ul>
+                <li>First 16-bits only, for the unsigned value.</li>
+                <li>The bits are in reverse, 1st bit in the data stream corresponds to the least significant bit.</li>
+                <li>Also the the bits are inverted, high pulse corresponds to 0, and low corresponds to 1.</li>
+                <li>20th bit for sign.</li>
+            </ul>
+        </p>
+        <p>
+            Here are some pictures explaining the interpretation.
+            <figure>
+                <img src="data-inter-1.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='600'"
+                />
+                <figcaption style="display:block; color:grey">You can see that the Caliper reads 7.01. The green channel is the clock and the yellow is the data.</figcaption>
+                <img src="data-inter.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey">This is a better picture of the oscilloscope. You can see almost all of the first 16 bits, in set of four. They will read as
+                    <br><code>0100, 0010, 1011, 1111, 1111....</code></figcaption>
+            </figure>
+            Now if we take the first 16 bits only and put them in reverse we get,
+            <br><code>1111, 1101, 0100, 0010</code>
+            <br>Inverting them (1's compliment)
+            <br><code>0000, 0010, 1011, 1101</code>
+            <br> Now
+            <br>
+            <code>(0000001010111101)<sub>2</sub> = (701)<sub>10</sub></code>
+            <br> Which is the same as the caliper reading except for the decimal point.
+        </p>
 
-    <h2>Board Design</h2>
+        <h2>Board Design</h2>
 
-    <p>
-      So the setup is going to
-      <ul>
-        <li>Have two Schmitt-Trigger based logic level converters, for <code>Clock</code> and <code>Data</code>.</li>
-        <li>The <code>Clock</code> will be connected to <code>INT0</code> or PB2.</li>
-        <li>Use the clock as an interrupt which will trigger on falling edge, the interpret vector will read the data.</li>
-        <li>Since there is a long delay between the packets(not between the bits of a single packet), we can setup a timer which counts the time since the last interpret (last clock) and
-          if it is more than a particular we will start processing a new packet.</li>
-        <li>If the new value is different from last, we will sent it via serial/bluetooth/wi-fi etc.</li>
-        <li></li>
-      </ul>
-    </p>
-    <p>
-      Here is the circuit diagram I designed for this assignment,
-      <br> it has the following features.
-      <ul>
-        <li>Two Schmitt-Triggers as logic level converters, convert <code>1.5v</code> logic to 5v logic for the micro-controller.</li>
-        <li>AtTiny44 with 20MHz resonator as the main micro-controller.</li>
-        <li>FTDI header for serial communication (software serial has to be implemented as the tiny44 does not come with hardwares necessary), and an ISP header for programming, for what
-          else used an ISP so far? </li>
-        <li>Provision for connecting serial wireless communication module such as bluetooth, wi-fi or NRF2L01.</li>
-        <li>Provision for adding a 3.3v DC-DC module for the wireless module as most of them uses 3.3v supply.</li>
-      </ul>
-      <figure>
-        <img src="sch.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">The schematic.</figcaption>
-        <img src="brd.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">The board image.</figcaption>
-      </figure>
-      <h2>EAGLE Files are here</h2>
-      <br>
-      <a href="calip2.brd" download="sibu-caliper-interface.brd">Board</a>
-      <a href="calip2.sch" download="sibu-caliper-interface.sch">Schematic</a>
-      <br>
-      <br>
-      <br>
-      <figure>
-        <img src="pcb-top.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">The top side of the board, the white jumper wire is a replacement for a trace I forgot to add.</figcaption>
-        <img src="pcb-bot.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey">Bottom side of the PCB, the copper wires replaces the few traces in the bottom layer, the long wire with a piece of PCB at the end is the ground used for connecting DSO etc.
-          and sometimes used when the caliper connector loses ground connection.</figcaption>
-      </figure>
-    </p>
+        <p>
+            So the setup is going to
+            <ul>
+                <li>Have two Schmitt-Trigger based logic level converters, for <code>Clock</code> and <code>Data</code>.</li>
+                <li>The <code>Clock</code> will be connected to <code>INT0</code> or PB2.</li>
+                <li>Use the clock as an interrupt which will trigger on falling edge, the interpret vector will read the data.</li>
+                <li>Since there is a long delay between the packets(not between the bits of a single packet), we can setup a timer which counts the time since the last interpret (last clock)
+                    and if it is more than a particular we will start processing a new packet.</li>
+                <li>If the new value is different from last, we will sent it via serial/bluetooth/wi-fi etc.</li>
+                <li></li>
+            </ul>
+        </p>
+        <p>
+            Here is the circuit diagram I designed for this assignment,
+            <br> it has the following features.
+            <ul>
+                <li>Two Schmitt-Triggers as logic level converters, convert <code>1.5v</code> logic to 5v logic for the micro-controller.</li>
+                <li>AtTiny44 with 20MHz resonator as the main micro-controller.</li>
+                <li>FTDI header for serial communication (software serial has to be implemented as the tiny44 does not come with hardwares necessary), and an ISP header for programming,
+                    for what else used an ISP so far? </li>
+                <li>Provision for connecting serial wireless communication module such as bluetooth, wi-fi or NRF2L01.</li>
+                <li>Provision for adding a 3.3v DC-DC module for the wireless module as most of them uses 3.3v supply.</li>
+            </ul>
+            <figure>
+                <img src="sch.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey">The schematic.</figcaption>
+                <img src="brd.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey">The board image.</figcaption>
+            </figure>
+            <h2>EAGLE Files are here</h2>
+            <br>
+            <a href="calip2.brd" download="sibu-caliper-interface.brd">Board</a>
+            <a href="calip2.sch" download="sibu-caliper-interface.sch">Schematic</a>
+            <br>
+            <br>
+            <br>
+            <figure>
+                <img src="pcb-top.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey">The top side of the board, the white jumper wire is a replacement for a trace I forgot to add.</figcaption>
+                <img src="pcb-bot.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='800'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey">Bottom side of the PCB, the copper wires replaces the few traces in the bottom layer, the long wire with a piece of PCB at the end is the ground used for connecting
+                    DSO etc. and sometimes used when the caliper connector loses ground connection.</figcaption>
+            </figure>
+        </p>
 
-    <h3>Schmitt Trigger</h3>
+        <h3>Schmitt Trigger</h3>
 
-    <p>
-      This is an interesting design using an Op-Amp. We could just use a transistor as a logic level converter, but this is not ideal as they may respond to the noise too. The Schmitt-Trigger
-      has two thresholds an upper threshold and a lower one. The Schmitt Trigger goes high/maximum voltage when it encounters an input above the upper threshold, and stays there even
-      if the noise or some unintended fluctuation brings it down below this value. The value goes low/minimum voltage only when the input goes below the lower threshold.
-      <br> So if we set high and low thresholds as .9v and .1v respectively, for a 1v logic pulse, and a supply voltage of 5v, the output will become high only when it detects an input
-      greater than .9v and remains high as long as the input doesn't fall below .1v. Now, once it falls below .1v, the output goes to zero and stays there till it gets an input greater than
-      .9v. This is a neat way to clean some noise, also the Op-Amp provides high input impedance.
-    </p>
+        <p>
+            This is an interesting design using an Op-Amp. We could just use a transistor as a logic level converter, but this is not ideal as they may respond to the noise too. The Schmitt-Trigger
+            has two thresholds an upper threshold and a lower one. The Schmitt Trigger goes high/maximum voltage when it encounters an input above the upper threshold, and stays there
+            even if the noise or some unintended fluctuation brings it down below this value. The value goes low/minimum voltage only when the input goes below the lower threshold.
+            <br> So if we set high and low thresholds as .9v and .1v respectively, for a 1v logic pulse, and a supply voltage of 5v, the output will become high only when it detects an
+            input greater than .9v and remains high as long as the input doesn't fall below .1v. Now, once it falls below .1v, the output goes to zero and stays there till it gets an
+            input greater than .9v. This is a neat way to clean some noise, also the Op-Amp provides high input impedance.
+        </p>
 
-    <p>
-      Here is an online calculator I used to calculate the values of the resistors used with the op-amp,
-      <a href="http://www.analog.com/media/en/technical-documentation/data-sheets/AD8615_8616_8618.pdf">AD-8615</a> to configure it as a Schmitt-Trigger. The calculator is an
-      <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/electronic/schmitt.html">hyperphysics.phy-astr.gsu.edu</a> page on Schmitt-Trigger.
-      <figure>
-        <img src="schmitt.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey"></figcaption>
-      </figure>
-      Since the caliper is powered by a <code>1.5v</code> cell, I had assumed that the logic level/ logic high would be at <code>1.5v</code>. But I was wrong, Its only about 1v.
-      May be the cell is weak, but the caliper is working and the logic levels are 1v and 0v. So I had to change the Schmitt-Trigger design from the initial design for <code>1.5v</code>      logic pulse, I had to change the resistor, R1 from <code>1K&#8486</code> to <code>0.5K&#8486</code>.
-    </p>
+        <p>
+            Here is an online calculator I used to calculate the values of the resistors used with the op-amp,
+            <a href="http://www.analog.com/media/en/technical-documentation/data-sheets/AD8615_8616_8618.pdf">AD-8615</a> to configure it as a Schmitt-Trigger. The calculator is an
+            <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/electronic/schmitt.html">hyperphysics.phy-astr.gsu.edu</a> page on Schmitt-Trigger.
+            <figure>
+                <img src="schmitt.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey"></figcaption>
+            </figure>
+            Since the caliper is powered by a <code>1.5v</code> cell, I had assumed that the logic level/ logic high would be at <code>1.5v</code>. But I was wrong, Its only about 1v.
+            May be the cell is weak, but the caliper is working and the logic levels are 1v and 0v. So I had to change the Schmitt-Trigger design from the initial design for <code>1.5v</code>            logic pulse, I had to change the resistor, R1 from <code>1K&#8486</code> to <code>0.5K&#8486</code>.
+        </p>
 
-    <h3>Connector</h3>
-    <p>
-      It's not a good idea to solder wires to the caliper, so I decided to make a connector.
-      <br> First I tried making a connector using PCB. thickened at the contacts using the solder. This fits nicely but the contacts are not even/flat and hence not all the terminals make
-      contact at the same time.
-      <br>So I thought about 3D printed connectors. And found out a design from
-      <a href="http://www.thingiverse.com/thing:1543247">thingiverse</a>. So I made the print and decided to add spring contacts salvaged from the scrap ink-jet printers. The spring contacts were soldered and then buried deep into the
-      grooves for the connector pins.
-      <figure>
-        <img src="conn-pre.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey"></figcaption>
-        <img src="conn.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
-        <figcaption style="display:block; color:grey"></figcaption>
-      </figure>
-    </p>
+        <h3>Connector</h3>
+        <p>
+            It's not a good idea to solder wires to the caliper, so I decided to make a connector.
+            <br> First I tried making a connector using PCB. thickened at the contacts using the solder. This fits nicely but the contacts are not even/flat and hence not all the terminals
+            make contact at the same time.
+            <br>So I thought about 3D printed connectors. And found out a design from
+            <a href="http://www.thingiverse.com/thing:1543247">thingiverse</a>. So I made the print and decided to add spring contacts salvaged from the scrap ink-jet printers. The spring contacts were soldered and then buried deep
+            into the grooves for the connector pins.
+            <figure>
+                <img src="conn-pre.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey"></figcaption>
+                <img src="conn.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey"></figcaption>
+            </figure>
+        </p>
 
-    <h2>CODE</h2>
-    <p>
-      Here is the code which interprets the data and sent it via serial communication, I used the FTDI in an Arduino UNO to get the data to the computer and used Arduino IDE's serial monitor
-      to display the information. The serial communication is implemented with software serial code written by Neil,
-      <a href="academy.cba.mit.edu/classes/embedded_programming/hello.ftdi.44.echo.c">hello.ftdi.44.echo.c</a>. I extracted the relevant parts form hos code.
-      <br> The chip is operating at 20MHz and the baud rate is <code>115200</code>.
-    </p>
-    <div class="codescroll">
-      <pre>
+        <h2>CODE</h2>
+        <p>
+            Here is the code which interprets the data and sent it via serial communication, I used the FTDI in an Arduino UNO to get the data to the computer and used Arduino IDE's serial monitor
+            to display the information. The serial communication is implemented with software serial code written by Neil,
+            <a href="academy.cba.mit.edu/classes/embedded_programming/hello.ftdi.44.echo.c">hello.ftdi.44.echo.c</a>. I extracted the relevant parts form hos code.
+            <br> The chip is operating at 20MHz and the baud rate is <code>115200</code>.
+        </p>
+        <div class="codescroll">
+            <pre>
 #define F_CPU 20000000UL
 #include &lt;avr/io.h&gt;
 #include &lt;stdlib.h&gt;
@@ -396,24 +397,318 @@ ISR(INT0_vect)
 }
 
       </pre>
-      </div>
-      <p>
-        This program is not the perfect, need a little workaround, first of all I wanted the program to send the latest reading only if it is different from the last, else the code will sent
-        10 readings per second, like what it is doing right now.
-        <br> Secondly, there is something wrong with my interpretation technique, the output is always ends with an even number, somehow it skips the odd number and rounds off to the nearest
-        even number, must be missing the least significant bit, which decided the if the final value if odd or even.
-        <br>
-        <figure>
-          <img src="output.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
-          <figcaption style="display:block; color:grey"></figcaption>
-        </figure>
-        <br>
-        <br> Now I need to send this data to a computer program/android app to display this value. Which will complete the interface designing assignment.
-      </p>
+        </div>
+        <p>
+            This program is not the perfect, need a little workaround, first of all I wanted the program to send the latest reading only if it is different from the last, else the code will sent
+            10 readings per second, like what it is doing right now.
+            <br> Secondly, there is something wrong with my interpretation technique, the output is always ends with an even number, somehow it skips the odd number and rounds off to the
+            nearest even number, must be missing the least significant bit, which decided the if the final value if odd or even.
+            <br>
+            <figure>
+                <img src="output.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey"></figcaption>
+            </figure>
+            <br>
+            <br> Now I need to send this data to a computer program/android app to display this value. Which will complete the interface designing assignment.
+        </p>
+    </section>
+
+    <section>
+        <h2>The Python App For Displaying The Caliper Reading</h2>
+        <p>
+            I have written a python App for displaying the the data from the caliper. I have modified the firmware a little bit to reduce the baud rate, to send only the value and to ignore the
+            sign-bit. The sign bit is not reliable at all, may be I'm not using the right one, but I have checked every bit, it doesn't seem to be working. The python code also filters
+            out any reading with garbage. The caliper is sending the data continuously (this was not intended, but now it's really helpful), with <code>'\n'</code> in between
+            the readings. So if the application receives any data, which is not in the 'white list' (0-9, '.', '-', '\n'), the entire line is discarded. Also the app will update the
+            value only if there is a change in filtered value.
+        </p>
+        <p>
+            The following code is based on what I found
+            <a href="http://robotic-controls.com/learn/python-guis/tkinter-serial">here</a>. I'm very new to python and coming from, c, I found the python a complicated. But with all the libraries for just about everything, it's resourceful for sure. I'm
+            also thankful to
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/384/week16.html">Yadu</a> and
+            <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/400/">Vishnu</a> for explaing the syntax and what is what.
+        </p>
+        <h3>The modified firmware</h3>
+        <p>
+            <div class="codescroll">
+                <pre>
+#define F_CPU 20000000UL
+#include &lt;avr/io.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;avr/interrupt.h&gt;
+#include &lt;util/delay.h&gt;
+#include &lt;avr/pgmspace.h&gt;
+
+#define output(directions,pin) (directions |= pin)  // set port direction for output
+#define set(port,pin) (port |= pin)                 // set port pin
+#define clear(port,pin) (port &= (~pin))            // clear port pin
+#define pin_test(pins,pin) (pins & pin)               // test for port pin
+#define bit_test(byte,bit) (byte & (1 &lt;&lt; bit))  // test for bit set
+#define bit_delay_time  50                           // bit delay for19200 with overhead
+#define bit_delay() _delay_us(bit_delay_time)         // RS232 bit delay
+#define half_bit_delay() _delay_us(bit_delay_time/2)  // RS232 half bit delay
+#define char_delay() _delay_ms(10)                    // char delay
+
+#define serial_port PORTA
+#define serial_direction DDRA
+#define serial_pins PINA
+#define serial_pin_in (1 &lt;&lt; PA0)
+#define serial_pin_out (1 &lt;&lt; PA1)
+
+#define max_buffer 8
+
+unsigned int fin_read_h, fin_read_l, fin_read;
+unsigned int  temp_read;
+unsigned int last_read;
+unsigned int bit_count, sign_bit;
+
+void put_char(volatile unsigned char *port, unsigned char pin, char txchar)
+{
+// send character in txchar on port pin,  assumes line driver (inverts bits)
+	clear(*port,pin);             // start bit
+	bit_delay();
+	if bit_test(txchar,0)
+		set(*port,pin);
+	else
+		clear(*port,pin);
+	bit_delay();
+	if bit_test(txchar,1)
+		set(*port,pin);
+	else
+		clear(*port,pin);
+	bit_delay();
+	if bit_test(txchar,2)
+		set(*port,pin);
+	else
+		clear(*port,pin);
+	bit_delay();
+	if bit_test(txchar,3)
+		set(*port,pin);
+	else
+		clear(*port,pin);
+	bit_delay();
+	if bit_test(txchar,4)
+		set(*port,pin);
+	else
+		clear(*port,pin);
+	bit_delay();
+	if bit_test(txchar,5)
+		set(*port,pin);
+	else
+		clear(*port,pin);
+	bit_delay();
+	if bit_test(txchar,6)
+	  set(*port,pin);
+	else
+	  clear(*port,pin);
+	bit_delay();
+	if bit_test(txchar,7)
+		set(*port,pin);
+	else
+		clear(*port,pin);
+	bit_delay();
+	set(*port,pin);               // stop bit
+	bit_delay();
+	//char_delay();               // char delay
+	bit_delay();
+}
+
+void put_string(volatile unsigned char *port, unsigned char pin, char *str)
+ {
+	// print a null-terminated string
+	 static int index;
+	index = 0;
+	do {
+		put_char(port, pin, str[index]);
+		++index;
+	} while (str[index] != 0);
+}
+
+int main(void)
+{
+	static char buffer[max_buffer] = {0};
+// set clock divider to /1
+	CLKPR = (1 &lt;&lt; CLKPCE);
+	CLKPR = (0 &lt;&lt; CLKPS3) | (0 &lt;&lt; CLKPS2) | (0 &lt;&lt; CLKPS1) | (0 &lt;&lt; CLKPS0);
+
+// initialize output pins
+	set(serial_port, serial_pin_out);
+	output(serial_direction, serial_pin_out);
+
+	DDRB = 0b00000000;
+	DDRA = 0b11001011;
+
+	cli();				               // disable global interrupts
+
+	// initialize Timer1 the 16bit timer
+	TCCR1A = 0;
+	TCCR1B = 0;
+	// Use CS10, CS11 and CS12 bits for 1/64 prescaler:
+	TCCR1B |= (1 &lt;&lt; CS10)|(1 &lt;&lt; CS11);
+
+	//enble int0
+	GIMSK |= (1&lt;&lt;INT0); //PCICR is GIMSK in attiny
+	MCUCR = 1&lt;&lt;ISC01 | 0&lt;&lt;ISC00;	// Trigger INT0 on falling edge
+
+	sei();			                              // enable global interrupts:
+
+	while(1)
+	{
+		itoa (fin_read_h, buffer, 10);
+//		if (sign_bit == 1)
+//		put_char(&serial_port, serial_pin_out, '-');		//sign
+		put_string(&serial_port, serial_pin_out, buffer);
+		put_char(&serial_port, serial_pin_out, '.');			//decimal point
+		if (fin_read_l &lt; 10)
+			put_char(&serial_port, serial_pin_out, '0');
+		itoa (fin_read_l, buffer, 10);
+		put_string(&serial_port, serial_pin_out, buffer);
+//		put_char(&serial_port, serial_pin_out, '\"');
+		put_char(&serial_port, serial_pin_out, 10);          // new line
+		last_read = fin_read;
+	}
+}
+
+ISR(INT0_vect)
+{
+	PORTA ^= 0b01000000;		           	//debugging LED, check mosi pin
+	if ((TCNT1 &gt; 10000))
+  {
+		fin_read = temp_read;
+		fin_read_h = temp_read/100;
+		fin_read_l = temp_read - fin_read_h*100;
+		temp_read =  0;
+		bit_count = 0;
+		sign_bit = 1;
+	}
+	else
+	{
+		if (bit_count &lt; 15)
+		{
+			temp_read = temp_read&gt;&gt;1; 				// temp_read /= 2;	  //right shift
+			if (~PINA & 0b00000100)
+			{
+				temp_read |= 32768;	            //2^15
+			}
+		}
+		bit_count += 1;
+	}
+	TCNT1 = 0;
+}</pre>
+            </div>
+        </p>
+        <h3>The Python code</h3>
+        <p>
+            <div class="codescroll">
+                <pre>
+#base code from http://robotic-controls.com/learn/python-guis/tkinter-serial
+
+from serial import *
+from Tkinter import *
+
+serialPort = "/dev/ttyUSB0"
+baudRate = 19200
+ser = Serial(serialPort , baudRate, timeout=0, writeTimeout=0)
 
 
-  </section>
+#make a TkInter Window
+root = Tk()
+root.wm_title("Caliper Interface")
 
+# make a text box to put the serial output
+log = Text ( root, width=30, height=30, takefocus=0)
+log.pack()
+
+#make our own buffer
+#useful for parsing commands
+#Serial.readline seems unreliable at times too
+serBuffer = ""
+val =serBuffer
+scrap = 0
+def readSerial():
+    while True:
+        c = ser.read() # attempt to read a character from Serial
+        global scrap
+        #was anything read?
+        if len(c) == 0:
+            break
+
+        # get the buffer from outside of this function
+        global serBuffer
+
+        # check if character is a delimeter
+        if c == '\r':
+            c = '' # don't want returns. chuck it
+        cc = ord(c)
+        if (cc &lt; 45 or cc &gt; 57)  and cc &lt;&gt; 10 :
+		scrap = 1
+
+        if c == '\n':
+		serBuffer += "\n" # add the newline to the buffer
+		global val
+		if (val != serBuffer and scrap &lt;&gt; 1):
+			val = serBuffer
+			#add the line to the TOP of the log
+			log.insert('0.0', serBuffer)
+		serBuffer = "" # empty the buffer
+		scrap = 0
+	else:
+		serBuffer += c # add to the buffer
+
+    root.after(10, readSerial) # check serial again soon
+
+# after initializing serial, an arduino may need a bit of time to reset
+root.after(100, readSerial)
+
+root.mainloop()
+
+            </pre>
+
+            </div>
+        </p>
+    </section>
+    <section>
+        <h2>The Results</h2>
+        <p>
+            <br>
+            <img src="inter.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
+            <br>
+            <br>
+            <video width="520" controls>
+                <source src="inter.mp4" type="video/mp4"> Your browser does not support the video tag.
+            </video>
+        </p>
+        <p>
+            Notice that the interface is showing the latest reading but only the absolute value. Also, filtering scheme works nice, no garbage now, all clean output.
+            <br> And the best part! the text/reading is copiable.
+        </p>
+        <h3>Potential use Cases</h3>
+        <p>
+            Refined a bit more, this can be a used as cheap method for positioning on a machine, on an axis with small travel, like a small lathe or a small PCB mill.
+            <br>If I add a Bluetooth interface with a couple of buttons, I could use this along with a matching application to make a wireless data logger. The app will generate CSV, the
+            button act like camera shutter, recording the current reading.
+        </p>
+        <p>
+          This is a base for a lot of cool future works. I'm really happy that it worked, except for the sign part, I've to figure it out.
+        </p>
+    </section>
+
+
+    <section>
+        <h2>Resources</h2>
+        <ul>
+            <li>
+                <a href="http://robotic-controls.com/learn/python-guis/tkinter-serial">http://robotic-controls.com/learn/python-guis/tkinter-serial</a>
+            </li>
+            <li>
+                <a href="http://www.ascii-code.com/">http://www.ascii-code.com/</a>
+            </li>
+            <li>
+                <a href="http://stackoverflow.com/questions/227459/ascii-value-of-a-character-in-python">http://stackoverflow.com/questions/227459/ascii-value-of-a-character-in-python</a>
+            </li>
+        </ul>
+    </section>
 </body>
 
 </html>
