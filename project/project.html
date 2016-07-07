@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="../stylesheets/mine.css">
     <link rel="stylesheet" href="cssgal.css">
     <title>Sparky: the EDM PCB Mill</title>
+    <style>
+        div.codescroll {
+            width: 1500px;
+            height: 500px;
+            overflow: scroll;
+        }
+    </style>
 </head>
 
 <body>
@@ -85,7 +92,7 @@
                                     <a href="../w11/w11.html" class="btn" title="Input Devices">Input Devices. 11</a>
                                 </td>
                                 <td align="left">
-                                    <a href="../w12/w12.html" class="btn" title="Molding and Casting">12. Molding and Casting</a>
+                                    <a href="../w12/w12.html" class="btn" title="Moulding and Casting">12. Moulding and Casting</a>
                                 </td>
                             </tr>
                             <tr>
@@ -235,7 +242,7 @@
                 <li>The mechanical parts like pulleys, couplers, threaded/smooth rods, gears etc has to be salvaged or made or sourced from local/online vendors.</li>
                 <li>The overall assembly need to be designed and made using acrylic.</li>
                 <li>A few parts like the linear bearing for the smooth rods are already made in my
-                    <a href="../w12/w12.html">Molding and Casting, Composite</a> assignment.</li>
+                    <a href="../w12/w12.html">Moulding and Casting, Composite</a> assignment.</li>
                 <li>The program will be based on 3D-Printer firmwares like Marlin.</li>
                 <li>Planning to make use of the project,
                     <a href="http://linuxcnc.org/">Linux-CNC (EMC2)</a>
@@ -310,11 +317,279 @@
             <b>As a bonus, this mechanism also straightens the wire, unintended, but awesome!.</b>
             <br> The only problem is feeding the wire, as of now I have to disassemble and insert the wire and assemble it back.
         </p>
-
     </section>
 
+    <section>
+        <h2>The CoreXY Stage</h2>
+        <p>
+            Ever since I heard about
+            <a href="http://www.doublejumpelectric.com/projects/core_xy/2014-07-15-core_xy/">CoreXY and H-bot</a>, it looked very interesting ans I always wanted to make one. Now that I need one, I'll do it now itself. But I had to decide between the CoreXY and
+            H-Bot, The link in the beginning of this paragraph helped me decide that. The physics says that there is an inherent flaw in the design, the mechanism produces a torque
+            that flexes the entire stage, this happens during certain motions.
+        </p>
+        <p>
+            I used reference from
+            <a href="http://corexy.com/">http://corexy.com/</a> and many other forums, to come up with my design. I'll be using 6mm acrylic for the construction, as that's the stiffest material that I could find
+            out of what were available in the lab. I have also made the design with the dimension of the smooth rods I have eith me. There are two left from the 'scrap-hunt' during
+            the
+            <a href="../w9/w9.html">Mechanical Design</a> week. Also there were two more 30cm smooth rods with Puneeth, which he agreed to lend me for the time.
+            <br> So here is the design I came up with.
+            <div class="sketchfab-embed-wrapper">
+                <iframe width="640" height="480" src="https://sketchfab.com/models/d8a122147c91476c8b2a16fd24e7a193/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+                    onmousewheel=""></iframe>
 
+                <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+                    <a href="https://sketchfab.com/models/d8a122147c91476c8b2a16fd24e7a193?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">CoreXY Design</a>
+                    by
+                    <a href="https://sketchfab.com/sibu?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">sibu</a>
+                    on
+                    <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                </p>
+            </div>
+        </p>
+        <h3>The X-carriage</h3>
+        <p>
+            <div class="sketchfab-embed-wrapper">
+                <iframe width="640" height="480" src="https://sketchfab.com/models/cca1bc5221cd45ee9eaa00bc650b7a33/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+                    onmousewheel=""></iframe>
 
+                <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+                    <a href="https://sketchfab.com/models/cca1bc5221cd45ee9eaa00bc650b7a33?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">X carriage for the CoreXY stage</a>
+                    by
+                    <a href="https://sketchfab.com/sibu?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">sibu</a>
+                    on
+                    <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                </p>
+            </div>
+        </p>
+        <h3>The Y-carriage</h3>
+        <p>
+            <div class="sketchfab-embed-wrapper">
+                <iframe width="640" height="480" src="https://sketchfab.com/models/0a546772535c48dcb2e6b67248b72b23/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+                    onmousewheel=""></iframe>
+
+                <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+                    <a href="https://sketchfab.com/models/0a546772535c48dcb2e6b67248b72b23?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Y-Carriage for the CoreXY stage</a>
+                    by
+                    <a href="https://sketchfab.com/sibu?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">sibu</a>
+                    on
+                    <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                </p>
+            </div>
+        </p>
+
+        <p>
+            I have shared all the required files with the 'uncut' rhino file to my
+            <a href="https://drive.google.com/open?id=0Bzl4B7MOTBQZTXYyczdNZmtWZm8">google drive</a>. These includes the full Rhino file, the dxf for laser cutting, and stl's for the 3D printing.
+        </p>
+    </section>
+    <section>
+        <h2>Assembly of the CoreXY.</h2>
+        <p>
+            I can now laser cutr the oarts required for the coreXY. There are three parts to be 3D printed, a few parts like the bearing to be casted in babbitt metal.
+        </p>
+        <p>
+            Unfortunately I don't have any pictures during the laser cutting and only a very few for the assembly. From my past experience I have learned that too tight of a press-fit is not the
+            ideal choice for acrylic. The material is too brittle. The best option for acrylic is to have an exact fit, not too tight or loose, then use a solvent like acetone to bond
+            the pieces together, this will bond them seamlessly. Next best choice is the cycno-crylic glues, super-glue.
+        </p>
+        <p>
+            As I said there are a few 3D printed parts and a few cast parts, the procedure is the same as in
+            <a href="../w12/w12.html">Moulding and Casting</a> assignment. In fact I will be making four of the plain bearing I made in that assignment, along with a few Babbitt metal idler gears. For which
+            I made a new and improved mould, but they still didn't work as expected, they aren't smooth but each of them need a bit of sanding to get a smoother outer edge. Without
+            this they are not performing well, I later used a
+            <a href="http://www.thingiverse.com/thing:16627">thingiverse</a> OpenSCAD file to make a profile of a matching pullery and laser cut in acrylic.
+        </p>
+        <p>
+            <img src="bab-pul1.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
+            <figcaption style="display:block; color:grey">The idler pulleys are made by 'cloning' the 16-tooth-GT2 pulley meant for a 5 mm nema-17 stepper. SInce the rods I'll be mounting this pulleys are of 6 mm, I need something
+                which has 5 mm at one end and 6 mm at the other, this is required only for making the silicone mould.
+                <br> I made a reducer shaft (from 6 mm to 5 mm) using a wooden stick, the drill and a file, a makeshift lathe.</figcaption>
+
+            <img src="bab-pul2.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
+            <figcaption style="display:block; color:grey"> Here is the end result.</figcaption>
+
+            <img src="bab-pul3.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
+            <figcaption style="display:block; color:grey"> Cast Babbitt metal pulley using the new mould. </figcaption>
+
+            <img src="bab-pul4.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
+            <figcaption style="display:block; color:grey"> Making the inner surface smooth and lubricating the pulley.</figcaption>
+        </p>
+        <p>
+            Here are a few pictures I took while assembling the CoreXY stage
+            <br>
+            <img src="assem-2.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
+            <figcaption style="display:block; color:grey"> The frame is done, glued using cyno-acrylic glue, didn't use T-slots and nuts&bolts, thought about it initially, then left for the time being..</figcaption>
+
+            <img src="assem-1.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='900'" onclick="this.width='600'" />
+            <figcaption style="display:block; color:grey"> Testing the CoreXY movement with my stepper driver. This is when I decided to switch over to laser cut acrylic pulleys, the babitt metal had few rough edges in the 'channels'
+                of the gear tooth. Probably caused by the bubble in the mould. This make the pulley not perfect circle and cause issue, the stages get stuck at times.</figcaption>
+        </p>
+
+        <h2>The Plotter</h2>
+        <p>
+            With the new pulley, I started testing it, with the help of
+            <a href="http://reprap.org/wiki/RAMPS_1.4">RAMPS 1.4 board.</a> I first made a plotter. The RAMPS, was loaded with
+            <a href="https://www.repetier.com/firmware/v092/">Repetier</a> firmware and used the repetier host to send the G-codes. I typed the first test pattern myself.
+            <div class="codescroll">
+                <pre>
+G1 X000 Y000 F5000
+G1 X200 Y000 F5000
+G1 X200 Y200 F5000
+G1 X000 Y200 F5000
+G1 X000 Y000 F5000
+G1 X200 Y200 F5000
+G1 X000 Y200 F5000
+G1 X200 Y000 F5000
+G1 X000 Y000 F5000
+
+G1 X000 Y000 F5000
+G1 X200 Y000 F5000
+G1 X200 Y010 F5000
+G1 X000 Y010 F5000
+G1 X000 Y020 F5000
+G1 X200 Y020 F5000
+G1 X200 Y030 F5000
+G1 X000 Y030 F5000
+G1 X000 Y040 F5000
+G1 X200 Y040 F5000
+G1 X200 Y050 F5000
+G1 X000 Y050 F5000
+G1 X000 Y060 F5000
+G1 X200 Y060 F5000
+G1 X200 Y070 F5000
+G1 X000 Y070 F5000
+G1 X000 Y080 F5000
+G1 X200 Y080 F5000
+G1 X200 Y090 F5000
+G1 X000 Y090 F5000
+G1 X000 Y100 F5000
+G1 X200 Y100 F5000
+G1 X200 Y110 F5000
+G1 X000 Y110 F5000
+G1 X000 Y120 F5000
+G1 X200 Y120 F5000
+G1 X200 Y130 F5000
+G1 X000 Y130 F5000
+G1 X000 Y140 F5000
+G1 X200 Y140 F5000
+G1 X200 Y150 F5000
+G1 X000 Y150 F5000
+G1 X000 Y160 F5000
+G1 X200 Y160 F5000
+G1 X200 Y170 F5000
+G1 X000 Y170 F5000
+G1 X000 Y180 F5000
+G1 X200 Y180 F5000
+G1 X200 Y190 F5000
+G1 X000 Y190 F5000
+G1 X000 Y200 F5000
+G1 X200 Y200 F5000
+G1 X000 Y000 F5000
+
+G1 X000 Y000 F5000
+G1 Y200 X000 F5000
+G1 Y200 X010 F5000
+G1 Y000 X010 F5000
+G1 Y000 X020 F5000
+G1 Y200 X020 F5000
+G1 Y200 X030 F5000
+G1 Y000 X030 F5000
+G1 Y000 X040 F5000
+G1 Y200 X040 F5000
+G1 Y200 X050 F5000
+G1 Y000 X050 F5000
+G1 Y000 X060 F5000
+G1 Y200 X060 F5000
+G1 Y200 X070 F5000
+G1 Y000 X070 F5000
+G1 Y000 X080 F5000
+G1 Y200 X080 F5000
+G1 Y200 X090 F5000
+G1 Y000 X090 F5000
+G1 Y000 X100 F5000
+G1 Y200 X100 F5000
+G1 Y200 X110 F5000
+G1 Y000 X110 F5000
+G1 Y000 X120 F5000
+G1 Y200 X120 F5000
+G1 Y200 X130 F5000
+G1 Y000 X130 F5000
+G1 Y000 X140 F5000
+G1 Y200 X140 F5000
+G1 Y200 X150 F5000
+G1 Y000 X150 F5000
+G1 Y000 X160 F5000
+G1 Y200 X160 F5000
+G1 Y200 X170 F5000
+G1 Y000 X170 F5000
+G1 Y000 X180 F5000
+G1 Y200 X180 F5000
+G1 Y200 X190 F5000
+G1 Y000 X190 F5000
+G1 Y000 X200 F5000
+G1 Y200 X200 F5000
+G1 X000 Y000 F5000
+
+G1 X000 Y000 F5000
+G1 X000 Y100 F5000
+G02 X000 Y100 I100 J0 F4000
+
+G1 X010 Y100 F5000
+G02 X010 Y100 I090 J0 F4000
+
+G1 X020 Y100 F5000
+G02 X020 Y100 I080 J0 F4000
+
+G1 X030 Y100 F5000
+G02 X030 Y100 I070 J0 F4000
+
+G1 X040 Y100 F5000
+G02 X040 Y100 I060 J0 F4000
+
+G1 X050 Y100 F5000
+G02 X050 Y100 I050 J0 F4000
+
+G1 X060 Y100 F5000
+G02 X060 Y100 I040 J0 F4000
+
+G1 X070 Y100 F5000
+G02 X070 Y100 I030 J0 F4000
+
+G1 X080 Y100 F5000
+G02 X080 Y100 I020 J0 F4000
+
+G1 X090 Y100 F5000
+G02 X090 Y100 I010 J0 F4000
+
+G1 Y100 X100 F5000
+G1 Y000 X000 F5000
+              </pre>
+            </div>
+            <br> Which will give the following output as seen in the following youtube video.
+            <br>
+
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/h8A0koVK7f4" frameborder="0" allowfullscreen></iframe>
+            <br> If you watch carefully you can see some places where the sharp right angled coroners looks like 'fillets'. This is not an error of the machine, rather because of the flexibility
+            of the pen-refill I'm using. But this could happen with my final product too, not much as there won't be any pressure on the tool wire, it just floats in the dielectric,
+            just above the copper.
+        </p>
+
+        <p>
+            Now that I have a pen plotter, let's just do some complicated plots. With the help of
+            <a href="http://www.makercam.com/">http://www.makercam.com/</a> I created a Gcode file which is a 'profiling toolpath' for one of my PCB design. I plotted this too, just because I can, and it looks nice.
+            <br>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Sj74Xac59QE" frameborder="0" allowfullscreen></iframe>
+            <br>Notice that the plots are not in proper scale, I did this for demo purpose, for better visibility.
+        </p>
+    </section>
+
+    <section>
+      <h2>Let's Spark It</h2>
+      <p>
+        
+      </p>
+    </section>
 
 
     <section>
@@ -343,6 +618,9 @@
             </li>
             <li>
                 <a href="http://shodhganga.inflibnet.ac.in/bitstream/10603/4655/11/11_chapter%202.pdf">http://shodhganga.inflibnet.ac.in/bitstream/10603/4655/11/11_chapter%202.pdf</a>
+            </li>
+            <li>
+                <a href="http://tahmidmc.blogspot.in/2013/02/n-channel-mosfet-high-side-drive-when.html">http://tahmidmc.blogspot.in/2013/02/n-channel-mosfet-high-side-drive-when.html</a>
             </li>
         </ul>
     </section>
