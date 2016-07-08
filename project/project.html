@@ -570,6 +570,9 @@ G1 Y000 X000 F5000
             <br>
 
             <iframe width="420" height="315" src="https://www.youtube.com/embed/h8A0koVK7f4" frameborder="0" allowfullscreen></iframe>
+            <br>
+            <img width="800" src="pattern.jpg" />
+            <br>Notice that the plots are not in proper scale, I did this for demo purpose, for better visibility.
             <br> If you watch carefully you can see some places where the sharp right angled coroners looks like 'fillets'. This is not an error of the machine, rather because of the flexibility
             of the pen-refill I'm using. But this could happen with my final product too, not much as there won't be any pressure on the tool wire, it just floats in the dielectric,
             just above the copper.
@@ -580,17 +583,64 @@ G1 Y000 X000 F5000
             <a href="http://www.makercam.com/">http://www.makercam.com/</a> I created a Gcode file which is a 'profiling toolpath' for one of my PCB design. I plotted this too, just because I can, and it looks nice.
             <br>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/Sj74Xac59QE" frameborder="0" allowfullscreen></iframe>
-            <br>Notice that the plots are not in proper scale, I did this for demo purpose, for better visibility.
         </p>
     </section>
 
     <section>
-      <h2>Let's Spark It</h2>
-      <p>
-        
-      </p>
-    </section>
+        <h2>Let's Spark It</h2>
+        <p>
+            For the first trial, I re-purposed my stepper-servo-control
+            <a href="../w11/w11.html"></a>, I programmed it with a simple logic. There is a voltage divider network which reduces the voltage difference between the tool wire and the ground to logic levels.
+            The output of this divider will be higher than zero(value depends in on the gap between the wire and the PCB, more the gap, more the voltage, up to a maximum of the supply
+            voltage). This voltage is fed to the ADC of the stepper-servo-controller. When the ADC goes low, the stepper should back off as the tool wire is too close to the PCB, perhaps
+            touching it. If the ADC goes too high, it means that the wire is too far away from the PCB.
+        </p>
+        I then made a shallow water container using acrylic and hot-glue to seal it. Water is used as the dielectric here. The dielectric is important, without it the spark channels won't be
+        narrow. The dielectric fluid has a high dielectric constant compared to air. Higher the dielectric constant, higher the voltage required to cause a breakdown at a given distance,
+        in simple English it means higher voltages are required to initiate spark at a given distance.
+        <br>
+        <br>
+        <b>This results in a spark that is constarined to a small area, how?</b>
+        <br>The sparks follow a lowest resistant path, electrically closest, usually the physically closest points. Now since the dielectric constant is high the potential required to cause
+        arcing at a slightly longer path than the shortest, is magnified by the dielectric constant. Which means the probability for the arcing to happen between the physically closest
+        points are magnified.
+        <br>The liquid also acts as coolant and a as a cleaning agent.
+        <p>
+            This idea was supposed to work fine, but it didn't, not a complete fail, but I'm not happy with the results. The wire touches the the copper every now and then, the extrude wheel diameter
+            should have been smaller. Even with the 16 step, micro-stepping, each step pushes too much wire.
+        </p>
+        <p>
+            This is when I decided to add a trigger mechanism. The 30V supply from the lab power supply, along with a 2000uF capacitor bank has enough energy to do some erosion on the surface.
+            But the 30v is not sufficient to cause a breakdown of the dielectric at some practical distance.
+        </p>
+        <p>
+            The trigger is actually a short pulse of an higher voltage, say 100v. This will initiate the arc and the ionized path will create a conductive path for the low voltage high energy pulse.
+            The high voltage pulse was originally was created using a rectifier and a filter on an 110 VAC, which will produce about 150v DC. Dealing with mains is dangerous and hence
+            I decided to make a
+            <a href="https://en.wikipedia.org/wiki/Cockcroft%E2%80%93Walton_generator">Cockcroft Walton Generator</a>.
+        </p>
+        <p>
+            But for the demo purpose I used the rectified mains only. The pulse was supposed to be controlled by the micro controller (inside the stepper-servo controller) via a MOSFET. But it
+            wasn't necessary as the voltage multiplier itself was oscillating and was producing the pulses, thjis was due to the fact that each pulse discharges the capacitors in the
+            generator completely, depleting the voltage way too low to support the arc. Then the next spark will only initiate after the capacitors are charged enough. More the distance
+            between the PCB and the tool wire, less frequent the pulses were.
+            <br>
+            <br>Here is a a video of an extremly high voltage genrator using many stages of the Cockcroft Walton Generator, this is not mine, just sharing an youtube video. The video shows
+            the relation between the freqency of the sparks and the distance.
+            <br>
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/lDQLHAFTaXM" frameborder="0" allowfullscreen></iframe>
+            <br>
+        </p>
+        <p>
+            I'll have to make one of these with two or three stages. Thinking about using a 555-timer, or the micro-controller itself to controls power transistor to make the square wave required
+            for the generator. It's easy to with the micro-controller itself, will be using only one digital I/O pin, and one of the timers in it.
+        </p>
 
+    </section>
+    <section>
+        <img width="800" src="../presentation.png" />
+        <br>
+    </section>
 
     <section>
         <h2>Resources</h2>

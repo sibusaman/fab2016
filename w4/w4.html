@@ -679,14 +679,55 @@
             </video>
         </p>
 
+        <p>
+            A snap of of the new ISP, before cleaning.
+            <img src="s-isp-fin.jpg" width="550" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1250'" onclick="this.width='550'"/>
+        </p>
         <h1 id="final" style="color:red"> HERE ARE THE FINAL EAGLE FILES FOR THE ISP (with all the three LEDs).
             <br>
             <a href="s-ispv2.1.brd" download="sibu-FabISPwLED-final.brd">Board</a>
             <a href="s-ispv2.1.sch" download="sibu-FabISPwLED-final.sch">Schematic</a>
             <a href="firmware.zip" download="firmware.zip">FIRMWARE</a>
         </h1>
+        <br>
+        <h2 style="color:red">
+            <b>The archive(firmware) has the compiled binary, but you can recompile if you wish.</b>
+        </h2>
     </section>
 
+    <section>
+        <h2>Future Plans</h2>
+        <p>
+            What will you do,
+            <br>when you mess up the FUSE?
+            <br>or if you disable the SPI programming feature by unsetting SPIEN FUSE?
+            <br>or if you disable the RESET?
+        </p>
+        <p>
+            This when you require a high voltage serial/parallel programmer. Achieved by keeping the RESET at 12v.
+            <br> I would like to make an ISP capable of programming the chips in this mode. This should be able to un-brick any bricked chips with messed up FUSE. This could also take advantage
+            of the RESET pin of the chip, as you can now use even the RESET pin as IO.
+        </p>
+    </section>
+
+
+    <section>
+        <h2>Resources</h2>
+        <ul>
+            <li>
+                <a href="http://www.atmel.com/images/doc8006.pdf">http://www.atmel.com/images/doc8006.pdf</a>
+            </li>
+            <li>
+                <a href="http://mightyohm.com/blog/2008/09/arduino-based-avr-high-voltage-programmer/">http://mightyohm.com/blog/2008/09/arduino-based-avr-high-voltage-programmer/</a>
+            </li>
+            <li>
+                <a href="http://eleccelerator.com/fusecalc/fusecalc.php?chip=attiny44a">http://eleccelerator.com/fusecalc/fusecalc.php?chip=attiny44a</a>
+            </li>
+            <li>
+                <a href="http://www.ladyada.net/learn/avr/fuses.html">http://www.ladyada.net/learn/avr/fuses.html</a>
+            </li>
+        </ul>
+    </section>
 </body>
 
 </html>
