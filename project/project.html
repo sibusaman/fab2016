@@ -132,6 +132,12 @@
         </div>
     </header>
     <section>
+        <h3 style="color:red"> This is mu project development and documentation page, for the answers to the questions that we are supposed to answer as a part of 'project development' assignment, go to the
+            <a href="#w19">bottom of the page</a>.</h3>
+        <br>
+        <br>
+        <br>
+        <br>
         <h1>SPARKY The Electrical Discharge Machining PCB Mill</h1>
         <p>
             The name explains everything, doesn't it?
@@ -633,10 +639,113 @@ G1 Y000 X000 F5000
         </p>
         <p>
             I'll have to make one of these with two or three stages. Thinking about using a 555-timer, or the micro-controller itself to controls power transistor to make the square wave required
-            for the generator. It's easy to with the micro-controller itself, will be using only one digital I/O pin, and one of the timers in it.
+            for the generator. Actually it's easy to do it with just the micro-controller itself, will be using only one digital I/O pin, and one of the timers in it.
+        </p>
+    </section>
+
+    <p>
+        With all of this setup, I could get some results, the ramps will send a command to the stepper servo controller board to indicate if the head is moving for a cut.
+    </p>
+    <p>
+        Here is my final project presentation video which also shows the result.
+        <br>
+        <video width="720" controls>
+            <source src="../presentation.mp4" type="video/mp4"> Your browser does not support the video tag.
+        </video>
+        <br>
+    </p>
+
+
+    <section id="w19">
+        <h1>Project Devolopment Questions.</h1>
+        <b style="color:red"> Note that this section is being updated every now and then. Which means the answeres of time related questions are updated with the status of the date of last update.
+            <br>
+            <br>The last update was on 8th, July, 2016, 23:45 IST.</b>
+        <br>
+        <h2>what tasks have been completed, and what tasks remain? </h2>
+        <p>
+            <ul>
+                <li>The mechanical stages has been done.</li>
+                <li>The wire extruder is done and working.</li>
+                <li>The 'alpha' stage programs for controlling the tool wire feeder is working.</li>
+                <li>The technique of using a high voltage trigger pulse is working.</li>
+                <li>The babbitt metal cast linear bearing is doing a fantastic job.</li>
+            </ul>
+            <br>
+            <br>
+            <ul>
+                <li>Has to document everything in detail. Unlike my documentation for all other assignments, this page is of poor quality and lacks many of the key components. Partially
+                    because I have been doing this project under a tight schedule, didn't have the luxury of time that I used to have during the other assignments, each of which had
+                    one week. Now this is equivalent to many of this assignments packed into a tight schedule. There were other tasks too, like finishing a few pending assignments,
+                    fixing mistakes.</li>
+                <li>The electronics need a lot of refinement, I did it in a hurry, and I'm new to the electronics design area. I came to notice that MOSFETs are driven by V
+                    <sub>GS</sub> and is not easy to be used as a high-side solid state switch.
+                    <br>So I had to design an entire new and complicated board with opto-couplers and isolated power supply(9v batteries).</li>
+                <li>The wire feeder need a better resolution, could be done with gears or smaller rubber wheel, also considering a better contact mechanism.</li>
+                <li>The coding, the tool path creator is remaining </li>
+                <li>I need to have a polished firmware and circuit.</li>
+                <li>Has to finalize the variables like, capacitor values, supply power rating etc and decide on the components accordingly, then I have to make the final circuit, one with
+                    no RAMPS and Arduino, a standalone controller for the entire machine. This has to be modular as well.
+                    <br>This task requires a lot of time, and materials and guidance form other people. Lot of reading to be done. I'm in touch with many people in the EDM enthusiast communities.
+                </li>
+                <li>I'm yet to think about and implement a height map (scanning the surface imperfections of the PCB) generator for precise positioning.</li>
+            </ul>
+        </p>
+
+        <h2>what has worked? what hasn't?</h2>
+        <p>
+            <ul>
+                <li>The idea seems to be working. The technique is able to mill the PCB. But it's no where near perfection.</li>
+                <li>The CoreXY stage.</li>
+                <li>The rudimentary circuits to test the idea.</li>
+            </ul>
+            <br>
+            <br>
+            <ul>
+                <li>The Babbitt metal cast pulley failed.</li>
+                <li>The initial circuit with no isolated MOSFET drivers failed, had a blown MOSFET.</li>
+            </ul>
+        </p>
+
+        <h2>what questions need to be resolved?</h2>
+        <p>
+            <ul>
+                Lot of questions are there, in fact I ended up with more question thaan when I begin the project. The main quetsions are.
+                <ul>
+                    <li>What is the best voltage range.</li>
+                    <li>What's the best capacitor value, or pulse energy.</li>
+                    <li>What's the best di-electric to be used, many people suggested me transformer fluid or mineral oil as a cheap alternative, but may also need filtration units, oil
+                        pump etc.</li>
+                    <li>How to sense/mesure the gap accurately.</li>
+                </ul>
+            </ul>
+        </p>
+
+        <h2>what will happen when?</h2>
+        <p>
+            As of 8th July, end of Fab Academy, you have seen what I have done, more things will happen in future. First of all I need to take my time to develop a decent board, do not want to
+            hurry and blow up components.
+        </p>
+
+        <h2>what have you learned?</h2>
+        <p>
+            I have learned a lot, for example I have used the following techniques for my project.
+            <ul>
+                <li>Machine design</li>
+                <li>Moulding and casting</li>
+                <li>3D/2D designing</li>
+                <li>3D printing</li>
+                <li>Electronics production, design and embedded programming</li>
+            </ul>
+        </p>
+
+        <p>
+            I have also learned a few important things, about time management, I realized that I shouldn't have chosen such a complicated project if I had only just a over a month of time. I complete
+            underestimated the complexity.
         </p>
 
     </section>
+
     <section>
         <img width="800" src="../presentation.png" />
         <br>
