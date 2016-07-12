@@ -389,7 +389,8 @@
             <a href="https://drive.google.com/open?id=0Bzl4B7MOTBQZTXYyczdNZmtWZm8">google drive</a>. These includes the full Rhino file, the dxf for laser cutting, and stl's for the 3D printing.
         </p>
         <p>
-          Y64 can also download it   <a href="XY-stage.3dm.tar.gz" download="XY-stage.3dm.tar.gz">here</a>.
+            Y64 can also download it
+            <a href="XY-stage.3dm.tar.gz" download="">here</a>.
         </p>
     </section>
     <section>
@@ -658,6 +659,33 @@ G1 Y000 X000 F5000
         <br>
     </p>
 
+    <section>
+        <h2>Further development</h2>
+        <p>
+            So far I don't have a polished product. But I'm in the process of making one, based on the data so far. I choose a dual micro-controller solution, could be done with a single micro-controller,
+            but for testing the XY stage and Tool head separately, individual micro-controllers would be beneficial. Also, during my presentation, Neil suggested that the this could
+            be devolved into a general purpose EDM machine, separating the tool-head from the XY-stage is beneficial for that too.
+        </p>
+        <h3>The Block Diagram of The Electronics of the Machine</h3>
+        <p>
+            <figure>
+                <img src="sparky-block.svg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1500'" onclick="this.width='600'"
+                />
+                <figcaption style="display:block; color:grey"></figcaption>
+
+                <img src="fet-driver.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1500'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey">Here is the schematic of the MOSFET driver with an isolated power-supply (9v battery in this case). The outputs of this circuit goes to the Gate nad Source of the two
+                    MOSFETs being driven. This section uses <code>PC817</code> optocouplers and two NPN and two PNP transistors along with a bunch of biasing resistors.</figcaption>
+
+                <img src="32u4.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1500'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey">The schematic for Atmega32u4 Board. This is board is made standalone, so that I can re-purpose this later, if I need.</figcaption>
+
+                <img src="xy-step.png" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1500'" onclick="this.width='600'" />
+                <figcaption style="display:block; color:grey">The module with the drivers for X & Y stepper motors.</figcaption>
+            </figure>
+        </p>
+    </section>
+
 
     <section id="w19">
         <h1>Project Devolopment Questions.</h1>
@@ -752,6 +780,11 @@ G1 Y000 X000 F5000
     <section>
         <img width="800" src="../presentation.png" />
         <br>
+        <br>
+        <br>
+        <video width="720" controls>
+            <source src="../presentation.mp4" type="video/mp4"> Your browser does not support the video tag.
+        </video>
     </section>
 
     <section>
