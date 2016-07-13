@@ -1070,15 +1070,78 @@ ISR(TIM0_COMPB_vect)
         <p>
             As expected the code is not working (well, it works once in a while, with a 90% fail rate). I'll have to make a buffer and some other reliable serial reading method.
         </p>
-        <h3>New Serial Reading Idea</h3>
+        <h3>New Serial Communication Idea Using Interrupts</h3>
         <p>
-            The idea is to use the interrupts and the high resolution Timer1.
+            The idea is to use the interrupts and the high resolution Timer1 to enable serial communication. I have two idea in my mind to achive this. The writing part is relatively easy, reading
+            seems a bit challenging.
+        </p>
+        <p>
+            First idea is to use the Timer1 in <code>Interrupt on compare match</code> mode with interrupts being called every time the Timer1 saturates.
+        </p>
+
+        <p>
+            <h3>Sending data</h3>
             <ul>
-                <li>The interrupt will trigger on each pin change.</li>
-                <li>The interrupt vector will keep storing the locations of the pin change, this array then can be used to find out the bit sequence.</li>
-                <li>Another method will be to calculate the previous values as we go and to reset the counter everytime we encounter a start-bit.</li>
+                <li>The Timer1 will initiated/reset to zero, with the start of data frame. The normally high transmission line is pulled low at the same time, beginning the start bit.</li>
+                <li>After that every time the Timer1 is reaches a value that corresponds to the bit duration, the new bit value is written and the Timer1 is reset.</li>
+                <li>Once all the bits are written, after the bit duration, the output is pulled high. The next frame will start only after a preset delay or a bit duration.</li>
             </ul>
         </p>
+        <h3>Receiving Data</h3>
+        <p>
+            The only catch is in identifying the start bit. Once this is done,
+            <ul>
+                <li>After the start_bit is finished the Timer 1 will be initiated with half of the maximum value corresponding to the bit_duration. The compare value (when Timer1 matches
+                    this, the interrupt will be triggered) will corresponds to the full bit duration.</li>
+                <li>This will enable the Timer1 to trigger interrupts in middle of each incoming bit, not in the beginning or the end of any bit.</li>
+                <li>Since we know how many bits are there per data frame, we will stop the Timer1 and wait for the next start bit.</li>
+            </ul>
+        </p>
+
+        <h2>Second Idea</h2>
+        <p>
+            <h3>Sending Data</h3>
+            <p>
+                <ul>
+                    <li>To sent the data we will begin with a start bit of predefined duaration.</li>
+                    <li>After this, the <code>COMPA</code></li> is set, the value on reaching which the Timer1 will trigger an interrupt. This value is such that the interrupt is triggered
+                    only when a pin change is required. So if we are sending three consecutive high or low, then there won't be any interrupts triggered in between, will produce a single
+                    three bit long pulse.
+                    <li>Essentially we trigger interrupts only when a pin change is required.</li>
+                </ul>
+            </p>
+            <h3>Receiving Data</h3>
+            <p>
+                As before the challange is in identifying the start bit. Once done,
+                <ul>
+                    <li>The interrupt will trigger on each pin change.</li>
+                    <li>The interrupt vector will keep storing the locations of the pin change, this array then can be used to find out the bit sequence.</li>
+                    <li>Another method will be to calculate the previous values as we go and to reset the counter everytime we encounter a start-bit.</li>
+                    <li>The bits can be calculated by computing how many bit duration have passed since the last interrupt.</li>
+                </ul>
+            </p>
+        </p>
+        <h2>The Issue of Identifying the Start Bit.</h2>
+        <p>
+            In my understanding the start bit in an UART/USART communication protocol is no different from any other data bit, I don't know how then the chip identifies if the incoming bit is a
+            start_bit or a data bit. If I were to implement the protocol, I would slightly differentiate the start bit, I would be sending a shorter pulse or a longer pulse, which would
+            not be found in any combination of the data pulses.
+        </p>
+        <p>
+            One way I'm thinking about is to have a much shorter pulse to signify the start bit. In a 9600bps communication, the bit duration is about 104uS. If I just take the serial bus low and
+            then high within 10uS, this clearly won;t cause any confusion and can easily identify the start of a new data frame.
+        </p>
+        <p>
+            Else if the bit duration is about 100uS, I could use a start bit if say, 50uS. Again, this will not cause any confusion.
+        </p>
+        <p>
+            As I said, sending the data is really easy, and I found a program which is very close to what I have planned.
+            <a href="http://electronut.in/serial-communications-with-the-attiny84/">here is the link</a>.
+        </p>
+        <p>
+            <a href="https://github.com/PaulStoffregen/AltSoftSerial">altsoftserial</a> may also is using the technique of interrupts.
+        </p>
+
 
 
     </section>
