@@ -247,6 +247,8 @@
                   }</pre>
             </div>
             <br>
+            <a href="blink.c" download="led-ring-test-all-blink.c">click to download the above code</a>
+            <br>
             <video width="520" controls>
                 <source src="blink.mp4" type="video/mp4"> Your browser does not support the video tag.
             </video>
@@ -258,7 +260,7 @@
             Testing sweeping pattern, one LED is on at a time.
             <div class="codescroll">
                 <pre>
-                #define F_CPU 1000000UL
+                #define F_CPU 8000000UL
                 #include &lt;avr/io.h&gt;
                 #include &lt;util/delay.h&gt;
                 #define BLINK_DELAY_MS 75
@@ -319,6 +321,8 @@
                   }
                 }</pre>
             </div>
+            <br>
+            <a href="sweep.c" download="led-ring-test-all-sweep.c">click to download the above code</a>
             <br>
             <video width="520" controls>
                 <source src="blink-sweep.mp4" type="video/mp4"> Your browser does not support the video tag.
@@ -448,6 +452,8 @@
     }</pre>
             </div>
             <br>
+            <a href="sweep-fade.c" download="led-ring-test-all-sweep-fade.c">click to download the above code</a>
+            <br>
             <video width="520" controls>
                 <source src="semi-final.mp4" type="video/mp4"> Your browser does not support the video tag.
             </video>
@@ -571,6 +577,8 @@ ISR(TIM0_COMPB_vect)
 	TCNT0 = 0;
 }</pre>
             </div>
+            <br>
+            <a href="net-fin-no-id.c" download="net-no-id.c">click to download the above code</a>
         </p>
 
         <h3 style="color:red">Problems</h3>
@@ -850,9 +858,9 @@ ISR(TIM0_COMPB_vect)
 }            </pre>
 
             </div>
-
-
-            Though not reliable, I wrote the code any way, the code resets when it finds a '#' or another alphabet in the address range.
+            <br>
+            <a href="net-with-id-check.c" download="net-with-id-check.c">click to download the above code</a>
+            <br> Though not reliable, I wrote the code any way, the code resets when it finds a '#' or another alphabet in the address range.
 
             <div class="codescroll">
                 <pre>
@@ -1065,6 +1073,9 @@ ISR(TIM0_COMPB_vect)
 	TCNT0 = 0;
 }</pre>
             </div>
+            <br>
+            <a href="net-with-id-fin-v0.c" download="net-with-id-fin-v0.c">click to download the above code</a>
+            <br>
         </p>
 
         <p>
