@@ -434,6 +434,9 @@
               }</pre>
 
             </div>
+            <p>
+                <a href="fin-box.scad" download="sibu-parametric-box-variable-lbh.scad"> click to download the above code.</a>
+            </p>
             <br>This one I made when
             <a href="http://archive.fabacademy.org/archives/2016/fablabtrivandrum/students/387/">Sarath S.M</a> suggested me to add options to adjust length, width and height independently, this is almost general purpose. You now have control over length, width and
             height as well as control over how high the base plate should be. This was modified and used by him for his project, a water tester.
@@ -624,8 +627,170 @@ module copy_tran(vec=[0,0,0])
             </figure>
         </p>
         <p>
+            <a href="xy-box-holes.scad" download="sibu-parametric-box-with-holes.scad"> click to download the above code.</a>
+        </p>
+        <p>
             There are many more variants, this code, the parametric design part of this code has been used in many of my other projects too, also used by other colleagues.
         </p>
+
+        <h3>Press Fit Construction Kit</h3>
+        <p>
+            Another part of the assignment is to make a construction kit. The idea is that in the future of the smart material we could see self assembling
+            <a href="https://www.youtube.com/watch?v=9X0AfyZ1Tg4">no fastener, nano robots or smart-dust</a>. So here we will be just making something that is parametric and need no fasteners to assemble. The kit will contain a few elements
+            like LEGO blocks, and could be assembled to something big.
+        </p>
+        <p>
+            I made a quick OpenSCAD design, something simple, but can be connected in various ways to construct something big and strong.
+            <figure>
+                <img src="press-kit.svg" width="500" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='499'">
+                <figcaption style="display:block; color:grey">The individual components of the constrsuction set.</figcaption>
+            </figure>
+            <div class="codescroll">
+                <pre>
+thick = 3;
+beam_width = .2;
+link_dia = 25;
+slot_width = 10; //width of the center slort, this can't be less thatthe thick ness of the material, also leave enough margin. recomended min is 10mm fo 6mm thick material
+fit_depth = 6; //extend of overlap between the pressfit, 10 means each set will have a 5mm slot, so that there is a10mm total frictional contact area
+
+fit_thick = thick - beam_width;
+translate ([link_dia + 5, 0, 0])
+difference()
+{
+    circle (d=link_dia);
+
+    square ( size = [ slot_width, fit_thick ], center = true );
+    square ( size = [ fit_thick, slot_width ], center = true );
+
+    for (i = [0:45:360])
+    {
+        temp1 = link_dia/2;
+        //uncomment the following line for testing
+        //temp1 = link_dia/2 - fit_depth/2;
+
+
+        rotate(i)
+            translate([temp1, 0, 0])
+                square ( size = [ fit_depth, fit_thick ], center = true );
+    }
+}
+
+translate ([12, 0, 0])
+difference()
+{
+    square (size = [ slot_width, 40], center = true);
+    for (i = [0:180:360])
+        {
+
+            rotate(i)
+            translate([0, 20, 0])
+            square ( size = [ fit_thick, fit_depth ], center = true );
+        }
+}
+
+difference()
+{
+    square (size = [ slot_width, 20], center = true);
+    for (i = [0:180:360])
+        {
+
+            rotate(i)
+            translate([0, 10, 0])
+            square ( size = [ fit_thick, fit_depth ], center = true );
+        }
+}
+
+translate ([-12, 0, 0])
+difference()
+{
+    square (size = [ slot_width, 60], center = true);
+    for (i = [0:180:360])
+        {
+
+            rotate(i)
+            translate([0, 30, 0])
+            square ( size = [ fit_thick, fit_depth ], center = true );
+        }
+}
+
+              </pre>
+            </div>
+            <p>
+                <a href="press-kit.scad" download="sibu-pressfit-kit.scad"> click to download the above code.</a>
+            </p>
+            The above code is simple, and parametric. Once you go through the code, you will know which parameters to change to achieve the circular links with bigger diameter to permit connections
+            at more number of angles. You have to specify the appropriate material thickness too. The other parts, the linear ones are just a minor modification of the same codes, which
+            can be tweaked to make links of any length. I could add more shapes and sizes of the individual parts when I needed.
+        </p>
+        <p>
+            I decided to keep the width of the linear section as 1cm, this way I can make the pieces out of the pieces of the craft plywood that has been left over by other users. If I were to
+            make the entire thing out of new plywood, it would have been expensive, but I didn't have to, there were lot of left over plywood here, and most of us are never going to
+            use them, I know this because these pieces were there for a long long time.
+            <br>
+            <img src="reuse.jpg" width="500" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='499'">
+            <figcaption style="display:block; color:grey">See, I haven't used much of plywood, most of the pieces were cut from thin boarders that no one will use. Our instructor was concerned with the cost!</figcaption>
+        </p>
+        <p>
+            But his could be made in cardboard too, just edit the <code>thick</code> parameter in the code to the required thickness.
+        </p>
+        <h4>The Results</h4>
+        <p>
+            <figure>
+                <img src="press-kit1.jpg" width="500" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='499'">
+                <figcaption style="display:block; color:grey">Reminds me of
+                    <a href="http://www.esa.int/Our_Activities/Human_Spaceflight/International_Space_Station/About_the_International_Space_Station">ISS</a>.</figcaption>
+                <img src="press-kit2.jpg" width="500" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='499'">
+                <figcaption style="display:block; color:grey">The links are strong and they can take load</figcaption>
+            </figure>
+
+        </p>
+
+        <h3>Using the Laser Cutter</h3>
+        <p>
+            The
+            <a href="http://www.troteclaser.com/en-US/Laser-Machines/Pages/laser-engraving-machines-speedy.aspx">Trotec Speedy 100</a> with 12-60W CO2 laser is one of the expensive and fragile machines in the lab. Because of this I will not explain how I did, instead I'll only brief
+            what I did. I believe that this machine, you need to learn by taking a lot of time to go through the
+            <a href="http://www.troteclaser.com/en-US/Support/Documents/Speedy-100-Manual-EN.pdf">manual</a>. But even then, one should watch and learn from someone experienced to handle the machine, I'm confident with this machine, but I'm not going to write all the
+            details here, as I said it may cause confusion if a newbie uses my documentation as a guide.
+        </p>
+        <p>
+            The settings I used for cutting the 3mm craft plywood are
+            <ul>
+                <li>Laser power = 90%</li>
+                <li>Speed = 1.5</li>
+                <li>Frequency = 1000hz</li>
+                <li> Air assist on</li>
+                <li>Filter unit set to max</li>
+            </ul>
+            <b>The procedure I followed</b>
+            <ul>
+                <li>The Laser cutter appears as printer device. Your design file can have multiple colors and you can make custom profile for the laser cutter so that each color will be
+                    handled with a predefined parameters like speed and power. This way you can have engraving at various depths, cuts etc, in a single file. There were many default
+                    profiles pre-loaded and most material fits in one of the profile.</li>
+                <li>In case you don't find a profile that suits your material or in doubt make test cuts with different parameters to find the best option.</li>
+                <li>While doing this, keep in mind that increasing the power and decreasing the speed has similar effects, as both increases power per unit area. But high power at low speed
+                    also means chances for burning is high, sometimes I prefer multiple passes for thick materials.</li>
+                <li>You will have to bring the laser to desired origin using the controls on the machine.</li>
+                <li>Setting the right z is important, else you may not get a cut or you may damage the lens/air assist nozzle.</li>
+                <li>Air assist is important for most materials. This will keep the cutting area clean from any smoke, and will also help in cooling. It will also blow away any trapped flammable
+                    gas.
+                </li>
+                <li>When the machine is established a connected with the computer, you will be able to see the position of the head/laser in the control program. This can be used as guide
+                    for placing the cut files. Using this technique wisely (along with the right document length and width) you can reduce the material wastage and/or reuse the 'scrap'/leftover.</li>
+                <li>All set?
+                    <br> now turn on the filter unit and start cutting.</li>
+                <li>One interseting thing is that, a focus tool is provided with the lens, which will help in easy quick focusing.
+                    <a href="http://www.troteclaser.com/en-US/Laser-Machines/Accessories/Options/Pages/laser-focus-modes.aspx">see this article for more info</a>
+                </li>
+                <li style="color:red"> Please do not use any material that contains/releases corrosive gas/liquid like halides, acids, strong bases etc. Example includes PVC, flame retarded plastics containomg
+                    bromine.
+                    <br>Also highly reflective (not to your eye but for the 10um laser beam) materials, especially ones that makes
+                    <a href="http://www.physicsclassroom.com/class/refln/Lesson-1/Specular-vs-Diffuse-Reflection">specular reflection</a> are not preferred and might damage the lens/laser/lens-mount.</li>
+            </ul>
+            As I said, I don't want anyone to use my documentation to learn the machine, once they learn the basics from the expert/manual, they can use my documentation to learn about some techniques
+            I have used.
+        </p>
+
 
         <h2>Vinyl Cutter</h2>
         <p>
