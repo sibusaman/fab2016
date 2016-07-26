@@ -297,6 +297,12 @@
             </figure>
         </p>
         <p>
+            <h4>Download the design files
+                <a href="wire_feeder.tar.gz" download="wire_feeder.tar.gz">here</a>.
+                <br>Refer to the picture above, one piece of he part on the left and two of the other is required.
+            </h4>
+        </p>
+        <p>
             <figure>
                 <img src="wire-feed2.jpg" width="500" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1200'" onclick="this.width='500'">
                 <figcaption style="display:block; color:grey"> All the three pieces cut and ready to assemble. The center piece has holes drilled into it, manually, to allow the wire to pass through.
@@ -660,7 +666,7 @@ G1 Y000 X000 F5000
     </p>
     <p>
         <b>Here are the pictures of a few boards I made for the first trial, this is all crap now. Lot of rewiring, and tweaking have been done on the other side of the boards. Appropriately
-            modified schematics have been given further don the page.</b>
+            modified schematics have been given further down the page.</b>
         <br>
         <img src="crap.jpg" width="600" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1000'" onclick="this.width='600'" />
         <figcaption style="display:block; color:grey">From left
@@ -675,7 +681,7 @@ G1 Y000 X000 F5000
     <section>
         <h2>Further development</h2>
         <p>
-            So far I don't have a polished product. But I'm in the process of making one, based on the data so far. I choose a dual micro-controller solution, could be done with a single micro-controller,
+            So far I don't have a polished product. But I'm in the process of making one, based on the data so far, I choose a dual micro-controller solution, could be done with a single micro-controller,
             but for testing the XY stage and Tool head separately, individual micro-controllers would be beneficial. Also, during my presentation, Neil suggested that the this could
             be devolved into a general purpose EDM machine, separating the tool-head from the XY-stage is beneficial for that too.
         </p>
@@ -700,13 +706,19 @@ G1 Y000 X000 F5000
                 />
                 <figcaption style="display:block; color:grey">The control board for the tool-head/wire feeder.</figcaption>
             </figure>
-            The MOSFET'S will be mounted separately on a heat-sink. For the rest I need to make board from these schematic, mill it, stuff it, test and reiterate if necessary.
+            The MOSFET'S will be mounted separately on a heat-sink. For the rest I need to make board from these schematic, mill it, stuff it, test and reiterate if necessary. I am pretty sure
+            that I'll have to iterate it once more, at at least. But since I made a completely modular design, only few sections will have to be modified at once. Then I'll think about
+            dropping the modular electronics concept and start designing a single board, single micro-controller solution.
         </p>
         <h3>
             <a href="sparky.tar.gz" download="sparky-schem.tar.gz">click to download all the schematic files</a>
         </h3>
         <p>
-
+            <h2>
+                <a href="bom.ods">click to downlooad the BOM</a>
+            </h2>
+            <br>
+            <a href="https://docs.google.com/spreadsheets/d/1H7XJkYzNXk-A6k9aYKOwW75PEON-w7U9QSqm-pg1WaY/edit?usp=sharing">here is a dynamic version</a>, hosted in my google drive, this one is subject to change as I proceed with developing the product further, even after the Fab Academy.
         </p>
     </section>
 
@@ -802,7 +814,8 @@ G1 Y000 X000 F5000
     </section>
 
     <section>
-        <img width="800" src="../presentation.png" />
+        <img width="800" style="cursor:zoom-in" title="double click => zoom-in; single click => normal size" ondblclick="this.width='1500'" onclick="this.width='800'" src="../presentation.png"
+        />
         <br>
         <br>
         <br>
